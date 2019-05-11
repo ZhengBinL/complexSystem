@@ -44,7 +44,7 @@ body{
 }
 .form-title span{
     position: relative;
-    font-size: 26px;
+    font-size: 22px;
 }
 .form-title span:after{
     position: absolute;
