@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>home</title>
     <link rel="stylesheet" href="../asset/css/reset.css">
-    <link rel="stylesheet" href="../asset/css/index.css">
+    <link rel="stylesheet" href="../asset/css/common.css">
+	<link rel="stylesheet" href="../asset/css/index.css">
     <link rel="stylesheet" href="../zTree/css/metroStyle/metroStyle.css">
     <script src="../asset/js/jquery.min.js"></script>
     <script src="../asset/js/index.js"></script>
@@ -41,6 +42,8 @@
             <!--<div class="palace-unit"><span>555</span></div>-->
             <!--<div class="palace-unit"><span>666</span></div>-->
         </div>
+		<div class="icon-fold">收起</div>
+		<div class="aside-cover"></div>
     </div>
     <!--主体-->
     <div class="main">
@@ -87,3 +90,22 @@
     </div>
 </body>
 </html>
+<script type="text/javascript">
+	// 测试demo
+	function test() {
+		var url = 'http://115.28.203.39:9090/api/Installation/InstallationList?user=XX&accesstoken=XXXX';
+		$.post({
+			dataType: "json",
+			url:url,
+			data: {
+				InstallationName: '',
+				PageIndex: 1,
+				PageSize: 10
+			},
+			success:function(result){
+				console.log(result)
+			},
+		});
+	}
+    test()
+</script>

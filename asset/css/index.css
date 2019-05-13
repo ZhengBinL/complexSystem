@@ -1,66 +1,6 @@
 body{
     background: #444;
 }
-/*
- ** 头部样式
-*/
-.header{
-    background: cornflowerblue;
-    height: 44px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99;
-}
-.logo{
-    position: absolute;
-    top: 0;
-    left: 20px;
-    line-height: 44px;
-}
-.header-rt{
-    float: right;
-    line-height: 44px;
-}
-.header-rt a{
-    padding:0 5px;
-}
-.exit{
-    margin: 0 15px;
-}
-/*
- ** 侧边栏
-*/
-.aside{
-    position: fixed;
-    top: 44px; /*取header头部高度*/
-    left: 0;
-    bottom: 0;
-    width: 12.5%; /*侧边栏宽度*/
-    background: #000;
-    overflow: auto;
-}
-.palace{
-    position: absolute;
-    bottom:0;
-    left: 0;
-    overflow: hidden;
-    width: 100%;
-}
-.palace-unit{
-    width: 33.333333%;
-    height: 44px;
-    line-height: 44px;
-    text-align: center;
-    background: #ccc;
-    float: left;
-    position: relative;
-    cursor: pointer;
-}
-.palace-unit:nth-child(even){
-    background: #999;
-}
 /*如果色块宽高一致，样式取下面的
 .palace-unit{
     width: 33.333333%;
@@ -80,16 +20,6 @@ body{
     text-align: center;
 }
 */
-/*
- ** 主体main
-*/
-.main{
-    position: absolute;
-    left: 12.5%; /*侧边栏宽度*/
-    right: 0;
-    top: 44px; /*取header头部高度*/
-    height: 100%;
-}
 /*index*/
 .notice-board{
     position: absolute;

@@ -1,4 +1,17 @@
 $(function () {
+	// 侧边栏展开收起
+	$('.icon-fold').click(function(){
+		var html = $(this).html()
+		if(html == '展开'){
+			$(this).html('收起').animate({left: '12.5%'})
+			$('.aside').animate({width: '12.5%'})
+			$('.aside-cover').animate({width: 0})
+		}else{
+			$('.aside').animate({width: '30px'})
+			$(this).html('展开').animate({left: '30px'})
+			$('.aside-cover').animate({width: '30px'})
+		}
+	})
     // 通告牌的最大化与最小化
     $('.minimize').click(function () {
         $('.notice-board').hide();
