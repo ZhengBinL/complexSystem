@@ -1,31 +1,4 @@
-/*
- ** 头部样式
-*/
-.header{
-    background: cornflowerblue;
-    height: 44px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99;
-}
-.logo{
-    position: absolute;
-    top: 0;
-    left: 20px;
-    line-height: 44px;
-}
-.header-rt{
-    float: right;
-    line-height: 44px;
-}
-.header-rt a{
-    padding:0 5px;
-}
-.exit{
-    margin: 0 15px;
-}
+
 /*
 **固定勤务
 **
