@@ -1,0 +1,154 @@
+/*
+**综合监控
+**
+*/
+.content{
+    margin-top:45px;
+}
+.video-content{
+    width: 25%;
+    height: 40%;
+    border:1px solid #ccc
+}
+.monitor-content{
+    width: 100%;
+    height: 100%;
+}
+.monitor-video{
+    width: 300px;
+    height: 150px;
+    border:1px solid #ccc;
+    position: relative;
+}
+
+.layui-input{
+    display: inline-block!important;
+    width:80%!important;
+}
+.video-content:hover .video-btn{
+    display:block
+}
+.video-btn{
+    position: absolute;
+    bottom:0;
+    display:none
+}
+
+/* 云台控制 */
+.operate-btn{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+.operate-btn .up{
+    position: absolute;
+    left:50%;
+    top:10%;
+    transform: translate(-50%);
+    -ms-transform: translate(-50%);		/* IE 9 */
+    -webkit-transform: translate(-50%);	/* Safari and Chrome */
+    -o-transform: translate(-50%);		/* Opera */
+    -moz-transform: translate(-50%);
+}
+.operate-btn .down{
+    position: absolute;
+    left:50%;
+    bottom:10%;
+    transform: translate(-50%);
+    -ms-transform: translate(-50%);		/* IE 9 */
+    -webkit-transform: translate(-50%);	/* Safari and Chrome */
+    -o-transform: translate(-50%);		/* Opera */
+    -moz-transform: translate(-50%);
+}
+.operate-btn .left{
+    position: absolute;
+    left:10%;
+    top:50%;
+    transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);		/* IE 9 */
+    -webkit-transform: translate(0,-50%);	/* Safari and Chrome */
+    -o-transform: translate(0,-50%);		/* Opera */
+    -moz-transform: translate(0,-50%);
+}
+.operate-btn .right{
+    position: absolute;
+    right:10%;
+    top:50%;
+    transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);		/* IE 9 */
+    -webkit-transform: translate(0,-50%);	/* Safari and Chrome */
+    -o-transform: translate(0,-50%);		/* Opera */
+    -moz-transform: translate(0,-50%);
+}
+.operate-btn .up-left{
+    position: absolute;
+    left:25%;
+    top:25%;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);		/* IE 9 */
+    -webkit-transform: rotate(-45deg);	/* Safari and Chrome */
+    -o-transform: rotate(-45deg);		/* Opera */
+    -moz-transform: rotate(-45deg);
+}
+.operate-btn .down-left{
+    position: absolute;
+    left:25%;
+    bottom:25%;
+    transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);		/* IE 9 */
+    -webkit-transform: rotate(-135deg);	/* Safari and Chrome */
+    -o-transform: rotate(-135deg);		/* Opera */
+    -moz-transform: rotate(-135deg);
+}
+.operate-btn .up-right{
+    position: absolute;
+    top:25%;
+    right: 25%;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);		/* IE 9 */
+    -webkit-transform: rotate(45deg);	/* Safari and Chrome */
+    -o-transform: rotate(45deg);		/* Opera */
+    -moz-transform: rotate(45deg);
+}
+.operate-btn .down-right{
+    position: absolute;
+    bottom:25%;
+    right: 25%;
+    transform: rotate(135deg);
+    -ms-transform: rotate(135deg);		/* IE 9 */
+    -webkit-transform: rotate(135deg);	/* Safari and Chrome */
+    -o-transform: rotate(135deg);		/* Opera */
+    -moz-transform: rotate(135deg);
+}
+.operate-btn .add{
+    position: absolute;
+    left:50%;
+    top:40%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);		/* IE 9 */
+    -webkit-transform: translate(-50%,-50%);	/* Safari and Chrome */
+    -o-transform: translate(-50%,-50%);		/* Opera */
+    -moz-transform: translate(-50%,-50%);
+}
+.operate-btn .del{
+    position: absolute;
+    left:50%;
+    bottom:40%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);		/* IE 9 */
+    -webkit-transform: translate(-50%,-50%);	/* Safari and Chrome */
+    -o-transform: translate(-50%,-50%);		/* Opera */
+    -moz-transform: translate(-50%,-50%);
+}
+
+/* 遮罩层 */
+.msgbox-content{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+.magshow-flag{
+    display: none
+}
