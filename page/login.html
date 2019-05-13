@@ -5,35 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="asset/css/reset.css">
-    <link rel="stylesheet" href="asset/css/index.css">
+    <link rel="stylesheet" href="../asset/css/reset.css">
+    <link rel="stylesheet" href="../asset/css/login.css">
 </head>
 <body>
-    <div class="top-logo padding-t">
-        <img class="icon-logo" src="asset/img/logo.png" alt="武警图标">
+    <div class="logo-wrapper">
+        <img class="logo" src="../asset/img/logo.png" alt="武警图标">
     </div>
-    <div class="top-logo margin-t2">
-        <img class="title-logo" src="asset/img/title.png" alt="武警title">
-    </div>
-    <form action="" method="post" class="contant-form">
-        <div class="title">
-            <span>用户登录</span>
-        </div>
-        <div class="btn-input-wrapper">
-            <span class="icon"></span>
+    <img class="title" src="../asset/img/title.png" alt="武警title">
+    <form action="" class="form">
+        <div class="form-title"><span>用户登录</span></div>
+        <div class="input-wrapper">
+            <img class="icon" src="../asset/img/icon_user.png">
             <input class="btn-input user-btnicon" type="text" name="user" placeholder="请输入账号">
         </div>
-        <div class="btn-input-wrapper">
-            <span class="icon icon-pwd"></span>
+        <div class="input-wrapper input-wrapper-pwd">
+            <img class="icon" src="../asset/img/icon_pwd.png">
             <input class="btn-input pwd-btnicon"  type="password" name="password" placeholder="请输入密码"><br>
         </div>
         <div class="remember-wrapper">
             <input class="checkbox-size" type="checkbox"><span class="size-title">记住密码</span><br>
-        </div>       
+        </div>
         <button class="login-btn">登 录</button>
     </form>
-    <script>
-
-    </script>
 </body>
 </html>
