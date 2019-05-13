@@ -5,10 +5,12 @@ $(function () {
 		if(html == '展开'){
 			$(this).html('收起').animate({left: '12.5%'})
 			$('.aside').animate({width: '12.5%'})
-			$('.aside-cover').animate({width: 0})
+            $('.main').css('left', '12.5%')
+            $('.aside-cover').animate({width: 0})
 		}else{
 			$('.aside').animate({width: '30px'})
-			$(this).html('展开').animate({left: '30px'})
+            $('.main').css('left', '30px')
+            $(this).html('展开').animate({left: '30px'})
 			$('.aside-cover').animate({width: '30px'})
 		}
 	})
