@@ -33,10 +33,23 @@ $(function () {
     };
     // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
     var zNodes = [
-        {name:"资源管理1级",url: 'https://www.baidu.com/', open:false, children:[
-            {name:"资源管理1级的孩子1", url:'https://www.baidu.com'}, {name:"资源管理1级的孩子2"}]},
-        {name:"test2", open:false, children:[
-            {name:"test2_1"}, {name:"test2_2"}]}
+        {
+            name:"资源管理1级",
+            url: 'https://www.baidu.com/',
+            open:false,
+            children:[
+                {name:"资源管理1级的孩子1", url:'https://www.baidu.com'},
+                {name:"资源管理1级的孩子2"}
+            ]
+        },
+        {
+            name:"test2",
+            open:false,
+            children:[
+                {name:"test2_1"},
+                {name:"test2_2"}
+            ]
+        }
     ];
     zTreeObj = $.fn.zTree.init($("#menu-tree"), setting, zNodes);
     function zTreeOnClick(event, treeId, treeObj){
