@@ -2,13 +2,13 @@
  ** 头部样式
 */
 .header{
-    background: cornflowerblue;
-    height: 44px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99;
+    /*background: cornflowerblue;*/
+    /*height: 44px;*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*z-index: 99;*/
 }
 .logo{
     position: absolute;
