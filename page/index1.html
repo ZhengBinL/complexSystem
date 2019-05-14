@@ -17,13 +17,15 @@
         <div class="header-rt">
             <ul>
                 <li>
-                    <img class="noticeIcon" src="../asset/img/notice.png" alt="通知">
+                    <img class="notice-icon" src="../asset/img/notice.png" alt="通知">
                 </li>
-                <li class="userNotice">
-                    <div id="user-operate">
-                        <img class="userImg" src="../asset/img/logo.png" alt="头像"><span>管理</span><img class="drop-down" src="../asset/img/drop-down.png" alt="下拉展开">
+                <li class="user-notice">
+                    <div id="user-operate" class="user-operate">
+                        <img class="user-img" src="../asset/img/logo.png" alt="头像">
+                        <span>管理</span>
+                        <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开">
                     </div>
-                    <div id="dropDown" class="dropDown">
+                    <div id="dropDown" class="drop-down">
                         <p id="">1</p>
                         <p id="">2</p>
                         <p id="">3</p>
@@ -46,6 +48,7 @@
         </div>
     </div>
     <!-- 操作按钮 -->
+<<<<<<< HEAD
     <div class="operate-btn top-btn">
         <a href="" class="complex-monitor"><img  src="../asset/img/complex-monitor.png" alt="综合监控"></a>
         <a href="" class="fixed-duty"><img  src="../asset/img/fixed-duty.png" alt="固定勤务"></a>
@@ -61,10 +64,27 @@
         </div>
         <a href="" class="data-view"><img  src="../asset/img/data-view.png" alt="数据可视化"></a>
         <a href="" class="three-view"><img  src="../asset/img/three-view.png" alt="三维可视化"></a>
+=======
+    <div class="container">
+        <div class="row-first">
+            <a href="#" class="complex-monitor" title="综合监控"></a>
+            <a href="#" class="fixed-duty" title="固定勤务"></a>
+            <a href="#" class="call-police" title="报警"></a>
+        </div>
+        <div class="row-second">
+            <div class="row-second-lt">
+                <a href="#" class="world-run" title="周界轮巡"></a>
+                <a href="#" class="duty-schedule" title="执勤排班"></a>
+            </div>
+            <a href="#" class="tv-wall" title="电视墙"></a>
+            <a href="#" class="data-view" title="数据可视化"></a>
+            <a href="#" class="three-view" title="三维可视化"></a>
+        </div>
+>>>>>>> 497977c6936407c8827df0971e515e7759510294
     </div>
-    <script>
-        
-    </script>
+    <div class="footer">
+        技术支持：北京国势通科技有限公司
+    </div>
     <script>
         $('#user-operate').on('click',function(){
             $('#dropDown').toggle()

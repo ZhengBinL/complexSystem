@@ -1,64 +1,15 @@
 body{
-    background: url('../img/btn_index.png') center top no-repeat;
-}
-/*
- ** 头部样式
-*/
-.header{
-    background: url('../img/index-title.png') center top no-repeat;
-    height: 20%;
-    margin-top:10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 99;
-}
-.header-rt{
-    float: right;
-    line-height: 20%;
-}
-.header-rt .noticeIcon{
-    width: 18px;
-    padding-top:5px;
-}
-.header-rt .userImg{
-    width: 24px;
-    border:1px solid #ccc;
-    border-radius:50%; 
-}
-.header-rt ul li{
-    float: left;
-    padding-top:10px;
-    padding-right: 10px;
-}
-.userNotice{
     position: relative;
-    padding-right: 20px;
+    background: #020f40 url('../img/btn_index.jpg') center bottom no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
-.userImg{
-    margin-right:10px;
-}
-/* 下拉icon */
-.drop-down{
-    padding-left: 10px
-}
-.dropDown{
-    display: none;
-    position: absolute;
-    top:55px;
-    right: 10px;
-    width: 100%;
-}
-.dropDown p{
-    line-height: 30px;
-    border:1px solid #ccc
-}
+
 /* 倒计时 */
 .time-end{
+    margin:2.3% 0 0;
     color:black;
     text-align: center;
-    margin-top:9%;
 }
 .numbs {
 	position: relative;
@@ -107,9 +58,12 @@ body{
     text-align: right;
 }
 /* 功能操作按钮 */
-.operate-btn{
-    text-align:center
+.container{
+    max-width: 1400px;
+    width: 72.92%;
+    margin:0 auto;
 }
+<<<<<<< HEAD
 .top-btn{
     margin-top:20px;
     margin-bottom:20px;
@@ -117,22 +71,52 @@ body{
 .top-btn a+a{
     margin-left: 20px;
 }
+=======
+.row-first, .row-second{
+    overflow: hidden;
+
+}
+.row-first{
+    margin:3.71% 0 3% 0;
+}
+.row-first a, .row-second a{
+    display: block;
+    float: left;
+}
+.row-first a, .row-second a{
+    transition: all 0.3s;
+    background-size: 100% 100%;
+}
+>>>>>>> 497977c6936407c8827df0971e515e7759510294
 .complex-monitor{
-    width: 34%;
+    width:46.64%;
+    padding: 22.42% 0 0;
+    background-image: url("../img/complex-monitor.png");
+}
+.complex-monitor:hover{
+    background-image: url("../img/complex-monitor_on.png");
 }
 .fixed-duty{
-    width: 16%;
+    width: 22.07%;
+    margin: 0 4%;
+    padding: 22.07% 0 0;
+    background-image: url("../img/fixed-duty.png");
+}
+.fixed-duty:hover{
+    background-image: url("../img/fixed-duty_on.png");
 }
 .call-police{
-    width: 16%;
+    width: 22.07%;
+    padding: 22.07% 0 0;
+    background-image: url("../img/call-police.png");
 }
-.thr-operate{
-    width: 34%;
-    float: left;
-    
+.call-police:hover{
+    background-image: url("../img/call-police_on.png");
 }
-.two-operate{
+.row-second-lt{
+    width: 21.71%;
     float: left;
+<<<<<<< HEAD
     width: 45%;
     
 }
@@ -142,19 +126,124 @@ body{
 .tv-wall{
     float: right;
     width: 45%;
+=======
+    overflow: hidden;
+>>>>>>> 497977c6936407c8827df0971e515e7759510294
 }
 .world-run{
-    width: 85%;
+    width: 100%;
+    padding: 47.37% 0 0;
+    margin:0 0 7.2% 0;
+    background-image: url("../img/world-run.png");
+}
+.world-run:hover{
+    background-image: url("../img/world-run_on.png");
 }
 .duty-schedule{
-    width: 85%;
+    width: 100%;
+    padding: 47.37% 0 0;
+    background-image: url("../img/duty-schedule.png");
 }
-
+.duty-schedule:hover{
+    background-image: url("../img/duty-schedule_on.png");
+}
+.tv-wall{
+    width: 22.14%;
+    margin:0 0 0 2.43%;
+    padding: 22.14% 0 0;
+    background-image: url("../img/tv-wall.png");
+}
+.tv-wall:hover{
+    background-image: url("../img/tv-wall_on.png");
+}
 .data-view{
-    width: 16%;
-    margin-left: 10px;
+    width: 22.14%;
+    padding: 22.14% 0 0;
+    margin:0 4.36% 0 4.07%;
+    background-image: url("../img/data-view.png");
+}
+.data-view:hover{
+    background-image: url("../img/data-view_on.png");
 }
 .three-view{
+<<<<<<< HEAD
     width: 16%;
     margin-left: 20px;
 }
+=======
+    width: 22.14%;
+    padding: 22.14% 0 0;
+    background-image: url("../img/three-view.png");
+}
+.three-view:hover{
+    background-image: url("../img/three-view_on.png");
+
+}
+
+
+
+
+
+
+
+
+
+.operate-btn{
+    text-align:center
+}
+.operate-btn>img+img{
+    margin-left: 20px;
+}
+.top-btn{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.top-btn img+img{
+    margin-left: 20px;
+    
+}
+.operate-btn img{
+    display: inline-block
+}
+
+/*.complex-monitor{*/
+    /*width: 34%;*/
+/*}*/
+/*.fixed-duty{*/
+    /*width: 16%;*/
+/*}*/
+/*.call-police{*/
+    /*width: 16%;*/
+/*}*/
+/*.thr-operate{*/
+    /*width: 34%;*/
+    /*float: left;*/
+    /**/
+/*}*/
+/*.two-operate{*/
+    /*float: left;*/
+    /*width: 45%;*/
+    /**/
+/*}*/
+/*.two-operate img{*/
+    /*padding: 10px;*/
+/*}*/
+/*.tv-wall{*/
+    /*float: right;*/
+    /*width: 45%;*/
+/*}*/
+/*.world-run{*/
+    /*width: 85%;*/
+/*}*/
+/*.duty-schedule{*/
+    /*width: 85%;*/
+/*}*/
+
+/*.data-view{*/
+    /*width: 16%;*/
+    /*margin-left: 10px;*/
+/*}*/
+/*.three-view{*/
+    /*width: 16%;*/
+/*}*/
+>>>>>>> 497977c6936407c8827df0971e515e7759510294
