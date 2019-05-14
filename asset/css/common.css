@@ -2,30 +2,82 @@
  ** 头部样式
 */
 .header{
-    /*background: cornflowerblue;*/
-    /*height: 44px;*/
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*right: 0;*/
-    /*z-index: 99;*/
-}
-.logo{
-    position: absolute;
-    top: 0;
-    left: 20px;
-    line-height: 44px;
+    background: url('../img/index-title.png') center top no-repeat;
+    height: 10.92%;
+    margin:10px 0 0;
+    background-size: contain;
+    min-height: 70px;
 }
 .header-rt{
     float: right;
-    line-height: 44px;
 }
-.header-rt a{
-    padding:0 5px;
+.notice-icon{
+    width: 14px;
 }
-.exit{
-    margin: 0 15px;
+.icon-drop{
+    width: 14px;
 }
+.header-rt .user-img{
+    width: 24px;
+    height: 24px;
+    border:1px solid #ccc;
+    border-radius:50%;
+}
+.header-rt ul{
+    font-size: 0;
+}
+.header-rt ul li{
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+.user-notice{
+    position: relative;
+    padding-right: 20px;
+}
+.user-img{
+    margin-right:10px;
+}
+.user-operate{
+    font-size: 0;
+    line-height: 1;
+}
+.user-operate span{
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+}
+.user-operate img{
+    display: inline-block;
+    vertical-align: middle;
+}
+/* 下拉icon */
+.drop-down{
+    padding-left: 10px
+}
+.drop-down{
+    display: none;
+    position: absolute;
+    top:55px;
+    right: 10px;
+    width: 100%;
+}
+.drop-down p{
+    line-height: 30px;
+    border:1px solid #ccc
+}
+/* 底部footer */
+.footer{
+    padding:3.54% 0 2.62%;
+    line-height: 1;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
 /*
  ** 侧边栏
 */

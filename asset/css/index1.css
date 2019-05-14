@@ -1,66 +1,13 @@
 body{
     position: relative;
-    background: #000 url('../img/btn_index.jpg') center bottom no-repeat;
+    background: #020f40 url('../img/btn_index.jpg') center bottom no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
-/*
- ** 头部样式
-*/
-.header{
-    background: url('../img/index-title.png') center top no-repeat;
-    height: 10.92%;
-    margin:10px 0 0;
-    background-size: contain;
-    min-height: 70px;
-}
-.header-rt{
-    float: right;
-}
-.header-rt .noticeIcon{
-    width: 18px;
-    padding-top:5px;
-}
-.header-rt .userImg{
-    width: 24px;
-    border:1px solid #ccc;
-    border-radius:50%; 
-}
-.header-rt ul li{
-    float: left;
-    padding-top:10px;
-    padding-right: 10px;
-}
-.userNotice{
-    position: relative;
-    padding-right: 20px;
-}
-.userImg{
-    margin-right:10px;
-}
-/* 下拉icon */
-.drop-down{
-    padding-left: 10px
-}
-.dropDown{
-    display: none;
-    position: absolute;
-    top:55px;
-    right: 10px;
-    width: 100%;
-}
-.dropDown p{
-    line-height: 30px;
-    border:1px solid #ccc
-}
-/* 底部footer */
-.footer{
-    /*padding:6.2% 0 4.8%;*/
-    line-height: 1;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-}
+
 /* 倒计时 */
 .time-end{
+    margin:2.3% 0 0;
     color:black;
     text-align: center;
 }
