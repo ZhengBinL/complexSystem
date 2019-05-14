@@ -1,10 +1,3 @@
-body{
-    position: relative;
-    background: #020f40 url('../img/btn_index.jpg') center bottom no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
 /* 倒计时 */
 .time-end{
     margin:2.3% 0 0;
@@ -15,12 +8,13 @@ body{
 	position: relative;
 	display: inline-block;
 	height: 48px;
-	/* background: url(../images/letter-bg.png) repeat-x; */
 	overflow: hidden;
 	vertical-align: middle;
 }
 .digit-container i {
 	display: inline-block;
+    border:1px solid #ff549d;
+    box-sizing: border-box;
 	-webkit-background-clip: text;
 	width: 29px;
 	height: 48px;
@@ -28,7 +22,6 @@ body{
 	line-height: 48px;
 	font-style: normal;
     text-align: center;
-    /* background-color: rgba(250,250,250,0.3); */
     color:#fff
 }
 

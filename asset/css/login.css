@@ -118,6 +118,7 @@ body{
     background-size: 100% 100%;
     margin:0 auto;
     display: block;
+    text-align: center;
 }
 .checkbox-size{
     margin: 0 8px 0 18px;
