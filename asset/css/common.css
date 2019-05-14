@@ -29,13 +29,13 @@
 /*
  ** 侧边栏
 */
-.aside{
+/* .aside{
     position: fixed;
-    top: 44px; /*取header头部高度*/
+    top: 44px; 取header头部高度
     left: 0;
     bottom: 0;
-    width: 12.5%; /*侧边栏宽度*/
-    background: #000;
+    width: 12.5%; 侧边栏宽度
+    background: url('../img/aside_bg.png') no-repeat;
     overflow: auto;
 	z-index: 2;
 }
@@ -60,7 +60,8 @@
     background: #999;
 }
 .icon-fold{
-	position: fixed;
+    position: fixed;
+    color: #fff;
 	top: 50%;
 	left: 12.5%;
 }
@@ -71,7 +72,7 @@
 	width: 0;
 	height: 100%;
 	background: #007DDB;
-}
+}  */
 /*
  ** 主体main
 */

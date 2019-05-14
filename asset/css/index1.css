@@ -110,21 +110,13 @@ body{
 .operate-btn{
     text-align:center
 }
-.operate-btn>img+img{
-    margin-left: 20px;
-}
 .top-btn{
     margin-top:20px;
     margin-bottom:20px;
 }
-.top-btn img+img{
+.top-btn a+a{
     margin-left: 20px;
-    
 }
-.operate-btn img{
-    display: inline-block
-}
-
 .complex-monitor{
     width: 34%;
 }
@@ -144,7 +136,7 @@ body{
     width: 45%;
     
 }
-.two-operate img{
+.two-operate a{
     padding: 10px;
 }
 .tv-wall{
@@ -164,4 +156,5 @@ body{
 }
 .three-view{
     width: 16%;
+    margin-left: 20px;
 }
