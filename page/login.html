@@ -7,13 +7,14 @@
     <title>login</title>
     <link rel="stylesheet" href="../asset/css/reset.css">
     <link rel="stylesheet" href="../asset/css/login.css">
+    <script src="../asset/js/jquery.min.js"></script>
 </head>
 <body>
     <div class="logo-wrapper">
         <img class="logo" src="../asset/img/logo.png" alt="武警图标">
     </div>
     <img class="title" src="../asset/img/title.png" alt="武警title">
-    <form action="" class="form">
+    <form class="form" id="Form">
         <div class="form-title"><span>用户登录</span></div>
         <div class="input-wrapper">
             <img class="icon" src="../asset/img/icon_user.png">
@@ -26,7 +27,50 @@
         <div class="remember-wrapper">
             <input class="checkbox-size" type="checkbox"><span class="size-title">记住密码</span><br>
         </div>
-        <button class="login-btn">登 录</button>
+        <input class="login-btn" onclick="checkForm()" value="登录"></input>
     </form>
+    <script>
+        /*这里是提交表单前的非空校验*/
+        function checkForm () {
+            var first = $("input[name='user']").val();
+            var last = $("input[name='password']").val();
+
+            if (first == "" || first == null || first == undefined) {
+                alert("first不能为空");
+                return false;/*阻止表单提交*/
+            } else if (last == "" || last == null || last == undefined) {
+                alert("last不能为空");
+                return false;
+            } else {
+                var parmams ={
+                    "clientId": "098f6bcd4621d373cade4e832627b4f6",
+                    "password": last,
+                    "userCode": first
+                }
+                $.ajax({
+                    url:"http://172.16.5.248:18080/sso/login",
+                    type:'post',
+                    dataType:'json',
+                    contentType:'application/json',
+                    data:JSON.stringify(parmams),
+                    success:function(data){
+                        console.log(data,'data')
+                    },
+                    error:function(){
+                        
+                    }
+                })
+                // $.post('http://172.16.5.248:18080/sso/login',{
+                //     "clientId": "098f6bcd4621d373cade4e832627b4f6",
+                //     "password": last,
+                //     "userCode": first
+                // },function(res){
+                //     console.log(res,'res')
+                // },'json')
+                // return true;
+            }
+
+        }
+    </script>
 </body>
 </html>

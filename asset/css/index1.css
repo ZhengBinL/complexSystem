@@ -1,0 +1,167 @@
+body{
+    background: url('../img/btn_index.png') center top no-repeat;
+}
+/*
+ ** 头部样式
+*/
+.header{
+    background: url('../img/index-title.png') center top no-repeat;
+    height: 20%;
+    margin-top:10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+.header-rt{
+    float: right;
+    line-height: 20%;
+}
+.header-rt .noticeIcon{
+    width: 18px;
+    padding-top:5px;
+}
+.header-rt .userImg{
+    width: 24px;
+    border:1px solid #ccc;
+    border-radius:50%; 
+}
+.header-rt ul li{
+    float: left;
+    padding-top:10px;
+    padding-right: 10px;
+}
+.userNotice{
+    position: relative;
+    padding-right: 20px;
+}
+.userImg{
+    margin-right:10px;
+}
+/* 下拉icon */
+.drop-down{
+    padding-left: 10px
+}
+.dropDown{
+    display: none;
+    position: absolute;
+    top:55px;
+    right: 10px;
+    width: 100%;
+}
+.dropDown p{
+    line-height: 30px;
+    border:1px solid #ccc
+}
+/* 倒计时 */
+.time-end{
+    color:black;
+    text-align: center;
+    margin-top:9%;
+}
+.numbs {
+	position: relative;
+	display: inline-block;
+	height: 48px;
+	/* background: url(../images/letter-bg.png) repeat-x; */
+	overflow: hidden;
+	vertical-align: middle;
+}
+.digit-container i {
+	display: inline-block;
+	-webkit-background-clip: text;
+	width: 29px;
+	height: 48px;
+	font-size: 32px;
+	line-height: 48px;
+	font-style: normal;
+    text-align: center;
+    /* background-color: rgba(250,250,250,0.3); */
+    color:#fff
+}
+
+.numbs .digit-container {
+	float: left;
+	width: 29px;
+	text-align: center;
+    overflow: hidden;
+    margin-right: 5px;
+    background: rgba(72,22,102,0.8);
+	font-size: 0;
+}
+.numbs .shadows {
+	position: absolute;
+	display: inline-block;
+}
+.shadows > i {
+	float: left;
+	width: 29px;
+	height: 48px;
+	/* background-color: rgba(250,250,250,0.3); */
+	background-size: cover;
+}
+.txt{
+    padding-right:10px;
+    color:#fff;
+    text-align: right;
+}
+/* 功能操作按钮 */
+.operate-btn{
+    text-align:center
+}
+.operate-btn>img+img{
+    margin-left: 20px;
+}
+.top-btn{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.top-btn img+img{
+    margin-left: 20px;
+    
+}
+.operate-btn img{
+    display: inline-block
+}
+
+.complex-monitor{
+    width: 34%;
+}
+.fixed-duty{
+    width: 16%;
+}
+.call-police{
+    width: 16%;
+}
+.thr-operate{
+    width: 34%;
+    float: left;
+    
+}
+.two-operate{
+    float: left;
+    width: 45%;
+    
+}
+.two-operate img{
+    padding: 10px;
+}
+.tv-wall{
+    float: right;
+    width: 45%;
+}
+.world-run{
+    width: 85%;
+}
+.duty-schedule{
+    width: 85%;
+}
+
+.data-view{
+    width: 16%;
+    margin-left: 10px;
+}
+.three-view{
+    width: 16%;
+}
