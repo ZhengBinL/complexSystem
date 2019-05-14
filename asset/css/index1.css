@@ -63,15 +63,6 @@ body{
     width: 72.92%;
     margin:0 auto;
 }
-<<<<<<< HEAD
-.top-btn{
-    margin-top:20px;
-    margin-bottom:20px;
-}
-.top-btn a+a{
-    margin-left: 20px;
-}
-=======
 .row-first, .row-second{
     overflow: hidden;
 
@@ -87,7 +78,6 @@ body{
     transition: all 0.3s;
     background-size: 100% 100%;
 }
->>>>>>> 497977c6936407c8827df0971e515e7759510294
 .complex-monitor{
     width:46.64%;
     padding: 22.42% 0 0;
@@ -116,19 +106,7 @@ body{
 .row-second-lt{
     width: 21.71%;
     float: left;
-<<<<<<< HEAD
-    width: 45%;
-    
-}
-.two-operate a{
-    padding: 10px;
-}
-.tv-wall{
-    float: right;
-    width: 45%;
-=======
     overflow: hidden;
->>>>>>> 497977c6936407c8827df0971e515e7759510294
 }
 .world-run{
     width: 100%;
@@ -166,11 +144,6 @@ body{
     background-image: url("../img/data-view_on.png");
 }
 .three-view{
-<<<<<<< HEAD
-    width: 16%;
-    margin-left: 20px;
-}
-=======
     width: 22.14%;
     padding: 22.14% 0 0;
     background-image: url("../img/three-view.png");
@@ -246,4 +219,3 @@ body{
 /*.three-view{*/
     /*width: 16%;*/
 /*}*/
->>>>>>> 497977c6936407c8827df0971e515e7759510294
