@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,118 +9,70 @@
     <link rel="stylesheet" href="../asset/css/reset.css">
     <link rel="stylesheet" href="../asset/css/common.css">
     <link rel="stylesheet" href="../asset/css/monitor.css">
-    <link rel="stylesheet" href="../layui/css/layui.css">
     <script src="../asset/js/jquery.min.js"></script>
-    
+    <script src="../asset/js/monitor.js"></script>
 </head>
+
 <body>
     <!--头部-->
     <div class="header">
-        <div class="logo">武警智慧磐石综合业务管理平台</div>
+        <div class="header-lt" id="header"></div>
         <div class="header-rt">
-            <a href="#" class="manage">管理</a>
-            <a href="javascript:;" class="exit" title="退出">退出</a>
-        </div>
-    </div>
-    <!--综合监控-->
-    <div class="content">
-        <div class="layui-tab">
-            <ul class="layui-tab-title">
-                <li class="layui-this">实时监控</li>
-                <li>地图监控</li>
+            <ul>
+                <li class="notice-wrapper">
+                    <img class="notice-icon" src="../asset/img/notice.png" alt="通知">
+                </li>
+                <li class="user-notice">
+                    <div id="user-operate" class="user-operate">
+                        <img class="user-img" src="../asset/img/logo.png" alt="头像">
+                        <a href="javascript:;">管理</a>
+                        <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开">
+                    </div>
+                    <!-- <div id="dropDown" class="drop-down">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                    </div> -->
+                </li>
             </ul>
-            <div class="layui-tab-content">
-                <div class="layui-tab-item layui-show">
-                    <ul>
-                        <li class="video-content">
-                            <!--视屏-->
-                            <div class="monitor-video">
-                                <div class="monitor-content">
-
-                                </div>
-                                <div class="video-btn">
-                                    <button id="history">历史视频</button>
-                                    <button id="double-speed">倍速</button>
-                                    <button id="stop">停止播放</button>
-                                    <button id="cloud-contral">云台控制</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="layui-tab-item">
-                     
-                </div>
-            </div>
         </div>
-
-        <!-- 遮罩层 -->
-        <div class="msgbox-content magshow-flag" id="msgbox-content">
-            <div class="operate-btn">
-                <button id="close">X</button>
-                <button class="up">上</button>
-                <button class="down">下</button>
-                <button class="left">左</button>
-                <button class="right">右</button>
-                <button class="up-left">上左</button>
-                <button class="down-left">下左</button>
-                <button class="up-right">上右</button>
-                <button class="down-right">下右</button>
-                <button class="add">加</button>
-                <button class="del">减</button>
-            </div>
-        </div>
-
-       
     </div>
-    <script src="../layui/layui.js"></script>
-    <script>
-        layui.use(['element','layer','laydate'], function(){
-            var element = layui.element;
-            var layer = layui.layer;
-            var laydate = layui.laydate;
-            //历史视屏
-            $('#history').on('click',function(){
-                layer.open({
-                    type: 1,
-                    content:'<div><label for="begin">开始时间</label><input type="text" readonly="readonly" class="layui-input" id="begin"></div><div><label for="end">结束时间</label><input type="text" readonly="readonly" class="layui-input" id="end"></div>'
-                    ,success: function(layero, index){
-                        console.log(layero, index);
-                        laydate.render({
-                            elem: '#begin', //指定元素
-                            type: 'datetime'
-                        });
-                        laydate.render({
-                            elem: '#end', //指定元素
-                            type: 'datetime'
-                        });
-                    },
-                    area: ['500px', '300px']
-                    ,btn:'播放'
-                    ,yes: function(index, layero){
-                        //播放回调
-                        console.log($(layero).eq(0).find('#begin').val(),'sdsd1')//开始时间
-                        console.log($(layero).eq(0).find('#end').val(),'sdsd2')//结束时间
-                    }
-                });
-            })
-            //倍速
-            $('#double-speed').on('click',function(){
+    <!--侧边栏-->
+    <div class="aside">
+        <div class="menu-tree-wrapper">
+            <ul id="menu-tree" class="menu-tree ztree"></ul>
+        </div>
+        <div class="palace">
+            <div class="palace-unit">111</div>
+            <div class="palace-unit">222</div>
+            <div class="palace-unit">333</div>
+            <div class="palace-unit">444</div>
+            <div class="palace-unit">555</div>
+            <div class="palace-unit">666</div>
+        </div>
+        <div class="icon-fold"><img id="showFlag" src="../asset/img/icon_fold.png" alt="1"></div>
+        <!-- <div class="aside-cover"></div> -->
+    </div>
+    <!-- 右侧内容 -->
+    <!--综合监控-->
+    <div class="zbl-table main">
+        <ul class="zbl-tab-title">
+            <li class="zbl-this">实时监控</li>
+            <li class="">地图监控</li>
+        </ul>
+        <div class="zbl-tab-content">
+            <div class="zbl-tab-item zbl-show"></div>
+            <div class="zbl-tab-item"></div>
+        </div>
+    </div>
 
-            })
-            //停止播放
-            $('#stop').on('click',function(){
-                
-            })
-            //云台控制
-            $('#cloud-contral').on('click',function(){
-                $('#msgbox-content').removeClass('magshow-flag') 
-            })
-            //关闭云台控制
-            $('#close').on('click',function(){
-                $('#msgbox-content').addClass('magshow-flag')
-            })
-        });
+    <script>
+        // 返回首页
+        $('#header').on('click',function(){
+            window.location.href="./index1.html"
+        })
     </script>
+
 </body>
+
 </html>
