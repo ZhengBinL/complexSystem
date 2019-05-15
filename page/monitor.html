@@ -8,29 +8,26 @@
     <title>monitor</title>
     <link rel="stylesheet" href="../asset/css/reset.css">
     <link rel="stylesheet" href="../asset/css/common.css">
-    <link rel="stylesheet" href="../asset/css/index1.css">
     <link rel="stylesheet" href="../asset/css/monitor.css">
     <script src="../asset/js/jquery.min.js"></script>
-    <script src="../asset/js/index.js"></script>
+    <script src="../asset/js/monitor.js"></script>
 </head>
 
 <body>
     <!--头部-->
     <div class="header">
+        <div class="header-lt" id="header"></div>
         <div class="header-rt">
             <ul>
-                <li>
-                    <img class="noticeIcon" src="../asset/img/notice.png" alt="通知">
+                <li class="notice-wrapper">
+                    <img class="notice-icon" src="../asset/img/notice.png" alt="通知">
                 </li>
-                <li class="userNotice">
-                    <div id="user-operate">
-                        <img class="userImg" src="../asset/img/logo.png" alt="头像"><span>管理</span><img class="drop-down"
-                            src="../asset/img/drop-down.png" alt="下拉展开">
-                    </div>
-                    <div id="dropDown" class="dropDown">
-                        <p id="">1</p>
-                        <p id="">2</p>
-                        <p id="">3</p>
+                <li class="user-notice">
+                    <div id="user-operate" class="user-operate">
+                        <img class="user-img" src="../asset/img/logo.png" alt="头像">
+                        <a href="javascript:;">管理</a>
+                        <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开">
+                        <a href="javascript:;" class="exit" title="退出">退出</a>
                     </div>
                 </li>
             </ul>
@@ -38,7 +35,6 @@
     </div>
     <!--侧边栏-->
     <div class="aside">
-        <h4 class="aside-title">资源列表</h4>
         <div class="menu-tree-wrapper">
             <ul id="menu-tree" class="menu-tree ztree"></ul>
         </div>
@@ -50,8 +46,8 @@
             <div class="palace-unit">555</div>
             <div class="palace-unit">666</div>
         </div>
-        <div class="icon-fold">收起</div>
-        <div class="aside-cover"></div>
+        <div class="icon-fold"><img id="showFlag" src="../asset/img/icon_fold.png" alt="1"></div>
+        <!-- <div class="aside-cover"></div> -->
     </div>
     <!-- 右侧内容 -->
     <!--综合监控-->
@@ -66,9 +62,12 @@
         </div>
     </div>
 
-<script>
-
-</script>
+    <script>
+        // 返回首页
+        $('#header').on('click',function(){
+            window.location.href="./index1.html"
+        })
+    </script>
 
 </body>
 
