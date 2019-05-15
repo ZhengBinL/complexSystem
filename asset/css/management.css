@@ -118,7 +118,7 @@
 	width: 0;
 	height: 80%;
 	background: #007DDB;
-}  
+}
 
 /* 分屏 */
 .split-mode {
@@ -126,7 +126,9 @@
 }
 .mode-content {
   position: relative;
+  padding: 8px;
   border: solid 2px #229fe6;
+  box-shadow: 0 0 18px rgba(4,211,255,0.7), inset 0 0 18px rgba(4,211,255,0.7);
 }
 /* 分屏1×1 */
 .mode-content.mode-rec-1 > li {
@@ -148,7 +150,7 @@
   float: left;
   width: 25%;
 }
-.mode-content.mode-rec-4 > li > dl {
+.mode-content > li > dl {
   position: relative;
   padding: 0;
   margin: 5px;
