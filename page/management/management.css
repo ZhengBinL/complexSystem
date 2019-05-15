@@ -64,6 +64,62 @@
     background-size: 100%;
 }
 
+/* 侧边栏 */
+.aside{
+    width: 320px;
+    height: 750px;
+    position: fixed;
+    left: -22%;
+    bottom: 0;
+    top:7%;
+    background: url('../../asset/img/aside_bg.png') center no-repeat;
+    overflow: auto;
+    box-sizing: content-box;
+    background-size:100%; 
+	z-index: 2;
+}
+.palace{
+    position: absolute;
+    bottom:6%;
+    left: 5%;
+    overflow: hidden;
+    width: 93%;
+    /* padding-left:5%;
+    padding-bottom:5%; */
+    /* padding-right: 10%; */
+}
+.palace-unit{
+    width: 30%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: #ccc;
+    float: left;
+    position: relative;
+    cursor: pointer;
+    margin-left:5px;
+    margin-bottom:5px;
+}
+.palace-unit:nth-child(even){
+    background: #999;
+}
+.icon-fold{
+  position: fixed;
+  color: #fff;
+	top: 50%;
+  left: 1%;
+  z-index: 2;
+  cursor: pointer;
+}
+.aside-cover{
+	position: fixed;
+	top: 10%;
+	bottom: 0;
+	width: 0;
+	height: 80%;
+	background: #007DDB;
+}
+
 /* 分屏 */
 .split-mode {
   position: relative;
@@ -147,10 +203,7 @@
     display: inline-block;
     width: 20%;
 }
-.tab-video{
-    /* width: 100%; */
-    /* overflow: hidden; */
-}
+
 .video{
     position: relative;
     display: inline-block;
