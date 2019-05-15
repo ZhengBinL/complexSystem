@@ -5,7 +5,7 @@ body{
     min-height: 560px;
     margin: 0;
     padding: 0;
-    background:url(../img/bg.jpg) center top no-repeat;
+    background:url(../../asset/img/bg.jpg) center top no-repeat;
     background-size: cover;
     color: #ffffff;
     font-family: "microsoft yahei", sans-serif;
@@ -32,7 +32,7 @@ body{
     margin:2.08% auto 0;
     max-width: 578px;
     max-height: 450px;
-    background: url(../img/bg_box.png) center top no-repeat;
+    background: url(../../asset/img/bg_box.png) center top no-repeat;
     background-size: 100% 100%;
     min-width: 385px;
     min-height: 298px;
@@ -54,7 +54,7 @@ body{
     content: "";
     width: 92px;
     height: 12px;
-    background:url(../img/left.png) center top no-repeat;
+    background:url(../../asset/img/left.png) center top no-repeat;
 }
 .form-title span:before{
     position: absolute;
@@ -64,7 +64,7 @@ body{
     content: "";
     width: 92px;
     height: 12px;
-    background:url(../img/right.png) center top no-repeat;
+    background:url(../../asset/img/right.png) center top no-repeat;
 }
 .input-wrapper, .remember-wrapper{
     width: 67.7%;
@@ -74,7 +74,7 @@ body{
 }
 .input-wrapper{
     margin:0 auto 7.09%;
-    background: url("../img/input.png") no-repeat;
+    background: url("../../asset/img/input.png") no-repeat;
     background-size: 100% 100%;
 }
 .input-wrapper-pwd{
@@ -114,7 +114,7 @@ body{
     background: none;
     color: #fff;
     font-size: 18px;
-    background: url(../img/btn_login.png) center top no-repeat;
+    background: url(../../asset/img/btn_login.png) center top no-repeat;
     background-size: 100% 100%;
     margin:0 auto;
     display: block;

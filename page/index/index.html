@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=`, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>index1</title>
-    <link rel="stylesheet" href="../asset/css/reset.css">
-    <link rel="stylesheet" href="../asset/css/common.css">
-    <link rel="stylesheet" href="../asset/css/index.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
     <!--头部-->
@@ -15,11 +14,11 @@
         <div class="header-rt">
             <ul>
                 <li class="notice-wrapper">
-                    <img class="notice-icon" src="../asset/img/notice.png" alt="通知">
+                    <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
                 </li>
                 <li class="user-notice">
                     <div id="user-operate" class="user-operate">
-                        <img class="user-img" src="../asset/img/logo.png" alt="头像">
+                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
                         <a href="javascript:;">管理</a>
                         <!-- <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开"> -->
                         <a href="javascript:;" class="exit" title="退出">退出</a>
@@ -49,8 +48,8 @@
     <!-- 操作按钮 -->
     <div class="container">
         <div class="row-first">
-            <a href="./management.html" class="complex-monitor" title="综合监控"></a>
-            <a href="./fixed_duty.html" class="fixed-duty" title="固定勤务"></a>
+            <a href="../management/management.html" class="complex-monitor" title="综合监控"></a>
+            <a href="../fixed_duty/fixed_duty.html" class="fixed-duty" title="固定勤务"></a>
             <a href="#" class="call-police" title="报警"></a>
         </div>
         <div class="row-second">
@@ -66,66 +65,12 @@
     <div class="footer">
         技术支持：北京国势通科技有限公司
     </div>
-    <script src="../asset/js/jquery.min.js"></script>
+    <script src="../../asset/js/jquery.min.js"></script>
+    <script src="./index.js"></script>
     <script>
         $('#user-operate').on('click',function(){
             $('#dropDown').toggle()
         })
-        // 数字动画
-        var Event = {
-            number: function(digit) {
-            var num_arr = [];
-            for(var i = 0; i < digit.length; i++) {
-                num_arr.push(digit.charAt(i));
-            }
-            return num_arr;
-            },
-            dom: function(arr) {
-            var str = '';
-            for(var i = 0; i < arr.length; i++) {
-                if(parseInt(arr[i]) >= 0) {
-                str += '<div class="js-digit digit-container" data-show=' + arr[i] + '>\
-                    <i>0</i>\
-                    <i>1</i>\
-                    <i>2</i>\
-                    <i>3</i>\
-                    <i>4</i>\
-                    <i>5</i>\
-                    <i>6</i>\
-                    <i>7</i>\
-                    <i>8</i>\
-                    <i>9</i>\
-                </div>';
-                } else {
-                str += '<div class="sign-box l"><span>' + arr[i] + '</span></div>';
-                }
-            }
-            return str;
-        },
-        animation: function() {
-            var height = $(".js-numbs").height();
-            $(".js-digit").each(function(i) {
-                var num = parseInt($(this).data("show"));
-                var scrollTop = 0;
-                var scrollTop = height * num;
-                $(this).css("margin-top", 0);
-                $(this).animate({
-                marginTop: -scrollTop
-                }, 1500);
-            });
-            }
-        };
-        var numb1 = '10240';
-        var final_arr1 = Event.number(numb1);
-        $("#alarmCount").html(Event.dom(final_arr1));
-
-        var final_arr2 = Event.number('02849');
-        $("#handleCount").html(Event.dom(final_arr2));
-
-        var final_arr3 = Event.number('09999');
-        $("#unhandleCount").html(Event.dom(final_arr3));
-
-        Event.animation();
     </script>
 </body>
 </html>

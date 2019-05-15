@@ -74,27 +74,27 @@
 .complex-monitor{
     width:46.64%;
     padding: 22.42% 0 0;
-    background-image: url("../img/complex-monitor.png");
+    background-image: url("../../asset/img/complex-monitor.png");
 }
 .complex-monitor:hover{
-    background-image: url("../img/complex-monitor_on.png");
+    background-image: url("../../asset/img/complex-monitor_on.png");
 }
 .fixed-duty{
     width: 22.07%;
     margin: 0 4%;
     padding: 22.07% 0 0;
-    background-image: url("../img/fixed-duty.png");
+    background-image: url("../../asset/img/fixed-duty.png");
 }
 .fixed-duty:hover{
-    background-image: url("../img/fixed-duty_on.png");
+    background-image: url("../../asset/img/fixed-duty_on.png");
 }
 .call-police{
     width: 22.07%;
     padding: 22.07% 0 0;
-    background-image: url("../img/call-police.png");
+    background-image: url("../../asset/img/call-police.png");
 }
 .call-police:hover{
-    background-image: url("../img/call-police_on.png");
+    background-image: url("../../asset/img/call-police_on.png");
 }
 .row-second-lt{
     width: 21.71%;
@@ -105,43 +105,43 @@
     width: 100%;
     padding: 47.37% 0 0;
     margin:0 0 7.2% 0;
-    background-image: url("../img/world-run.png");
+    background-image: url("../../asset/img/world-run.png");
 }
 .world-run:hover{
-    background-image: url("../img/world-run_on.png");
+    background-image: url("../../asset/img/world-run_on.png");
 }
 .duty-schedule{
     width: 100%;
     padding: 47.37% 0 0;
-    background-image: url("../img/duty-schedule.png");
+    background-image: url("../../asset/img/duty-schedule.png");
 }
 .duty-schedule:hover{
-    background-image: url("../img/duty-schedule_on.png");
+    background-image: url("../../asset/img/duty-schedule_on.png");
 }
 .tv-wall{
     width: 22.14%;
     margin:0 0 0 2.43%;
     padding: 22.14% 0 0;
-    background-image: url("../img/tv-wall.png");
+    background-image: url("../../asset/img/tv-wall.png");
 }
 .tv-wall:hover{
-    background-image: url("../img/tv-wall_on.png");
+    background-image: url("../../asset/img/tv-wall_on.png");
 }
 .data-view{
     width: 22.14%;
     padding: 22.14% 0 0;
     margin:0 4.36% 0 4.07%;
-    background-image: url("../img/data-view.png");
+    background-image: url("../../asset/img/data-view.png");
 }
 .data-view:hover{
-    background-image: url("../img/data-view_on.png");
+    background-image: url("../../asset/img/data-view_on.png");
 }
 .three-view{
     width: 22.14%;
     padding: 22.14% 0 0;
-    background-image: url("../img/three-view.png");
+    background-image: url("../../asset/img/three-view.png");
 }
 .three-view:hover{
-    background-image: url("../img/three-view_on.png");
+    background-image: url("../../asset/img/three-view_on.png");
 
 }
