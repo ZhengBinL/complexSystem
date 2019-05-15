@@ -34,3 +34,8 @@ input{
 	outline:none;  
 	border:0px;
 }
+
+.clearfix {
+  clear: both;
+  display: table;
+}
