@@ -1,3 +1,86 @@
+/* 侧边栏 */
+.aside{
+    width: 30%;
+    height: 83%;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    top:0;
+    background: url('../img/aside_bg.png') no-repeat;
+    overflow: auto;
+    background-size:75%; 
+	z-index: 2;
+}
+.aside-title{
+    color:#fff;
+    /* text-align: center; */
+    background:url('../img/res_title_bg.png') no-repeat;
+    position: absolute;
+    left: 21%;
+    top: 0;
+    padding:0 40px;
+}
+.palace{
+    position: absolute;
+    bottom:6%;
+    /* left: 15%; */
+    overflow: hidden;
+    width: 67%;
+    padding-left:5%;
+    /* padding-right: 10%; */
+}
+.palace-unit{
+    width: 30%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: #ccc;
+    float: left;
+    position: relative;
+    cursor: pointer;
+    margin-left:5px;
+    margin-bottom:5px;
+}
+.palace-unit:nth-child(even){
+    background: #999;
+}
+.icon-fold{
+    position: fixed;
+    color: #fff;
+	top: 50%;
+	left: 22%;
+}
+.aside-cover{
+	position: fixed;
+	top: 10%;
+	bottom: 0;
+	width: 0;
+	height: 80%;
+	background: #007DDB;
+}  
+/*
+ ** 主体main
+*/
+.main{
+    position: absolute;
+    left: 30%; /*侧边栏宽度*/
+    right: 0;
+    top: 44px; /*取header头部高度*/
+    height: 100%;
+}
+.layui-tab-title .layui-this{
+    background: url('../img/tabtit_bg_on.png') no-repeat!important;
+}
+.monitor{
+    color:#fff;
+    background-size: 50%;
+    background: url('../img/tabtit_bg_on.png') no-repeat;
+}
+.mapmonitor{
+    color:#fff;
+    background-size: 50%;
+    background: url('../img/tabtit_bg.png')  no-repeat;
+}
 /*
 **综合监控
 **
