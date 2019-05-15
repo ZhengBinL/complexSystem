@@ -15,8 +15,17 @@ body{
     min-height: 70px;
     max-height:118px;
 }
+.header-lt{
+    float: left;
+    cursor:pointer;
+    width: 60%;
+    height: 55%;
+    margin-left:25%; 
+    /* background-color:red */
+}
 .header-rt{
     float: right;
+    z-index: 10;
 }
 .notice-icon{
     width: 16px;

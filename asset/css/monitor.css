@@ -3,7 +3,7 @@
     width: 30%;
     height: 83%;
     position: relative;
-    left: 0;
+    left: -22%;
     bottom: 0;
     top:0;
     background: url('../img/aside_bg.png') no-repeat;
@@ -39,7 +39,9 @@
     position: fixed;
     color: #fff;
 	top: 50%;
-	left: 22%;
+    left: 1%;
+    z-index: 2;
+    cursor: pointer;
 }
 .aside-cover{
 	position: fixed;

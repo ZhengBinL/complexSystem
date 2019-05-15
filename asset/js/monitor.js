@@ -12,7 +12,7 @@ $(function () {
             $('.aside').animate({left: '-22%'})
             $(this).find('#showFlag').attr('alt','1')
             $(this).find('#showFlag').attr('src','../asset/img/icon_fold.png')
-            $(this).animate({left: '3%'})
+            $(this).animate({left: '1%'})
 		}
 	})
     // 菜单树

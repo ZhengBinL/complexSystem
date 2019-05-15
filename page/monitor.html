@@ -16,6 +16,7 @@
 <body>
     <!--头部-->
     <div class="header">
+        <div class="header-lt" id="header"></div>
         <div class="header-rt">
             <ul>
                 <li class="notice-wrapper">
@@ -27,11 +28,11 @@
                         <a href="javascript:;">管理</a>
                         <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开">
                     </div>
-                    <div id="dropDown" class="drop-down">
+                    <!-- <div id="dropDown" class="drop-down">
                         <a href="#">1</a>
                         <a href="#">2</a>
                         <a href="#">3</a>
-                    </div>
+                    </div> -->
                 </li>
             </ul>
         </div>
@@ -49,8 +50,8 @@
             <div class="palace-unit">555</div>
             <div class="palace-unit">666</div>
         </div>
-        <div class="icon-fold"><img id="showFlag" src="../asset/img/icon_expand.png" alt="2"></div>
-        <div class="aside-cover"></div>
+        <div class="icon-fold"><img id="showFlag" src="../asset/img/icon_fold.png" alt="1"></div>
+        <!-- <div class="aside-cover"></div> -->
     </div>
     <!-- 右侧内容 -->
     <!--综合监控-->
@@ -65,9 +66,12 @@
         </div>
     </div>
 
-<script>
-
-</script>
+    <script>
+        // 返回首页
+        $('#header').on('click',function(){
+            window.location.href="./index1.html"
+        })
+    </script>
 
 </body>
 
