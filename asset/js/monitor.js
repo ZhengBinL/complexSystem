@@ -6,7 +6,7 @@ $(function () {
 		if(html == '1'){
             $(this).find('#showFlag').attr('alt','2')
             $(this).find('#showFlag').attr('src','../asset/img/icon_expand.png')
-            $(this).animate({left: '22%'})
+            $(this).animate({left: '19%'})
             $('.aside').animate({left: '0'})
 		}else{
             $('.aside').animate({left: '-22%'})

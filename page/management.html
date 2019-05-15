@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,133 +8,287 @@
   <title>综合管理</title>
   <link rel="stylesheet" href="../asset/css/reset.css">
   <link rel="stylesheet" href="../asset/css/common.css">
+  <link rel="stylesheet" href="../asset/css/management.css">
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <script src="../layui/layui.js"></script>
   <style>
-    body {
-      background: #000;
-    }
-    .map-box {
-      position: relative;
-      width: 1324px;
-      height: 801px;
-      margin: 0 auto;
-    }
-    .map-box > img, .inner-box > dd > img {
-      position: relative;
-      max-width: 100%;
-      z-index: 0;
-    }
-    .map-box > .inner-box {
-      position: absolute;
-      left: 6.66%;
-      right: 6.66%;
-      top: 12.5%;
-      padding: 0;
-      margin: 0;
-      z-index: 1;
-    }
-    .map-box > .inner-box > dd,
-    .map-box > .inner-box > dt {
-      padding: 0;
-      margin: 0;
-    }
-    /*.map-box > .inner-box > dd {
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }*/
-    .map-box > .inner-box > dt {
-      position: absolute;
-      right: 0;
-      bottom: 3%;
-      width: 90px;
-    }
-    .btn-zoom {
-      display: inline-block;
-      width: 80px;
-      height: 80px;
-      margin: 5px 0;
-    }
-    .btn-zoom.btn-zoomin {
-      background: url("../asset/img/btn-zoomin.png") no-repeat;
-      background-size: 100%;
-    }
-    .btn-zoom.btn-zoomout {
-      background: url("../asset/img/btn-zoomout.png") no-repeat;
-      background-size: 100%;
-    }
+
   </style>
 </head>
+
 <body>
-<!--头部-->
-<div class="header">
-    <div class="logo">武警智慧磐石综合业务管理平台</div>
+  <!--头部-->
+  <div class="header">
+    <div class="header-lt" id="header"></div>
     <div class="header-rt">
-        <a href="#" class="manage">管理</a>
-        <a href="javascript:;" class="exit" title="退出">退出</a>
+      <ul>
+        <li class="notice-wrapper">
+          <img class="notice-icon" src="../asset/img/notice.png" alt="通知">
+        </li>
+        <li class="user-notice">
+          <div id="user-operate" class="user-operate">
+            <img class="user-img" src="../asset/img/logo.png" alt="头像">
+            <a href="javascript:;">管理</a>
+            <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开">
+            <a href="javascript:;" class="exit" title="退出">退出</a>
+          </div>
+        </li>
+      </ul>
     </div>
-</div>
-<!--侧边栏-->
-<!--<div class="aside">
+  </div>
+  <!--侧边栏-->
+  <div class="aside">
     <div class="menu-tree-wrapper">
-        <ul id="menu-tree" class="menu-tree ztree"></ul>
+      <ul id="menu-tree" class="menu-tree ztree"></ul>
     </div>
     <div class="palace">
-        <div class="palace-unit">111</div>
-        <div class="palace-unit">222</div>
-        <div class="palace-unit">333</div>
-        <div class="palace-unit">444</div>
-        <div class="palace-unit">555</div>
-        <div class="palace-unit">666</div>
-
+      <div class="palace-unit">111</div>
+      <div class="palace-unit">222</div>
+      <div class="palace-unit">333</div>
+      <div class="palace-unit">444</div>
+      <div class="palace-unit">555</div>
+      <div class="palace-unit">666</div>
     </div>
-    <div class="icon-fold">收起</div>
-    <div class="aside-cover"></div>
-</div>-->
-<!--主体-->
-<div class="">
-  <div class="tabview">
-    <ul class="tabtop js-tabtop">
-      <li class="js-tabhd on">
-        <a href="javascript:void(0)">地图模式</a>
-      </li>
-      <li class="js-tabhd">
-        <a href="javascript:void(0)">分屏模式</a>
-      </li>
-    </ul>
-    <!-- tab-hd =end= -->
-
-    <!-- tab-bd =start= -->
-    <ul class="tabmain js-tabmain">
-      <li class="js-tabbd on">
-        <!-- tab-bd>>>li =start= -->
-        <div class="map-box">
-          <img src="../asset/img/map_bg.png">
-
-          <dl class="inner-box">
-            <dd>
-              <img src="../asset/img/map.jpg">
-            </dd>
-            <dt>
-              <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
-              <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
-            </dt>
-          </dl>
-        </div>
-        <!-- tab-bd>>>li =end= -->
-      </li>
-      <li class="js-tabbd">
-        <!-- tab-bd>>>li =start= -->
-        分屏模式
-        <!-- tab-bd>>>li =end= -->
-      </li>
-    </ul>
+    <div class="icon-fold"><img id="showFlag" src="../asset/img/icon_fold.png" alt="1"></div>
   </div>
-</div>
+  <!--主体-->
+  <div class="">
+    <div class="tabview">
+      <ul class="tabtop js-tabtop">
+        <li class="js-tabhd on">
+          <a href="javascript:void(0)">地图模式</a>
+        </li>
+        <li class="js-tabhd">
+          <a href="javascript:void(0)">分屏模式</a>
+        </li>
+      </ul>
+      <!-- tab-hd =end= -->
 
-<script src="../asset/js/jquery.min.js"></script>
-<script src="../asset/js/utils.js"></script>
-<script type="text/javascript">
-</script>
+      <!-- tab-bd =start= -->
+      <ul class="tabmain js-tabmain">
+        <li class="js-tabbd on">
+          <!-- tab-bd>>>li =start= -->
+          <div class="map-box">
+            <img src="../asset/img/map_bg.png">
+
+            <dl class="inner-box">
+              <dd>
+                <img src="../asset/img/map.jpg">
+              </dd>
+              <dt>
+                <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
+                <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
+              </dt>
+            </dl>
+          </div>
+          <!-- tab-bd>>>li =end= -->
+        </li>
+        <li class="js-tabbd">
+          <!-- tab-bd>>>li =start= -->
+          <div class="tab-content">
+              <!-- 内容 -->
+              <!-- <div class="tab-video"> -->
+                <ul class="tab-video">
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                    <li class="video">
+                        <div class="video-content"></div>
+                        <div class="video-btn">
+                            <img src="../asset/img/btn_history.png" alt="">
+                            <img src="../asset/img/btn_double.png" alt="">
+                            <img src="../asset/img/btn_stop.png" alt="">
+                            <img src="../asset/img/btn_cloud.png" alt="">
+                        </div>
+                    </li>
+                </ul>
+              <!-- </div> -->
+              <!-- 滑块 -->
+              <div class="slider-operate">
+                  <img src="../asset/img/btn_1_1.png" alt="">
+                  <div id="slide" class="slider"></div>
+                  <img src="../asset/img/btn_4_4.png" alt="">
+                  <img src="../asset/img/btn_big.png" alt="">     
+              </div>
+          </div>
+          <!-- tab-bd>>>li =end= -->
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="../asset/js/jquery.min.js"></script>
+  <script src="../asset/js/utils.js"></script>
+  <script src="../asset/js/monitor.js"></script>
+  <!-- <script>
+    $(function(){
+      $.post(url,{},function(res){
+        if(res.data.code==='200'){
+          var html = 
+        }else{
+
+        }
+      })
+    })
+  </script> -->
+  <script>
+      layui.use('slider',function(){
+          var slider = layui.slider;
+            //设置步长
+          slider.render({
+              elem: '#slide'
+              ,step: 1 //步长
+              ,min:1
+              ,max:4
+              ,value:4
+              ,change: function(value){
+                console.log(value) //动态获取滑块数值
+                //do something
+                if(value == 4){
+
+                }else if(value == 3){
+
+                }else if(value == 2){
+
+                }else if(value == 1){
+
+                }
+              }
+          });
+      })
+  </script>
 </body>
+
 </html>
