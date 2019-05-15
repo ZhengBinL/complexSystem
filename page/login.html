@@ -36,10 +36,10 @@
             var last = $("input[name='password']").val();
 
             if (first == "" || first == null || first == undefined) {
-                alert("first不能为空");
+                alert("账号不能为空");
                 return false;/*阻止表单提交*/
             } else if (last == "" || last == null || last == undefined) {
-                alert("last不能为空");
+                alert("密码不能为空");
                 return false;
             } else {
                 var parmams ={
@@ -54,7 +54,6 @@
                     contentType:'application/json',
                     data:JSON.stringify(parmams),
                     success:function(data){
-                        console.log(data,'data')
                         window.location.href='./index1.html'
                     },
                     error:function(){

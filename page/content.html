@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>content</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../asset/js/jquery.min.js"></script>
+    <script src="../layui/layui.js"></script>
+    <style>
+        .slider-operate{
+            width: 1000px;
+            height: 30px;
+            border:1px solid #fff;
+            border-radius: 5px;
+            /* background:rgba(34,35,57,0.5) */
+        }
+        .slider-operate img{
+            width: 3%;
+            padding-right: 10px;
+        }
+        .slider{
+            display: inline-block;
+            width: 20%;
+        }
+    </style>
 </head>
 <body>
     <div class="tab-content">
@@ -13,9 +33,22 @@
             <div></div>
         </div>
         <!-- 滑块 -->
-        <div>
-
+        <div class="slider-operate">
+            <img src="../asset/img/btn_1_1.png" alt="">
+            <div id="slide" class="slider"></div>
+            <img src="../asset/img/btn_4_4.png" alt="">
+            <img src="../asset/img/btn_big.png" alt="">     
         </div>
     </div>
+    <script>
+        layui.use('slider',function(){
+            var slider = layui.slider;
+              //设置步长
+            slider.render({
+                elem: '#slide'
+                ,step: 10 //步长
+            });
+        })
+    </script>
 </body>
 </html>
