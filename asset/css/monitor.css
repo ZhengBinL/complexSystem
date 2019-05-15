@@ -11,15 +11,6 @@
     background-size:75%; 
 	z-index: 2;
 }
-.aside-title{
-    color:#fff;
-    /* text-align: center; */
-    background:url('../img/res_title_bg.png') no-repeat;
-    position: absolute;
-    left: 21%;
-    top: 0;
-    padding:0 40px;
-}
 .palace{
     position: absolute;
     bottom:6%;
