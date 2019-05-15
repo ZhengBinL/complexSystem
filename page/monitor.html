@@ -8,7 +8,7 @@
     <title>monitor</title>
     <link rel="stylesheet" href="../asset/css/reset.css">
     <link rel="stylesheet" href="../asset/css/common.css">
-    <link rel="stylesheet" href="../asset/css/index1.css">
+    <link rel="stylesheet" href="../asset/css/index.css">
     <link rel="stylesheet" href="../asset/css/monitor.css">
     <script src="../asset/js/jquery.min.js"></script>
     <script src="../asset/js/index.js"></script>
@@ -19,18 +19,19 @@
     <div class="header">
         <div class="header-rt">
             <ul>
-                <li>
-                    <img class="noticeIcon" src="../asset/img/notice.png" alt="通知">
+                <li class="notice-wrapper">
+                    <img class="notice-icon" src="../asset/img/notice.png" alt="通知">
                 </li>
-                <li class="userNotice">
-                    <div id="user-operate">
-                        <img class="userImg" src="../asset/img/logo.png" alt="头像"><span>管理</span><img class="drop-down"
-                            src="../asset/img/drop-down.png" alt="下拉展开">
+                <li class="user-notice">
+                    <div id="user-operate" class="user-operate">
+                        <img class="user-img" src="../asset/img/logo.png" alt="头像">
+                        <a href="javascript:;">管理</a>
+                        <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开">
                     </div>
-                    <div id="dropDown" class="dropDown">
-                        <p id="">1</p>
-                        <p id="">2</p>
-                        <p id="">3</p>
+                    <div id="dropDown" class="drop-down">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
                     </div>
                 </li>
             </ul>
