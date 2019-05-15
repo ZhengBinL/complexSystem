@@ -9,11 +9,6 @@
   <link rel="stylesheet" href="../asset/css/reset.css">
   <link rel="stylesheet" href="../asset/css/common.css">
   <link rel="stylesheet" href="../asset/css/management.css">
-  <link rel="stylesheet" href="../layui/css/layui.css">
-  <script src="../layui/layui.js"></script>
-  <style>
-
-  </style>
 </head>
 
 <body>
@@ -52,13 +47,13 @@
     <div class="icon-fold"><img id="showFlag" src="../asset/img/icon_fold.png" alt="1"></div>
   </div>
   <!--主体-->
-  <div class="">
+  <div class="main">
     <div class="tabview">
       <ul class="tabtop js-tabtop">
-        <li class="js-tabhd on">
+        <li class="js-tabhd">
           <a href="javascript:void(0)">地图模式</a>
         </li>
-        <li class="js-tabhd">
+        <li class="js-tabhd on">
           <a href="javascript:void(0)">分屏模式</a>
         </li>
       </ul>
@@ -66,7 +61,7 @@
 
       <!-- tab-bd =start= -->
       <ul class="tabmain js-tabmain">
-        <li class="js-tabbd on">
+        <li class="js-tabbd">
           <!-- tab-bd>>>li =start= -->
           <div class="map-box">
             <img src="../asset/img/map_bg.png">
@@ -83,165 +78,59 @@
           </div>
           <!-- tab-bd>>>li =end= -->
         </li>
-        <li class="js-tabbd">
+        <li class="js-tabbd on">
           <!-- tab-bd>>>li =start= -->
-          <div class="tab-content">
-              <!-- 内容 -->
-              <!-- <div class="tab-video"> -->
-                <ul class="tab-video">
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                    <li class="video">
-                        <div class="video-content"></div>
-                        <div class="video-btn">
-                            <img src="../asset/img/btn_history.png" alt="">
-                            <img src="../asset/img/btn_double.png" alt="">
-                            <img src="../asset/img/btn_stop.png" alt="">
-                            <img src="../asset/img/btn_cloud.png" alt="">
-                        </div>
-                    </li>
-                </ul>
-              <!-- </div> -->
-              <!-- 滑块 -->
-              <div class="slider-operate">
-                  <img src="../asset/img/btn_1_1.png" alt="">
-                  <div id="slide" class="slider"></div>
-                  <img src="../asset/img/btn_4_4.png" alt="">
-                  <img src="../asset/img/btn_big.png" alt="">     
-              </div>
+          <div class="split-mode">
+            <ul class="mode-content mode-rec-2">
+              <li>
+                <dl>
+                  <dd class="videos"></dd>
+                  <dt class="v-toolbar">
+                    <a href="javascript:;"><img src="../asset/img/icon-history.png"> 历史记录</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-control.png"> 云台控制</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-close.png"> 关闭</a>
+                  </dt>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dd class="videos"></dd>
+                  <dt class="v-toolbar">
+                    <a href="javascript:;"><img src="../asset/img/icon-history.png"> 历史记录</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-control.png"> 云台控制</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-close.png"> 关闭</a>
+                  </dt>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dd class="videos"></dd>
+                  <dt class="v-toolbar">
+                    <a href="javascript:;"><img src="../asset/img/icon-history.png"> 历史记录</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-control.png"> 云台控制</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-close.png"> 关闭</a>
+                  </dt>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dd class="videos"></dd>
+                  <dt class="v-toolbar">
+                    <a href="javascript:;"><img src="../asset/img/icon-history.png"> 历史记录</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-control.png"> 云台控制</a>
+                    <a href="javascript:;"><img src="../asset/img/icon-close.png"> 关闭</a>
+                  </dt>
+                </dl>
+              </li>
+              <span class="clearfix"></span>
+            </ul>
+
+            <div class="slider-operate">
+              <img src="../asset/img/btn_1_1.png" alt="">
+              <div id="slide" class="slider"></div>
+              <img src="../asset/img/btn_4_4.png" alt="">
+              <img src="../asset/img/btn_big.png" alt="">
+            </div>
           </div>
           <!-- tab-bd>>>li =end= -->
         </li>
@@ -252,18 +141,13 @@
   <script src="../asset/js/jquery.min.js"></script>
   <script src="../asset/js/utils.js"></script>
   <script src="../asset/js/monitor.js"></script>
-  <!-- <script>
-    $(function(){
-      $.post(url,{},function(res){
-        if(res.data.code==='200'){
-          var html = 
-        }else{
-
-        }
-      })
-    })
-  </script> -->
   <script>
+    $(function(){
+      var itemWidth = $('.mode-content .videos').width();
+      var itemHeight = itemWidth*9/16;
+      $('.mode-content .videos').css('height', itemHeight);
+
+    })
       layui.use('slider',function(){
           var slider = layui.slider;
             //设置步长

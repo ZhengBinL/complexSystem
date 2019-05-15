@@ -90,6 +90,10 @@ body{
   border:1px solid #ccc;
   border-bottom:none;
 }
+
+.main {
+  margin: 10px 30px;
+}
 /*
  ** 标签页tabs
 */
@@ -108,6 +112,7 @@ body{
   display: inline-block;
   width: 240px;
   height: 48px;
+  margin-right: 15px;
   line-height: 48px;
   box-sizing: border-box;
   background-image: url("../img/tabtit_bg.png");
@@ -133,7 +138,7 @@ body{
   background-image: url("../img/tabtit_bg_on.png")
 }
 .tabmain {
-  padding: 0 0 1px;
+  padding: 15px 0;
   margin: 0;
 }
 .tabmain > li {
