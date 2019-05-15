@@ -77,18 +77,72 @@ body{
 .drop-down{
     display: none;
     position: absolute;
+    left: 12.5%; /*侧边栏宽度*/
     top:34px;
     right: 10px;
     width: 100%;
     border-bottom:1px solid #ccc;
 }
 .drop-down a{
-    display: block;
-    padding:0 10px;
-    line-height: 30px;
-    border:1px solid #ccc;
-    border-bottom:none;
+  display: block;
+  padding:0 10px;
+  line-height: 30px;
+  border:1px solid #ccc;
+  border-bottom:none;
 }
+/*
+ ** 标签页tabs
+*/
+.tabview {
+  height: 100%;
+  padding: 0 0 1px;
+}
+.tabtop {
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+.tabtop > li {
+  float: left;
+  position: relative;
+  display: inline-block;
+  width: 240px;
+  height: 48px;
+  line-height: 48px;
+  box-sizing: border-box;
+  background-image: url("../img/tabtit_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 14px;
+  text-align: center;
+}
+.tabtop > li a {
+  position: relative;
+  display: inline-block;
+  padding: 0 30px;
+  height: 14px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 14px;
+  text-align: center;
+}
+.tabtop > li:first-child a {
+  border-left: solid 1px transparent;
+}
+.tabtop > li.on {
+  background-image: url("../img/tabtit_bg_on.png")
+}
+.tabmain {
+  padding: 0 0 1px;
+  margin: 0;
+}
+.tabmain > li {
+  display: none;
+}
+.tabmain > li.on {
+  display: block;
+}
+
 /* 底部footer */
 .footer{
     padding:3.54% 0 2.62%;

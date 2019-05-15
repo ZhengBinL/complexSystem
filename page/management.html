@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>综合管理</title>
+  <link rel="stylesheet" href="../asset/css/reset.css">
+  <link rel="stylesheet" href="../asset/css/common.css">
+  <style>
+    body {
+      background: #000;
+    }
+    .map-box {
+      position: relative;
+      width: 1324px;
+      height: 801px;
+      margin: 0 auto;
+    }
+    .map-box > img, .inner-box > dd > img {
+      position: relative;
+      max-width: 100%;
+      z-index: 0;
+    }
+    .map-box > .inner-box {
+      position: absolute;
+      left: 6.66%;
+      right: 6.66%;
+      top: 12.5%;
+      padding: 0;
+      margin: 0;
+      z-index: 1;
+    }
+    .map-box > .inner-box > dd,
+    .map-box > .inner-box > dt {
+      padding: 0;
+      margin: 0;
+    }
+    /*.map-box > .inner-box > dd {
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }*/
+    .map-box > .inner-box > dt {
+      position: absolute;
+      right: 0;
+      bottom: 3%;
+      width: 90px;
+    }
+    .btn-zoom {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      margin: 5px 0;
+    }
+    .btn-zoom.btn-zoomin {
+      background: url("../asset/img/btn-zoomin.png") no-repeat;
+      background-size: 100%;
+    }
+    .btn-zoom.btn-zoomout {
+      background: url("../asset/img/btn-zoomout.png") no-repeat;
+      background-size: 100%;
+    }
+  </style>
+</head>
+<body>
+<!--头部-->
+<div class="header">
+    <div class="logo">武警智慧磐石综合业务管理平台</div>
+    <div class="header-rt">
+        <a href="#" class="manage">管理</a>
+        <a href="javascript:;" class="exit" title="退出">退出</a>
+    </div>
+</div>
+<!--侧边栏-->
+<!--<div class="aside">
+    <div class="menu-tree-wrapper">
+        <ul id="menu-tree" class="menu-tree ztree"></ul>
+    </div>
+    <div class="palace">
+        <div class="palace-unit">111</div>
+        <div class="palace-unit">222</div>
+        <div class="palace-unit">333</div>
+        <div class="palace-unit">444</div>
+        <div class="palace-unit">555</div>
+        <div class="palace-unit">666</div>
+
+    </div>
+    <div class="icon-fold">收起</div>
+    <div class="aside-cover"></div>
+</div>-->
+<!--主体-->
+<div class="">
+  <div class="tabview">
+    <ul class="tabtop js-tabtop">
+      <li class="js-tabhd on">
+        <a href="javascript:void(0)">地图模式</a>
+      </li>
+      <li class="js-tabhd">
+        <a href="javascript:void(0)">分屏模式</a>
+      </li>
+    </ul>
+    <!-- tab-hd =end= -->
+
+    <!-- tab-bd =start= -->
+    <ul class="tabmain js-tabmain">
+      <li class="js-tabbd on">
+        <!-- tab-bd>>>li =start= -->
+        <div class="map-box">
+          <img src="../asset/img/map_bg.png">
+
+          <dl class="inner-box">
+            <dd>
+              <img src="../asset/img/map.jpg">
+            </dd>
+            <dt>
+              <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
+              <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
+            </dt>
+          </dl>
+        </div>
+        <!-- tab-bd>>>li =end= -->
+      </li>
+      <li class="js-tabbd">
+        <!-- tab-bd>>>li =start= -->
+        分屏模式
+        <!-- tab-bd>>>li =end= -->
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script src="../asset/js/jquery.min.js"></script>
+<script src="../asset/js/utils.js"></script>
+<script type="text/javascript">
+</script>
+</body>
+</html>
