@@ -72,8 +72,30 @@
             <img src="../../asset/img/map_bg.png">
 
             <dl class="inner-box">
-              <dd>
-                <img src="../../asset/img/map.jpg">
+              <dd class="map-img-content">
+                <img class="map-img" src="../../asset/img/map.jpg">
+                <img class="camera camera1" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera2" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera3" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera4" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera5" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera6" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera7" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera8" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera9" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera10" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera11" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera12" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera13" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera14" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera15" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera16" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera17" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera18" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera19" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera20" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera21" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera22" src="../../asset/img/cam-small.png" alt="">
               </dd>
               <dt>
                 <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
@@ -205,6 +227,16 @@
           }
         }
       });
+    })
+  </script>
+  <script>
+    //放大
+    $('.btn-zoomin').on('click',function(){
+      $('.map-img').addClass('scale-img')
+    })
+    //缩小
+    $('.btn-zoomout').on('click',function(){
+      $('.map-img').removeClass('scale-img')
     })
   </script>
 </body>
