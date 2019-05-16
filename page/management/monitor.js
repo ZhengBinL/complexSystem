@@ -50,6 +50,8 @@ $(function () {
     //     console.log(pNode)
     //     // return filename;
     // }
+$(function(){
+    // $('#mode-rec').on('click',function(){
 
- 
+    // })
 })
