@@ -1,0 +1,53 @@
+.fixed-duty {
+    color: #fff;
+    max-width: 1400px;
+    width: 73%;
+    margin:0 auto;
+}
+
+.duty-title {
+    margin-bottom: 20px;
+}
+
+.duty-video {
+    float: left;
+    margin: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc
+}
+
+.duty-detail {
+    float: left;
+    margin-top: 15px;
+    text-align: center
+}
+
+.duty-detail p {
+    padding-top: 50px;
+}
+
+.duty-man-img {
+    width: 180px;
+    height: 180px;
+    display: inline-block;
+    border: 1px solid #ccc
+}
+
+.duty-content {
+    display: table;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.duty-content-item {
+    margin-right: 35px;
+    margin-bottom:20px;
+    float: left;
+    /* margin: 0; */
+    padding: 0;
+    width: 30%;
+    background: rgba(6, 4, 122, 0.6);
+    border-radius: 5px;
+    border: 1px solid #ccc
+}
