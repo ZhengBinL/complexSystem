@@ -12,7 +12,7 @@
 }
 
 .map-box>img,
-.inner-box>dd>img {
+.inner-box>dd>.map-img {
     position: relative;
     max-width: 100%;
     z-index: 0;
@@ -40,13 +40,116 @@
     top: 0;
     bottom: 0;
   }*/
+.scale-img{
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
 .map-box>.inner-box>dt {
     position: absolute;
     right: 0;
     bottom: 3%;
     width: 90px;
 }
-
+.map-img-content{
+    position: relative;
+}
+/* 摄像头定位 */
+.camera{
+    position: absolute;
+    cursor: pointer;
+    width: 30px;
+}
+.camera1{
+    left: 2%;
+    top: 63%;
+}
+.camera2{
+    left: 1%;
+    top: 55%;
+}
+.camera3{
+    left: 13%;
+    top: 71%;
+}
+.camera4{
+    left: 21%;
+    top: 69%;
+}
+.camera5{
+    left: 26%;
+    top: 80%;
+}
+.camera6{
+    left: 15%;
+    top: 92%;
+}
+.camera7{
+    left: 42%;
+    top: 92%;
+}
+.camera8{
+    left: 46%;
+    top: 90%;
+}
+.camera9{
+    left: 52%;
+    top: 75%;
+}
+.camera10{
+    left: 59%;
+    top: 61%;
+}
+.camera11{
+    left: 65%;
+    top: 49%;
+}
+.camera12{
+    left: 49%;
+    top: 34%;
+}
+.camera13{
+    left: 51%;
+    top: 24%;
+}
+.camera14{
+    left: 56%;
+    top: 18%;
+}
+.camera15{
+    left: 61%;
+    top: 11%;
+}
+.camera16{
+    left: 62%;
+    top: 6%;
+}
+.camera17{
+    left: 56%;
+    top: 8%;
+}
+.camera18{
+    left: 52%;
+    top: 3%;
+}
+.camera19{
+    left: 46%;
+    top: 2%;
+}
+.camera20{
+    left: 41%;
+    top: 8%;
+}
+.camera21{
+    left: 36%;
+    top: 14%;
+}
+.camera22{
+    left: 22%;
+    top: 32%;
+}
 .btn-zoom {
     display: inline-block;
     width: 80px;
