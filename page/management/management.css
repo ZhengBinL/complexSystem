@@ -326,3 +326,88 @@
     padding-left: 5px;
     /* box-sizing: border-box */
 }
+/*云台控制操作项*/
+.mode-content li{
+    position: relative;
+}
+.opt-monitor{
+    position: absolute;
+    top: 33px;
+    right: 78px;
+    width: 130px;
+    height: 130px;
+    background: url("../../asset/img/opt_monitor_bg.png") no-repeat;
+}
+.opt-item{
+    position: absolute;
+}
+.opt-top-lt{
+    top: 20px;
+    left: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_toplt.png") no-repeat;
+}
+.opt-top-rt{
+    top: 20px;
+    right: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_toprt.png") no-repeat;
+}
+.opt-top-ct{
+    top: 4px;
+    left: 56px;
+    width: 18px;
+    height: 18px;
+    background: url("../../asset/img/opt_topct.png") no-repeat;
+}
+.opt-mid-lt{
+    top: 55px;
+    left: 6px;
+    width: 18px;
+    height: 17px;
+    background: url("../../asset/img/opt_middlelt.png") no-repeat;
+}
+.opt-mid-rt{
+    top: 55px;
+    right: 6px;
+    width: 18px;
+    height: 17px;
+    background: url("../../asset/img/opt_middlert.png") no-repeat;
+}
+.opt-bot-lt{
+    bottom: 24px;
+    left: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_bottomlt.png") no-repeat;
+}
+.opt-bot-rt{
+    bottom: 24px;
+    right: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_bottomrt.png") no-repeat;
+}
+.opt-bot-ct{
+    bottom: 7px;
+    left: 56px;
+    width: 18px;
+    height: 19px;
+    background: url("../../asset/img/opt_bottomct.png") no-repeat;
+}
+.opt-big{
+    left: 37px;
+    top: 57px;
+    width: 19px;
+    height: 18px;
+    background: url("../../asset/img/opt_big.png") no-repeat;
+}
+.opt-small{
+    right: 37px;
+    top: 57px;
+    width: 19px;
+    height: 18px;
+    background: url("../../asset/img/opt_small.png") no-repeat;
+}
