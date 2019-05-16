@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>综合管理</title>
+  <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
   <link rel="stylesheet" href="../../asset/css/common.css">
   <link rel="stylesheet" href="./management.css">
-  <!-- <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css"> -->
 </head>
 
 <body>
@@ -86,7 +86,7 @@
         <li class="js-tabbd on">
           <!-- tab-bd>>>li =start= -->
           <div class="split-mode">
-            <ul class="mode-content mode-rec-2">
+            <ul id="mode-rec" class="mode-content mode-rec-4">
               <li>
                 <dl>
                   <dd class="videos"></dd>
@@ -148,34 +148,51 @@
   <script src="../../asset/introduce/layui/layui.js"></script>
   <script src="../../asset/js/aside.js"></script>
   <script>
-     //monitor
-    var itemWidth = $('.mode-content .videos').width();
-    var itemHeight = itemWidth*9/16;
-    $('.mode-content .videos').css('height', itemHeight);
+    var _this = this
+    //计算高度，超出隐藏
+    function caleHeight(itemnumb){
+      var itemWidth = $('.mode-content .videos').width();
+            var itemHeight = itemWidth * 9 / 16;
+            $('.mode-content .videos').css('height', itemHeight);
+            $('#mode-rec').css({
+              'height':itemHeight*itemnumb,
+              'overflow':'hidden'
+            })
+    }
+    _this.caleHeight(4)
     //滑块
-    layui.use('slider',function(){
-        var slider = layui.slider;
-          //设置步长
-        slider.render({
-            elem: '#slide'
-            ,step: 1 //步长
-            ,min:1
-            ,max:4
-            ,value:4
-            ,change: function(value){
-              console.log(value) //动态获取滑块数值
-              //do something
-              if(value == 4){
-
-              }else if(value == 3){
-
-              }else if(value == 2){
-
-              }else if(value == 1){
-
-              }
-            }
-        });
+    layui.use('slider', function () {
+      var slider = layui.slider;
+      //设置步长
+      slider.render({
+        elem: '#slide',
+        step: 1, //步长,
+        min: 1,
+        max: 4,
+        value: 4,
+        change: function (value) {
+          //do something
+          if (value == 4) {
+            $('#mode-rec').removeClass('mode-rec-3')
+            $('#mode-rec').addClass('mode-rec-4')
+            _this.caleHeight(4)
+          } else if (value == 3) {
+            $('#mode-rec').removeClass('mode-rec-2')
+            $('#mode-rec').removeClass('mode-rec-4')
+            $('#mode-rec').addClass('mode-rec-3')
+            _this.caleHeight(3)
+          } else if (value == 2) {
+            $('#mode-rec').removeClass('mode-rec-1')
+            $('#mode-rec').removeClass('mode-rec-3')
+            $('#mode-rec').addClass('mode-rec-2')
+            _this.caleHeight(2)
+          } else if (value == 1) {
+            $('#mode-rec').removeClass('mode-rec-2')
+            $('#mode-rec').addClass('mode-rec-1')
+            _this.caleHeight(1)
+          }
+        }
+      });
     })
   </script>
 </body>
