@@ -1,5 +1,4 @@
 .fixed-duty {
-    color: #fff;
     max-width: 1400px;
     width: 73%;
     margin:0 auto;
@@ -10,29 +9,30 @@
 }
 
 .duty-video {
-    float: left;
-    width: 190px;
-    height: 260px;
-    margin: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc
+  clear: left;
+  margin: 15px 40% 0 15px;
+  border-radius: 5px;
+  background: #00B83F;
 }
 
 .duty-detail {
-    float: left;
-    margin-top: 15px;
-    text-align: center
+  float: right;
+  width: 39%;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: center
 }
 
 .duty-detail p {
-    padding-top: 30px;
+  padding: 3px 0;
+  margin: 0;
 }
 
 .duty-man-img {
-    width: 130px;
-    height: 150px;
-    display: inline-block;
-    border: 1px solid #ccc
+  width: 100%;
+  margin-bottom: 10px;
+  display: inline-block;
+  background: #229fe6;
 }
 
 .duty-content {
@@ -43,13 +43,11 @@
 }
 
 .duty-content-item {
-    margin-right: 35px;
-    margin-bottom:20px;
-    float: left;
-    /* margin: 0; */
-    padding: 0;
-    width: 30%;
-    background: rgba(6, 4, 122, 0.6);
-    border-radius: 5px;
-    border: 1px solid #ccc
+  float: left;
+  margin: 18px;
+  padding: 0;
+  width: 30%;
+  background: rgba(6, 4, 122, 0.6);
+  border-radius: 5px;
+  border: 1px solid #229fe6;
 }

@@ -186,12 +186,12 @@
     //计算高度，超出隐藏
     function caleHeight(itemnumb){
       var itemWidth = $('.mode-content .videos').width();
-            var itemHeight = itemWidth * 9 / 16;
-            $('.mode-content .videos').css('height', itemHeight);
-            $('#mode-rec').css({
-              'height':itemHeight*itemnumb,
-              'overflow':'hidden'
-            })
+      var itemHeight = itemWidth * 9 / 16;
+      $('.mode-content .videos').css('height', itemHeight);
+      $('#mode-rec').css({
+        'height':itemHeight*itemnumb,
+        'overflow':'hidden'
+      })
     }
     _this.caleHeight(4)
     //滑块
