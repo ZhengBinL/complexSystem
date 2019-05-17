@@ -330,9 +330,33 @@
         var $that = $(this)
         $that.addClass('active').siblings().removeClass('active')
     })
+    // 
+    sessionStorage.removeItem('count');
     $('body').on('click', '.scale-unit', function (e) {
-      var count = e.currentTarget.dataset.count;
-      console.log(count);
+      var count1 = null,
+          count2 = null;
+      var $that = $(this);
+      $('.scale-unit').removeClass('active');
+      $that.addClass('active');
+      if (sessionStorage.getItem('count')){
+          count2 = parseInt(e.currentTarget.dataset.count);
+          var delta = parseInt(sessionStorage.getItem('count'))
+          if (delta < count2){
+              for (var i = delta; i <= count2; i++){
+                  $('.scale-unit').eq(i).addClass('active')
+
+              }
+          }else {
+              for (var j = count2; j <= delta; j++){
+                  $('.scale-unit').eq(j).addClass('active')
+              }
+          }
+
+          sessionStorage.setItem('count', count2)
+      }else{
+          count1 = e.currentTarget.dataset.count;
+          sessionStorage.setItem('count', count1)
+      }
     })
 
   </script>
