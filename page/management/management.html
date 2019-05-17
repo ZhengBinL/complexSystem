@@ -45,9 +45,9 @@
       <div class="palace-unit">111</div>
       <div class="palace-unit">222</div>
       <div class="palace-unit">333</div>
-      <div class="palace-unit">444</div>
-      <div class="palace-unit">555</div>
-      <div class="palace-unit">666</div>
+      <div class="palace-unit palace-left">444</div>
+      <div class="palace-unit palace-ct">555</div>
+      <div class="palace-unit palace-last">666</div>
     </div>
     <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
   </div>
@@ -326,21 +326,25 @@
         $('.split-mode').show();
     })
     // 双击刻度条某一项
-    $('body').on('dblclick', '.scale-unit', function () {
-        var $that = $(this)
-        $that.addClass('active').siblings().removeClass('active')
+    $('body').on('dblclick', '.scale-unit', function (e) {
+        var count = parseInt(e.currentTarget.dataset.count);
+//        $(this).addClass('active').siblings().removeClass('active')
+        $('.scale-unit').removeClass('active')
+        for (var i = 0; i <= count; i++){
+            $('.scale-unit').eq(i).addClass('active')
+        }
     })
-    // 
-    sessionStorage.removeItem('count');
+    // 刻度条
+    var initCount = null
     $('body').on('click', '.scale-unit', function (e) {
       var count1 = null,
           count2 = null;
       var $that = $(this);
       $('.scale-unit').removeClass('active');
       $that.addClass('active');
-      if (sessionStorage.getItem('count')){
+      if (initCount){
           count2 = parseInt(e.currentTarget.dataset.count);
-          var delta = parseInt(sessionStorage.getItem('count'))
+          var delta = parseInt(initCount)
           if (delta < count2){
               for (var i = delta; i <= count2; i++){
                   $('.scale-unit').eq(i).addClass('active')
@@ -352,10 +356,10 @@
               }
           }
 
-          sessionStorage.setItem('count', count2)
+          initCount = count2
       }else{
           count1 = e.currentTarget.dataset.count;
-          sessionStorage.setItem('count', count1)
+          initCount = count1
       }
     })
 
