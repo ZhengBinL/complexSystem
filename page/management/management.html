@@ -69,11 +69,11 @@
         <li class="js-tabbd">
           <!-- tab-bd>>>li =start= -->
           <div class="map-box">
-            <img src="../../asset/img/map_bg.png">
+            <img class="map-img-bg" src="../../asset/img/map_bg.png">
 
             <dl class="inner-box">
-              <dd class="map-img-content">
-                <img class="map-img" src="../../asset/img/map.jpg">
+              <dd class="map-img-content" id='map-img-content'>
+                <img class="map-img" id="img" src="../../asset/img/map.jpg">
                 <img class="camera camera1" src="../../asset/img/cam-small.png" alt="">
                 <img class="camera camera2" src="../../asset/img/cam-small.png" alt="">
                 <img class="camera camera3" src="../../asset/img/cam-small.png" alt="">
@@ -184,14 +184,14 @@
   <script>
     var _this = this
     //计算高度，超出隐藏
-    function caleHeight(itemnumb){
+    function caleHeight(itemnumb) {
       var itemWidth = $('.mode-content .videos').width();
-            var itemHeight = itemWidth * 9 / 16;
-            $('.mode-content .videos').css('height', itemHeight);
-            $('#mode-rec').css({
-              'height':itemHeight*itemnumb,
-              'overflow':'hidden'
-            })
+      var itemHeight = itemWidth * 9 / 16;
+      $('.mode-content .videos').css('height', itemHeight);
+      $('#mode-rec').css({
+        'height': itemHeight * itemnumb,
+        'overflow': 'hidden'
+      })
     }
     _this.caleHeight(4)
     //滑块
@@ -231,14 +231,93 @@
   </script>
   <script>
     //放大
-    $('.btn-zoomin').on('click',function(){
-      $('.map-img').addClass('scale-img')
+    $('.btn-zoomin').on('click', function () {
+      $('.map-img-content').addClass('scale-img')
+      $('.map-img-content').css({
+        left:0,
+        top:0
+      })
     })
     //缩小
-    $('.btn-zoomout').on('click',function(){
-      $('.map-img').removeClass('scale-img')
+    $('.btn-zoomout').on('click', function () {
+      $('.map-img-content').removeClass('scale-img')
+      $('.map-img-content').css({
+        left:0,
+        top:0
+      })
     })
   </script>
+  
+<script>
+  //拖动功能
+var _drag = {};
+_drag.top = 0; //拖动过的位置距离上边
+_drag.left = 0; //拖动过的位置距离左边
+_drag.maxLeft; //距离左边最大的距离
+_drag.maxTop; //距离上边最大的距离
+_drag.dragging = false; //是否拖动标志
+//拖动函数
+function bindDrag(el) {
+    var winWidth = $(window).width(),
+    winHeight = $(window).height(),
+    objWidth = $(el).outerWidth(),
+    objHeight = $(el).outerHeight();
+    _drag.maxLeft = winWidth - objWidth,
+    _drag.maxTop = winHeight - objHeight;
+    var els = el.style,
+    x = 0,
+    y = 0;
+    var objTop = $(el).offset().top,
+    objLeft = $(el).offset().left;
+    $(el).mousedown(function(e) {
+        _drag.dragging = true;
+        _drag.isDragged = true;
+        x = e.clientX - el.offsetLeft;
+        y = e.clientY - el.offsetTop;
+        el.setCapture && el.setCapture();
+        $(document).bind('mousemove', mouseMove).bind('mouseup', mouseUp);
+        return false;
+    });
+    function mouseMove(e) {
+        e = e || window.event;
+        if (_drag.dragging) {
+            _drag.top = e.clientY - y;
+            _drag.left = e.clientX - x;
+            _drag.top = _drag.top > _drag.maxTop ? _drag.maxTop: _drag.top;
+            _drag.left = _drag.left > _drag.maxLeft ? _drag.maxLeft: _drag.left;
+            _drag.top = _drag.top < 0 ? 0 : _drag.top;
+            _drag.left = _drag.left < 0 ? 0 : _drag.left;
+            els.top = _drag.top + 'px';
+            els.left = _drag.left + 'px';
+            return false;
+        }
+    }
+    function mouseUp(e) {
+        _drag.dragging = false;
+        el.releaseCapture && el.releaseCapture();
+        e.cancelBubble = true;
+        $(document).unbind('mousemove', mouseMove).unbind('mouseup', mouseUp);
+    }
+    $(window).resize(function() {
+        var winWidth = $(window).width(),
+        winHeight = $(window).height(),
+        el = $(el),
+        elWidth = el.outerWidth(),
+        elHeight = el.outerHeight(),
+        elLeft = parseFloat(el.css('left')),
+        elTop = parseFloat(el.css('top'));
+        _drag.maxLeft = winWidth - elWidth;
+        _drag.maxTop = winHeight - elHeight;
+        _drag.top = _drag.maxTop < elTop ? _drag.maxTop: elTop;
+        _drag.left = _drag.maxLeft < elLeft ? _drag.maxLeft: elLeft;
+        el.css({
+            top: _drag.top,
+            left: _drag.left
+        })
+    })
+}
+bindDrag(document.getElementById('map-img-content'));
+</script>
 </body>
 
 </html>

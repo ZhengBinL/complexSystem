@@ -6,18 +6,23 @@
 
 .map-box {
     position: relative;
-    width: 1324px;
-    height: 801px;
+    /* width: 1324px;
+    height: 801px; */
+    width: 100%;
     margin: 0 auto;
 }
-
+.map-img-bg{
+    width: 100%;
+}
+.map-img{
+    width: 87%;
+}
 .map-box>img,
 .inner-box>dd>.map-img {
     position: relative;
-    max-width: 100%;
+    /* max-width: 100%; */
     z-index: 0;
 }
-
 .map-box>.inner-box {
     position: absolute;
     left: 6.66%;
@@ -25,6 +30,7 @@
     top: 12.5%;
     padding: 0;
     margin: 0;
+    overflow: hidden;
     z-index: 1;
 }
 
@@ -55,6 +61,8 @@
 }
 .map-img-content{
     position: relative;
+    left:0;
+    top: 0;
 }
 /* 摄像头定位 */
 .camera{
