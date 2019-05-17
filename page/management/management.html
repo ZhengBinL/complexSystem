@@ -113,7 +113,7 @@
                 <dl>
                   <dd class="videos"></dd>
                   <dt class="v-toolbar">
-                    <a href="javascript:;"><img src="../../asset/img/icon-history.png"> 历史记录</a>
+                    <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png"> 历史记录</a>
                     <a href="javascript:;"><img src="../../asset/img/icon-control.png"> 云台控制</a>
                     <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
                     <div class="opt-monitor">
@@ -172,6 +172,65 @@
             </div>
           </div>
           <!-- tab-bd>>>li =end= -->
+          <!--历史记录 start-->
+          <div class="history-wrapper">
+            <div class="history-top mode-content">
+              <div class="video-wrapper">
+                <div class="video"></div>
+                <div class="v-toolbar">
+                  <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
+                  <a href="javascript:;"><img src="../../asset/img/icon_pause.png"> 停止播放</a>
+                  <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-close.png"> 关闭</a>
+                  <div class="speed-wrapper">
+                    <a href="javascript:;" class="speed-item">6.0X</a>
+                    <a href="javascript:;" class="speed-item">4.0X</a>
+                    <a href="javascript:;" class="speed-item">2.0X</a>
+                    <a href="javascript:;" class="speed-item">1.0X</a>
+                    <a href="javascript:;" class="speed-item">1/2X</a>
+                    <a href="javascript:;" class="speed-item">1/4X</a>
+                  </div>
+                </div>
+              </div>
+              <div class="date-wrapper">
+                <div class="calendar" id="calendar"></div>
+                <div class="search-btn">搜索录像</div>
+              </div>
+            </div>
+            <div class="scale-wrapper">
+              <div class="scale-title">历史视频时间段控制</div>
+              <div class="scale">
+                <div class="scale-num"><img src="../../asset/img/scalenum.png"></div>
+                <img src="../../asset/img/graduation.png" class="scale-bar" />
+                <div class="scale-box">
+                  <span data-count="0" class="scale-unit spec"></span>
+                  <span data-count="1" class="scale-unit"></span>
+                  <span data-count="2" class="scale-unit"></span>
+                  <span data-count="3" class="scale-unit"></span>
+                  <span data-count="4" class="scale-unit"></span>
+                  <span data-count="5" class="scale-unit"></span>
+                  <span data-count="6" class="scale-unit"></span>
+                  <span data-count="7" class="scale-unit"></span>
+                  <span data-count="8" class="scale-unit"></span>
+                  <span data-count="9" class="scale-unit"></span>
+                  <span data-count="10" class="scale-unit"></span>
+                  <span data-count="11" class="scale-unit"></span>
+                  <span data-count="12" class="scale-unit"></span>
+                  <span data-count="13" class="scale-unit"></span>
+                  <span data-count="14" class="scale-unit"></span>
+                  <span data-count="15" class="scale-unit"></span>
+                  <span data-count="16" class="scale-unit"></span>
+                  <span data-count="17" class="scale-unit"></span>
+                  <span data-count="18" class="scale-unit"></span>
+                  <span data-count="19" class="scale-unit"></span>
+                  <span data-count="20" class="scale-unit"></span>
+                  <span data-count="21" class="scale-unit"></span>
+                  <span data-count="22" class="scale-unit"></span>
+                  <span data-count="23" class="scale-unit"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--历史记录 end-->
         </li>
       </ul>
     </div>
@@ -185,13 +244,14 @@
     var _this = this
     //计算高度，超出隐藏
     function caleHeight(itemnumb){
+      // 设置分屏模式视频高度
       var itemWidth = $('.mode-content .videos').width();
-            var itemHeight = itemWidth * 9 / 16;
-            $('.mode-content .videos').css('height', itemHeight);
-            $('#mode-rec').css({
-              'height':itemHeight*itemnumb,
-              'overflow':'hidden'
-            })
+      var itemHeight = itemWidth * 9 / 16;
+      $('.mode-content .videos').css('height', itemHeight);
+      $('#mode-rec').css({
+        'height':itemHeight*itemnumb,
+        'overflow':'hidden'
+      })
     }
     _this.caleHeight(4)
     //滑块
@@ -228,6 +288,53 @@
         }
       });
     })
+
+    // 渲染日期组件
+    layui.use('laydate', function() {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#calendar',
+            btns: [],
+            position: 'static'
+        });
+    })
+
+    // 点击历史记录显示
+    $('body').on('click', '.icon-history', function () {
+        $('.split-mode').hide()
+        $('.history-wrapper').show()
+        // 设置历史记录视频高度
+        var historyVideoWidth = $('.video-wrapper .video').width();
+        var historyVideoHeight = historyVideoWidth * 9 /16;
+        var searchMarTop = (historyVideoHeight - 386) / 2
+        $('.video-wrapper .video').css('height', historyVideoHeight);
+        $('.search-btn').css('marginTop', searchMarTop ); // 设置搜索按钮位置
+    })
+    //点击倍速
+    $('body').on('click', '.icon-speed', function () {
+      $('.speed-wrapper').stop().slideToggle('fast')
+    })
+    // 点击倍速的某一项
+    $('body').on('click', '.speed-item', function () {
+        var $that = $(this)
+        $that.addClass('on').siblings().removeClass('on')
+        $that.parent().slideUp('fast')
+    })
+    // 点击历史记录中的关闭按钮
+    $('body').on('click', '.history-wrapper .icon-history', function () {
+        $('.history-wrapper').hide();
+        $('.split-mode').show();
+    })
+    // 双击刻度条某一项
+    $('body').on('dblclick', '.scale-unit', function () {
+        var $that = $(this)
+        $that.addClass('active').siblings().removeClass('active')
+    })
+    $('body').on('click', '.scale-unit', function (e) {
+      var count = e.currentTarget.dataset.count;
+      console.log(count);
+    })
+
   </script>
   <script>
     //放大
