@@ -187,16 +187,20 @@ input{
 /*
  ** 主内容
 */
-.wrap {
+.wrapper { /*主内容满屏布局*/
+  padding: 0;
+  margin: 30px 50px 20px;
+}
+.wrap { /*主内容定宽居中*/
   width: 1280px;
   padding: 0;
   margin: 30px auto 20px;
 }
-.wrap > dt {
+.wrap > dt, .wrapper > dt {
   padding: 0;
   margin: 0 0 20px;
 }
-.wrap > dd {
+.wrap > dd, .wrapper > dd {
   padding: 0;
   margin: 0;
 }
