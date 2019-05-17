@@ -267,10 +267,13 @@
         change: function (value) {
           //do something
           if (value == 4) {
+            $('#mode-rec').removeClass('mode-rec-1')
+            $('#mode-rec').removeClass('mode-rec-2')
             $('#mode-rec').removeClass('mode-rec-3')
             $('#mode-rec').addClass('mode-rec-4')
             _this.caleHeight(4)
           } else if (value == 3) {
+            $('#mode-rec').removeClass('mode-rec-1')
             $('#mode-rec').removeClass('mode-rec-2')
             $('#mode-rec').removeClass('mode-rec-4')
             $('#mode-rec').addClass('mode-rec-3')
@@ -278,10 +281,13 @@
           } else if (value == 2) {
             $('#mode-rec').removeClass('mode-rec-1')
             $('#mode-rec').removeClass('mode-rec-3')
+            $('#mode-rec').removeClass('mode-rec-4')
             $('#mode-rec').addClass('mode-rec-2')
             _this.caleHeight(2)
           } else if (value == 1) {
             $('#mode-rec').removeClass('mode-rec-2')
+            $('#mode-rec').removeClass('mode-rec-3')
+            $('#mode-rec').removeClass('mode-rec-4')
             $('#mode-rec').addClass('mode-rec-1')
             _this.caleHeight(1)
           }
