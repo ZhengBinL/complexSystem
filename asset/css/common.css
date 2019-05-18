@@ -44,6 +44,18 @@ input{
 .gray {
   color: #88898f;
 }
+.w25 {
+  width: 25%;
+}
+.w33-3 {
+  width: 33.33%;
+}
+.w50 {
+  width: 50%;
+}
+.w75 {
+  width: 75%;
+}
 
 /*
  ** 头部样式
@@ -184,6 +196,7 @@ input{
   left: 18px;
   z-index: 999;
   cursor: pointer;
+  margin-top: -13px;
 }
 .aside-cover{
 	position: fixed;
@@ -201,7 +214,7 @@ input{
 */
 .wrapper { /*主内容满屏布局*/
   padding: 0;
-  margin: 30px 50px 20px;
+  margin: 10px 50px 20px;
 }
 .wrap { /*主内容定宽居中*/
   width: 1280px;
@@ -221,6 +234,7 @@ input{
   width: 235px;
   height: 48px;
   padding: 0 0 0 3px;
+  margin: 20px 0 0;
   background-image: url("../img/tabtit_bg.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -290,4 +304,48 @@ input{
     line-height: 1;
     width: 100%;
     text-align: center;
+}
+
+/* 报警弹框 */
+.police-wrapper{
+    position: fixed;
+    z-index:2222;
+    top: 100px;
+    right: 30px;
+    border: 1px solid #36dffe;
+    box-shadow: 0 0 12px #36dffe;
+    background: #0c1139;
+    background: linear-gradient(to bottom, #0d0158, #0c1139);
+    max-width: 400px;
+    min-width: 280px;
+}
+.police-title{
+    padding:15px 20px;
+    line-height: 1;
+    border-bottom: 1px solid #36dffe;
+    text-align: left;
+    font-size: 22px;
+    position: relative;
+}
+.police-close{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+.police-content{
+    text-align: left;
+    padding:15px 35px;
+    max-height: 240px;
+    overflow: auto;
+    font-size: 14px;
+}
+.police-content li{
+    padding:12px 0;
+}
+.police-content span{
+    color: #35b9f4;
+}
+.police-content .police-detail{
+    color: #a24e03;
 }
