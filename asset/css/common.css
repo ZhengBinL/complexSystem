@@ -156,6 +156,11 @@ input{
     background-size:contain;
 	z-index: 999;
 }
+.menu-tree-wrapper{
+    padding-top:50px;
+    padding-left: 8px;
+    /* overflow: hidden; */
+}
 .palace{
     position: absolute;
     bottom:28px;

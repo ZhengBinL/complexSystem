@@ -12,6 +12,9 @@ $(function () {
             $('.aside').animate({
                 left: '0'
             })
+            $('#zhanwei-c').animate({
+                left:'0'
+            })
         } else {
             $('.aside').animate({
                 left: '-264px'
@@ -20,6 +23,9 @@ $(function () {
             $(this).find('#showFlag').attr('src', '../../asset/img/icon_fold.png')
             $(this).animate({
                 left: '18px'
+            })
+            $('#zhanwei-c').animate({
+                left:'-300px'
             })
         }
     })
@@ -48,7 +54,7 @@ $(function () {
         }
     };
     var zNodes = []
-    $.get("http://172.16.5.226:18080/resource/node", function (res) {
+    $.get("http://172.16.5.228:18080/resource/node", function (res) {
         zNodes = res.data
         $.fn.zTree.init($("#menu-tree"), setting, zNodes);
     })
@@ -58,7 +64,7 @@ $(function () {
         // $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=' + treeNode.id, function (res) {
         //     play(res.data.url)
         // })
-        $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=1000000', function (res) {
+        $.get('http://172.16.5.228:18080/dvr/rtspUrl?id=1000000', function (res) {
             play(res.data.rtspUrl)
         })
     }
