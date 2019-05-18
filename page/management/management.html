@@ -325,6 +325,7 @@
 
   <title>综合管理</title>
   <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+  <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
   <link rel="stylesheet" href="../../asset/css/common.css">
   <link rel="stylesheet" href="../../asset/css/reset.css">
   <link rel="stylesheet" href="./management.css">
@@ -395,32 +396,54 @@
             <dl class="inner-box">
               <dd class="map-img-content" id='map-img-content'>
                 <img class="map-img" id="img" src="../../asset/img/map.jpg">
-                <img class="camera camera1" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera2" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera3" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera4" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera5" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera6" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera7" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera8" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera9" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera10" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera11" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera12" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera13" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera14" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera15" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera16" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera17" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera18" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera19" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera20" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera21" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera22" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera1" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera2" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera3" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera4" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera5" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera6" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera7" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera8" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera9" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera10" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera11" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera12" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera13" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera14" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera15" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera16" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera17" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera18" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera19" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera20" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera21" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera22" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera23" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera24" src="../../asset/img/cam-small.png" alt="">
+                <img class="camera camera-hidden camera25" src="../../asset/img/cam-small.png" alt="">
+
+                <img class="camera camera-hidden camera-1 camera1-1" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-2" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-3" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-4" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-5" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-6" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-7" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-8" src="../../asset/img/cam-ball.png" alt="">
+                <img class="camera camera-hidden camera-1 camera1-9" src="../../asset/img/cam-ball.png" alt="">
+
+                <img class="camera camera-2 camera2-1" src="../../asset/img/cam-big.png" alt="">
+                <img class="camera camera-2 camera2-2" src="../../asset/img/cam-big.png" alt="">
+                <img class="camera camera-2 camera2-3" src="../../asset/img/cam-big.png" alt="">
+                <img class="camera camera-2 camera2-4" src="../../asset/img/cam-big.png" alt="">
+                <img class="camera camera-2 camera2-5" src="../../asset/img/cam-big.png" alt="">
+                <img class="camera camera-2 camera2-6" src="../../asset/img/cam-big.png" alt="">
               </dd>
               <dt>
                 <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
                 <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
+                <a href="javascript:;" class="btn-zoom btn-zoomtrack">智能追踪</a>
+                <a href="javascript:;" class="btn-zoom btn-zoommonitor">执勤监控</a>
               </dt>
             </dl>
           </div>
@@ -583,6 +606,7 @@
   <script src="../../asset/js/jquery.min.js"></script>
   <script src="../../asset/js/utils.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
+  <script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
   <script src="../../asset/js/aside.js"></script>
   <script>
     var _this = this
@@ -750,6 +774,16 @@
         left:0,
         top:0
       })
+    })
+    //智能追踪
+    $('.btn-zoomtrack').on('click', function () {
+      $('.camera-2').hide()
+      $('.camera-hidden').show()
+    })
+    //执勤监控
+    $('.btn-zoommonitor').on('click', function () {
+      $('.camera-hidden').hide()
+      $('.camera-2').show()
     })
   </script>
   

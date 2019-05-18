@@ -65,6 +65,9 @@
     top: 0;
 }
 /* 摄像头定位 */
+.camera-hidden{
+    /* display: none; */
+}
 .camera{
     position: absolute;
     cursor: pointer;
@@ -158,6 +161,95 @@
     left: 22%;
     top: 32%;
 }
+.camera23{
+    left: 8%;
+    top: 67%;  
+}
+.camera24{
+    left: 59%;
+    top: 9%;
+}
+.camera25{
+    left: 55%;
+    top: 5%;
+}
+/*  */
+.camera-1{
+    transform:rotate(180deg);
+-ms-transform:rotate(180deg); 	/* IE 9 */
+-moz-transform:rotate(180deg); 	/* Firefox */
+-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+-o-transform:rotate(180deg); 	/* Opera */
+}
+.camera1-1{
+    left: 47.7%;
+    top: -1%;
+}
+.camera1-2{
+    left: 58%;
+    top: 6%; 
+}
+.camera1-3{
+    left: 63.5%;
+    top: 6.5%; 
+}
+.camera1-4{
+    left: 30%;
+    top: 21%; 
+}
+.camera1-5{
+    left: 45%;
+    top: 29%;
+}
+.camera1-6{
+    left: 66.7%;
+    top: 42%;
+}
+.camera1-7{
+    left: 43.8%;
+    top: 89%;
+}
+.camera1-8{
+    left: 17%;
+    top: 72%;
+}
+.camera1-9{
+    left: 0%;
+    top: 58%;
+}
+/* 智能追踪 */
+.camera-2{
+    display: none
+}
+.camera2-1{
+    left: 62%;
+    top: 10%;
+}
+.camera2-2{
+    left: 45%;
+    top: 31%;
+    transform: rotate(180deg)
+}
+.camera2-3{
+    left: 45%;
+    top: 33%;
+    transform: rotate(225deg)
+}
+.camera2-4{
+    left: 66%;
+    top: 45%;
+}
+.camera2-5{
+    left: 44%;
+    top: 91%;
+    transform: rotate(161deg)
+}
+.camera2-6{
+    left: 42%;
+    top: 92%;
+    transform: rotate(50deg)
+}
+/* 摄像头按钮 */
 .btn-zoom {
     display: inline-block;
     width: 80px;
@@ -174,7 +266,14 @@
     background: url("../../asset/img/btn-zoomout.png") no-repeat;
     background-size: 100%;
 }
-
+.btn-zoom.btn-zoomtrack {
+    background: url("../../asset/img/btn-zoomin.png") no-repeat;
+    background-size: 100%;
+}
+.btn-zoom.btn-zoommonitor {
+    background: url("../../asset/img/btn-zoomin.png") no-repeat;
+    background-size: 100%;
+}
 /* 分屏 */
 .split-mode {
   position: relative;
