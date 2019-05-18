@@ -778,12 +778,10 @@ function ButtonQueryRecord_onclick2(szCameraId,nRecordSource,nRecordType,nStartT
 					}else if(j==2){
 						data.recordType=value;
 					}else if(j==3){
-						var strDate=value;
-						data.beginTime=strDate;
+						data.beginTime=value;
 						data.start=dateFtt('hh:mm',new Date(value*1000));
 					}else if(j==4){
-						var endDate=value;
-						data.endTime=endDate;
+						data.endTime=value;
 						data.end=dateFtt('hh:mm',new Date(value*1000));
 					}
 				}
@@ -791,7 +789,7 @@ function ButtonQueryRecord_onclick2(szCameraId,nRecordSource,nRecordType,nStartT
 			fileData.push(data);
 		}
 	}
-	//console.log(fileData)
+	console.log(fileData)
 	/*新增===========*/
 	$('.scale-unit').removeClass('active');
 	for (var m=0;m<fileData.length;m++){
@@ -804,9 +802,15 @@ function ButtonQueryRecord_onclick2(szCameraId,nRecordSource,nRecordType,nStartT
 			timeStr=timeStr.toString().substring(0,timeStr.indexOf(":"))*1;
 			timeEnd=timeEnd.toString().substring(0,timeEnd.indexOf(":"))*1;
 			$('.scale-unit').eq(timeStr).addClass('active');
-			$('.scale-unit').eq(timeStr).attr("data-start-time",start);
+			if($('.scale-unit').eq(timeStr).attr("data-start-time")== undefined){
+				$('.scale-unit').eq(timeStr).attr("data-start-time",start);
+			}
+
 			$('.scale-unit').eq(timeEnd).addClass('active');
-			$('.scale-unit').eq(timeEnd).attr("data-end-time",end);
+			//if($('.scale-unit').eq(timeEnd).attr("data-end-time")== undefined){
+				$('.scale-unit').eq(timeEnd).attr("data-end-time",end);
+			//}
+
 		}
 	}
 }

@@ -84,13 +84,6 @@
             </div>
 
             <div class="layui-inline">
-              <label class="layui-form-label">用户：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="user" autocomplete="off" class="layui-input">
-              </div>
-            </div>
-
-            <div class="layui-inline">
               <button class="layui-btn layui-btn-normal">查询</button>
               <button class="layui-btn layui-btn-primary">导出</button>
             </div>
@@ -98,7 +91,7 @@
           </div>
         </form>
 
-        <table id="alarmList"></table>
+        <table id="alarmList-table"></table>
       </dd>
     </dl>
 
@@ -107,9 +100,10 @@
       技术支持：北京国势通科技有限公司
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
-    <script src="../../asset/js/aside.js"></script>
+    <!--<script src="../../asset/js/util.js"></script>-->
     <script src="../../asset/introduce/layui/layui.js"></script>
     <script>
+
       layui.use(['laydate','table'], function(){
         var laydate = layui.laydate;
         $('.js-laydate').each(function(){
@@ -119,39 +113,108 @@
             format: 'yyyy-MM-dd'
           })
         })
-
+        var BEGIN_DATE = $('input[name=startTime]').val();
+        var END_DATE = $('input[name=endTime]').val();
         var table = layui.table;
-        table.render({
-          elem: '#alarmList'
-          // ,url: '../json/charts.json' //数据接口
-          ,page: true //开启分页
-          ,layout: ['count', 'prev', 'page', 'next']
-          ,skin: 'nob' //重要属性：无连线表格
-          ,cols: [[ //标题栏
-            {type:'checkbox', width: 80}
-            ,{type:'numbers', title: '序号', width: 80}
-            ,{field: 'timeline', title: '时间', width: 180}
-            ,{field: 'ipaddr', title: 'IP地址', minWidth: 150}
-            ,{field: 'eqname', title: '设备名称', minWidth: 120}
-            ,{field: 'alarmtype', title: '报警类型', style: 'color: #f69506;', width: 120}
-            ,{field: 'user', title: '用户', style: 'color: #07dcef;', width: 100}
-            ,{field: 'logs', title: '日志', style: 'color: #88898f;', width: 120}
-            ,{title: '', toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>', width: 80}
-          ]]
-          ,data: [
-            {
-              "timeline": "2016-10-14 09:56:12"
-              ,"ipaddr": "219.222.222.3"
-              ,"eqname": "浙江杭州浙江杭州浙江杭州"
-              ,"alarmtype": "system"
-              ,"user": "system"
-              ,"experience": "116"
-              ,"ip": "192.168.0.8"
-              ,"logs": "用户登录"
-            }
-          ]
-        });
+          var TABLE_CONFIG = {
+              alarmList: {
+                  loaded: false,
+                  loading: false,
+                  id: 'alarmList',
+                  url: 'http://172.16.5.224:18080/alarm/getAlarmList',
+                  cols: [[ //标题栏
+                    {type:'checkbox', width: 80}
+                    ,{type:'numbers', title: '序号', width: 80}
+                    ,{field: 'createTime', title: '时间', width: 180}
+                    ,{field: 'ipAddress', title: 'IP地址', minWidth: 150}
+                    ,{field: 'deviceName', title: '设备名称', minWidth: 120}
+                    ,{field: 'alarmType', title: '报警类型', style: 'color: #f69506;', width: 120}
+                    ,{field: 'json', title: '日志', style: 'color: #88898f;', width: 120}
+                    ,{title: '', toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>', width: 80}
+                  ]],
+                  where: { },
+                  done: function(res) {
+                      console.log(res)
+                  }
+              }
+          }
+          var current = TABLE_CONFIG['alarmList']
+          initTable(current)
+//          startTime: BEGIN_DATE, endTime: END_DATE
+//        table.render({
+//          elem: '#alarmList'
+//          ,page: true //开启分页
+//          ,layout: ['count', 'prev', 'page', 'next']
+//          ,skin: 'nob' //重要属性：无连线表格
+//          ,cols: [[ //标题栏
+//            {type:'checkbox', width: 80}
+//            ,{type:'numbers', title: '序号', width: 80}
+//            ,{field: 'timeline', title: '时间', width: 180}
+//            ,{field: 'ipaddr', title: 'IP地址', minWidth: 150}
+//            ,{field: 'eqname', title: '设备名称', minWidth: 120}
+//            ,{field: 'alarmtype', title: '报警类型', style: 'color: #f69506;', width: 120}
+//            ,{field: 'logs', title: '日志', style: 'color: #88898f;', width: 120}
+//            ,{title: '', toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>', width: 80}
+//          ]]
+//            ,url: 'http://172.16.5.224:18080/alarm/getAlarmList'
+//            ,where: {
+//                deviceName: $('input[name=eqName]').val(),
+//                ipAddress: $('input[name=ipAddr]').val()
+//            }
+//            ,request: {
+//                pageName: 'pageSize' //页码的参数名称，默认：page
+//                ,limitName: 'pageNum' //每页数据量的参数名，默认：limit
+//            }
+//            ,response: {
+//                statusName: 'status' //规定数据状态的字段名称，默认：code
+//                ,statusCode: 200 //规定成功的状态码，默认：0
+//                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+//                ,countName: 'total' //规定数据总数的字段名称，默认：count
+//                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+//            }
+//        });
       })
+      var DEFAULT_REQ = {
+          pageName: 'pageNum',
+          limitName: 'pageSize'
+      }
+      var DEFAULT_RES = {
+          dataName: 'data.list',
+          countName: 'data.total'
+      }
+      function initTable(currentTable) {
+          var Table = layui.table
+          var id = currentTable.id
+          var tableId = id + '-table'
+
+          if (currentTable.loading) return
+          if (currentTable.loaded) {
+              Table.reload(tableId)
+              return
+          }
+
+          currentTable.loading = true
+          currentTable.table = Table.render({
+              elem: '#' + tableId,
+              id: tableId, // height: 'full-0',
+              url: currentTable.url,
+              page: true,
+              cols: [currentTable.cols],
+              autoSort: currentTable.autoSort || false,
+              request: currentTable.request || DEFAULT_REQ,
+              response: currentTable.response || DEFAULT_RES,
+              where: currentTable.where || {},
+              done(arg) {
+                  if (!currentTable.loaded) {
+                      currentTable.loading = false
+                      currentTable.loaded = true
+                  }
+                  if (typeof currentTable.done == 'function') {
+                      currentTable.done(arg)
+                  }
+              }
+          })
+      }
     </script>
 </body>
 
