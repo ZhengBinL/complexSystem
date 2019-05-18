@@ -23,6 +23,8 @@ $(function () {
                   })
             }
       })
+      // 报警弹框
+      $('')
 
       // 菜单树
       var zTreeObj;
