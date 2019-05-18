@@ -11,87 +11,92 @@
 </head>
 
 <body>
-    <!--头部-->
-    <div class="header">
-        <a class="header-lt" id="header" href="../index/index.html"></a>
-        <div class="header-rt">
-            <ul>
-                <li class="notice-wrapper">
-                    <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
-                </li>
-                <li class="user-notice">
-                    <div id="user-operate" class="user-operate">
-                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
-                        <a href="javascript:;">管理</a>
-                        <a href="javascript:;" class="exit" title="退出">退出</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--侧边栏-->
-    <div class="aside">
-        <div class="menu-tree-wrapper">
-            <ul id="menu-tree" class="menu-tree ztree"></ul>
-        </div>
-        <div class="palace">
-            <div class="palace-unit">111</div>
-            <div class="palace-unit">222</div>
-            <div class="palace-unit">333</div>
-            <div class="palace-unit">444</div>
-            <div class="palace-unit">555</div>
-            <div class="palace-unit">666</div>
-        </div>
-        <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
-    </div>
-    <!-- 固定勤务 -->
-    <dl class="wrapper">
-        <dt>
-            <span class="page-title">固定勤务</span>
-        </dt>
-      <dd>
-        <ul class="duty-content">
-            <li class="duty-content-item">
-                <div class="duty-detail">
-                    <img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">
-                    <p>张建国</p>
-                    <p>七中队3班</p>
-                </div>
-                <div class="duty-video"></div>
+<!--头部-->
+<div class="header">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
+        <ul>
+            <li class="notice-wrapper">
+                <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
             </li>
-            <li class="duty-content-item">
-                <div class="duty-detail">
-                    <img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">
-                    <p>张建国</p>
-                    <p>七中队3班</p>
+            <li class="user-notice">
+                <div id="user-operate" class="user-operate">
+                    <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                    <a href="javascript:;">管理</a>
+                    <a href="javascript:;" class="exit" title="退出">退出</a>
                 </div>
-                <div class="duty-video"></div>
-            </li>
-            <li class="duty-content-item">
-                <div class="duty-detail">
-                    <img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">
-                    <p>张建国</p>
-                    <p>七中队3班</p>
-                </div>
-                <div class="duty-video"></div>
-            </li>
-            <li class="duty-content-item">
-                <div class="duty-detail">
-                    <img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">
-                    <p>张建国</p>
-                    <p>七中队3班</p>
-                </div>
-                <div class="duty-video"></div>
             </li>
         </ul>
-      </dd>
-    </dl>
-    <script src="../../asset/js/jquery.min.js"></script>
-    <script src="../../asset/js/aside.js"></script>
-    <script>
-      var itemWidth = $('.duty-video').width();
-      $('.duty-video').css('height', itemWidth);
-    </script>
+    </div>
+</div>
+<!--侧边栏-->
+<div class="aside">
+    <div class="menu-tree-wrapper">
+        <ul id="menu-tree" class="menu-tree ztree"></ul>
+    </div>
+    <div class="palace">
+        <div class="palace-unit">111</div>
+        <div class="palace-unit">222</div>
+        <div class="palace-unit">333</div>
+        <div class="palace-unit">444</div>
+        <div class="palace-unit">555</div>
+        <div class="palace-unit">666</div>
+    </div>
+    <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
+</div>
+<!-- 固定勤务 -->
+<dl class="wrapper">
+    <dt>
+        <span class="page-title">固定勤务</span>
+    </dt>
+    <dd>
+        <ul class="duty-content">
+            <!--<li class="duty-content-item">-->
+                <!--<div class="duty-detail">-->
+                    <!--<img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">-->
+                    <!--<p>张建国</p>-->
+                    <!--<p>七中队3班</p>-->
+                <!--</div>-->
+                <!--<div class="duty-video"></div>-->
+            <!--</li>-->
+        </ul>
+    </dd>
+</dl>
+<script src="../../asset/js/jquery.min.js"></script>
+<script src="./fixed-duty.js"></script>
+<!--<script src="../../asset/js/aside.js"></script>-->
+<script>
+    var itemWidth = $('.duty-video').width();
+    $('.duty-video').css('height', itemWidth);
+
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        url: 'http://172.16.5.228:18080/fixed_duty/dutyInfo',
+        success: function (res) {
+            if (res.code == 0 && res.data) {
+                var data = res.data.dutyInfo
+                var html = ''
+                $.each(data, function (index, item) {
+                    var dutyPersonTeam = data[index].dutyPersonTeam,
+                        dutyPersonName = data[index].dutyPersonName,
+                        dutyPersonPic = data[index].dutyPersonPic,
+                        rtspUrl = data[index].rtspUrl;
+                    html += '<li class="duty-content-item"><div class="duty-detail"><img class="duty-man-img" src="'+dutyPersonPic+'" alt="照片"><p>'+dutyPersonName+'</p><p>'+dutyPersonTeam+'</p></div><div class="duty-video"><OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc-'+(index+1)+'" codebase="" width="100%" height="85%" events="True"><param name="AutoLoop" value="False" /><param name="AutoPlay" value="True" /><param name="Time" value="True" /><param name="ShowDisplay" value="True" /><param name="Controls" value="False"><EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="100%" height="85%" text="Waiting for video" name="vlc"></EMBED></OBJECT></div></li>'
+//                    console.log("vlc-"+(index+1))
+                    play(rtspUrl, "vlc-"+(index+1))
+                })
+                $('.duty-content').html(html)
+            }
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+
+
+</script>
 </body>
 
 </html>
