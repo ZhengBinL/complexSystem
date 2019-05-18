@@ -467,7 +467,7 @@
                   </dd>
                   <dt class="v-toolbar">
                     <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png"> 历史记录</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-control.png"> 云台控制</a>
+                    <a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>
                     <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
                     <div class="opt-monitor">
                       <a href="javascript:;" class="opt-item opt-top-lt"></a>
@@ -546,19 +546,19 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 440px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
-                <div class="v-toolbar">
-                  <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
-                  <a href="javascript:;"><img src="../../asset/img/icon_pause.png"> 停止播放</a>
-                  <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-close.png"> 关闭</a>
-                  <div class="speed-wrapper">
-                    <a href="javascript:;" class="speed-item">6.0X</a>
-                    <a href="javascript:;" class="speed-item">4.0X</a>
-                    <a href="javascript:;" class="speed-item">2.0X</a>
-                    <a href="javascript:;" class="speed-item">1.0X</a>
-                    <a href="javascript:;" class="speed-item">1/2X</a>
-                    <a href="javascript:;" class="speed-item">1/4X</a>
+                  <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 440px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
+                  <div class="v-toolbar">
+                    <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
+                    <a href="javascript:;" onclick="ButtonPausePlaybackByWndNo_onclick"><img src="../../asset/img/icon_pause.png"> 停止播放</a >
+                    <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-close.png"> 关闭</a>
+                    <div class="speed-wrapper">
+                      <a href="javascript:;" class="speed-item">6.0X</a>
+                      <a href="javascript:;" class="speed-item">4.0X</a>
+                      <a href="javascript:;" class="speed-item">2.0X</a>
+                      <a href="javascript:;" class="speed-item">1.0X</a>
+                      <a href="javascript:;" class="speed-item">1/2X</a>
+                      <a href="javascript:;" class="speed-item">1/4X</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -671,6 +671,17 @@
         }
       });
     })
+    // 鼠标滑过分屏模式视频&滑过历史记录视频
+    $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
+        $(this).children('.v-toolbar').show();
+        $(this).find('.opt-monitor').hide();
+    }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
+        $(this).children('.v-toolbar').hide();
+    })
+    // 点击云平台控制
+    $('body').on('click', '.js-control', function () {
+        $(this).parent().children('.opt-monitor').toggle()
+    })
 
     // 渲染日期组件
     layui.use('laydate', function() {
@@ -678,13 +689,28 @@
         laydate.render({
             elem: '#calendar',
             btns: [],
-            position: 'static'
+            position: 'static',
+            done: function(value, date, endDate){
+                $(".search-btn").attr("data-search-time",value);
+            }
         });
     })
-    // 点击搜索视频
     $('body').on('click', '.search-btn', function () {
-        ButtonQueryRecord_onclick();
-        ButtonStartTimePlaybackByWndNo_onclick();
+        var searchDate=this.getAttribute("data-search-time");
+        if(searchDate==null){
+            searchDate=dateFtt("yyyy-MM-dd",new Date());
+        }
+        var szCameraId = "1000000$1$0$0"
+        var nRecordSource = 3;
+        var nRecordType = 0;
+        var strStartTime = searchDate+" 00:00:00";
+        var strEndTime =  searchDate+" 23:59:59";
+        var nStartTime = getDate(strStartTime).getTime()/1000;
+        var nEndTime = getDate(strEndTime).getTime()/1000;
+        /*查询录像信息*/
+        ButtonQueryRecord_onclick2(szCameraId,nRecordSource,nRecordType,nStartTime,nEndTime);
+        /*播放录像信息*/
+        ButtonStartTimePlaybackByWndNo_onclick2(szCameraId,nRecordSource,nStartTime,nEndTime);
     });
     // 点击历史记录显示
     $('body').on('click', '.icon-history', function () {
@@ -715,17 +741,29 @@
         $('.history-wrapper').hide();
         $('.split-mode').show();
     })
+    // 单击刻度条某一项
+    $('body').on('click', '.scale-unit', function (e) {
+        var szCameraId = "1000000$1$0$0"
+        var nRecordSource = 3;
+        var nRecordType = 0;
+        var nStartTime=this.getAttribute("data-start-time");
+        var nEndTime=this.getAttribute("data-end-time");
+        console.log(nStartTime+"=="+nEndTime)
+        /*查询录像*/
+        ButtonQueryRecord_onclick3(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
+        /*播放录像信息*/
+        ButtonStartTimePlaybackByWndNo_onclick2(szCameraId,nRecordSource,nStartTime,nEndTime);
+
+    })
     // 双击刻度条某一项
-    $('body').on('dblclick', '.scale-unit', function (e) {
-        var a=this.getAttribute("data-start-time");
-        alert(a);
+//    $('body').on('dblclick', '.scale-unit', function (e) {
 //        var count = parseInt(e.currentTarget.dataset.count);
 //        $(this).addClass('active').siblings().removeClass('active')
 //        $('.scale-unit').removeClass('active')
 //        for (var i = 0; i <= count; i++){
 //            $('.scale-unit').eq(i).addClass('active')
 //        }
-    })
+//    })
     // 刻度条
 //    var initCount = null
 //    $('body').on('click', '.scale-unit', function (e) {

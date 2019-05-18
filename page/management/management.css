@@ -332,6 +332,7 @@
   background: rgba(0,0,0,.8);
   text-align: right;
   z-index: 2;
+  display: none;
 }
 .v-toolbar > a {
   margin-left: 15px;
@@ -392,11 +393,12 @@
 .opt-monitor{
     position: absolute;
     top: 33px;
-    right: 62px;
+    right: 77px;
     width: 130px;
     height: 130px;
     background: url("../../asset/img/opt_monitor_bg.png") no-repeat;
     background-size: cover;
+    display: none;
 }
 .opt-item{
     position: absolute;
@@ -474,7 +476,7 @@
 .mode-rec-4 .opt-monitor{
     width: 97px;
     height: 97px;
-    right: 78px;
+    right: 92px;
 }
 .mode-rec-4 .opt-top-lt{
     top: 14px;
@@ -584,9 +586,7 @@
     width: 100%;
     background: #000;
 }
-.video-wrapper .v-toolbar{
-    right: 280px;
-}
+
 .search-btn{
     display: block;
     line-height: 36px;

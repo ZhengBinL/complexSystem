@@ -1,6 +1,7 @@
 ﻿var gWndId = 0;
 var nDirect=-1;
 var nOper=-1;
+var nWndNo = 0;
 var gXmlRecords;
 var gRecordPath;
 var bLogin = 0;
@@ -142,7 +143,7 @@ function ButtonCreateWnd_onclick()
 {
 	var obj = document.getElementById("DPSDK_OCX");
     obj.DPSDK_SetWndCount(gWndId, 1);
-	obj.DPSDK_SetSelWnd(gWndId, 0); 
+	obj.DPSDK_SetSelWnd(gWndId, 0);
 }
 
 function ButtonSetCustomizedWndCount_onclick() 
@@ -678,7 +679,7 @@ function dateFtt(fmt,date)
 	return fmt;
 }
 function findRev(id) {
-	alert(id)
+	//alert(id)
 }
 
 function ButtonQueryRecord_onclick(){
@@ -689,6 +690,7 @@ function ButtonQueryRecord_onclick(){
     var nRecordSource = 3;
     var nRecordType = 0;*/
    /*公司配置*/
+	var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
 	var szCameraId = "1000000$1$0$0"
 	var nRecordSource = 3;
 	var nRecordType = 0;
@@ -698,53 +700,115 @@ function ButtonQueryRecord_onclick(){
 	var nEndTime = getDate(strEndTime).getTime()/1000;
 //    ShowCallRetInfo(obj.DPSDK_QueryRecordInfo(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime), "查询录像");
 	 gXmlRecords = obj.DPSDK_QueryRecordInfo(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
-	 console.log("gXmlRecords:"+gXmlRecords)
-	 var xmlAre=gXmlRecords.split('<Record ');
-    for (var i=0;i< xmlAre.length;i++){
-        if(xmlAre[i].indexOf("index")!= -1){
-            var attr= xmlAre[i].split(' ')
-            var data={};
-            for (var j=0;j<attr.length;j++) {
-                if(attr[j].indexOf('"')!=-1){
-                    var value=attr[j].substring(attr[j].indexOf('"')+1,attr[j].length-1)
-                    if(j==0){
-                        data.index=value;
-                    }else if(j==1){
-                        data.sourceType=value;
-                    }else if(j==2){
-                        data.recordType=value;
-                    }else if(j==3){
 
-                        var strDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
-                        data.beginTime=strDate;
-                        data.start=dateFtt('hh:mm',new Date(value*1000));
-                    }else if(j==4){
-                        var endDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
-                        data.endTime=endDate;
-                        data.end=dateFtt('hh:mm',new Date(value*1000));
-                    }
-                }
-            }
-            fileData.push(data);
-        }
-    }
-    //console.log(fileData)
-    /*新增===========*/
-    for (var m=0;m<fileData.length;m++){
-        var start=fileData[m].beginTime;
-        var end=fileData[m].endTime;
-        if(start!=null && start!=undefined && end!=null && end!=undefined){
-            var timeStr= fileData[m].start;
-            var timeEnd=fileData[m].end;
-            console.log(start+"=="+end+"=="+timeStr+"===="+timeEnd);
-            timeStr=timeStr.toString().substring(0,timeStr.indexOf(":"))*1;
-            timeEnd=timeEnd.toString().substring(0,timeEnd.indexOf(":"))*1;
-            $('.scale-unit').eq(timeStr).addClass('active');
-            $('.scale-unit').eq(timeStr).attr("data-start-time",start);
-            $('.scale-unit').eq(timeEnd).addClass('active');
-            $('.scale-unit').eq(timeEnd).attr("data-end-time",end);
-        }
-    }
+	 var xmlAre=gXmlRecords.split('<Record ');
+	 for (var i=0;i< xmlAre.length;i++){
+			if(xmlAre[i].indexOf("index")!= -1){
+				var attr= xmlAre[i].split(' ')
+				var data={};
+				for (var j=0;j<attr.length;j++) {
+					if(attr[j].indexOf('"')!=-1){
+						var value=attr[j].substring(attr[j].indexOf('"')+1,attr[j].length-1)
+						if(j==0){
+							data.index=value;
+						}else if(j==1){
+							data.sourceType=value;
+						}else if(j==2){
+							data.recordType=value;
+						}else if(j==3){
+
+							var strDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
+							data.beginTime=strDate;
+							data.start=dateFtt('hh:mm',new Date(value*1000));
+						}else if(j==4){
+							var endDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
+							data.endTime=endDate;
+							data.end=dateFtt('hh:mm',new Date(value*1000));
+						}
+					}
+				}
+				fileData.push(data);
+			}
+		}
+	 //console.log(fileData)
+	/*新增===========*/
+	 for (var m=0;m<fileData.length;m++){
+	 	var start=fileData[m].beginTime;
+	 	var end=fileData[m].endTime;
+	 	if(start!=null && start!=undefined && end!=null && end!=undefined){
+			var timeStr= fileData[m].start;
+			var timeEnd=fileData[m].end;
+			//console.log(start+"=="+end+"=="+timeStr+"===="+timeEnd);
+			timeStr=timeStr.toString().substring(0,timeStr.indexOf(":"))*1;
+			timeEnd=timeEnd.toString().substring(0,timeEnd.indexOf(":"))*1;
+			$('.scale-unit').eq(timeStr).addClass('active');
+			$('.scale-unit').eq(timeStr).attr("data-start-time",start);
+			$('.scale-unit').eq(timeEnd).addClass('active');
+			$('.scale-unit').eq(timeEnd).attr("data-end-time",end);
+		}
+	 }
+}
+function ButtonQueryRecord_onclick3(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime){
+
+	var obj = document.getElementById("DPSDK_OCX");
+	nWndNo = obj.DPSDK_GetSelWnd(gWndId);
+	gXmlRecords = obj.DPSDK_QueryRecordInfo(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
+}
+function ButtonQueryRecord_onclick2(szCameraId,nRecordSource,nRecordType,nStartTime,nEndTime){
+	var fileData=[];
+	var obj = document.getElementById("DPSDK_OCX");
+	/*现场配置*/
+	/* var szCameraId = "1000121$1$0$0";
+     var nRecordSource = 3;
+     var nRecordType = 0;*/
+	gXmlRecords = obj.DPSDK_QueryRecordInfo(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
+
+	var xmlAre=gXmlRecords.split('<Record ');
+	for (var i=0;i< xmlAre.length;i++){
+		if(xmlAre[i].indexOf("index")!= -1){
+			var attr= xmlAre[i].split(' ')
+			var data={};
+			for (var j=0;j<attr.length;j++) {
+				if(attr[j].indexOf('"')!=-1){
+					var value=attr[j].substring(attr[j].indexOf('"')+1,attr[j].length-1)
+					if(j==0){
+						data.index=value;
+					}else if(j==1){
+						data.sourceType=value;
+					}else if(j==2){
+						data.recordType=value;
+					}else if(j==3){
+						var strDate=value;
+						data.beginTime=strDate;
+						data.start=dateFtt('hh:mm',new Date(value*1000));
+					}else if(j==4){
+						var endDate=value;
+						data.endTime=endDate;
+						data.end=dateFtt('hh:mm',new Date(value*1000));
+					}
+				}
+			}
+			fileData.push(data);
+		}
+	}
+	//console.log(fileData)
+	/*新增===========*/
+	$('.scale-unit').removeClass('active');
+	for (var m=0;m<fileData.length;m++){
+		var start=fileData[m].beginTime;
+		var end=fileData[m].endTime;
+		if(start!=null && start!=undefined && end!=null && end!=undefined){
+			var timeStr= fileData[m].start;
+			var timeEnd=fileData[m].end;
+			//console.log(start+"=="+end+"=="+timeStr+"===="+timeEnd);
+			timeStr=timeStr.toString().substring(0,timeStr.indexOf(":"))*1;
+			timeEnd=timeEnd.toString().substring(0,timeEnd.indexOf(":"))*1;
+			$('.scale-unit').eq(timeStr).addClass('active');
+			$('.scale-unit').eq(timeStr).attr("data-start-time",start);
+			$('.scale-unit').eq(timeEnd).addClass('active');
+			$('.scale-unit').eq(timeEnd).attr("data-end-time",end);
+		}
+	}
 }
 
 
@@ -770,12 +834,7 @@ function ButtonStartFilePlaybackByHWND_onclick()
 
 function ButtonStartTimePlaybackByWndNo_onclick()
 {
-
-
 	var nRecordType = 0;
-
-
-
 	var obj = document.getElementById("DPSDK_OCX");
 	var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
 	var szCameraId = "1000000$1$0$0"
@@ -784,6 +843,14 @@ function ButtonStartTimePlaybackByWndNo_onclick()
 	var strEndTime =  "2019-05-15 23:59:59";
 	var nStartTime = getDate(strStartTime).getTime()/1000;
 	var nEndTime = getDate(strEndTime).getTime()/1000;
+	ShowCallRetInfo(obj.DPSDK_StartTimePlaybackByWndNo(gWndId, nWndNo, szCameraId, nRecordSource, nStartTime, nEndTime), "按时间回放");
+}
+
+
+function ButtonStartTimePlaybackByWndNo_onclick2(szCameraId,nRecordSource,nStartTime,nEndTime)
+{
+	var obj = document.getElementById("DPSDK_OCX");
+	var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
 	ShowCallRetInfo(obj.DPSDK_StartTimePlaybackByWndNo(gWndId, nWndNo, szCameraId, nRecordSource, nStartTime, nEndTime), "按时间回放");
 }
 
@@ -824,7 +891,6 @@ function ButtonStartTimePlaybackByHWND_onclick()
 function ButtonPausePlaybackByWndNo_onclick()
 {
 	var obj = document.getElementById("DPSDK_OCX");
-
 	var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
 	ShowCallRetInfo(obj.DPSDK_PausePlaybackByWndNo(gWndId, nWndNo), "暂停回放");
 }
