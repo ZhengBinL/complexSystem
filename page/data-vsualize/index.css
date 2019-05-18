@@ -1,0 +1,37 @@
+.dv-chart-box {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+.dv-bg {
+  display: table;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+}
+.dv-bg > span {
+  display: table-row;
+}
+.dv-bg > span > i {
+  display: table-cell;
+}
+.dvbg-left-lt {
+  width: 50px;
+  height: 140px;
+  background: url("../../asset/img/dv-left-lt.png") no-repeat;
+}
+.dvbg-left-mt {
+  height: 140px;
+  background: url("../../asset/img/dv-left-mt.png") repeat-x;
+}
+.dvbg-left-mt {
+  height: 140px;
+  background: url("../../asset/img/dv-left-mt.png") repeat-x;
+}
+.dv-chart {
+  position: relative;
+  z-index: 1;
+}
