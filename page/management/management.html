@@ -363,14 +363,14 @@
     <div class="menu-tree-wrapper">
       <ul id="menu-tree" class="menu-tree ztree"></ul>
     </div>
-    <div class="palace">
+    <!-- <div class="palace">
       <div class="palace-unit">111</div>
       <div class="palace-unit">222</div>
       <div class="palace-unit">333</div>
       <div class="palace-unit palace-left">444</div>
       <div class="palace-unit palace-ct">555</div>
       <div class="palace-unit palace-last">666</div>
-    </div>
+    </div> -->
     <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
   </div>
   <!--主体-->
@@ -455,7 +455,16 @@
             <ul id="mode-rec" class="mode-content mode-rec-4">
               <li>
                 <dl>
-                  <dd class="videos"></dd>
+                  <dd class="videos">
+                      <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc" codebase="" width="600" height="480" events="True">
+                          <param name="AutoLoop" value="False" />
+                          <param name="AutoPlay" value="True" />
+                          <param name="Time" value="True" />
+                          <param name="ShowDisplay" value="True" />
+                          <param name="Controls" value="False">
+                          <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="600" height="480" text="Waiting for video" name="vlc"></EMBED>
+                      </OBJECT>
+                  </dd>
                   <dt class="v-toolbar">
                     <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png"> 历史记录</a>
                     <a href="javascript:;"><img src="../../asset/img/icon-control.png"> 云台控制</a>
@@ -607,7 +616,7 @@
   <script src="../../asset/js/utils.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
   <script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
-  <script src="../../asset/js/aside.js"></script>
+  <script src="./management.js"></script>
   <script>
     var _this = this
     //计算高度，超出隐藏
