@@ -25,54 +25,30 @@ $(function () {
       })
       // 报警弹框
       $('')
-
-
+      
       var setting = {
-            data: {
-                  // simpleData: {
-                  //       enable: true,
-                  //       idKey: "id", //节点id
-                  //       pIdKey: "parentId", //父节点id
-                  // },
+            view:{
+                  fontCss:{
+                        "color":"#fff",
+                        "font-size":"28px"
+                  }
             },
-            view: {
-                  showLine: false, // 是否显示节点之间的连线
-            },
-            async: {
-                  enable: true, // 开启异步加载
-                  url: "", //对应的后台请求路径
-                  dataType: "json",
-                  autoParam: ["id=parentId"] // 异步加载时需要自动提交父节点属性的参数
-            },
-            callback: { //回调函数
-                  onClick: onClick, // 节点被点击时调用
-                  onAsyncSuccess: zTreeOnAsyncSuccess, // 异步加载正常结束的事件回调函数
-            },
-      };
-      function onClick(event, treeId, treeNode, clickFlag) {
-            var id = treeNode.id; // 树id
-            var treename = treeNode.name; // 树名称.可以在需要的时候加
-            var treeObj = $.fn.zTree.getZTreeObj(treeId);
-            var nodes = treeObj.getSelectedNodes(); //
-            if (nodes.length > 0) {
-                  treeObj.reAsyncChildNodes(nodes[0], "refresh"); // 刷新节点
-            }
-            //用于捕获异步加载正常结束的事件回调函数
-            function zTreeOnAsyncSuccess(event, treeId, treeNode, msg) {
-                  var treeObj = $.fn.zTree.getZTreeObj(treeId);
-                  var nodes = treeObj.getNodes();
-                  if (nodes.length > 0) {
-                        for (var i = 0; i < nodes.length; i++) {
-                              treeObj.expandNode(nodes[i], true, false, false); //默认展开第一级节点
-                        }
+            data:    {
+                  simpleData:{
+                        enable:true,
+                        idKey: "id",
+                        pIdKey: "pid",
+                        rootPId: 0
                   }
             }
-            // 加载树初始化
-            function init() {
-                  $.fn.zTree.init($("#menu-tree"), setting); // 将得到的数据解析并填充到ZTree
-            }
-            $(function () {
-                  init(); //加载数据
-            })
+      };
+      function filter(treeId, parentNode, responseData){
+            return responseData.data
       }
+      var zNodes =[];
+      $.get("http://172.16.5.226:18080/resource/node",function(res){
+            zNodes =res.data
+            $.fn.zTree.init($("#menu-tree"), setting,zNodes);
+      })
+      
 })
