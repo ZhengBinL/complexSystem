@@ -13,133 +13,198 @@
 </head>
 
 <body>
-    <!--头部-->
-    <div class="header" id="header">
-        <div class="header-rt">
-            <ul>
-                <li class="notice-wrapper">
-                    <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
-                </li>
-                <li class="user-notice">
-                    <div id="user-operate" class="user-operate">
-                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
-                        <a href="javascript:;">管理</a>
-                        <a href="javascript:;" class="exit" title="退出">退出</a>
+<!--头部-->
+<div class="header" id="header">
+    <div class="header-rt">
+        <ul>
+            <li class="notice-wrapper">
+                <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+            </li>
+            <li class="user-notice">
+                <div id="user-operate" class="user-operate">
+                    <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                    <a href="javascript:;">管理</a>
+                    <a href="javascript:;" class="exit" title="退出">退出</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--侧边栏-->
+<div class="aside">
+    <div class="menu-tree-wrapper">
+        <ul id="menu-tree" class="menu-tree ztree"></ul>
+    </div>
+    <div class="palace">
+        <div class="palace-unit">111</div>
+        <div class="palace-unit">222</div>
+        <div class="palace-unit">333</div>
+        <div class="palace-unit">444</div>
+        <div class="palace-unit">555</div>
+        <div class="palace-unit">666</div>
+    </div>
+    <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
+</div>
+
+<!-- 主内容：报警 -->
+<dl class="wrap">
+    <dt><span class="page-title">报警</span></dt>
+
+    <dd>
+        <!--<form class="layui-form" action="">-->
+            <input type="text" name="notautosubmit" style="display:none"/>
+            <div class="layui-form-item">
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">开始时间：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="startTime" id="startTime" autocomplete="off"
+                               class="layui-input js-laydate">
                     </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+                </div>
 
-    <!--侧边栏-->
-    <div class="aside">
-        <div class="menu-tree-wrapper">
-            <ul id="menu-tree" class="menu-tree ztree"></ul>
-        </div>
-        <div class="palace">
-            <div class="palace-unit">111</div>
-            <div class="palace-unit">222</div>
-            <div class="palace-unit">333</div>
-            <div class="palace-unit">444</div>
-            <div class="palace-unit">555</div>
-            <div class="palace-unit">666</div>
-        </div>
-        <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
-    </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">结束时间：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="endTime" id="endTime" autocomplete="off"
+                               class="layui-input js-laydate">
+                    </div>
+                </div>
 
-    <!-- 主内容：报警 -->
-    <dl class="wrap">
-      <dt><span class="page-title">报警</span></dt>
+                <div class="layui-inline">
+                    <label class="layui-form-label">IP地址：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="ipAddr" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
 
-      <dd>
-        <form class="layui-form" action="">
-          <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">设备名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="eqName" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
 
-            <div class="layui-inline">
-              <label class="layui-form-label">开始时间：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="startTime" id="startTime" autocomplete="off" class="layui-input js-laydate">
-              </div>
+                <div class="layui-inline">
+                    <button type="button" class="layui-btn layui-btn-normal js-btn-search">查询</button>
+                    <!--<button class="layui-btn layui-btn-primary">导出</button>-->
+                </div>
+
             </div>
+        <!--</form>-->
 
-            <div class="layui-inline">
-              <label class="layui-form-label">结束时间：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="endTime" id="endTime" autocomplete="off" class="layui-input js-laydate">
-              </div>
-            </div>
+        <table class="layui-hide" id="alarmList-table"></table>
+    </dd>
+</dl>
 
-            <div class="layui-inline">
-              <label class="layui-form-label">IP地址：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="ipAddr" autocomplete="off" class="layui-input">
-              </div>
-            </div>
+<!--页脚-->
+<div class="footer">
+    技术支持：北京国势通科技有限公司
+</div>
+<script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/js/utils.js"></script>
+<script src="../../asset/introduce/layui/layui.js"></script>
+<script>
 
-            <div class="layui-inline">
-              <label class="layui-form-label">设备名称：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="eqName" autocomplete="off" class="layui-input">
-              </div>
-            </div>
+    layui.use(['laydate', 'table'], function () {
+        var laydate = layui.laydate;
+        $('.js-laydate').each(function(){
+          var elm = $(this).attr('id');
+          laydate.render({
+            elem: '#' + elm,
+            format: 'yyyy-MM-dd'
+          })
+        })
 
-            <div class="layui-inline">
-              <button class="layui-btn layui-btn-normal">查询</button>
-              <button class="layui-btn layui-btn-primary">导出</button>
-            </div>
-
-          </div>
-        </form>
-
-        <table class="layui-hide" id="alarmList"></table>
-      </dd>
-    </dl>
-
-    <!--页脚-->
-    <div class="footer">
-      技术支持：北京国势通科技有限公司
-    </div>
-    <script src="../../asset/js/jquery.min.js"></script>
-    <!--<script src="../../asset/js/util.js"></script>-->
-    <script src="../../asset/introduce/layui/layui.js"></script>
-    <script>
-
-      layui.use(['laydate','table'], function(){
-//        var laydate = layui.laydate;
-//        $('.js-laydate').each(function(){
-//          var elm = $(this).attr('id');
-//          laydate.render({
-//            elem: '#' + elm,
-//            format: 'yyyy-MM-dd'
-//          })
-//        })
-        var BEGIN_DATE = $('input[name=startTime]').val();
-        var END_DATE = $('input[name=endTime]').val();
         var table = layui.table;
-        table.render({
-          elem: '#alarmList'
-          ,url: 'http://172.16.5.224:18080/alarm/getAlarmList'
-          ,page: true //开启分页
-          ,layout: ['count', 'prev', 'page', 'next']
-          ,skin: 'nob' //重要属性：无连线表格
-          ,cols: [[ //标题栏
-            {type:'checkbox', width: 80}
-            ,{type:'numbers', title: '序号', width: 80}
-            ,{field: 'createTime', title: '时间', width: 180}
-            ,{field: 'ipAddress', title: 'IP地址', minWidth: 150}
-            ,{field: 'deviceName', title: '设备名称', minWidth: 120}
-            ,{field: 'alarmType', title: '报警类型', style: 'color: #f69506;', width: 120}
-            ,{title: '', toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>', width: 80}
-          ]]
-            ,where: {
-                deviceName: $('input[name=eqName]').val(),
-                ipAddress: $('input[name=ipAddr]').val()
+        var TABLE_CONFIG = {
+            alarmList: {
+                loaded: false,
+                loading: false,
+                id: 'alarmList',
+                url: 'http://172.16.5.224:18080/alarm/getAlarmList',
+                cols: [ //标题栏
+                    {type: 'checkbox', width: 80},
+                    {type: 'numbers', title: '序号', width: 80},
+                    {field: 'createTime', title: '时间', width: 180},
+                    {field: 'ipAddress', title: 'IP地址', minWidth: 150},
+                    {field: 'deviceName', title: '设备名称', minWidth: 120},
+                    {field: 'alarmType', title: '报警类型', style: 'color: #f69506;', width: 120},
+//                    {
+//                        title: '',
+//                        toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>',
+//                        width: 80
+//                    }
+                ]
             }
-            ,request: {
-                pageName: 'pageNum' //页码的参数名称，默认：page
-                ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
+        }
+        var current = TABLE_CONFIG['alarmList']
+        initTable(current)
+        $('body').on('click', '.js-btn-search', function () {
+            var startTime = $('input[name=startTime]').val();
+            var endTime = $('input[name=endTime]').val();
+            var deviceName = $('input[name=eqName]').val();
+            var ipAddress = $('input[name=ipAddr]').val();
+            var cur = TABLE_CONFIG['alarmList']
+            var where = null
+            if (startTime && endTime){
+                where = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
+            }else if (startTime && !endTime){
+                where = {
+                    startTime: startTime,
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
+            }else if (!startTime && endTime){
+                where = {
+                    endTime: endTime,
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
+            }else {
+                where = {
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
             }
-            ,parseData: function(res){ //res 即为原始返回的数据
+            table.reload('alarmList-table',{
+                where:where,
+                page:{
+                    pageNum: 1
+                }
+            })
+        })
+    })
+    function initTable(currentTable) {
+        var Table = layui.table
+        var id = currentTable.id
+        var tableId = id + '-table'
+
+        if (currentTable.loading) return
+        if (currentTable.loaded) {
+            Table.reload(tableId)
+            return
+        }
+
+        currentTable.loading = true
+        currentTable.table = Table.render({
+            elem: '#' + tableId,
+            id: tableId, // height: 'full-0',
+            url: currentTable.url,
+            page: true,
+            cols: [currentTable.cols],
+            autoSort: currentTable.autoSort || false,
+            request: {
+                pageName: 'pageNum', //页码的参数名称，默认：page
+                limitName: 'pageSize' //每页数据量的参数名，默认：limit
+            },
+            parseData: function (res) { //res 即为原始返回的数据
                 return {
                     "code": res.code, //解析接口状态
                     "msg": res.message, //解析提示文本
@@ -147,12 +212,19 @@
                     "data": res.data.list //解析数据列表
                 };
             },
-            done(res){
-              console.log(res)
+            where: currentTable.where || {},
+            done(arg) {
+                if (!currentTable.loaded) {
+                    currentTable.loading = false
+                    currentTable.loaded = true
+                }
+                if (typeof currentTable.done == 'function') {
+                    currentTable.done(arg)
+                }
             }
-        });
-      })
-    </script>
+        })
+    }
+</script>
 </body>
 
 </html>

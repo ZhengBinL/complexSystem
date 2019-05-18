@@ -51,3 +51,7 @@
     border-radius: 5px;
     border: 1px solid #ccc
 }
+.layui-table-page .layui-laypage a,
+.layui-table-page .layui-laypage span.layui-laypage-curr{
+    color: #fff;
+}
