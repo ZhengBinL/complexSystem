@@ -59,7 +59,7 @@ $(function () {
         //     play(res.data.url)
         // })
         $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=1000000', function (res) {
-            play(res.data.url)
+            play(res.data.rtspUrl)
         })
     }
     $('.videos').on('click', function () {
@@ -68,20 +68,15 @@ $(function () {
     })
 
     function play(rtspUrl) {
-        var vlc = document.getElementById("vlc");
-        var vlc1 = document.getElementById("vlc1");
-        var options = new Array(":aspect-ratio=4:3", "--rtsp-tcp");
+        var vlc = document.getElementById("vlc1");
+        var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
         var id = vlc.playlist.add(rtspUrl, "fancy name", options);
-        var id1 = vlc1.playlist.add(rtspUrl, "fancy name", options);
         vlc.playlist.playItem(id);
         vlc.playlist.play();
-
-        vlc1.playlist.playItem(id1);
-        vlc1.playlist.play();
     }
 
     function stop() {
-        var vlc = document.getElementById("vlc");
+        var vlc = document.getElementById("vlc1");
         vlc.playlist.stop();
     }
 })

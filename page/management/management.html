@@ -2,368 +2,355 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="../../asset/js/My97DatePicker/WdatePicker.js"></script>
-  <script src="../../asset/js/json2.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../asset/js/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../asset/js/json2.js"></script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
-      var str = ("Correct Talk Param [nTalkType=" + nTalkType + "]" + " [nAudioType=" + nAudioType + "]" + " [nAudioBit=" + nAudioBit
-          + "]" + " [nSampleRate=" + nSampleRate + "]");
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX"
+        event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
+        var str = ("Correct Talk Param [nTalkType=" + nTalkType + "]" + " [nAudioType=" + nAudioType + "]" +
+            " [nAudioBit=" + nAudioBit +
+            "]" + " [nSampleRate=" + nSampleRate + "]");
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnMediaDataFirstFrameEvent(szCameraID, nCameraIDLen, nFactoryType, nPlayMode)">
-      var str = (" Media Data First Frame [szCameraID=" + szCameraID + "]" + " [nCameraIDLen=" + nCameraIDLen + "]" + " [nFactoryType=" + nFactoryType + "]"
-          + " [nPlayMode=" + nPlayMode + "]");
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX"
+        event="OnMediaDataFirstFrameEvent(szCameraID, nCameraIDLen, nFactoryType, nPlayMode)">
+        var str = (" Media Data First Frame [szCameraID=" + szCameraID + "]" + " [nCameraIDLen=" + nCameraIDLen + "]" +
+            " [nFactoryType=" + nFactoryType + "]" +
+            " [nPlayMode=" + nPlayMode + "]");
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
-      var str = ("Correct Talk Param [nTalkType=]" + nTalkType + " [nAudioType=]" + nAudioType + " [nAudioBit=]" + nAudioBit
-          + " [nSampleRate=]" + nSampleRate + " [nTransMode=]" + nTransMode );
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX"
+        event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
+        var str = ("Correct Talk Param [nTalkType=]" + nTalkType + " [nAudioType=]" + nAudioType + " [nAudioBit=]" +
+            nAudioBit +
+            " [nSampleRate=]" + nSampleRate + " [nTransMode=]" + nTransMode);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordProgress(szFileName,fProgress)">
-      document.getElementById("textDownloadProgress").innerText = fProgress;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordProgress(szFileName,fProgress)">
+        document.getElementById("textDownloadProgress").innerText = fProgress;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordComplete(szFileName)">
-      document.getElementById("textDownloadProgress").innerText = 100;
-      alert("下载完成!");
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordComplete(szFileName)">
+        document.getElementById("textDownloadProgress").innerText = 100;
+        alert("下载完成!");
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnAlarmEvent(szAlarmId, szCameraId, szDeviceName, szChannelName, nAlarmType, nEventType, nLevel, nTime)">
+    <script language="javascript" for="DPSDK_OCX"
+        event="OnAlarmEvent(szAlarmId, szCameraId, szDeviceName, szChannelName, nAlarmType, nEventType, nLevel, nTime)">
+        var str = ("OnAlarmEvent [szAlarmId=]" + szAlarmId + " [szCameraId=]" + szCameraId + "[szDeviceName=]" +
+            szDeviceName +
+            "[szChannelName=]" + szChannelName + "[nAlarmType=]" + nAlarmType + "[nEventType=]" + nEventType +
+            "[nLevel=]" + nLevel + "[nTime=]" + nTime);
+        document.getElementById("GlobalInfo").innerText = str;
 
-      var str = ("OnAlarmEvent [szAlarmId=]" + szAlarmId + " [szCameraId=]" + szCameraId + "[szDeviceName=]" + szDeviceName
-          + "[szChannelName=]" + szChannelName + "[nAlarmType=]" + nAlarmType + "[nEventType=]" + nEventType + "[nLevel=]" + nLevel + "[nTime=]" + nTime);
-      document.getElementById("GlobalInfo").innerText = str;
+        if (8 == nAlarmType) {
+            //alert(szChannelName);
+        } else if ((300 < nAlarmType) && (nAlarmType < 1100)) {
+            //alert(szChannelName);
+        } else {
+            //alert(szCameraId);
+        }
+    </script>
 
-      if(8 == nAlarmType)
-      {
-          //alert(szChannelName);
-      }
-      else if((300 < nAlarmType)&&(nAlarmType < 1100))
-      {
-          //alert(szChannelName);
-      }
-      else
-      {
-          //alert(szCameraId);
-      }
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnDevStatusEvent(szDevId, nStatus)">
+        var str = "";
+        switch (nStatus) {
+            case 1:
+                //alert("设备上线！" + szDevId);
+                str = "设备上线！" + szDevId;
+                break;
+            case 2:
+                //alert("设备离线！" + szDevId);
+                str = "设备离线！" + szDevId;
+                break;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnDevStatusEvent(szDevId, nStatus)">
-      var str = "";
-      switch(nStatus)
-      {
-          case 1:
-              //alert("设备上线！" + szDevId);
-              str = "设备上线！" + szDevId;
-              break;
-          case 2:
-              //alert("设备离线！" + szDevId);
-              str = "设备离线！" + szDevId;
-              break;
-      }
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnNvrChannelStatusEvent(szChnlId, nStatus)">
+        var str = "";
+        switch (nStatus) {
+            case 1:
+                str = "通道上线！" + szChnlId;
+                break;
+            case 2:
+                str = "通道离线！" + szChnlId;
+                break;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnNvrChannelStatusEvent(szChnlId, nStatus)">
-      var str = "";
-      switch(nStatus)
-      {
-          case 1:
-              str = "通道上线！" + szChnlId;
-              break;
-          case 2:
-              str = "通道离线！" + szChnlId;
-              break;
-      }
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnGeneralJsonCallBack(Json)">
+        var str1 = "json返回结果：";
+        var str = str1 + Json;
+        document.getElementById("JsonResult").innerText = str;
 
-  <script language="javascript" for="DPSDK_OCX" event="OnGeneralJsonCallBack(Json)">
-      var str1 = "json返回结果：";
-      var str = str1 + Json;
-      document.getElementById("JsonResult").innerText = str;
+        var jsonObj = JSON.parse(Json);
+        var strMethod = jsonObj.method;
 
-      var jsonObj = JSON.parse(Json);
-      var strMethod = jsonObj.method;
+        if (strMethod == "cu.searchSnapPicUrl") {
+            var obj = document.getElementById("DPSDK_OCX");
+            var ftpInfo = obj.DPSDK_GetFTPInfo();
+            var picurl = jsonObj.params.snapPicList[0].snapPicUrl;
+            var ftpurl = ftpInfo + picurl;
+            alert(ftpurl);
+            document.getElementById("snapPicture").src = ftpurl;
+        } else if (strMethod == "dms.getSnapPic") {
+            var picdata = jsonObj.params.PicData;
+            alert(picdata);
+        } else if (strMethod == "Scs.NotifyBye") {
+            alert("通话结束");
+        } else if (strMethod == "client.getSystemState" || strMethod == "client.getServiceState") {
+            alert(Json);
+        }
+    </script>
 
-      if (strMethod == "cu.searchSnapPicUrl") {
-          var obj = document.getElementById("DPSDK_OCX");
-          var ftpInfo = obj.DPSDK_GetFTPInfo();
-          var picurl = jsonObj.params.snapPicList[0].snapPicUrl;
-          var ftpurl = ftpInfo + picurl;
-          alert(ftpurl);
-          document.getElementById("snapPicture").src = ftpurl;
-      }
-      else if (strMethod == "dms.getSnapPic") {
-          var picdata = jsonObj.params.PicData;
-          alert(picdata);
-      }
-      else if (strMethod == "Scs.NotifyBye")
-      {
-          alert("通话结束");
-      }
-      else if (strMethod == "client.getSystemState" || strMethod == "client.getServiceState")
-      {
-          alert(Json);
-      }
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnServerStatusChangeEvent(nStatus)">
+        var str = "";
+        switch (nStatus) {
+            case 1:
+                str = "服务上线！";
+                var obj = document.getElementById("DPSDK_OCX");
+                ShowCallRetInfo(obj.DPSDK_LoadDGroupInfo(), "加载组织结构");
+                break;
+            case 2:
+                str = "服务离线！";
+                break;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnServerStatusChangeEvent(nStatus)">
-      var str = "";
-      switch(nStatus)
-      {
-          case 1:
-              str = "服务上线！";
-              var obj = document.getElementById("DPSDK_OCX");
-              ShowCallRetInfo(obj.DPSDK_LoadDGroupInfo(), "加载组织结构");
-              break;
-          case 2:
-              str = "服务离线！";
-              break;
-      }
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoadDGroupInfoComplete(nRet, nGroupLen)">
+        var str = ("AsyncLoadDGroupInfoComplete [nRet=]" + nRet + " [nGroupLen=]" + nGroupLen);
+        document.getElementById("RetInfo").innerText = str;
+        var obj = document.getElementById("DPSDK_OCX");
+        //	document.getElementById("DGroupInfo").innerText = obj.DPSDK_GetDGroupStr();
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoadDGroupInfoComplete(nRet, nGroupLen)">
-      var str = ("AsyncLoadDGroupInfoComplete [nRet=]" + nRet + " [nGroupLen=]" + nGroupLen);
-      document.getElementById("RetInfo").innerText = str;
-      var obj = document.getElementById("DPSDK_OCX");
-      //	document.getElementById("DGroupInfo").innerText = obj.DPSDK_GetDGroupStr();
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnWndLBtnClick(nWndId, nWndNo, xPos, yPos)">
+        var str = ("OnWndLBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnWndLBtnClick(nWndId, nWndNo, xPos, yPos)">
-      var str = ("OnWndLBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnWndRBtnClick(nWndId, nWndNo, xPos, yPos)">
+        var str = ("OnWndRBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnWndRBtnClick(nWndId, nWndNo, xPos, yPos)">
-      var str = ("OnWndRBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnDoorStatusReportEvent(szCameraId, status, time)">
+        var doorstatus = "";
+        switch (status) {
+            case 1:
+                doorstatus = "开门！";
+                break;
+            case 0:
+                doorstatus = "关门！";
+                break;
+            case 2:
+                doorstatus = "离线！";
+                break;
+        }
+        var str = ("DoorStatusReport [szCameraId=]" + szCameraId + " [status=]" + doorstatus + " [time=]" + time);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnDoorStatusReportEvent(szCameraId, status, time)">
-      var doorstatus = "";
-      switch(status)
-      {
-          case 1:
-              doorstatus = "开门！";
-              break;
-          case 0:
-              doorstatus = "关门！";
-              break;
-          case 2:
-              doorstatus = "离线！";
-              break;
-      }
-      var str = ("DoorStatusReport [szCameraId=]" + szCameraId + " [status=]" + doorstatus + " [time=]" + time);
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX"
+        event="OnNetAlarmHostStatusReportEvent(szDeviceId, nReportType, nOperationType, nStatus)">
+        var strReportType = "";
+        var strOperationType = "";
+        var strStatus = "";
+        switch (nReportType) {
+            case 1:
+                strReportType = "留守布防";
+                break;
+            case 2:
+                strReportType = "防区旁路";
+                break;
+            default:
+                strReportType = "未知";
+                break;
+        }
+        switch (nOperationType) {
+            case 1:
+                strOperationType = "设备 布/撤防";
+                break;
+            case 2:
+                strOperationType = "通道 布/撤防";
+                break;
+            case 3:
+                strOperationType = "报警输出通道操作";
+                break;
+            default:
+                strOperationType = "未知";
+                break;
+        }
+        switch (nStatus) {
+            case 1:
+                strStatus = "布防/旁路";
+                break;
+            case 2:
+                strStatus = "撤防/取消旁路";
+                break;
+            default:
+                strStatus = "未知";
+                break;
+        }
+        var str = ("网络报警主机状态上报 [szCameraId=]" + szDeviceId + " [ReportType=]" + strReportType + " [OperationType=]" +
+            strOperationType + " [Status=]" + strStatus);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnNetAlarmHostStatusReportEvent(szDeviceId, nReportType, nOperationType, nStatus)">
-      var strReportType = "";
-      var strOperationType = "";
-      var strStatus = "";
-      switch(nReportType)
-      {
-          case 1:
-              strReportType = "留守布防";
-              break;
-          case 2:
-              strReportType = "防区旁路";
-              break;
-          default:
-              strReportType = "未知";
-              break;
-      }
-      switch(nOperationType)
-      {
-          case 1:
-              strOperationType = "设备 布/撤防";
-              break;
-          case 2:
-              strOperationType = "通道 布/撤防";
-              break;
-          case 3:
-              strOperationType = "报警输出通道操作";
-              break;
-          default:
-              strOperationType = "未知";
-              break;
-      }
-      switch(nStatus)
-      {
-          case 1:
-              strStatus = "布防/旁路";
-              break;
-          case 2:
-              strStatus = "撤防/取消旁路";
-              break;
-          default:
-              strStatus = "未知";
-              break;
-      }
-      var str = ("网络报警主机状态上报 [szCameraId=]" + szDeviceId + " [ReportType=]" + strReportType + " [OperationType=]" + strOperationType + " [Status=]" + strStatus);
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX"
+        event="OnVideoAlarmHostStatusReportEvent(szDeviceId, nChannelNO, nStatus)">
+        var strStatus = "";
+        switch (nStatus) {
+            case 1:
+                strStatus = "针对设备布防";
+                break;
+            case 3:
+                strStatus = "针对设备撤防";
+                break;
+            case 4:
+                strStatus = "针对通道旁路";
+                break;
+            case 5:
+                strStatus = "针对通道取消旁路";
+                break;
+            case 6:
+                strStatus = "针对设备在家布防";
+                break;
+            case 7:
+                strStatus = "针对设备外出布防";
+                break;
+            default:
+                strStatus = "未知";
+                break;
+        }
+        var str = ("视频报警主机状态上报 [szCameraId=]" + szDeviceId + " [ChannelNO=]" + nChannelNO + " [Status=]" + strStatus);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnVideoAlarmHostStatusReportEvent(szDeviceId, nChannelNO, nStatus)">
-      var strStatus = "";
-      switch(nStatus)
-      {
-          case 1:
-              strStatus = "针对设备布防";
-              break;
-          case 3:
-              strStatus = "针对设备撤防";
-              break;
-          case 4:
-              strStatus = "针对通道旁路";
-              break;
-          case 5:
-              strStatus = "针对通道取消旁路";
-              break;
-          case 6:
-              strStatus = "针对设备在家布防";
-              break;
-          case 7:
-              strStatus = "针对设备外出布防";
-              break;
-          default:
-              strStatus = "未知";
-              break;
-      }
-      var str = ("视频报警主机状态上报 [szCameraId=]" + szDeviceId + " [ChannelNO=]" + nChannelNO + " [Status=]" + strStatus);
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnBayCarInfoEvent(szBayCarInfo)">
+        document.getElementById("GlobalInfo").innerText = szBayCarInfo;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnBayCarInfoEvent(szBayCarInfo)">
-      document.getElementById("GlobalInfo").innerText = szBayCarInfo;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnPlaybackCompleteByWndNo(nWndId, nWndNo)">
+        var obj = document.getElementById("DPSDK_OCX");
+        obj.DPSDK_StartFilePlaybackByWndNo(nWndId, nWndNo, 1);
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnPlaybackCompleteByWndNo(nWndId, nWndNo)">
-      var obj = document.getElementById("DPSDK_OCX");
-      obj.DPSDK_StartFilePlaybackByWndNo(nWndId, nWndNo, 1);
-  </script>
+    <script language="javascript" for="DPSDK_OCX"
+        event="OnChannelViewInfoReportEvent(szCamearId, nDistance, nAngelH, nAzimuthH, nInclinationH)">
+        var str = ("OnChannelViewInfoReportEvent [szCamearId=]" + szCamearId + " [nDistance=]" + nDistance +
+            "[nAngelH=]" + nAngelH +
+            "[nAzimuthH=]" + nAzimuthH + "[nInclinationH=]" + nInclinationH);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnChannelViewInfoReportEvent(szCamearId, nDistance, nAngelH, nAzimuthH, nInclinationH)">
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoginComplete(nRet)">
+        if (nRet == 0) {
+            bLogin = 1;
+        }
+        ShowCallRetInfo(nRet, "异步登录");
+    </script>
 
-      var str = ("OnChannelViewInfoReportEvent [szCamearId=]" + szCamearId + " [nDistance=]" + nDistance + "[nAngelH=]" + nAngelH
-          + "[nAzimuthH=]" + nAzimuthH + "[nInclinationH=]" + nInclinationH );
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncStartRealplayComplete(nRet, nWndId, nWndNo)">
+        var str;
+        if (nRet == 0) {
+            str = "异步播放视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
+            var szCameraId = document.getElementById("textCameraID").value;
+            var obj = document.getElementById("DPSDK_OCX");
+            var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
+            insertRealplayHistory(szCameraId);
+            ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 1, bIVS), "规则线显示"); //打开规则线显示
+            ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 2, bIVS), "目标框显示"); //打开目标框显示
+            ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 3, bIVS), "轨迹线显示"); //打开轨迹线显示
+        } else {
+            str = "异步播放视频失败，错误码：" + nRet;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoginComplete(nRet)">
-      if(nRet == 0)
-      {
-          bLogin = 1;
-      }
-      ShowCallRetInfo(nRet, "异步登录");
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncStopRealplayComplete(nRet, nWndId, nWndNo)">
+        var str;
+        if (nRet == 0) {
+            str = "异步停止视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
+        } else {
+            str = "异步停止视频失败，错误码：" + nRet;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnAsyncStartRealplayComplete(nRet, nWndId, nWndNo)">
-      var str;
-      if(nRet == 0)
-      {
-          str = "异步播放视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
-          var szCameraId = document.getElementById("textCameraID").value;
-          var obj = document.getElementById("DPSDK_OCX");
-          var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
-          insertRealplayHistory(szCameraId);
-          ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 1, bIVS),"规则线显示");//打开规则线显示
-          ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 2, bIVS),"目标框显示");//打开目标框显示
-          ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 3, bIVS),"轨迹线显示");//打开轨迹线显示
-      }
-      else
-      {
-          str = "异步播放视频失败，错误码：" + nRet;
-      }
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncPtzDirectionComplete(nRet, szCameraId)">
+        var str;
+        if (nRet == 0) {
+            str = "异步云台方向控制成功，szCameraId = " + szCameraId;
+        } else {
+            str = "异步云台方向控制失败，错误码：" + nRet;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnAsyncStopRealplayComplete(nRet, nWndId, nWndNo)">
-      var str;
-      if(nRet == 0)
-      {
-          str = "异步停止视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
-      }
-      else
-      {
-          str = "异步停止视频失败，错误码：" + nRet;
-      }
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnVtCallInviteCallback(szUserId)">
+        var str = szUserId + "请求可视对讲";
+        alert(str);
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnAsyncPtzDirectionComplete(nRet, szCameraId)">
-      var str;
-      if(nRet == 0)
-      {
-          str = "异步云台方向控制成功，szCameraId = " + szCameraId;
-      }
-      else
-      {
-          str = "异步云台方向控制失败，错误码：" + nRet;
-      }
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
+    <script language="javascript" for="DPSDK_OCX" event="OnBusyVtCallCallback()">
+        var str = "呼叫繁忙";
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
 
-  <script language="javascript" for="DPSDK_OCX" event="OnVtCallInviteCallback(szUserId)">
-      var str = szUserId + "请求可视对讲";
-      alert(str);
-  </script>
-
-  <script language="javascript" for="DPSDK_OCX" event="OnBusyVtCallCallback()">
-      var str = "呼叫繁忙";
-      document.getElementById("GlobalInfo").innerText = str;
-  </script>
-
-  <title>综合管理</title>
-  <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
-  <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
-  <link rel="stylesheet" href="../../asset/css/common.css">
-  <link rel="stylesheet" href="../../asset/css/reset.css">
-  <link rel="stylesheet" href="./management.css">
-  <link rel="stylesheet" type="text/css" href="../../asset/css/DSSPlay.css"/>
-  <script src="../../asset/js/ocxfun.js"></script>
+    <title>综合管理</title>
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="./management.css">
+    <link rel="stylesheet" type="text/css" href="../../asset/css/DSSPlay.css" />
+    <script src="../../asset/js/ocxfun.js"></script>
 </head>
 
 <body>
-  <!--头部-->
-  <div class="header">
-    <a class="header-lt" id="header" href="../index/index.html"></a>
-    <div class="header-rt">
-      <ul>
-        <li class="notice-wrapper">
-          <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
-        </li>
-        <li class="user-notice">
-          <div id="user-operate" class="user-operate">
-            <img class="user-img" src="../../asset/img/logo.png" alt="头像">
-            <a href="javascript:;">管理</a>
-            <!-- <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开"> -->
-            <a href="javascript:;" class="exit" title="退出">退出</a>
-          </div>
-          <!-- <div id="dropDown" class="drop-down">
+    <!--头部-->
+    <div class="header">
+        <a class="header-lt" id="header" href="../index/index.html"></a>
+        <div class="header-rt">
+            <ul>
+                <li class="notice-wrapper">
+                    <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+                </li>
+                <li class="user-notice">
+                    <div id="user-operate" class="user-operate">
+                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                        <a href="javascript:;">管理</a>
+                        <!-- <img class="icon-drop" src="../asset/img/drop-down.png" alt="下拉展开"> -->
+                        <a href="javascript:;" class="exit" title="退出">退出</a>
+                    </div>
+                    <!-- <div id="dropDown" class="drop-down">
               <a href="#">1</a>
               <a href="#">2</a>
               <a href="#">3</a>
           </div> -->
-        </li>
-      </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <!--侧边栏-->
-  <div class="aside">
-    <div class="menu-tree-wrapper">
-      <ul id="menu-tree" class="menu-tree ztree"></ul>
-    </div>
-    <!-- <div class="palace">
+    <!--侧边栏-->
+    <!-- <iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
+    marginwidth="0"
+    style="position: absolute;display: block;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe> -->
+    <div class="aside">
+        <div class="menu-tree-wrapper">
+            <ul id="menu-tree" class="menu-tree ztree"></ul>
+        </div>
+        <!-- <div class="palace">
       <div class="palace-unit">111</div>
       <div class="palace-unit">222</div>
       <div class="palace-unit">333</div>
@@ -371,307 +358,414 @@
       <div class="palace-unit palace-ct">555</div>
       <div class="palace-unit palace-last">666</div>
     </div> -->
-    <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
-  </div>
-  <!--主体-->
-  <div class="main">
-    <div class="tabview">
-      <ul class="tabtop js-tabtop">
-        <li class="js-tabhd">
-          <a href="javascript:void(0)">地图模式</a>
-        </li>
-        <li class="js-tabhd on">
-          <a href="javascript:void(0)">分屏模式</a>
-        </li>
-      </ul>
-      <!-- tab-hd =end= -->
-
-      <!-- tab-bd =start= -->
-      <ul class="tabmain js-tabmain">
-        <li class="js-tabbd">
-          <!-- tab-bd>>>li =start= -->
-          <div class="map-box">
-            <img class="map-img-bg" src="../../asset/img/map_bg.png">
-
-            <dl class="inner-box">
-              <dd class="map-img-content" id='map-img-content'>
-                <img class="map-img" id="img" src="../../asset/img/map.jpg">
-                <img class="camera camera-hidden camera1" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera2" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera3" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera4" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera5" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera6" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera7" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera8" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera9" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera10" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera11" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera12" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera13" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera14" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera15" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera16" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera17" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera18" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera19" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera20" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera21" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera22" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera23" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera24" src="../../asset/img/cam-small.png" alt="">
-                <img class="camera camera-hidden camera25" src="../../asset/img/cam-small.png" alt="">
-
-                <img class="camera camera-hidden camera-1 camera1-1" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-2" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-3" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-4" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-5" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-6" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-7" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-8" src="../../asset/img/cam-ball.png" alt="">
-                <img class="camera camera-hidden camera-1 camera1-9" src="../../asset/img/cam-ball.png" alt="">
-
-                <img class="camera camera-2 camera2-1" src="../../asset/img/cam-big.png" alt="">
-                <img class="camera camera-2 camera2-2" src="../../asset/img/cam-big.png" alt="">
-                <img class="camera camera-2 camera2-3" src="../../asset/img/cam-big.png" alt="">
-                <img class="camera camera-2 camera2-4" src="../../asset/img/cam-big.png" alt="">
-                <img class="camera camera-2 camera2-5" src="../../asset/img/cam-big.png" alt="">
-                <img class="camera camera-2 camera2-6" src="../../asset/img/cam-big.png" alt="">
-              </dd>
-              <dt>
-                <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
-                <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
-                <a href="javascript:;" class="btn-zoom btn-zoomtrack">智能追踪</a>
-                <a href="javascript:;" class="btn-zoom btn-zoommonitor">执勤监控</a>
-              </dt>
-            </dl>
-          </div>
-          <!-- tab-bd>>>li =end= -->
-        </li>
-        <li class="js-tabbd on">
-          <!-- tab-bd>>>li =start= -->
-          <div class="split-mode">
-            <ul id="mode-rec" class="mode-content mode-rec-4">
-              <li>
-                <dl>
-                  <dd class="videos">
-                  </dd>
-                  <dt class="v-toolbar">
-                    <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png"> 历史记录</a>
-                    <a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
-                    <div class="opt-monitor">
-                      <a href="javascript:;" class="opt-item opt-top-lt"></a>
-                      <a href="javascript:;" class="opt-item opt-top-ct"></a>
-                      <a href="javascript:;" class="opt-item opt-top-rt"></a>
-                      <a href="javascript:;" class="opt-item opt-mid-lt"></a>
-                      <a href="javascript:;" class="opt-item opt-mid-rt"></a>
-                      <a href="javascript:;" class="opt-item opt-bot-lt"></a>
-                      <a href="javascript:;" class="opt-item opt-bot-ct"></a>
-                      <a href="javascript:;" class="opt-item opt-bot-rt"></a>
-                      <a href="javascript:;" class="opt-item opt-big"></a>
-                      <a href="javascript:;" class="opt-item opt-small"></a>
-                    </div>
-                  </dt>
-                </dl>
-              </li>
-              <li>
-                <dl>
-                  <dd class="videos">
-                      <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc" codebase="" width="98%" height="98%" events="True">
-                          <param name="AutoLoop" value="False" />
-                          <param name="AutoPlay" value="True" />
-                          <param name="Time" value="True" />
-                          <param name="ShowDisplay" value="True" />
-                          <param name="Controls" value="False">
-                          <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="98%" height="98%" text="Waiting for video" name="vlc"></EMBED>
-                      </OBJECT>
-                  </dd>
-                  <dt class="v-toolbar">
-                    <a href="javascript:;"><img src="../../asset/img/icon-history.png"> 历史记录</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-control.png"> 云台控制</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
-                  </dt>
-                </dl>
-              </li>
-              <li>
-                <dl>
-                  <dd class="videos"></dd>
-                  <dt class="v-toolbar">
-                    <a href="javascript:;"><img src="../../asset/img/icon-history.png"> 历史记录</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-control.png"> 云台控制</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
-                  </dt>
-                </dl>
-              </li>
-              <li>
-                <dl>
-                  <dd class="videos"></dd>
-                  <dt class="v-toolbar">
-                    <a href="javascript:;"><img src="../../asset/img/icon-history.png"> 历史记录</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-control.png"> 云台控制</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
-                  </dt>
-                </dl>
-              </li>
-              <span class="clearfix"></span>
-            </ul>
-
-            <div class="slider-operate">
-              <img src="../../asset/img/btn_1_1.png" alt="">
-              <div id="slide" class="slider"></div>
-              <img src="../../asset/img/btn_4_4.png" alt="">
-              <img src="../../asset/img/btn_big.png" alt="">
-            </div>
-          </div>
-          <!-- tab-bd>>>li =end= -->
-          <!--历史记录 start-->
-          <div class="history-wrapper">
-            <div class="history-top mode-content">
-              <div class="video-wrapper">
-                <div class="video">
-                  <div id="mainbg">
-                    <div id="main">
-                      <div style="width: 100%;height: 20px;overflow: auto;" id="RetInfo">
-
-                      </div>
-                      <div style="width: 100%;height: 0px;overflow: auto;" id="GlobalInfo">
-
-                      </div>
-                      <div class="box_top"></div>
-                      <div id="mviewl">
-                        <div id="obj">
-                          <object id="DPSDK_OCX" classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D" style="width: 100%; height: 70%" codebase="DpsdkOcx.cab#version=1.0.0.0"></object>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;filter: alpha(opacity=0)"></iframe>
-                  <div class="v-toolbar">
-                    <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
-                    <a href="javascript:;" class="playAndsuspend"><img src="../../asset/img/icon_pause.png"> <span id="playAndsuspend">停止播放</span></a >
-                    <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-close.png"> 关闭</a>
-                    <div class="speed-wrapper">
-                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(64)" class="speed-item">8.0X</a >
-                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(32)" class="speed-item">4.0X</a >
-                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(16)" class="speed-item">2.0X</a >
-                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(8)" class="speed-item">1.0X</a >
-                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(4)" class="speed-item">1/2X</a >
-                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(2)" class="speed-item">1/4X</a >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="date-wrapper">
-                <div class="calendar" id="calendar"></div>
-                <div class="search-btn">搜索录像</div>
-              </div>
-            </div>
-            <div class="scale-wrapper">
-              <div class="scale-title">历史视频时间段控制</div>
-              <div class="scale">
-                <div class="scale-num"><img src="../../asset/img/scalenum.png"></div>
-                <img src="../../asset/img/graduation.png" class="scale-bar" />
-                <div class="scale-box">
-                  <span data-count="0" class="scale-unit spec"></span>
-                  <span data-count="1" class="scale-unit"></span>
-                  <span data-count="2" class="scale-unit"></span>
-                  <span data-count="3" class="scale-unit"></span>
-                  <span data-count="4" class="scale-unit"></span>
-                  <span data-count="5" class="scale-unit"></span>
-                  <span data-count="6" class="scale-unit"></span>
-                  <span data-count="7" class="scale-unit"></span>
-                  <span data-count="8" class="scale-unit"></span>
-                  <span data-count="9" class="scale-unit"></span>
-                  <span data-count="10" class="scale-unit"></span>
-                  <span data-count="11" class="scale-unit"></span>
-                  <span data-count="12" class="scale-unit"></span>
-                  <span data-count="13" class="scale-unit"></span>
-                  <span data-count="14" class="scale-unit"></span>
-                  <span data-count="15" class="scale-unit"></span>
-                  <span data-count="16" class="scale-unit"></span>
-                  <span data-count="17" class="scale-unit"></span>
-                  <span data-count="18" class="scale-unit"></span>
-                  <span data-count="19" class="scale-unit"></span>
-                  <span data-count="20" class="scale-unit"></span>
-                  <span data-count="21" class="scale-unit"></span>
-                  <span data-count="22" class="scale-unit"></span>
-                  <span data-count="23" class="scale-unit"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--历史记录 end-->
-        </li>
-      </ul>
+        <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
     </div>
-  </div>
+    <!--主体-->
+    <div class="main">
+        <div class="tabview">
+            <ul class="tabtop js-tabtop">
+                <li class="js-tabhd">
+                    <a href="javascript:void(0)">地图模式</a>
+                </li>
+                <li class="js-tabhd on">
+                    <a href="javascript:void(0)">分屏模式</a>
+                </li>
+            </ul>
+            <!-- tab-hd =end= -->
 
-  <div class="footer">
-    技术支持：北京国势通科技有限公司
-  </div>
-  <!--报警弹框-->
+            <!-- tab-bd =start= -->
+            <ul class="tabmain js-tabmain">
+                <li class="js-tabbd">
+                    <!-- tab-bd>>>li =start= -->
+                    <div class="map-box">
+                        <img class="map-img-bg" src="../../asset/img/map_bg.png">
 
-  <script src="../../asset/js/jquery.min.js"></script>
-  <script src="../../asset/js/utils.js"></script>
-  <script src="../../asset/introduce/layui/layui.js"></script>
-  <script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
-  <script src="./management.js"></script>
-  <script>
-    var _this = this
-    //计算高度，超出隐藏
-    function caleHeight(itemnumb){
-      // 设置分屏模式视频高度
-      var itemWidth = $('.mode-content .videos').width();
-      var itemHeight = itemWidth * 9 / 16;
-      $('.mode-content .videos').css('height', itemHeight);
-      $('#mode-rec').css({
-        'height':itemHeight*itemnumb,
-        'overflow':'hidden'
-      })
-    }
-    _this.caleHeight(4)
-    //滑块
-    layui.use('slider', function () {
-      var slider = layui.slider;
-      //设置步长
-      slider.render({
-        elem: '#slide',
-        step: 1, //步长,
-        min: 1,
-        max: 4,
-        value: 4,
-        change: function (value) {
-          //do something
-          if (value == 4) {
-            $('#mode-rec').removeClass('mode-rec-1')
-            $('#mode-rec').removeClass('mode-rec-2')
-            $('#mode-rec').removeClass('mode-rec-3')
-            $('#mode-rec').addClass('mode-rec-4')
-            _this.caleHeight(4)
-          } else if (value == 3) {
-            $('#mode-rec').removeClass('mode-rec-1')
-            $('#mode-rec').removeClass('mode-rec-2')
-            $('#mode-rec').removeClass('mode-rec-4')
-            $('#mode-rec').addClass('mode-rec-3')
-            _this.caleHeight(3)
-          } else if (value == 2) {
-            $('#mode-rec').removeClass('mode-rec-1')
-            $('#mode-rec').removeClass('mode-rec-3')
-            $('#mode-rec').removeClass('mode-rec-4')
-            $('#mode-rec').addClass('mode-rec-2')
-            _this.caleHeight(2)
-          } else if (value == 1) {
-            $('#mode-rec').removeClass('mode-rec-2')
-            $('#mode-rec').removeClass('mode-rec-3')
-            $('#mode-rec').removeClass('mode-rec-4')
-            $('#mode-rec').addClass('mode-rec-1')
-            _this.caleHeight(1)
-          }
+                        <dl class="inner-box">
+                            <dd class="map-img-content" id='map-img-content'>
+                                <img class="map-img" id="img" src="../../asset/img/map.jpg">
+                                <img class="camera camera-hidden camera1" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera2" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera3" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera4" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera5" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera6" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera7" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera8" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera9" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera10" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera11" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera12" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera13" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera14" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera15" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera16" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera17" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera18" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera19" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera20" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera21" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera22" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera23" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera24" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera25" src="../../asset/img/cam-small.png" alt="">
+
+                                <img class="camera camera-hidden camera-1 camera1-1" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-2" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-3" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-4" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-5" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-6" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-7" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-8" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-9" src="../../asset/img/cam-ball.png"
+                                    alt="">
+
+                                <img class="camera camera-2 camera2-1" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-2" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-3" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-4" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-5" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-6" src="../../asset/img/cam-big.png" alt="">
+                            </dd>
+                            <dt>
+                                <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
+                                <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
+                                <a href="javascript:;" class="btn-zoom btn-zoomtrack">智能追踪</a>
+                                <a href="javascript:;" class="btn-zoom btn-zoommonitor">执勤监控</a>
+                            </dt>
+                        </dl>
+                    </div>
+                    <!-- tab-bd>>>li =end= -->
+                </li>
+                <li class="js-tabbd on">
+                    <!-- tab-bd>>>li =start= -->
+                    <div class="split-mode">
+                        <ul id="mode-rec" class="mode-content mode-rec-4">
+                            <li>
+                                <dl>
+                                    <dd class="videos">
+                                    <dt class="v-toolbar">
+                                        <a href="javascript:;" class="icon-history"><img
+                                                src="../../asset/img/icon-history.png"> 历史记录</a>
+                                        <a href="javascript:;" class="js-control"><img
+                                                src="../../asset/img/icon-control.png"> 云台控制</a>
+                                        <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
+                                        <iframe id="zhanwei1" src="about:blank" frameborder="0" marginheight="0"
+                                            marginwidth="0"
+                                            style="position: absolute;display: block;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>
+                                        <div class="opt-monitor">
+                                            <a href="javascript:;" class="opt-item opt-top-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-big"></a>
+                                            <a href="javascript:;" class="opt-item opt-small"></a>
+                                        </div>
+                                    </dt>
+                                    <div style="position: absolute;top:32px;width: 100%;height: 100%;">
+                                        <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc1"
+                                            codebase="" width="100%" height="85%" events="True">
+                                            <param name="AutoLoop" value="False" />
+                                            <param name="AutoPlay" value="True" />
+                                            <param name="Time" value="True" />
+                                            <param name="ShowDisplay" value="True" />
+                                            <param name="Controls" value="False">
+                                            <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"
+                                                version="VideoLAN.VLCPlugin.2" width="100%" height="85%"
+                                                text="Waiting for video" name="vlc"></EMBED>
+                                        </OBJECT>
+                                    </div>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dd class="videos">
+                                    <dt class="v-toolbar">
+                                        <a href="javascript:;" class="icon-history"><img
+                                                src="../../asset/img/icon-history.png"> 历史记录</a>
+                                        <a href="javascript:;" class="js-control"><img
+                                                src="../../asset/img/icon-control.png"> 云台控制</a>
+                                        <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
+                                        <iframe id="zhanwei2" src="about:blank" frameborder="0" marginheight="0"
+                                            marginwidth="0"
+                                            style="position: absolute;display: block;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>
+                                        <div class="opt-monitor">
+                                            <a href="javascript:;" class="opt-item opt-top-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-big"></a>
+                                            <a href="javascript:;" class="opt-item opt-small"></a>
+                                        </div>
+                                    </dt>
+                                    <div style="position: absolute;top:32px;width: 100%;height: 100%;">
+                                        <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc2"
+                                            codebase="" events="True">
+                                            <param name="AutoLoop" value="False" />
+                                            <param name="AutoPlay" value="True" />
+                                            <param name="Time" value="True" />
+                                            <param name="ShowDisplay" value="True" />
+                                            <param name="Controls" value="False">
+                                            <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"
+                                                version="VideoLAN.VLCPlugin.2" 
+                                                text="Waiting for video" name="vlc"></EMBED>
+                                        </OBJECT>
+                                    </div>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dd class="videos">
+                                    <dt class="v-toolbar">
+                                        <a href="javascript:;" class="icon-history"><img
+                                                src="../../asset/img/icon-history.png"> 历史记录</a>
+                                        <a href="javascript:;" class="js-control"><img
+                                                src="../../asset/img/icon-control.png"> 云台控制</a>
+                                        <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
+                                        <iframe id="zhanwei3" src="about:blank" frameborder="0" marginheight="0"
+                                            marginwidth="0"
+                                            style="position: absolute;display: block;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>
+                                        <div class="opt-monitor">
+                                            <a href="javascript:;" class="opt-item opt-top-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-big"></a>
+                                            <a href="javascript:;" class="opt-item opt-small"></a>
+                                        </div>
+                                    </dt>
+                                    <div style="position: absolute;top:32px;width: 100%;height: 100%;">
+                                        <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc3"
+                                            codebase="" width="100%" height="85%" events="True">
+                                            <param name="AutoLoop" value="False" />
+                                            <param name="AutoPlay" value="True" />
+                                            <param name="Time" value="True" />
+                                            <param name="ShowDisplay" value="True" />
+                                            <param name="Controls" value="False">
+                                            <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"
+                                                version="VideoLAN.VLCPlugin.2" width="100%" height="85%"
+                                                text="Waiting for video" name="vlc"></EMBED>
+                                        </OBJECT>
+                                    </div>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dd class="videos">
+                                    <dt class="v-toolbar">
+                                        <a href="javascript:;" class="icon-history"><img
+                                                src="../../asset/img/icon-history.png"> 历史记录</a>
+                                        <a href="javascript:;" class="js-control"><img
+                                                src="../../asset/img/icon-control.png"> 云台控制</a>
+                                        <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
+                                        <iframe id="zhanwei4" src="about:blank" frameborder="0" marginheight="0"
+                                            marginwidth="0"
+                                            style="position: absolute;display: block;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>
+                                        <div class="opt-monitor">
+                                            <a href="javascript:;" class="opt-item opt-top-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-top-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-mid-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-lt"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-ct"></a>
+                                            <a href="javascript:;" class="opt-item opt-bot-rt"></a>
+                                            <a href="javascript:;" class="opt-item opt-big"></a>
+                                            <a href="javascript:;" class="opt-item opt-small"></a>
+                                        </div>
+                                    </dt>
+                                    <div style="position: absolute;top:32px;width: 100%;height: 100%;">
+                                        <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc4"
+                                            codebase="" width="100%" height="85%" events="True">
+                                            <param name="AutoLoop" value="False" />
+                                            <param name="AutoPlay" value="True" />
+                                            <param name="Time" value="True" />
+                                            <param name="ShowDisplay" value="True" />
+                                            <param name="Controls" value="False">
+                                            <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"
+                                                version="VideoLAN.VLCPlugin.2" width="100%" height="85%"
+                                                text="Waiting for video" name="vlc"></EMBED>
+                                        </OBJECT>
+                                    </div>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <span class="clearfix"></span>
+                        </ul>
+
+                        <div class="slider-operate">
+                            <img src="../../asset/img/btn_1_1.png" alt="">
+                            <div id="slide" class="slider"></div>
+                            <img src="../../asset/img/btn_4_4.png" alt="">
+                            <img src="../../asset/img/btn_big.png" alt="">
+                        </div>
+                    </div>
+                    <!-- tab-bd>>>li =end= -->
+                    <!--历史记录 start-->
+                    <div class="history-wrapper">
+                        <div class="history-top mode-content">
+                            <div class="video-wrapper">
+                                <div class="video">
+                                    <div id="mainbg">
+                                        <div id="main">
+                                            <div style="width: 100%;height: 20px;overflow: auto;" id="RetInfo">
+
+                                            </div>
+                                            <div style="width: 100%;height: 0px;overflow: auto;" id="GlobalInfo">
+
+                                            </div>
+                                            <div class="box_top"></div>
+                                            <div id="mviewl">
+                                                <div id="obj">
+                                                    <object id="DPSDK_OCX"
+                                                        classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D"
+                                                        style="width: 100%; height: 70%"
+                                                        codebase="DpsdkOcx.cab#version=1.0.0.0"></object>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0"
+                                        marginwidth="0"
+                                        style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
+                                    <div class="v-toolbar">
+                                        <a href="javascript:;" class="icon-speed"><img
+                                                src="../../asset/img/icon_speed.png"> 倍速</a>
+                                        <a href="javascript:;" class="playAndsuspend"><img
+                                                src="../../asset/img/icon_pause.png"> <span
+                                                id="playAndsuspend">停止播放</span></a>
+                                        <a href="javascript:;" class="icon-history"><img
+                                                src="../../asset/img/icon-close.png"> 关闭</a>
+                                        <div class="speed-wrapper">
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(64)"
+                                                class="speed-item">8.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(32)"
+                                                class="speed-item">4.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(16)"
+                                                class="speed-item">2.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(8)"
+                                                class="speed-item">1.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(4)"
+                                                class="speed-item">1/2X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(2)"
+                                                class="speed-item">1/4X</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="date-wrapper">
+                                <div class="calendar" id="calendar"></div>
+                                <div class="search-btn">搜索录像</div>
+                            </div>
+                        </div>
+                        <div class="scale-wrapper">
+                            <div class="scale-title">历史视频时间段控制</div>
+                            <div class="scale">
+                                <div class="scale-num"><img src="../../asset/img/scalenum.png"></div>
+                                <img src="../../asset/img/graduation.png" class="scale-bar" />
+                                <div class="scale-box">
+                                    <span data-count="0" class="scale-unit spec"></span>
+                                    <span data-count="1" class="scale-unit"></span>
+                                    <span data-count="2" class="scale-unit"></span>
+                                    <span data-count="3" class="scale-unit"></span>
+                                    <span data-count="4" class="scale-unit"></span>
+                                    <span data-count="5" class="scale-unit"></span>
+                                    <span data-count="6" class="scale-unit"></span>
+                                    <span data-count="7" class="scale-unit"></span>
+                                    <span data-count="8" class="scale-unit"></span>
+                                    <span data-count="9" class="scale-unit"></span>
+                                    <span data-count="10" class="scale-unit"></span>
+                                    <span data-count="11" class="scale-unit"></span>
+                                    <span data-count="12" class="scale-unit"></span>
+                                    <span data-count="13" class="scale-unit"></span>
+                                    <span data-count="14" class="scale-unit"></span>
+                                    <span data-count="15" class="scale-unit"></span>
+                                    <span data-count="16" class="scale-unit"></span>
+                                    <span data-count="17" class="scale-unit"></span>
+                                    <span data-count="18" class="scale-unit"></span>
+                                    <span data-count="19" class="scale-unit"></span>
+                                    <span data-count="20" class="scale-unit"></span>
+                                    <span data-count="21" class="scale-unit"></span>
+                                    <span data-count="22" class="scale-unit"></span>
+                                    <span data-count="23" class="scale-unit"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--历史记录 end-->
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        技术支持：北京国势通科技有限公司
+    </div>
+    <!--报警弹框-->
+
+    <script src="../../asset/js/jquery.min.js"></script>
+    <script src="../../asset/js/utils.js"></script>
+    <script src="../../asset/introduce/layui/layui.js"></script>
+    <script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
+    <script src="./management.js"></script>
+    <script>
+        var _this = this
+        //计算高度，超出隐藏
+        function caleHeight(itemnumb) {
+            // 设置分屏模式视频高度
+            var itemWidth = $('.mode-content .videos').width();
+            var itemHeight = itemWidth * 9 / 16;
+            $('.mode-content .videos').css('height', itemHeight);
+            $('#vlc1').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#vlc2').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#vlc3').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#vlc4').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#mode-rec').css({
+                'height': itemHeight * itemnumb,
+                'overflow': 'hidden'
+            })
         }
-      });
-    })
     // 鼠标滑过分屏模式视频&滑过历史记录视频
     $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
         $(this).children('.v-toolbar').show();
@@ -685,221 +779,275 @@
     $('body').on('click', '.js-control', function () {
         $(this).parent().children('.opt-monitor').toggle()
     })
-
-    // 渲染日期组件
-    layui.use('laydate', function() {
-        var laydate = layui.laydate;
-        laydate.render({
-            elem: '#calendar',
-            btns: [],
-            position: 'static',
-            done: function(value, date, endDate){
-                $(".search-btn").attr("data-search-time",value);
-            }
-        });
-    })
-    $('body').on('click', '.search-btn', function () {
-        var searchDate=this.getAttribute("data-search-time");
-        if(searchDate==null){
-            searchDate=dateFtt("yyyy-MM-dd",new Date());
-        }
-        var szCameraId = "1000000$1$0$0"
-        var nRecordSource = 3;
-        var nRecordType = 0;
-        var strStartTime = searchDate+" 00:00:00";
-        var strEndTime =  searchDate+" 23:59:59";
-        var nStartTime = getDate(strStartTime).getTime()/1000;
-        var nEndTime = getDate(strEndTime).getTime()/1000;
-        /*查询录像信息*/
-        ButtonQueryRecord_onclick2(szCameraId,nRecordSource,nRecordType,nStartTime,nEndTime);
-        /*播放录像信息*/
-        ButtonStartTimePlaybackByWndNo_onclick2(szCameraId,nRecordSource,nStartTime,nEndTime);
-    });
-    // 点击历史记录显示
-    $('body').on('click', '.icon-history', function () {
-        $('.split-mode').hide()
-        $('.history-wrapper').show()
-        // 设置历史记录视频高度
-        var historyVideoWidth = $('.video-wrapper .video').width();
-        var historyVideoHeight = historyVideoWidth * 9 /16;
-        var searchMarTop = (historyVideoHeight - 386) / 2
-        $('.video-wrapper .video').css('height', historyVideoHeight);
-        $('.search-btn').css('marginTop', searchMarTop ); // 设置搜索按钮位置
-        init();
-    })
-    //点击倍速
-    $('body').on('click', '.icon-speed', function () {
-      $('.speed-wrapper').stop().toggle();
-      $('#zhanwei').stop().toggle()
-    })
-    // 点击倍速的某一项
-    $('body').on('click', '.speed-item', function () {
-        var $that = $(this)
-        $that.addClass('on').siblings().removeClass('on')
-        $that.parent().slideUp('fast')
-        $('#zhanwei').stop().hide()
-    })
-    // 点击历史记录中的关闭按钮
-    $('body').on('click', '.history-wrapper .icon-history', function () {
-        $('.history-wrapper').hide();
-        $('.split-mode').show();
-    })
-    // 单击刻度条某一项
-    $('body').on('click', '.scale-unit', function (e) {
-        var szCameraId = "1000000$1$0$0"
-        var nRecordSource = 3;
-        var nRecordType = 0;
-        var nStartTime=this.getAttribute("data-start-time");
-        var nEndTime=this.getAttribute("data-end-time");
-        console.log(nStartTime+"=="+nEndTime)
-        /*查询录像*/
-        ButtonQueryRecord_onclick3(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
-        /*播放录像信息*/
-        ButtonStartTimePlaybackByWndNo_onclick2(szCameraId,nRecordSource,nStartTime,nEndTime);
-
-    })
-    // 停止播放
-    $('body').on('click', '.playAndsuspend', function () {
-        playAndsuspend();
-    })
-    // 双击刻度条某一项
-//    $('body').on('dblclick', '.scale-unit', function (e) {
-//        var count = parseInt(e.currentTarget.dataset.count);
-//        $(this).addClass('active').siblings().removeClass('active')
-//        $('.scale-unit').removeClass('active')
-//        for (var i = 0; i <= count; i++){
-//            $('.scale-unit').eq(i).addClass('active')
-//        }
-//    })
-    // 刻度条
-//    var initCount = null
-//    $('body').on('click', '.scale-unit', function (e) {
-//      var count1 = null,
-//          count2 = null;
-//      var $that = $(this);
-//      $('.scale-unit').removeClass('active');
-//      $that.addClass('active');
-//      if (initCount){
-//          count2 = parseInt(e.currentTarget.dataset.count);
-//          var delta = parseInt(initCount)
-//          if (delta < count2){
-//              for (var i = delta; i <= count2; i++){
-//                  $('.scale-unit').eq(i).addClass('active')
-//
-//              }
-//          }else {
-//              for (var j = count2; j <= delta; j++){
-//                  $('.scale-unit').eq(j).addClass('active')
-//              }
-//          }
-//
-//          initCount = count2
-//      }else{
-//          count1 = e.currentTarget.dataset.count;
-//          initCount = count1
-//      }
-//    })
-
-  </script>
-  <script>
-    //放大
-    $('.btn-zoomin').on('click', function () {
-      $('.map-img-content').addClass('scale-img')
-      $('.map-img-content').css({
-        left:0,
-        top:0
-      })
-    })
-    //缩小
-    $('.btn-zoomout').on('click', function () {
-      $('.map-img-content').removeClass('scale-img')
-      $('.map-img-content').css({
-        left:0,
-        top:0
-      })
-    })
-    //智能追踪
-    $('.btn-zoomtrack').on('click', function () {
-      $('.camera-2').hide()
-      $('.camera-hidden').show()
-    })
-    //执勤监控
-    $('.btn-zoommonitor').on('click', function () {
-      $('.camera-hidden').hide()
-      $('.camera-2').show()
-    })
-  </script>
-  
-<script>
-  //拖动功能
-var _drag = {};
-_drag.top = 0; //拖动过的位置距离上边
-_drag.left = 0; //拖动过的位置距离左边
-_drag.maxLeft; //距离左边最大的距离
-_drag.maxTop; //距离上边最大的距离
-_drag.dragging = false; //是否拖动标志
-//拖动函数
-function bindDrag(el) {
-    var winWidth = $(window).width(),
-    winHeight = $(window).height(),
-    objWidth = $(el).outerWidth(),
-    objHeight = $(el).outerHeight();
-    _drag.maxLeft = winWidth - objWidth,
-    _drag.maxTop = winHeight - objHeight;
-    var els = el.style,
-    x = 0,
-    y = 0;
-    var objTop = $(el).offset().top,
-    objLeft = $(el).offset().left;
-    $(el).mousedown(function(e) {
-        _drag.dragging = true;
-        _drag.isDragged = true;
-        x = e.clientX - el.offsetLeft;
-        y = e.clientY - el.offsetTop;
-        el.setCapture && el.setCapture();
-        $(document).bind('mousemove', mouseMove).bind('mouseup', mouseUp);
-        return false;
-    });
-    function mouseMove(e) {
-        e = e || window.event;
-        if (_drag.dragging) {
-            _drag.top = e.clientY - y;
-            _drag.left = e.clientX - x;
-            _drag.top = _drag.top > _drag.maxTop ? _drag.maxTop: _drag.top;
-            _drag.left = _drag.left > _drag.maxLeft ? _drag.maxLeft: _drag.left;
-            _drag.top = _drag.top < 0 ? 0 : _drag.top;
-            _drag.left = _drag.left < 0 ? 0 : _drag.left;
-            els.top = _drag.top + 'px';
-            els.left = _drag.left + 'px';
-            return false;
-        }
-    }
-    function mouseUp(e) {
-        _drag.dragging = false;
-        el.releaseCapture && el.releaseCapture();
-        e.cancelBubble = true;
-        $(document).unbind('mousemove', mouseMove).unbind('mouseup', mouseUp);
-    }
-    $(window).resize(function() {
-        var winWidth = $(window).width(),
-        winHeight = $(window).height(),
-        el = $(el),
-        elWidth = el.outerWidth(),
-        elHeight = el.outerHeight(),
-        elLeft = parseFloat(el.css('left')),
-        elTop = parseFloat(el.css('top'));
-        _drag.maxLeft = winWidth - elWidth;
-        _drag.maxTop = winHeight - elHeight;
-        _drag.top = _drag.maxTop < elTop ? _drag.maxTop: elTop;
-        _drag.left = _drag.maxLeft < elLeft ? _drag.maxLeft: elLeft;
-        el.css({
-            top: _drag.top,
-            left: _drag.left
+        _this.caleHeight(4)
+        //滑块
+        layui.use('slider', function () {
+            var slider = layui.slider;
+            //设置步长
+            slider.render({
+                elem: '#slide',
+                step: 1, //步长,
+                min: 1,
+                max: 4,
+                value: 4,
+                change: function (value) {
+                    //do something
+                    if (value == 4) {
+                        $('#mode-rec').removeClass('mode-rec-1')
+                        $('#mode-rec').removeClass('mode-rec-2')
+                        $('#mode-rec').removeClass('mode-rec-3')
+                        $('#mode-rec').addClass('mode-rec-4')
+                        _this.caleHeight(4)
+                    } else if (value == 3) {
+                        $('#mode-rec').removeClass('mode-rec-1')
+                        $('#mode-rec').removeClass('mode-rec-2')
+                        $('#mode-rec').removeClass('mode-rec-4')
+                        $('#mode-rec').addClass('mode-rec-3')
+                        _this.caleHeight(3)
+                    } else if (value == 2) {
+                        $('#mode-rec').removeClass('mode-rec-1')
+                        $('#mode-rec').removeClass('mode-rec-3')
+                        $('#mode-rec').removeClass('mode-rec-4')
+                        $('#mode-rec').addClass('mode-rec-2')
+                        _this.caleHeight(2)
+                    } else if (value == 1) {
+                        $('#mode-rec').removeClass('mode-rec-2')
+                        $('#mode-rec').removeClass('mode-rec-3')
+                        $('#mode-rec').removeClass('mode-rec-4')
+                        $('#mode-rec').addClass('mode-rec-1')
+                        _this.caleHeight(1)
+                    }
+                }
+            });
         })
-    })
-}
-bindDrag(document.getElementById('map-img-content'));
-</script>
+        // 鼠标滑过分屏模式视频&滑过历史记录视频
+        $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
+            $(this).children('.v-toolbar').show();
+            $(this).find('.opt-monitor').stop().hide();
+        }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
+            $(this).children('.v-toolbar').stop().hide();
+            $('#zhanwei').stop().hide();
+        })
+        // 点击云平台控制
+        $('body').on('click', '.js-control', function () {
+            $(this).parent().children('.opt-monitor').toggle()
+        })
+
+        // 渲染日期组件
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#calendar',
+                btns: [],
+                position: 'static',
+                done: function (value, date, endDate) {
+                    $(".search-btn").attr("data-search-time", value);
+                }
+            });
+        })
+        $('body').on('click', '.search-btn', function () {
+            var searchDate = this.getAttribute("data-search-time");
+            if (searchDate == null) {
+                searchDate = dateFtt("yyyy-MM-dd", new Date());
+            }
+            var szCameraId = "1000000$1$0$0"
+            var nRecordSource = 3;
+            var nRecordType = 0;
+            var strStartTime = searchDate + " 00:00:00";
+            var strEndTime = searchDate + " 23:59:59";
+            var nStartTime = getDate(strStartTime).getTime() / 1000;
+            var nEndTime = getDate(strEndTime).getTime() / 1000;
+            /*查询录像信息*/
+            ButtonQueryRecord_onclick2(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
+            /*播放录像信息*/
+            ButtonStartTimePlaybackByWndNo_onclick2(szCameraId, nRecordSource, nStartTime, nEndTime);
+        });
+        // 点击历史记录显示
+        $('body').on('click', '.icon-history', function () {
+            $('.split-mode').hide()
+            $('.history-wrapper').show()
+            // 设置历史记录视频高度
+            var historyVideoWidth = $('.video-wrapper .video').width();
+            var historyVideoHeight = historyVideoWidth * 9 / 16;
+            var searchMarTop = (historyVideoHeight - 386) / 2
+            $('.video-wrapper .video').css('height', historyVideoHeight);
+            $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
+            init();
+        })
+        //点击倍速
+        $('body').on('click', '.icon-speed', function () {
+            $('.speed-wrapper').stop().toggle();
+            $('#zhanwei').stop().toggle()
+        })
+        // 点击倍速的某一项
+        $('body').on('click', '.speed-item', function () {
+            var $that = $(this)
+            $that.addClass('on').siblings().removeClass('on')
+            $that.parent().slideUp('fast')
+            $('#zhanwei').stop().hide()
+        })
+        // 点击历史记录中的关闭按钮
+        $('body').on('click', '.history-wrapper .icon-history', function () {
+            $('.history-wrapper').hide();
+            $('.split-mode').show();
+        })
+        // 单击刻度条某一项
+        $('body').on('click', '.scale-unit', function (e) {
+            var szCameraId = "1000000$1$0$0"
+            var nRecordSource = 3;
+            var nRecordType = 0;
+            var nStartTime = this.getAttribute("data-start-time");
+            var nEndTime = this.getAttribute("data-end-time");
+            console.log(nStartTime + "==" + nEndTime)
+            /*查询录像*/
+            ButtonQueryRecord_onclick3(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
+            /*播放录像信息*/
+            ButtonStartTimePlaybackByWndNo_onclick2(szCameraId, nRecordSource, nStartTime, nEndTime);
+
+        })
+        // 停止播放
+        $('body').on('click', '.playAndsuspend', function () {
+            playAndsuspend();
+        })
+        // 双击刻度条某一项
+        //    $('body').on('dblclick', '.scale-unit', function (e) {
+        //        var count = parseInt(e.currentTarget.dataset.count);
+        //        $(this).addClass('active').siblings().removeClass('active')
+        //        $('.scale-unit').removeClass('active')
+        //        for (var i = 0; i <= count; i++){
+        //            $('.scale-unit').eq(i).addClass('active')
+        //        }
+        //    })
+        // 刻度条
+        //    var initCount = null
+        //    $('body').on('click', '.scale-unit', function (e) {
+        //      var count1 = null,
+        //          count2 = null;
+        //      var $that = $(this);
+        //      $('.scale-unit').removeClass('active');
+        //      $that.addClass('active');
+        //      if (initCount){
+        //          count2 = parseInt(e.currentTarget.dataset.count);
+        //          var delta = parseInt(initCount)
+        //          if (delta < count2){
+        //              for (var i = delta; i <= count2; i++){
+        //                  $('.scale-unit').eq(i).addClass('active')
+        //
+        //              }
+        //          }else {
+        //              for (var j = count2; j <= delta; j++){
+        //                  $('.scale-unit').eq(j).addClass('active')
+        //              }
+        //          }
+        //
+        //          initCount = count2
+        //      }else{
+        //          count1 = e.currentTarget.dataset.count;
+        //          initCount = count1
+        //      }
+        //    })
+    </script>
+    <script>
+        //放大
+        $('.btn-zoomin').on('click', function () {
+            $('.map-img-content').addClass('scale-img')
+            $('.map-img-content').css({
+                left: 0,
+                top: 0
+            })
+        })
+        //缩小
+        $('.btn-zoomout').on('click', function () {
+            $('.map-img-content').removeClass('scale-img')
+            $('.map-img-content').css({
+                left: 0,
+                top: 0
+            })
+        })
+        //智能追踪
+        $('.btn-zoomtrack').on('click', function () {
+            $('.camera-2').hide()
+            $('.camera-hidden').show()
+        })
+        //执勤监控
+        $('.btn-zoommonitor').on('click', function () {
+            $('.camera-hidden').hide()
+            $('.camera-2').show()
+        })
+    </script>
+
+    <script>
+        //拖动功能
+        var _drag = {};
+        _drag.top = 0; //拖动过的位置距离上边
+        _drag.left = 0; //拖动过的位置距离左边
+        _drag.maxLeft; //距离左边最大的距离
+        _drag.maxTop; //距离上边最大的距离
+        _drag.dragging = false; //是否拖动标志
+        //拖动函数
+        function bindDrag(el) {
+            var winWidth = $(window).width(),
+                winHeight = $(window).height(),
+                objWidth = $(el).outerWidth(),
+                objHeight = $(el).outerHeight();
+            _drag.maxLeft = winWidth - objWidth,
+                _drag.maxTop = winHeight - objHeight;
+            var els = el.style,
+                x = 0,
+                y = 0;
+            var objTop = $(el).offset().top,
+                objLeft = $(el).offset().left;
+            $(el).mousedown(function (e) {
+                _drag.dragging = true;
+                _drag.isDragged = true;
+                x = e.clientX - el.offsetLeft;
+                y = e.clientY - el.offsetTop;
+                el.setCapture && el.setCapture();
+                $(document).bind('mousemove', mouseMove).bind('mouseup', mouseUp);
+                return false;
+            });
+
+            function mouseMove(e) {
+                e = e || window.event;
+                if (_drag.dragging) {
+                    _drag.top = e.clientY - y;
+                    _drag.left = e.clientX - x;
+                    _drag.top = _drag.top > _drag.maxTop ? _drag.maxTop : _drag.top;
+                    _drag.left = _drag.left > _drag.maxLeft ? _drag.maxLeft : _drag.left;
+                    _drag.top = _drag.top < 0 ? 0 : _drag.top;
+                    _drag.left = _drag.left < 0 ? 0 : _drag.left;
+                    els.top = _drag.top + 'px';
+                    els.left = _drag.left + 'px';
+                    return false;
+                }
+            }
+
+            function mouseUp(e) {
+                _drag.dragging = false;
+                el.releaseCapture && el.releaseCapture();
+                e.cancelBubble = true;
+                $(document).unbind('mousemove', mouseMove).unbind('mouseup', mouseUp);
+            }
+            $(window).resize(function () {
+                var winWidth = $(window).width(),
+                    winHeight = $(window).height(),
+                    el = $(el),
+                    elWidth = el.outerWidth(),
+                    elHeight = el.outerHeight(),
+                    elLeft = parseFloat(el.css('left')),
+                    elTop = parseFloat(el.css('top'));
+                _drag.maxLeft = winWidth - elWidth;
+                _drag.maxTop = winHeight - elHeight;
+                _drag.top = _drag.maxTop < elTop ? _drag.maxTop : elTop;
+                _drag.left = _drag.maxLeft < elLeft ? _drag.maxLeft : elLeft;
+                el.css({
+                    top: _drag.top,
+                    left: _drag.left
+                })
+            })
+        }
+        bindDrag(document.getElementById('map-img-content'));
+    </script>
 </body>
 
 </html>
