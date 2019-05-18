@@ -303,12 +303,12 @@ input{
     line-height: 1;
     width: 100%;
     text-align: center;
-    position: relative;
-    z-index:2222;
 }
+
 /* 报警弹框 */
 .police-wrapper{
     position: fixed;
+    z-index:2222;
     top: 100px;
     right: 30px;
     border: 1px solid #36dffe;
@@ -330,12 +330,14 @@ input{
     position: absolute;
     right: 15px;
     top: 15px;
+    cursor: pointer;
 }
 .police-content{
     text-align: left;
     padding:15px 35px;
-    max-height: 200px;
+    max-height: 240px;
     overflow: auto;
+    font-size: 14px;
 }
 .police-content li{
     padding:12px 0;

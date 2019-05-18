@@ -700,42 +700,51 @@ function ButtonQueryRecord_onclick(){
 	 gXmlRecords = obj.DPSDK_QueryRecordInfo(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
 	 console.log("gXmlRecords:"+gXmlRecords)
 	 var xmlAre=gXmlRecords.split('<Record ');
-	 for (var i=0;i< xmlAre.length;i++){
-			if(xmlAre[i].indexOf("index")!= -1){
-				var attr= xmlAre[i].split(' ')
-				var data={};
-				for (var j=0;j<attr.length;j++) {
-					if(attr[j].indexOf('"')!=-1){
-						var value=attr[j].substring(attr[j].indexOf('"')+1,attr[j].length-1)
-						if(j==0){
-							data.index=value;
-						}else if(j==1){
-							data.sourceType=value;
-						}else if(j==2){
-							data.recordType=value;
-						}else if(j==3){
+    for (var i=0;i< xmlAre.length;i++){
+        if(xmlAre[i].indexOf("index")!= -1){
+            var attr= xmlAre[i].split(' ')
+            var data={};
+            for (var j=0;j<attr.length;j++) {
+                if(attr[j].indexOf('"')!=-1){
+                    var value=attr[j].substring(attr[j].indexOf('"')+1,attr[j].length-1)
+                    if(j==0){
+                        data.index=value;
+                    }else if(j==1){
+                        data.sourceType=value;
+                    }else if(j==2){
+                        data.recordType=value;
+                    }else if(j==3){
 
-							var strDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
-							data.beginTime=strDate;
-						}else if(j==4){
-							var endDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
-							data.endTime=endDate;
-						}
-					}
-				}
-				fileData.push(data);
-			}
-		}
-	 console.log(fileData)
-	 /*for (var t=0; t< fileData.length; t++){
-	 	var index=fileData[t].index;
-	 	var startTime=fileData[t].beginTime.toString();
-		var endTime=fileData[t].endTime.toString();
-		var recordType= fileData[t].recordType;
-		var sourceType=fileData[t].sourceType;
-		var html = document.getElementById("fileList").innerHTML;
-		document.getElementById("fileList").innerHTML =html+ "<a href=\"\" id=\""+index+"\"  data-startTime=\""+startTime+"\" data-endTime=\""+endTime+"\" data-recordType=\""+recordType+"\" data-sourceType=\""+sourceType+"\" onclick=\"findRev(this.id)\">\""+startTime+"~"+endTime+"\"</a><br />";
-	}*/
+                        var strDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
+                        data.beginTime=strDate;
+                        data.start=dateFtt('hh:mm',new Date(value*1000));
+                    }else if(j==4){
+                        var endDate=dateFtt('yyyy-MM-dd hh:mm:ss',new Date(value*1000));
+                        data.endTime=endDate;
+                        data.end=dateFtt('hh:mm',new Date(value*1000));
+                    }
+                }
+            }
+            fileData.push(data);
+        }
+    }
+    //console.log(fileData)
+    /*新增===========*/
+    for (var m=0;m<fileData.length;m++){
+        var start=fileData[m].beginTime;
+        var end=fileData[m].endTime;
+        if(start!=null && start!=undefined && end!=null && end!=undefined){
+            var timeStr= fileData[m].start;
+            var timeEnd=fileData[m].end;
+            console.log(start+"=="+end+"=="+timeStr+"===="+timeEnd);
+            timeStr=timeStr.toString().substring(0,timeStr.indexOf(":"))*1;
+            timeEnd=timeEnd.toString().substring(0,timeEnd.indexOf(":"))*1;
+            $('.scale-unit').eq(timeStr).addClass('active');
+            $('.scale-unit').eq(timeStr).attr("data-start-time",start);
+            $('.scale-unit').eq(timeEnd).addClass('active');
+            $('.scale-unit').eq(timeEnd).attr("data-end-time",end);
+        }
+    }
 }
 
 

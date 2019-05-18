@@ -326,6 +326,7 @@
   <title>综合管理</title>
   <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
   <link rel="stylesheet" href="../../asset/css/common.css">
+  <link rel="stylesheet" href="../../asset/css/reset.css">
   <link rel="stylesheet" href="./management.css">
   <link rel="stylesheet" type="text/css" href="../../asset/css/DSSPlay.css"/>
   <script src="../../asset/js/ocxfun.js"></script>
@@ -514,6 +515,7 @@
                     </div>
                   </div>
                 </div>
+                <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;top: 32px;right: 440px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
                 <div class="v-toolbar">
                   <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
                   <a href="javascript:;"><img src="../../asset/img/icon_pause.png"> 停止播放</a>
@@ -575,32 +577,9 @@
 
   <div class="footer">
     技术支持：北京国势通科技有限公司
-    <!--报警弹框-->
-    <div class="police-wrapper">
-      <div class="police-title">
-        报警信息
-        <img class="police-close" src="../../asset/img/icon-close.png" alt="关闭">
-      </div>
-      <ul class="police-content">
-        <li>
-          <span>报警类型：</span>
-          <span class="police-detail">XXXXX</span>
-        </li>
-        <li>
-          <span>设备名称：</span>
-          <span class="police-detail">XXXXX</span>
-        </li>
-        <li>
-          <span>报警类型：</span>
-          <span class="police-detail">XXXXX</span>
-        </li>
-        <li>
-          <span>设备名称：</span>
-          <span class="police-detail">XXXXX</span>
-        </li>
-      </ul>
-    </div>
   </div>
+  <!--报警弹框-->
+
   <script src="../../asset/js/jquery.min.js"></script>
   <script src="../../asset/js/utils.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
@@ -678,23 +657,25 @@
     $('body').on('click', '.icon-history', function () {
         $('.split-mode').hide()
         $('.history-wrapper').show()
-        init();
         // 设置历史记录视频高度
         var historyVideoWidth = $('.video-wrapper .video').width();
         var historyVideoHeight = historyVideoWidth * 9 /16;
         var searchMarTop = (historyVideoHeight - 386) / 2
         $('.video-wrapper .video').css('height', historyVideoHeight);
         $('.search-btn').css('marginTop', searchMarTop ); // 设置搜索按钮位置
+        init();
     })
     //点击倍速
     $('body').on('click', '.icon-speed', function () {
-      $('.speed-wrapper').stop().slideToggle('fast')
+      $('.speed-wrapper').stop().toggle('fast');
+      $('.zhanwei').stop().toggle('fast')
     })
     // 点击倍速的某一项
     $('body').on('click', '.speed-item', function () {
         var $that = $(this)
         $that.addClass('on').siblings().removeClass('on')
         $that.parent().slideUp('fast')
+        $('.zhanwei').stop().hide('fast')
     })
     // 点击历史记录中的关闭按钮
     $('body').on('click', '.history-wrapper .icon-history', function () {
@@ -703,12 +684,14 @@
     })
     // 双击刻度条某一项
     $('body').on('dblclick', '.scale-unit', function (e) {
-        var count = parseInt(e.currentTarget.dataset.count);
+        var a=this.getAttribute("data-start-time");
+        alert(a);
+//        var count = parseInt(e.currentTarget.dataset.count);
 //        $(this).addClass('active').siblings().removeClass('active')
-        $('.scale-unit').removeClass('active')
-        for (var i = 0; i <= count; i++){
-            $('.scale-unit').eq(i).addClass('active')
-        }
+//        $('.scale-unit').removeClass('active')
+//        for (var i = 0; i <= count; i++){
+//            $('.scale-unit').eq(i).addClass('active')
+//        }
     })
     // 刻度条
 //    var initCount = null
