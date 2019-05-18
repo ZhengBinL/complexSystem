@@ -65,6 +65,9 @@
     top: 0;
 }
 /* 摄像头定位 */
+.camera-hidden{
+    /* display: none; */
+}
 .camera{
     position: absolute;
     cursor: pointer;
@@ -158,6 +161,95 @@
     left: 22%;
     top: 32%;
 }
+.camera23{
+    left: 8%;
+    top: 67%;  
+}
+.camera24{
+    left: 59%;
+    top: 9%;
+}
+.camera25{
+    left: 55%;
+    top: 5%;
+}
+/*  */
+.camera-1{
+    transform:rotate(180deg);
+-ms-transform:rotate(180deg); 	/* IE 9 */
+-moz-transform:rotate(180deg); 	/* Firefox */
+-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+-o-transform:rotate(180deg); 	/* Opera */
+}
+.camera1-1{
+    left: 47.7%;
+    top: -1%;
+}
+.camera1-2{
+    left: 58%;
+    top: 6%; 
+}
+.camera1-3{
+    left: 63.5%;
+    top: 6.5%; 
+}
+.camera1-4{
+    left: 30%;
+    top: 21%; 
+}
+.camera1-5{
+    left: 45%;
+    top: 29%;
+}
+.camera1-6{
+    left: 66.7%;
+    top: 42%;
+}
+.camera1-7{
+    left: 43.8%;
+    top: 89%;
+}
+.camera1-8{
+    left: 17%;
+    top: 72%;
+}
+.camera1-9{
+    left: 0%;
+    top: 58%;
+}
+/* 智能追踪 */
+.camera-2{
+    display: none
+}
+.camera2-1{
+    left: 62%;
+    top: 10%;
+}
+.camera2-2{
+    left: 45%;
+    top: 31%;
+    transform: rotate(180deg)
+}
+.camera2-3{
+    left: 45%;
+    top: 33%;
+    transform: rotate(225deg)
+}
+.camera2-4{
+    left: 66%;
+    top: 45%;
+}
+.camera2-5{
+    left: 44%;
+    top: 91%;
+    transform: rotate(161deg)
+}
+.camera2-6{
+    left: 42%;
+    top: 92%;
+    transform: rotate(50deg)
+}
+/* 摄像头按钮 */
 .btn-zoom {
     display: inline-block;
     width: 80px;
@@ -174,7 +266,14 @@
     background: url("../../asset/img/btn-zoomout.png") no-repeat;
     background-size: 100%;
 }
-
+.btn-zoom.btn-zoomtrack {
+    background: url("../../asset/img/btn-zoomin.png") no-repeat;
+    background-size: 100%;
+}
+.btn-zoom.btn-zoommonitor {
+    background: url("../../asset/img/btn-zoomin.png") no-repeat;
+    background-size: 100%;
+}
 /* 分屏 */
 .split-mode {
   position: relative;
@@ -217,17 +316,23 @@
   background: #00B83F;
   padding: 0;
   margin: 0;
+  cursor: pointer;
+}
+.videos-border{
+    border:2px solid #fef102
 }
 .v-toolbar {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
+  padding-right:15px;
   height: 32px;
   line-height: 32px;
   background: rgba(0,0,0,.8);
   text-align: right;
   z-index: 2;
+  display: none;
 }
 .v-toolbar > a {
   margin-left: 15px;
@@ -288,11 +393,12 @@
 .opt-monitor{
     position: absolute;
     top: 33px;
-    right: 78px;
+    right: 77px;
     width: 130px;
     height: 130px;
     background: url("../../asset/img/opt_monitor_bg.png") no-repeat;
     background-size: cover;
+    display: none;
 }
 .opt-item{
     position: absolute;
@@ -370,7 +476,7 @@
 .mode-rec-4 .opt-monitor{
     width: 97px;
     height: 97px;
-    right: 95px;
+    right: 92px;
 }
 .mode-rec-4 .opt-top-lt{
     top: 14px;
@@ -478,38 +584,9 @@
 }
 .video-wrapper .video{
     width: 100%;
-    background: green;
+    background: #000;
 }
-.video-wrapper .v-toolbar{
-    right: 280px;
-}
-/*日历*/
-.date-wrapper .layui-laydate{
-    border:0 none;
-    background: #042867;
-    background: rgba(4,40,103, 0.88);
-}
-.date-wrapper .layui-laydate-main,
-.date-wrapper .layui-laydate-content td,
-.date-wrapper .layui-laydate-content th,
-.date-wrapper .layui-laydate-header i{
-    color: #34dffd;;
-}
-.date-wrapper .layui-laydate-content td{
-    height: 36px;
-}
-.date-wrapper .layui-laydate .layui-this{
-    background: #0b4db2!important;
-}
-.date-wrapper .layui-laydate-content .laydate-day-next, .date-wrapper .layui-laydate-content .laydate-day-prev{
-    color: #156c96;
-}
-.date-wrapper .layui-laydate-header{
-    border-bottom:0 none;
-}
-.date-wrapper .layui-laydate-footer{
-    display: none;
-}
+
 .search-btn{
     display: block;
     line-height: 36px;
@@ -566,4 +643,31 @@
 }
 .scale-unit:hover, .scale-unit.active{
     background: #fef102;
+}
+
+
+/* 树节点样式 */
+.ztree li span.button.diy01_ico_open {
+    width: 100px;
+    
+    background: url('../../asset/img/icon_jigu.png') center no-repeat
+}
+.ztree li span.button.diy01_ico_close{
+    width: 100px;
+    background: url('../../asset/img/icon_jigu_on.png') center no-repeat
+}
+.ztree li span.button.diy02_ico_open{
+    width: 100px;
+    background: url('../../asset/img/icon_group.png') center no-repeat
+}
+
+.ztree li span.button.diy02_ico_close{
+    width: 100px;
+    background: url('../../asset/img/icon_group_on.png') center no-repeat
+}
+
+
+.ztree li span.button.diy03_ico_docu{
+    width: 100px;
+    background: url('../../asset/img/icon_default.png') center no-repeat
 }

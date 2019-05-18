@@ -23,62 +23,31 @@ $(function () {
                   })
             }
       })
-      // 报警弹框
-      $('body').on('click', '.police-close', function () {
-          $('.police-wrapper').hide();
-      })
-      setInterval(function () {
-          console.log(1)
-      }, 1000)
+
 
       // 菜单树
       var zTreeObj;
       // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
       var setting = {
-            callback: {
-                  onClick: zTreeOnClick
+            view:{
+                  fontCss:{
+                        "color":"#fff",
+                        "font-size":"28px"
+                  }
+            },
+            data:    {
+                  simpleData:{
+                        enable:true,
+                        idKey: "id",
+                        pIdKey: "pid",
+                        rootPId: 0
+                  }
             }
       };
-      // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
-      var zNodes = [{
-                  name: "资源管理1级",
-                  url: 'https://www.baidu.com/',
-                  open: false,
-                  children: [{
-                              name: "资源管理1级的孩子1",
-                              url: 'https://www.baidu.com'
-                        },
-                        {
-                              name: "资源管理1级的孩子2"
-                        }
-                  ]
-            },
-            {
-                  name: "test2",
-                  open: false,
-                  children: [{
-                              name: "test2_1"
-                        },
-                        {
-                              name: "test2_2"
-                        }
-                  ]
-            }
-      ];
-      zTreeObj = $.fn.zTree.init($("#menu-tree"), setting, zNodes);
-
-      // var 
-      // $.post(url,{},function(res){
-      //       if(res.data.code===200){
-
-      //       }else{
-
-      //       }
-      // })
-      function zTreeOnClick(event, treeId, treeObj) {
-            var pNode = treeObj.getParentNode();
-            console.log(treeObj, 'ccc')
-            console.log(pNode)
-            // return filename;
-      }
+      var zNodes =[];
+      $.get("http://172.16.5.226:18080/resource/node",function(res){
+            zNodes =res.data
+            $.fn.zTree.init($("#menu-tree"), setting,zNodes);
+      })
+      
 })
