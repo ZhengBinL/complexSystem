@@ -667,15 +667,15 @@
     })
     //点击倍速
     $('body').on('click', '.icon-speed', function () {
-      $('.speed-wrapper').stop().toggle();
-      $('.zhanwei').stop().toggle()
+      $('.speed-wrapper').stop().slideToggle('fast');
+      $('.zhanwei').stop().slideToggle('fast')
     })
     // 点击倍速的某一项
     $('body').on('click', '.speed-item', function () {
         var $that = $(this)
         $that.addClass('on').siblings().removeClass('on')
         $that.parent().slideUp('fast')
-        $('.zhanwei').stop().hide('fast')
+        $('.zhanwei').stop().hide()
     })
     // 点击历史记录中的关闭按钮
     $('body').on('click', '.history-wrapper .icon-history', function () {
