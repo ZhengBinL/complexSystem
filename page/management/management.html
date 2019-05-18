@@ -547,7 +547,7 @@
                       </div>
                     </div>
                   </div>
-                  <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
+                  <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;filter: alpha(opacity=0)"></iframe>
                   <div class="v-toolbar">
                     <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
                     <a href="javascript:;" class="playAndsuspend"><img src="../../asset/img/icon_pause.png"> <span id="playAndsuspend">停止播放</span></a >
@@ -679,6 +679,7 @@
     }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
         $(this).children('.v-toolbar').stop().hide();
         $('#zhanwei').stop().hide();
+        $('.speed-wrapper').stop().hide();
     })
     // 点击云平台控制
     $('body').on('click', '.js-control', function () {
