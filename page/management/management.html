@@ -435,7 +435,7 @@
                   <dd class="videos"></dd>
                   <dt class="v-toolbar">
                     <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png"> 历史记录</a>
-                    <a href="javascript:;"><img src="../../asset/img/icon-control.png"> 云台控制</a>
+                    <a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>
                     <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
                     <div class="opt-monitor">
                       <a href="javascript:;" class="opt-item opt-top-lt"></a>
@@ -514,19 +514,19 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 440px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
-                <div class="v-toolbar">
-                  <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
-                  <a href="javascript:;"><img src="../../asset/img/icon_pause.png"> 停止播放</a>
-                  <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-close.png"> 关闭</a>
-                  <div class="speed-wrapper">
-                    <a href="javascript:;" class="speed-item">6.0X</a>
-                    <a href="javascript:;" class="speed-item">4.0X</a>
-                    <a href="javascript:;" class="speed-item">2.0X</a>
-                    <a href="javascript:;" class="speed-item">1.0X</a>
-                    <a href="javascript:;" class="speed-item">1/2X</a>
-                    <a href="javascript:;" class="speed-item">1/4X</a>
+                  <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 440px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
+                  <div class="v-toolbar">
+                    <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
+                    <a href="javascript:;"><img src="../../asset/img/icon_pause.png"> 停止播放</a>
+                    <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-close.png"> 关闭</a>
+                    <div class="speed-wrapper">
+                      <a href="javascript:;" class="speed-item">6.0X</a>
+                      <a href="javascript:;" class="speed-item">4.0X</a>
+                      <a href="javascript:;" class="speed-item">2.0X</a>
+                      <a href="javascript:;" class="speed-item">1.0X</a>
+                      <a href="javascript:;" class="speed-item">1/2X</a>
+                      <a href="javascript:;" class="speed-item">1/4X</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -637,6 +637,17 @@
           }
         }
       });
+    })
+    // 鼠标滑过分屏模式视频&滑过历史记录视频
+    $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
+        $(this).children('.v-toolbar').show();
+        $(this).find('.opt-monitor').hide();
+    }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
+        $(this).children('.v-toolbar').hide();
+    })
+    // 点击云平台控制
+    $('body').on('click', '.js-control', function () {
+        $(this).parent().children('.opt-monitor').toggle()
     })
 
     // 渲染日期组件
