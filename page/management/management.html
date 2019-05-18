@@ -258,6 +258,34 @@
     </div>
   </div>
 
+  <div class="footer">
+    技术支持：北京国势通科技有限公司
+    <!--报警弹框-->
+    <div class="police-wrapper">
+      <div class="police-title">
+        报警信息
+        <img class="police-close" src="../../asset/img/icon-close.png" alt="关闭">
+      </div>
+      <ul class="police-content">
+        <li>
+          <span>报警类型：</span>
+          <span class="police-detail">XXXXX</span>
+        </li>
+        <li>
+          <span>设备名称：</span>
+          <span class="police-detail">XXXXX</span>
+        </li>
+        <li>
+          <span>报警类型：</span>
+          <span class="police-detail">XXXXX</span>
+        </li>
+        <li>
+          <span>设备名称：</span>
+          <span class="police-detail">XXXXX</span>
+        </li>
+      </ul>
+    </div>
+  </div>
   <script src="../../asset/js/jquery.min.js"></script>
   <script src="../../asset/js/utils.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
@@ -363,33 +391,33 @@
         }
     })
     // 刻度条
-    var initCount = null
-    $('body').on('click', '.scale-unit', function (e) {
-      var count1 = null,
-          count2 = null;
-      var $that = $(this);
-      $('.scale-unit').removeClass('active');
-      $that.addClass('active');
-      if (initCount){
-          count2 = parseInt(e.currentTarget.dataset.count);
-          var delta = parseInt(initCount)
-          if (delta < count2){
-              for (var i = delta; i <= count2; i++){
-                  $('.scale-unit').eq(i).addClass('active')
-
-              }
-          }else {
-              for (var j = count2; j <= delta; j++){
-                  $('.scale-unit').eq(j).addClass('active')
-              }
-          }
-
-          initCount = count2
-      }else{
-          count1 = e.currentTarget.dataset.count;
-          initCount = count1
-      }
-    })
+//    var initCount = null
+//    $('body').on('click', '.scale-unit', function (e) {
+//      var count1 = null,
+//          count2 = null;
+//      var $that = $(this);
+//      $('.scale-unit').removeClass('active');
+//      $that.addClass('active');
+//      if (initCount){
+//          count2 = parseInt(e.currentTarget.dataset.count);
+//          var delta = parseInt(initCount)
+//          if (delta < count2){
+//              for (var i = delta; i <= count2; i++){
+//                  $('.scale-unit').eq(i).addClass('active')
+//
+//              }
+//          }else {
+//              for (var j = count2; j <= delta; j++){
+//                  $('.scale-unit').eq(j).addClass('active')
+//              }
+//          }
+//
+//          initCount = count2
+//      }else{
+//          count1 = e.currentTarget.dataset.count;
+//          initCount = count1
+//      }
+//    })
 
   </script>
   <script>

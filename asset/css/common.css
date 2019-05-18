@@ -44,6 +44,18 @@ input{
 .gray {
   color: #88898f;
 }
+.w25 {
+  width: 25%;
+}
+.w33-3 {
+  width: 33.33%;
+}
+.w50 {
+  width: 50%;
+}
+.w75 {
+  width: 75%;
+}
 
 /*
  ** 头部样式
@@ -184,6 +196,7 @@ input{
   left: 18px;
   z-index: 999;
   cursor: pointer;
+  margin-top: -13px;
 }
 .aside-cover{
 	position: fixed;
@@ -290,4 +303,23 @@ input{
     line-height: 1;
     width: 100%;
     text-align: center;
+    position: relative;
+    z-index:2222;
+}
+/* 报警弹框 */
+.police-wrapper{
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    border: 1px solid #36dffe;
+    box-shadow: 0 0 12px #36dffe;
+    background: #0c1139;
+    background: linear-gradient(to bottom, #0d0158, #0c1139);
+}
+.police-title{
+    padding:15px 20px;
+    line-height: 1;
+    border-bottom: 1px solid #36dffe;
+    text-align: left;
+    font-size: 24px;
 }

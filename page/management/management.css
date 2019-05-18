@@ -601,6 +601,7 @@
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
+    cursor: pointer;
 }
 .scale-title{
     line-height: 1;
