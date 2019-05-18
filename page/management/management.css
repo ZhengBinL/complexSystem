@@ -322,6 +322,7 @@
   left: 0;
   right: 0;
   top: 0;
+  padding-right:15px;
   height: 32px;
   line-height: 32px;
   background: rgba(0,0,0,.8);
@@ -387,7 +388,7 @@
 .opt-monitor{
     position: absolute;
     top: 33px;
-    right: 78px;
+    right: 62px;
     width: 130px;
     height: 130px;
     background: url("../../asset/img/opt_monitor_bg.png") no-repeat;
@@ -469,7 +470,7 @@
 .mode-rec-4 .opt-monitor{
     width: 97px;
     height: 97px;
-    right: 95px;
+    right: 78px;
 }
 .mode-rec-4 .opt-top-lt{
     top: 14px;
@@ -577,37 +578,10 @@
 }
 .video-wrapper .video{
     width: 100%;
-    background: green;
+    background: #000;
 }
 .video-wrapper .v-toolbar{
     right: 280px;
-}
-/*日历*/
-.date-wrapper .layui-laydate{
-    border:0 none;
-    background: #042867;
-    background: rgba(4,40,103, 0.88);
-}
-.date-wrapper .layui-laydate-main,
-.date-wrapper .layui-laydate-content td,
-.date-wrapper .layui-laydate-content th,
-.date-wrapper .layui-laydate-header i{
-    color: #34dffd;;
-}
-.date-wrapper .layui-laydate-content td{
-    height: 36px;
-}
-.date-wrapper .layui-laydate .layui-this{
-    background: #0b4db2!important;
-}
-.date-wrapper .layui-laydate-content .laydate-day-next, .date-wrapper .layui-laydate-content .laydate-day-prev{
-    color: #156c96;
-}
-.date-wrapper .layui-laydate-header{
-    border-bottom:0 none;
-}
-.date-wrapper .layui-laydate-footer{
-    display: none;
 }
 .search-btn{
     display: block;

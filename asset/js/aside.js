@@ -23,9 +23,11 @@ $(function () {
                   })
             }
       })
-      // 报警弹框
-      $('')
-      
+
+
+      // 菜单树
+      var zTreeObj;
+      // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
       var setting = {
             view:{
                   fontCss:{
@@ -42,9 +44,6 @@ $(function () {
                   }
             }
       };
-      function filter(treeId, parentNode, responseData){
-            return responseData.data
-      }
       var zNodes =[];
       $.get("http://172.16.5.226:18080/resource/node",function(res){
             zNodes =res.data

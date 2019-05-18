@@ -82,3 +82,32 @@
 .layui-laypage .layui-laypage-skip, .layui-laypage span {
   color: #fff;
 }
+
+/*日历样式*/
+.layui-laydate{
+  border:0 none!important;
+  background: #042867!important;
+  background: rgba(4,40,103, 0.88)!important;
+}
+.layui-laydate .layui-laydate-main,
+.layui-laydate .layui-laydate-content td,
+.layui-laydate .layui-laydate-content th,
+.layui-laydate .layui-laydate-header i{
+  color: #34dffd;
+}
+.layui-laydate .layui-laydate-content td{
+  height: 36px;
+}
+.layui-laydate .layui-laydate-content .layui-this{
+  background: #0b4db2!important;
+}
+.layui-laydate .layui-laydate-content .laydate-day-next,
+.layui-laydate .layui-laydate-content .laydate-day-prev{
+  color: #156c96;
+}
+.layui-laydate .layui-laydate-header{
+  border-bottom:0 none;
+}
+.layui-laydate .layui-laydate-footer{
+  display: none;
+}
