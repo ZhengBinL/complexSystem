@@ -24,54 +24,53 @@ $(function () {
             }
       })
 
-      // 菜单树
-      var zTreeObj;
-      // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+
       var setting = {
-            callback: {
-                  onClick: zTreeOnClick
-            }
-      };
-      // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
-      var zNodes = [{
-                  name: "资源管理1级",
-                  url: 'https://www.baidu.com/',
-                  open: false,
-                  children: [{
-                              name: "资源管理1级的孩子1",
-                              url: 'https://www.baidu.com'
-                        },
-                        {
-                              name: "资源管理1级的孩子2"
-                        }
-                  ]
+            data: {
+                  // simpleData: {
+                  //       enable: true,
+                  //       idKey: "id", //节点id
+                  //       pIdKey: "parentId", //父节点id
+                  // },
             },
-            {
-                  name: "test2",
-                  open: false,
-                  children: [{
-                              name: "test2_1"
-                        },
-                        {
-                              name: "test2_2"
-                        }
-                  ]
+            view: {
+                  showLine: false, // 是否显示节点之间的连线
+            },
+            async: {
+                  enable: true, // 开启异步加载
+                  url: "", //对应的后台请求路径
+                  dataType: "json",
+                  autoParam: ["id=parentId"] // 异步加载时需要自动提交父节点属性的参数
+            },
+            callback: { //回调函数
+                  onClick: onClick, // 节点被点击时调用
+                  onAsyncSuccess: zTreeOnAsyncSuccess, // 异步加载正常结束的事件回调函数
+            },
+      };
+      function onClick(event, treeId, treeNode, clickFlag) {
+            var id = treeNode.id; // 树id
+            var treename = treeNode.name; // 树名称.可以在需要的时候加
+            var treeObj = $.fn.zTree.getZTreeObj(treeId);
+            var nodes = treeObj.getSelectedNodes(); //
+            if (nodes.length > 0) {
+                  treeObj.reAsyncChildNodes(nodes[0], "refresh"); // 刷新节点
             }
-      ];
-      zTreeObj = $.fn.zTree.init($("#menu-tree"), setting, zNodes);
-
-      // var 
-      // $.post(url,{},function(res){
-      //       if(res.data.code===200){
-
-      //       }else{
-
-      //       }
-      // })
-      function zTreeOnClick(event, treeId, treeObj) {
-            var pNode = treeObj.getParentNode();
-            console.log(treeObj, 'ccc')
-            console.log(pNode)
-            // return filename;
+            //用于捕获异步加载正常结束的事件回调函数
+            function zTreeOnAsyncSuccess(event, treeId, treeNode, msg) {
+                  var treeObj = $.fn.zTree.getZTreeObj(treeId);
+                  var nodes = treeObj.getNodes();
+                  if (nodes.length > 0) {
+                        for (var i = 0; i < nodes.length; i++) {
+                              treeObj.expandNode(nodes[i], true, false, false); //默认展开第一级节点
+                        }
+                  }
+            }
+            // 加载树初始化
+            function init() {
+                  $.fn.zTree.init($("#menu-tree"), setting); // 将得到的数据解析并填充到ZTree
+            }
+            $(function () {
+                  init(); //加载数据
+            })
       }
 })
