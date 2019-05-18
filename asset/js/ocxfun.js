@@ -7,6 +7,7 @@ var gRecordPath;
 var bLogin = 0;
 var bIVS =1;
 var gVtCallWndNo = 0;
+var playSuspend=0;
 
 function switchTab(n)
 {
@@ -172,7 +173,18 @@ function ButtonLogin_onclick()
 	}
 	//ButtonLoadDGroupInfo_onclick();
 }
+function playAndsuspend(){
+	if(playSuspend ==0){
+		playSuspend=1;
+		ButtonPausePlaybackByWndNo_onclick();
+		$("#playAndsuspend").text("继续播放");
+	}else {
+		playSuspend=0;
+		ButtonResumePlaybackByWndNo_onclick()
+		$("#playAndsuspend").text("停止播放");
+	}
 
+}
 function ButtonAsyncLogin_onclick() 
 {
     var obj = document.getElementById("DPSDK_OCX");

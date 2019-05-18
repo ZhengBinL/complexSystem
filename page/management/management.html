@@ -546,18 +546,18 @@
                       </div>
                     </div>
                   </div>
-                  <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 440px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
+                  <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
                   <div class="v-toolbar">
                     <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
-                    <a href="javascript:;" onclick="ButtonPausePlaybackByWndNo_onclick()"><img src="../../asset/img/icon_pause.png"> 停止播放</a >
+                    <a href="javascript:;" class="playAndsuspend"><img src="../../asset/img/icon_pause.png"> <span id="playAndsuspend">停止播放</span></a >
                     <a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-close.png"> 关闭</a>
                     <div class="speed-wrapper">
-                      <a href="javascript:;" class="speed-item">6.0X</a>
-                      <a href="javascript:;" class="speed-item">4.0X</a>
-                      <a href="javascript:;" class="speed-item">2.0X</a>
-                      <a href="javascript:;" class="speed-item">1.0X</a>
-                      <a href="javascript:;" class="speed-item">1/2X</a>
-                      <a href="javascript:;" class="speed-item">1/4X</a>
+                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(64)" class="speed-item">8.0X</a >
+                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(32)" class="speed-item">4.0X</a >
+                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(16)" class="speed-item">2.0X</a >
+                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(8)" class="speed-item">1.0X</a >
+                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(4)" class="speed-item">1/2X</a >
+                      <a href="javascript:;" onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(2)" class="speed-item">1/4X</a >
                     </div>
                   </div>
                 </div>
@@ -674,9 +674,10 @@
     // 鼠标滑过分屏模式视频&滑过历史记录视频
     $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
         $(this).children('.v-toolbar').show();
-        $(this).find('.opt-monitor').hide();
+        $(this).find('.opt-monitor').stop().hide();
     }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
-        $(this).children('.v-toolbar').hide();
+        $(this).children('.v-toolbar').stop().hide();
+        $('#zhanwei').stop().hide();
     })
     // 点击云平台控制
     $('body').on('click', '.js-control', function () {
@@ -754,6 +755,10 @@
         /*播放录像信息*/
         ButtonStartTimePlaybackByWndNo_onclick2(szCameraId,nRecordSource,nStartTime,nEndTime);
 
+    })
+    // 停止播放
+    $('body').on('click', '.playAndsuspend', function () {
+        playAndsuspend();
     })
     // 双击刻度条某一项
 //    $('body').on('dblclick', '.scale-unit', function (e) {
