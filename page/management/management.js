@@ -47,18 +47,18 @@ $(function () {
             onClick: zTreeOnClick
         }
     };
-    var zNodes = [];
+    var zNodes = []
     $.get("http://172.16.5.226:18080/resource/node", function (res) {
         zNodes = res.data
         $.fn.zTree.init($("#menu-tree"), setting, zNodes);
     })
+    // $.fn.zTree.init($("#menu-tree"), setting, zNodes);
 
     function zTreeOnClick(event, treeId, treeNode) {
-        console.log(event,'event')
-        console.log(treeId,'treeId')
-        console.log(treeNode.id,'treeNode')
-        $.get('http://172.16.5.226:18080/dvr/rtspUrl?id='+treeNode.id, function (res) {
-            // console.log(res.data.url,'res')
+        // $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=' + treeNode.id, function (res) {
+        //     play(res.data.url)
+        // })
+        $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=1000000', function (res) {
             play(res.data.url)
         })
     }
@@ -66,8 +66,8 @@ $(function () {
         $('.videos').removeClass('videos-border')
         $(this).addClass('videos-border')
     })
-    function play(rtspUrl)
-    {
+
+    function play(rtspUrl) {
         var vlc = document.getElementById("vlc");
         var vlc1 = document.getElementById("vlc1");
         var options = new Array(":aspect-ratio=4:3", "--rtsp-tcp");
@@ -79,8 +79,8 @@ $(function () {
         vlc1.playlist.playItem(id1);
         vlc1.playlist.play();
     }
-    function stop()
-    {
+
+    function stop() {
         var vlc = document.getElementById("vlc");
         vlc.playlist.stop();
     }
