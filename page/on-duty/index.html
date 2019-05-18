@@ -265,7 +265,7 @@
                 </div>
                 </p></td>
             </tr>
-            <!--夜间-->
+
             <tr>
               <th rowspan="5" class="font-16">夜<br>间</th>
               <td><p>
@@ -412,6 +412,7 @@
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
     <script src="../../asset/js/aside.js"></script>
+    <script src="../../asset/js/utils.js"></script>
     <script src="../../asset/introduce/layui/layui.js"></script>
     <script>
       layui.use(['laydate','table'], function(){
@@ -422,13 +423,56 @@
         })
 
         var layer = layui.layer;
-        $.ajax({
-          url: 'http://172.16.5.236:18080/watch_schedule/getListByWatchTime/%7BwatchTime%7D?watchTime="2019-05-18"',
-          type: 'get'
-        }).done(function(res) {
-          console.log(res)
-        }).fail(function() {
-        })
+        querySchedule();
+
+        function querySchedule(d){
+          var _d = d || formatDate()
+          $.ajax({
+            url: 'http://172.16.5.236:18080/watch_schedule/getListByWatchTime/%7BwatchTime%7D?watchTime=' + _d,
+            type: 'get'
+          }).done(function(res) {
+            console.log(res)
+            var _html = '',
+                dt = res.data.list;
+            for(var i=0; i<dt.length; i++){
+              var _dt = dt[i];
+                _html += '<tr>'
+                if(i === 0){
+                  _html += '  <th rowspan="7" class="font-16">昼<br>间</th>'
+                }
+                if(i === 7){
+                  _html += '  <th rowspan="5" class="font-16">夜<br>间</th>'
+                }
+                _html += '    <td><p>'
+                _html += '    <span class="schedule">' + _dt.shift + '</span>'
+                _html += '    <span class="duty-time">' + _dt.startHour + '时-' + _dt.endHour + '时</span>'
+                _html += '  </p></td>'
+                _html += '  <td><p></p></td>'
+                var innerDt = _dt.personnelList;
+                for(var j=0; j<innerDt.length; j++) {
+                  if (j === innerDt.length) {
+                    _html += '  <td class="cyan"><p>' + innerDt[j].personnelName
+                    _html += '    <span class="ranks">(' + innerDt[j].militaryRank + ')</span>'
+                    _html += '    <div class="opt-outer">'
+                    _html += '    <div class="table-opt">'
+                    _html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>'
+                    _html += '      <a href="javascript:;" class="js-paste btn-row">粘贴</a>'
+                    _html += '    </div>'
+                    _html += '    </div>'
+                    _html += '    </p></td>'
+                  } else {
+                    _html += '  <td class="orange"><p>' + innerDt[j].personnelName || '' + '<span class="ranks">' + innerDt[j].militaryRank || '' + '</span></p></p></td>'
+                  }
+                }
+                if(i === 0){
+                  _html += '  <th rowspan="15"><p></p></th>'
+                }
+                _html += '</tr>'
+              }
+            // $('#dutyList > tbody').html(_html);
+          }).fail(function() {
+          })
+        }
       })
     </script>
 </body>
