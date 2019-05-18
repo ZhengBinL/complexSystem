@@ -5,10 +5,330 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../../asset/js/My97DatePicker/WdatePicker.js"></script>
+  <script src="../../asset/js/json2.js"></script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
+      var str = ("Correct Talk Param [nTalkType=" + nTalkType + "]" + " [nAudioType=" + nAudioType + "]" + " [nAudioBit=" + nAudioBit
+          + "]" + " [nSampleRate=" + nSampleRate + "]");
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnMediaDataFirstFrameEvent(szCameraID, nCameraIDLen, nFactoryType, nPlayMode)">
+      var str = (" Media Data First Frame [szCameraID=" + szCameraID + "]" + " [nCameraIDLen=" + nCameraIDLen + "]" + " [nFactoryType=" + nFactoryType + "]"
+          + " [nPlayMode=" + nPlayMode + "]");
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
+      var str = ("Correct Talk Param [nTalkType=]" + nTalkType + " [nAudioType=]" + nAudioType + " [nAudioBit=]" + nAudioBit
+          + " [nSampleRate=]" + nSampleRate + " [nTransMode=]" + nTransMode );
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordProgress(szFileName,fProgress)">
+      document.getElementById("textDownloadProgress").innerText = fProgress;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordComplete(szFileName)">
+      document.getElementById("textDownloadProgress").innerText = 100;
+      alert("下载完成!");
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnAlarmEvent(szAlarmId, szCameraId, szDeviceName, szChannelName, nAlarmType, nEventType, nLevel, nTime)">
+
+      var str = ("OnAlarmEvent [szAlarmId=]" + szAlarmId + " [szCameraId=]" + szCameraId + "[szDeviceName=]" + szDeviceName
+          + "[szChannelName=]" + szChannelName + "[nAlarmType=]" + nAlarmType + "[nEventType=]" + nEventType + "[nLevel=]" + nLevel + "[nTime=]" + nTime);
+      document.getElementById("GlobalInfo").innerText = str;
+
+      if(8 == nAlarmType)
+      {
+          //alert(szChannelName);
+      }
+      else if((300 < nAlarmType)&&(nAlarmType < 1100))
+      {
+          //alert(szChannelName);
+      }
+      else
+      {
+          //alert(szCameraId);
+      }
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnDevStatusEvent(szDevId, nStatus)">
+      var str = "";
+      switch(nStatus)
+      {
+          case 1:
+              //alert("设备上线！" + szDevId);
+              str = "设备上线！" + szDevId;
+              break;
+          case 2:
+              //alert("设备离线！" + szDevId);
+              str = "设备离线！" + szDevId;
+              break;
+      }
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnNvrChannelStatusEvent(szChnlId, nStatus)">
+      var str = "";
+      switch(nStatus)
+      {
+          case 1:
+              str = "通道上线！" + szChnlId;
+              break;
+          case 2:
+              str = "通道离线！" + szChnlId;
+              break;
+      }
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnGeneralJsonCallBack(Json)">
+      var str1 = "json返回结果：";
+      var str = str1 + Json;
+      document.getElementById("JsonResult").innerText = str;
+
+      var jsonObj = JSON.parse(Json);
+      var strMethod = jsonObj.method;
+
+      if (strMethod == "cu.searchSnapPicUrl") {
+          var obj = document.getElementById("DPSDK_OCX");
+          var ftpInfo = obj.DPSDK_GetFTPInfo();
+          var picurl = jsonObj.params.snapPicList[0].snapPicUrl;
+          var ftpurl = ftpInfo + picurl;
+          alert(ftpurl);
+          document.getElementById("snapPicture").src = ftpurl;
+      }
+      else if (strMethod == "dms.getSnapPic") {
+          var picdata = jsonObj.params.PicData;
+          alert(picdata);
+      }
+      else if (strMethod == "Scs.NotifyBye")
+      {
+          alert("通话结束");
+      }
+      else if (strMethod == "client.getSystemState" || strMethod == "client.getServiceState")
+      {
+          alert(Json);
+      }
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnServerStatusChangeEvent(nStatus)">
+      var str = "";
+      switch(nStatus)
+      {
+          case 1:
+              str = "服务上线！";
+              var obj = document.getElementById("DPSDK_OCX");
+              ShowCallRetInfo(obj.DPSDK_LoadDGroupInfo(), "加载组织结构");
+              break;
+          case 2:
+              str = "服务离线！";
+              break;
+      }
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoadDGroupInfoComplete(nRet, nGroupLen)">
+      var str = ("AsyncLoadDGroupInfoComplete [nRet=]" + nRet + " [nGroupLen=]" + nGroupLen);
+      document.getElementById("RetInfo").innerText = str;
+      var obj = document.getElementById("DPSDK_OCX");
+      //	document.getElementById("DGroupInfo").innerText = obj.DPSDK_GetDGroupStr();
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnWndLBtnClick(nWndId, nWndNo, xPos, yPos)">
+      var str = ("OnWndLBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnWndRBtnClick(nWndId, nWndNo, xPos, yPos)">
+      var str = ("OnWndRBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnDoorStatusReportEvent(szCameraId, status, time)">
+      var doorstatus = "";
+      switch(status)
+      {
+          case 1:
+              doorstatus = "开门！";
+              break;
+          case 0:
+              doorstatus = "关门！";
+              break;
+          case 2:
+              doorstatus = "离线！";
+              break;
+      }
+      var str = ("DoorStatusReport [szCameraId=]" + szCameraId + " [status=]" + doorstatus + " [time=]" + time);
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnNetAlarmHostStatusReportEvent(szDeviceId, nReportType, nOperationType, nStatus)">
+      var strReportType = "";
+      var strOperationType = "";
+      var strStatus = "";
+      switch(nReportType)
+      {
+          case 1:
+              strReportType = "留守布防";
+              break;
+          case 2:
+              strReportType = "防区旁路";
+              break;
+          default:
+              strReportType = "未知";
+              break;
+      }
+      switch(nOperationType)
+      {
+          case 1:
+              strOperationType = "设备 布/撤防";
+              break;
+          case 2:
+              strOperationType = "通道 布/撤防";
+              break;
+          case 3:
+              strOperationType = "报警输出通道操作";
+              break;
+          default:
+              strOperationType = "未知";
+              break;
+      }
+      switch(nStatus)
+      {
+          case 1:
+              strStatus = "布防/旁路";
+              break;
+          case 2:
+              strStatus = "撤防/取消旁路";
+              break;
+          default:
+              strStatus = "未知";
+              break;
+      }
+      var str = ("网络报警主机状态上报 [szCameraId=]" + szDeviceId + " [ReportType=]" + strReportType + " [OperationType=]" + strOperationType + " [Status=]" + strStatus);
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnVideoAlarmHostStatusReportEvent(szDeviceId, nChannelNO, nStatus)">
+      var strStatus = "";
+      switch(nStatus)
+      {
+          case 1:
+              strStatus = "针对设备布防";
+              break;
+          case 3:
+              strStatus = "针对设备撤防";
+              break;
+          case 4:
+              strStatus = "针对通道旁路";
+              break;
+          case 5:
+              strStatus = "针对通道取消旁路";
+              break;
+          case 6:
+              strStatus = "针对设备在家布防";
+              break;
+          case 7:
+              strStatus = "针对设备外出布防";
+              break;
+          default:
+              strStatus = "未知";
+              break;
+      }
+      var str = ("视频报警主机状态上报 [szCameraId=]" + szDeviceId + " [ChannelNO=]" + nChannelNO + " [Status=]" + strStatus);
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnBayCarInfoEvent(szBayCarInfo)">
+      document.getElementById("GlobalInfo").innerText = szBayCarInfo;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnPlaybackCompleteByWndNo(nWndId, nWndNo)">
+      var obj = document.getElementById("DPSDK_OCX");
+      obj.DPSDK_StartFilePlaybackByWndNo(nWndId, nWndNo, 1);
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnChannelViewInfoReportEvent(szCamearId, nDistance, nAngelH, nAzimuthH, nInclinationH)">
+
+      var str = ("OnChannelViewInfoReportEvent [szCamearId=]" + szCamearId + " [nDistance=]" + nDistance + "[nAngelH=]" + nAngelH
+          + "[nAzimuthH=]" + nAzimuthH + "[nInclinationH=]" + nInclinationH );
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoginComplete(nRet)">
+      if(nRet == 0)
+      {
+          bLogin = 1;
+      }
+      ShowCallRetInfo(nRet, "异步登录");
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnAsyncStartRealplayComplete(nRet, nWndId, nWndNo)">
+      var str;
+      if(nRet == 0)
+      {
+          str = "异步播放视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
+          var szCameraId = document.getElementById("textCameraID").value;
+          var obj = document.getElementById("DPSDK_OCX");
+          var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
+          insertRealplayHistory(szCameraId);
+          ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 1, bIVS),"规则线显示");//打开规则线显示
+          ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 2, bIVS),"目标框显示");//打开目标框显示
+          ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 3, bIVS),"轨迹线显示");//打开轨迹线显示
+      }
+      else
+      {
+          str = "异步播放视频失败，错误码：" + nRet;
+      }
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnAsyncStopRealplayComplete(nRet, nWndId, nWndNo)">
+      var str;
+      if(nRet == 0)
+      {
+          str = "异步停止视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
+      }
+      else
+      {
+          str = "异步停止视频失败，错误码：" + nRet;
+      }
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnAsyncPtzDirectionComplete(nRet, szCameraId)">
+      var str;
+      if(nRet == 0)
+      {
+          str = "异步云台方向控制成功，szCameraId = " + szCameraId;
+      }
+      else
+      {
+          str = "异步云台方向控制失败，错误码：" + nRet;
+      }
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnVtCallInviteCallback(szUserId)">
+      var str = szUserId + "请求可视对讲";
+      alert(str);
+  </script>
+
+  <script language="javascript" for="DPSDK_OCX" event="OnBusyVtCallCallback()">
+      var str = "呼叫繁忙";
+      document.getElementById("GlobalInfo").innerText = str;
+  </script>
+
   <title>综合管理</title>
   <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
   <link rel="stylesheet" href="../../asset/css/common.css">
   <link rel="stylesheet" href="./management.css">
+  <link rel="stylesheet" type="text/css" href="../../asset/css/DSSPlay.css"/>
+  <script src="../../asset/js/ocxfun.js"></script>
 </head>
 
 <body>
@@ -176,7 +496,24 @@
           <div class="history-wrapper">
             <div class="history-top mode-content">
               <div class="video-wrapper">
-                <div class="video"></div>
+                <div class="video">
+                  <div id="mainbg">
+                    <div id="main">
+                      <div style="width: 100%;height: 20px;overflow: auto;" id="RetInfo">
+
+                      </div>
+                      <div style="width: 100%;height: 0px;overflow: auto;" id="GlobalInfo">
+
+                      </div>
+                      <div class="box_top"></div>
+                      <div id="mviewl">
+                        <div id="obj">
+                          <object id="DPSDK_OCX" classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D" style="width: 100%; height: 70%" codebase="DpsdkOcx.cab#version=1.0.0.0"></object>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="v-toolbar">
                   <a href="javascript:;" class="icon-speed"><img src="../../asset/img/icon_speed.png"> 倍速</a>
                   <a href="javascript:;"><img src="../../asset/img/icon_pause.png"> 停止播放</a>
@@ -332,11 +669,16 @@
             position: 'static'
         });
     })
-
+    // 点击搜索视频
+    $('body').on('click', '.search-btn', function () {
+        ButtonQueryRecord_onclick();
+        ButtonStartTimePlaybackByWndNo_onclick();
+    });
     // 点击历史记录显示
     $('body').on('click', '.icon-history', function () {
         $('.split-mode').hide()
         $('.history-wrapper').show()
+        init();
         // 设置历史记录视频高度
         var historyVideoWidth = $('.video-wrapper .video').width();
         var historyVideoHeight = historyVideoWidth * 9 /16;

@@ -24,7 +24,12 @@ $(function () {
             }
       })
       // 报警弹框
-      $('')
+      $('body').on('click', '.police-close', function () {
+          $('.police-wrapper').hide();
+      })
+      setInterval(function () {
+          console.log(1)
+      }, 1000)
 
       // 菜单树
       var zTreeObj;

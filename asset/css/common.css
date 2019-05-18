@@ -316,11 +316,34 @@ input{
     box-shadow: 0 0 12px #36dffe;
     background: #0c1139;
     background: linear-gradient(to bottom, #0d0158, #0c1139);
+    max-width: 400px;
+    min-width: 280px;
 }
 .police-title{
     padding:15px 20px;
     line-height: 1;
     border-bottom: 1px solid #36dffe;
     text-align: left;
-    font-size: 24px;
+    font-size: 22px;
+    position: relative;
+}
+.police-close{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.police-content{
+    text-align: left;
+    padding:15px 35px;
+    max-height: 200px;
+    overflow: auto;
+}
+.police-content li{
+    padding:12px 0;
+}
+.police-content span{
+    color: #35b9f4;
+}
+.police-content .police-detail{
+    color: #a24e03;
 }
