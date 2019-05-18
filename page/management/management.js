@@ -72,25 +72,25 @@ $(function () {
                     if (indexNum == 1) {
                         var vlc = document.getElementById("vlc1");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
-                        var id = vlc.playlist.add(rtspUrl, "fancy name", options);
+                        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
                     } else if (indexNum == 2) {
                         var vlc = document.getElementById("vlc2");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
-                        var id = vlc.playlist.add(rtspUrl, "fancy name", options);
+                        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
                     } else if (indexNum == 3) {
                         var vlc = document.getElementById("vlc3");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
-                        var id = vlc.playlist.add(rtspUrl, "fancy name", options);
+                        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
                     } else if (indexNum == 4) {
                         var vlc = document.getElementById("vlc4");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
-                        var id = vlc.playlist.add(rtspUrl, "fancy name", options);
+                        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
                     }
