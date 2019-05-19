@@ -834,8 +834,12 @@
         });
         // 点击历史记录显示
         $('body').on('click', '.icon-history', function () {
+            if($(this).attr("data-szCameraId")){
+                return
+            }
             $('.split-mode').hide()
             $('.history-wrapper').show()
+
             // 设置历史记录视频高度
             var historyVideoWidth = $('.video-wrapper .video').width();
             var historyVideoHeight = historyVideoWidth * 9 / 16;
