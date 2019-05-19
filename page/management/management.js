@@ -65,10 +65,9 @@ $(function () {
                 // $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=' + treeNode.id, function (res) {
                 //     play(res.data.url)
                 // })
+                console.log(treeNode,'treeNode')
                 $.get('http://172.16.5.228:18080/dvr/rtspUrl?id=1000000', function (res) {
                         // play(res.data.rtspUrl)
-
-
                     if (indexNum == 1) {
                         var vlc = document.getElementById("vlc1");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
@@ -95,7 +94,6 @@ $(function () {
                         vlc.playlist.play();
                     }
                     // var vlc = document.getElementById("vlc1");
-
                 })
 
             }

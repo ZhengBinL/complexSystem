@@ -162,9 +162,11 @@ input{
 	z-index: 999;
 }
 .menu-tree-wrapper{
-    padding-top:50px;
+    margin-top:50px;
     padding-left: 8px;
-    /* overflow: hidden; */
+    width: 235px;
+    height: 520px;
+    overflow: auto;
 }
 .palace{
     position: absolute;
@@ -311,7 +313,7 @@ input{
 
 /* 底部footer */
 .footer{
-    padding:3.54% 0 2.62%;
+    padding:6.54% 0 2.62%;
     line-height: 1;
     width: 100%;
     text-align: center;
