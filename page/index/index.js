@@ -46,10 +46,10 @@
     var final_arr1 = Event.number(numb1);
     $("#alarmCount").html(Event.dom(final_arr1));
 
-    var final_arr2 = Event.number('02849');
+    var final_arr2 = Event.number('13263');
     $("#handleCount").html(Event.dom(final_arr2));
 
-    var final_arr3 = Event.number('09999');
+    var final_arr3 = Event.number('227');
     $("#unhandleCount").html(Event.dom(final_arr3));
 
     Event.animation();

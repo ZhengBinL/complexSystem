@@ -585,7 +585,8 @@
 }
 .video-wrapper .video{
     width: 100%;
-    background: #000;
+    background: url(../../asset/img/gst_bj.png) no-repeat center center;
+    background-size: 100%;
 }
 
 .search-btn{
