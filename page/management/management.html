@@ -1066,7 +1066,8 @@
                 content: html,//这里content是一个普通的String
                 area: ['800px','450px'],
                 success: function(layero, index){
-                    $.get('',function(res){
+                    //视屏宽高未追加  //视屏上层的隐藏未显示
+                    $.get('http://192.168.3.8:18080/dvr/rtspUrl?id=1000072',function(res){
                         var vlc = document.getElementById("vlc100");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
