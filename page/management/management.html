@@ -383,7 +383,7 @@
                         <dl class="inner-box">
                             <dd class="map-img-content" id='map-img-content'>
                                 <img class="map-img" id="img" src="../../asset/img/map.jpg">
-                                <img class="camera camera-hidden camera1" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera1"  src="../../asset/img/cam-small.png" alt="">
                                 <img class="camera camera-hidden camera2" src="../../asset/img/cam-small.png" alt="">
                                 <img class="camera camera-hidden camera3" src="../../asset/img/cam-small.png" alt="">
                                 <img class="camera camera-hidden camera4" src="../../asset/img/cam-small.png" alt="">
@@ -438,8 +438,8 @@
                             <dt>
                                 <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
                                 <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
-                                <a href="javascript:;" class="btn-zoom btn-zoomtrack">智能追踪</a>
-                                <a href="javascript:;" class="btn-zoom btn-zoommonitor">执勤监控</a>
+                                <a href="javascript:;" class="btn-zoomtrack"><img src="../../asset/img/intelligence.png" alt=""></a>
+                                <a href="javascript:;" class="btn-zoommonitor"><img src="../../asset/img/dutymonitor.png" alt=""></a>
                             </dt>
                         </dl>
                     </div>
@@ -454,7 +454,7 @@
                                     <dd class="videos">
                                         <dt class="v-toolbar">
                                             <a href="javascript:;" class="icon-history"><img
-                                                    src="../../asset/img/icon-history.png"> 历史记录</a>
+                                                    src="../../asset/img/icon-history.png" > 历史记录</a>
                                             <a href="javascript:;" class="js-control"><img
                                                     src="../../asset/img/icon-control.png"> 云台控制</a>
                                             <a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>
@@ -580,7 +580,7 @@
                             <img src="../../asset/img/btn_1_1.png" alt="">
                             <div id="slide" class="slider"></div>
                             <img src="../../asset/img/btn_4_4.png" alt="">
-                            <img src="../../asset/img/btn_big.png" alt="">
+                            <img class="js-btn-big" src="../../asset/img/btn_big.png" alt="">
                         </div>
                     </div>
                     <!-- tab-bd>>>li =end= -->
@@ -744,7 +744,7 @@
         layui.use('slider', function () {
             var slider = layui.slider;
             //设置步长
-            slider.render({
+            var sliderSet = slider.render({
                 elem: '#slide',
                 step: 1, //步长,
                 min: 1,
@@ -779,7 +779,17 @@
                     }
                 }
             });
+            // 分屏模式放大功能
+            $('.js-btn-big').on('click',function(){
+                $('#mode-rec').removeClass('mode-rec-2')
+                $('#mode-rec').removeClass('mode-rec-3')
+                $('#mode-rec').removeClass('mode-rec-4')
+                $('#mode-rec').addClass('mode-rec-1')
+                _this.caleHeight(1)
+                sliderSet.setValue(0)
+            })
         })
+        
         // 鼠标滑过分屏模式视频&滑过历史记录视频
         $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
             $(this).children('.v-toolbar').show();
@@ -810,7 +820,7 @@
             if (searchDate == null) {
                 searchDate = dateFtt("yyyy-MM-dd", new Date());
             }
-            var szCameraId = "1000000$1$0$0"
+            var szCameraId = "1000121$1$0$0"
             var nRecordSource = 3;
             var nRecordType = 0;
             var strStartTime = searchDate + " 00:00:00";
@@ -824,8 +834,12 @@
         });
         // 点击历史记录显示
         $('body').on('click', '.icon-history', function () {
+            if(!$(this).attr("data-szCameraId")){
+                return
+            }
             $('.split-mode').hide()
             $('.history-wrapper').show()
+
             // 设置历史记录视频高度
             var historyVideoWidth = $('.video-wrapper .video').width();
             var historyVideoHeight = historyVideoWidth * 9 / 16;
@@ -853,7 +867,7 @@
         })
         // 单击刻度条某一项
         $('body').on('click', '.scale-unit', function (e) {
-            var szCameraId = "1000000$1$0$0"
+            var szCameraId = "1000121$1$0$0"
             var nRecordSource = 3;
             var nRecordType = 0;
             var nStartTime = this.getAttribute("data-start-time");
@@ -1007,6 +1021,80 @@
             })
         }
         bindDrag(document.getElementById('map-img-content'));
+    </script>
+
+
+
+    <script>
+    // 地图模式 视屏点击弹框
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        $('.camera').on('click',function(){
+            var html = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc100" codebase="" width="100%" height="85%" events="True">' +
+                '<div class="v-toolbar">'+
+                '<a href="javascript:;" class="icon-history" data-szCameraId="1000121$1$0$0">'+
+        '<img src="../../asset/img/icon-history.png" > 历史记录</a>'+
+        '<a href="javascript:;" class="js-control" id="js-btn-control">'+
+        '<img src="../../asset/img/icon-control.png"> 云台控制</a>'+
+        '<a href="javascript:;" id="js-btn-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+        '</div>'+
+        '<div class="opt-monitor">'+
+            '<a href="javascript:;" class="opt-item opt-top-lt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-top-ct"></a>'+
+            '<a href="javascript:;" class="opt-item opt-top-rt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-mid-lt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-mid-rt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-lt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-ct"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-rt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-big"></a>'+
+            '<a href="javascript:;" class="opt-item opt-small"></a>'+
+        '</div> '+   
+            '<param name="AutoLoop" value="False" />' +
+            '<param name="AutoPlay" value="True" />' +
+            '<param name="Time" value="True" />' +
+            '<param name="ShowDisplay" value="True" />' +
+            '<param name="Controls" value="False">' +
+            '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"' +
+            'version="VideoLAN.VLCPlugin.2" width="100%" height="85%"' +
+            'text="Waiting for video" name="vlc"></EMBED>' +
+            '</OBJECT>'
+            var index = layer.open({
+                type: 1, 
+                title:'',
+                btn:'',
+                content: html,//这里content是一个普通的String
+                area: ['800px','450px'],
+                success: function(layero, index){
+                    //视屏宽高未追加  //视屏上层的隐藏未显示
+                    $.get('http://192.168.3.8:18080/dvr/rtspUrl?id=1000072',function(res){
+                        var vlc = document.getElementById("vlc100");
+                        var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                        vlc.playlist.playItem(id);
+                        vlc.playlist.play();
+                    })
+                    // console.log(layero, index);
+                }
+            });
+            //关闭弹框
+            $('#js-btn-close').on('click',function(){
+                layer.close(index);
+            })
+            //打开云台控制切换
+            $('#js-btn-control').on('click',function(){
+                $(this).parent().find('.opt-monitor').toggle()
+            })
+            //
+            $('#vlc100').on('mouseover',function(){
+                $(this).find('.v-toolbar').show()
+            })
+            $('#vlc100').on('mouseout',function(){
+                $(this).find('.v-toolbar').hide()
+            })
+        })
+      });
+
     </script>
 </body>
 

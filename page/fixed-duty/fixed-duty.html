@@ -30,18 +30,21 @@
     </div>
 </div>
 <!--侧边栏-->
+<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
+marginwidth="0"
+style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>
 <div class="aside">
     <div class="menu-tree-wrapper">
         <ul id="menu-tree" class="menu-tree ztree"></ul>
     </div>
-    <div class="palace">
-        <div class="palace-unit">111</div>
-        <div class="palace-unit">222</div>
-        <div class="palace-unit">333</div>
-        <div class="palace-unit">444</div>
-        <div class="palace-unit">555</div>
-        <div class="palace-unit">666</div>
-    </div>
+    <!-- <div class="palace">
+  <div class="palace-unit">111</div>
+  <div class="palace-unit">222</div>
+  <div class="palace-unit">333</div>
+  <div class="palace-unit palace-left">444</div>
+  <div class="palace-unit palace-ct">555</div>
+  <div class="palace-unit palace-last">666</div>
+</div> -->
     <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
 </div>
 <!-- 固定勤务 -->
@@ -64,7 +67,7 @@
 </dl>
 <script src="../../asset/js/jquery.min.js"></script>
 <script src="./fixed-duty.js"></script>
-<!--<script src="../../asset/js/aside.js"></script>-->
+<script src="../../asset/js/aside.js"></script>
 <script>
     $.ajax({
         type: 'GET',

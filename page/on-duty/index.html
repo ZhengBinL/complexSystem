@@ -15,7 +15,8 @@
 <body>
     <!--头部-->
     <div class="header" id="header">
-        <div class="header-rt">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
             <ul>
                 <li class="notice-wrapper">
                     <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
@@ -32,18 +33,21 @@
     </div>
 
     <!--侧边栏-->
+    <iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
+    marginwidth="0"
+    style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>
     <div class="aside">
         <div class="menu-tree-wrapper">
             <ul id="menu-tree" class="menu-tree ztree"></ul>
         </div>
-        <div class="palace">
-            <div class="palace-unit">111</div>
-            <div class="palace-unit">222</div>
-            <div class="palace-unit">333</div>
-            <div class="palace-unit">444</div>
-            <div class="palace-unit">555</div>
-            <div class="palace-unit">666</div>
-        </div>
+        <!-- <div class="palace">
+      <div class="palace-unit">111</div>
+      <div class="palace-unit">222</div>
+      <div class="palace-unit">333</div>
+      <div class="palace-unit palace-left">444</div>
+      <div class="palace-unit palace-ct">555</div>
+      <div class="palace-unit palace-last">666</div>
+    </div> -->
         <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
     </div>
 
@@ -62,8 +66,8 @@
             </div>
 
             <div class="layui-inline">
-              <button class="layui-btn layui-btn-normal">查询</button>
-              <button class="layui-btn layui-btn-primary">修改</button>
+              <button class="layui-btn layui-btn-normal js-query">查询</button>
+              <button class="layui-btn layui-btn-primary js-edit">修改</button>
             </div>
 
           </div>
@@ -102,7 +106,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <!--<tr>
               <th rowspan="7" class="font-16">昼<br>间</th>
               <td><p>
                 <span class="schedule">第一班</span>
@@ -400,7 +404,7 @@
                 <p>机动</p>
               </td>
               <td colspan="9"><p></p></td>
-            </tr>
+            </tr>-->
           </tbody>
         </table>
       </dd>
@@ -424,14 +428,23 @@
 
         var layer = layui.layer;
         querySchedule();
+        
+        $('.js-query').on('click',function () {
+          var val = $('#dutyTime').val();
+          if(val.trim() === ''){
+            layer.alert('请选择查询日期！')
+            return false;
+          }
+          querySchedule(val);
+        })
 
         function querySchedule(d){
           var _d = d || formatDate()
           $.ajax({
-            url: 'http://172.16.5.236:18080/watch_schedule/getListByWatchTime/%7BwatchTime%7D?watchTime=' + _d,
+            url: $ctx + '/watch_schedule/getListByWatchTime/'+ _d,
             type: 'get'
           }).done(function(res) {
-            console.log(res)
+            // todo: 空表格样式未做
             var _html = '',
                 dt = res.data.list;
             for(var i=0; i<dt.length; i++){
@@ -447,11 +460,11 @@
                 _html += '    <span class="schedule">' + _dt.shift + '</span>'
                 _html += '    <span class="duty-time">' + _dt.startHour + '时-' + _dt.endHour + '时</span>'
                 _html += '  </p></td>'
-                _html += '  <td><p></p></td>'
                 var innerDt = _dt.personnelList;
                 for(var j=0; j<innerDt.length; j++) {
-                  if (j === innerDt.length) {
-                    _html += '  <td class="cyan"><p>' + innerDt[j].personnelName
+                  var rowColor = ((j%2)===0) ? 'cyan' : 'orange';
+                  if (j === (innerDt.length-1)) {
+                    _html += '  <td class="' + rowColor + '"><p>' + innerDt[j].personnelName
                     _html += '    <span class="ranks">(' + innerDt[j].militaryRank + ')</span>'
                     _html += '    <div class="opt-outer">'
                     _html += '    <div class="table-opt">'
@@ -461,7 +474,7 @@
                     _html += '    </div>'
                     _html += '    </p></td>'
                   } else {
-                    _html += '  <td class="orange"><p>' + innerDt[j].personnelName || '' + '<span class="ranks">' + innerDt[j].militaryRank || '' + '</span></p></p></td>'
+                    _html += '  <td class="' + rowColor + '"><p>' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRank + '</span></p></td>'
                   }
                 }
                 if(i === 0){
@@ -469,8 +482,43 @@
                 }
                 _html += '</tr>'
               }
-            // $('#dutyList > tbody').html(_html);
+            $('#dutyList > tbody').html(_html);
+            queryOuter(_d);
           }).fail(function() {
+            layer.msg('请求错误')
+          })
+        }
+
+        function queryOuter(d){
+          $.ajax({
+            url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d,
+            type: 'get'
+          }).done(function(res) {
+            var _html = '',
+              dt = res.data;
+            for(var i=0; i<(dt.length-1); i++){
+              var _dt = dt[i];
+              _html += '<tr>'
+              if(i === 0){
+                _html += '<th rowspan="2" class="font-16">在<br>外</th>'
+              }
+              if(i === 2){
+                _html += '<th colspan="2" class="font-16">' + _dt.name + '</th>'
+              }else{
+                _html += '<td><p>' + _dt.name + '</p></td>'
+              }
+              var innerDt = _dt.list;
+              var innerHtml = ''
+              for(var j=0; j<innerDt.length; j++) {
+                innerHtml += innerDt[j].personnelName + '，'
+              }
+              // var _col = (i === 2) ? 8 : 9;
+              _html += '  <td colspan="9"><p>' + innerHtml + '</p></td>'
+              _html += '</tr>'
+            }
+            $('#dutyList > tbody').append(_html);
+          }).fail(function() {
+            layer.msg('请求错误')
           })
         }
       })
