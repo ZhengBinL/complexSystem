@@ -266,13 +266,19 @@
     background: url("../../asset/img/btn-zoomout.png") no-repeat;
     background-size: 100%;
 }
-.btn-zoom.btn-zoomtrack {
-    background: url("../../asset/img/btn-zoomin.png") no-repeat;
-    background-size: 100%;
+.btn-zoomtrack {
+    display: inline-block;
+    width: 80px;
+    margin: 5px 0;
 }
-.btn-zoom.btn-zoommonitor {
-    background: url("../../asset/img/btn-zoomin.png") no-repeat;
-    background-size: 100%;
+.btn-zoommonitor {
+    display: inline-block;
+    width: 80px;
+    margin: 5px 0;
+}
+.btn-zoommonitor img, 
+.btn-zoomtrack img{
+    width: 100%
 }
 /* 分屏 */
 .split-mode {
@@ -309,6 +315,9 @@
   position: relative;
   padding: 0;
   margin: 5px;
+}
+.videos-li{
+    box-sizing: border-box
 }
 .videos {
   width: 100%;

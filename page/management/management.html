@@ -438,8 +438,8 @@
                             <dt>
                                 <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
                                 <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
-                                <a href="javascript:;" class="btn-zoom btn-zoomtrack">智能追踪</a>
-                                <a href="javascript:;" class="btn-zoom btn-zoommonitor">执勤监控</a>
+                                <a href="javascript:;" class="btn-zoomtrack"><img src="../../asset/img/intelligence.png" alt=""></a>
+                                <a href="javascript:;" class="btn-zoommonitor"><img src="../../asset/img/dutymonitor.png" alt=""></a>
                             </dt>
                         </dl>
                     </div>
@@ -580,7 +580,7 @@
                             <img src="../../asset/img/btn_1_1.png" alt="">
                             <div id="slide" class="slider"></div>
                             <img src="../../asset/img/btn_4_4.png" alt="">
-                            <img src="../../asset/img/btn_big.png" alt="">
+                            <img class="js-btn-big" src="../../asset/img/btn_big.png" alt="">
                         </div>
                     </div>
                     <!-- tab-bd>>>li =end= -->
@@ -744,7 +744,7 @@
         layui.use('slider', function () {
             var slider = layui.slider;
             //设置步长
-            slider.render({
+            var sliderSet = slider.render({
                 elem: '#slide',
                 step: 1, //步长,
                 min: 1,
@@ -779,7 +779,17 @@
                     }
                 }
             });
+            // 分屏模式放大功能
+            $('.js-btn-big').on('click',function(){
+                $('#mode-rec').removeClass('mode-rec-2')
+                $('#mode-rec').removeClass('mode-rec-3')
+                $('#mode-rec').removeClass('mode-rec-4')
+                $('#mode-rec').addClass('mode-rec-1')
+                _this.caleHeight(1)
+                sliderSet.setValue(0)
+            })
         })
+        
         // 鼠标滑过分屏模式视频&滑过历史记录视频
         $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
             $(this).children('.v-toolbar').show();
