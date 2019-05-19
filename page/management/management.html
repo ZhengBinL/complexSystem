@@ -834,7 +834,7 @@
         });
         // 点击历史记录显示
         $('body').on('click', '.icon-history', function () {
-            if($(this).attr("data-szCameraId")){
+            if(!$(this).attr("data-szCameraId")){
                 return
             }
             $('.split-mode').hide()
