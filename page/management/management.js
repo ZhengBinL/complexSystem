@@ -74,24 +74,29 @@ $(function () {
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
+                        $('.videos-li')[indexNum].find('.icon-history').data('szCameraId',res.data.cid)
+                        // $(this).find('.icon-history').data('szCameraId',)
                     } else if (indexNum == 2) {
                         var vlc = document.getElementById("vlc2");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
+                        $('.videos-li')[indexNum].find('.icon-history').data('szCameraId',res.data.cid)
                     } else if (indexNum == 3) {
                         var vlc = document.getElementById("vlc3");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
+                        $('.videos-li')[indexNum].find('.icon-history').data('szCameraId',res.data.cid)
                     } else if (indexNum == 4) {
                         var vlc = document.getElementById("vlc4");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
+                        $('.videos-li')[indexNum].find('.icon-history').data('szCameraId',res.data.cid)
                     }
                     // var vlc = document.getElementById("vlc1");
                 })
