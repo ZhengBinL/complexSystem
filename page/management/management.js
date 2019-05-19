@@ -115,24 +115,28 @@ $(function () {
                         'text="Waiting for video" name="vlc"></EMBED>' +
                         '</OBJECT>'
                     if (indexNum == 1) {
+                        if($('#vlc1'))return
                         $('#objvideo1').append(html)
                         $('#vlc1').css({
                             "width": "100%",
                             "height": "100%"
                         })
                     } else if (indexNum == 2) {
+                        if($('#vlc2'))return
                         $('#objvideo2').append(html)
                         $('#vlc2').css({
                             "width": "100%",
                             "height": "100%"
                         })
                     } else if (indexNum == 3) {
+                        if($('#vlc3'))return
                         $('#objvideo3').append(html)
                         $('#vlc3').css({
                             "width": "100%",
                             "height": "100%"
                         })
                     } else if (indexNum == 4) {
+                        if($('#vlc4'))return
                         $('#objvideo4').append(html)
                         $('#vlc4').css({
                             "width": "100%",
