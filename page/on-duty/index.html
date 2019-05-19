@@ -512,7 +512,7 @@
               for(var j=0; j<innerDt.length; j++) {
                 innerHtml += innerDt[j].personnelName + '，'
               }
-              // var _col = (i === 2) ? 8 : 9;
+              innerHtml = innerHtml.slice(0,-1);
               _html += '  <td colspan="9"><p>' + innerHtml + '</p></td>'
               _html += '</tr>'
             }

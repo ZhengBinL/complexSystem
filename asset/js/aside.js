@@ -31,8 +31,7 @@ $(function () {
       var setting = {
             view:{
                   fontCss:{
-                        "color":"#fff",
-                        "font-size":"28px"
+                        "color":"#229fe6"
                   }
             },
             data:    {
@@ -45,8 +44,9 @@ $(function () {
             }
       };
       var zNodes =[];
-      $.get("http://172.16.5.226:18080/resource/node",function(res){
+      $.get($ctx + "/resource/node",function(res){
             zNodes =res.data
+            console.log(zNodes,'sdadwe')
             $.fn.zTree.init($("#menu-tree"), setting,zNodes);
       })
       

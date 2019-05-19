@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>固定勤务</title>
     <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
     <link rel="stylesheet" href="./fixed-duty.css">
 </head>
 
@@ -66,14 +67,16 @@ style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height
     </dd>
 </dl>
 <script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/js/utils.js"></script>
 <script src="./fixed-duty.js"></script>
 <script src="../../asset/js/aside.js"></script>
+<script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
 <script>
     $.ajax({
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
-        url: 'http://172.16.5.228:18080/fixed_duty/dutyInfo',
+        url: $ctx + '/fixed_duty/dutyInfo',
         success: function (res) {
             if (res.code == 0 && res.data) {
                 var data = res.data.dutyInfo
