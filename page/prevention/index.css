@@ -1,4 +1,200 @@
-.lald-zt{
-    background:url(../../asset/img/lfld_zt.png) center no-repeat;
+.sign {
+    height: 20px;
+    margin-left: 20%;
+}
+.sign span{
+    font-size: 12px;
+    margin-right: 40px;
+}
+.icon-sign-red{
+    background: url("../../asset/img/sign-red.png") left no-repeat;
+    padding-left: 30px;
+}
+.icon-sign-yellow{
+    background: url("../../asset/img/sign-yellow.png") left no-repeat;
+    padding-left: 30px;
+}
+.icon-sign-green{
+    background: url("../../asset/img/sign-green.png") left no-repeat;
+    padding-left: 30px;
+}
+.prevention-left{
+    float: left;
+    width: 79%;
+}
+.prevention-right{
+    float: left;
+    width: 21%;
+    padding-left: 20px;
+    margin-top: -70px;
+    box-sizing:border-box;
+}
+
+.prevention-map {
+    position: relative;
+    border: 1px solid #563ad2;
+    box-shadow: 0 0 10px #563ad2;
+}
+
+.icon-corner{
+    position: absolute;
+    width: 43px;
+    height: 40px;
+}
+
+.corner-top-left{
+    top: -18px;
+    bottom: -18px;
+    left: -18px;
+    background: url("../../asset/img/corner-top-left.png") no-repeat;
+}
+
+.corner-top-right{
+    top: -18px;
+    bottom: -18px;
+    right: -18px;
+    background: url("../../asset/img/corner-top-right.png") no-repeat;
+}
+
+.corner-bottom-left{
+    bottom: -18px;
+    left: -18px;
+    background: url("../../asset/img/corner-bottom-left.png") no-repeat;
+}
+
+.corner-bottom-right{
+    bottom: -18px;
+    right: -18px;
+    background: url("../../asset/img/corner-bottom-right.png") no-repeat;
+}
+
+.prevention-img {
+    padding: 10px;
+}
+.prevention-img img{
+    max-width: 100%;
+}
+.prevention-video{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #229fe6;
+    box-shadow: 0 0 10px #229fe6;
+    box-sizing: border-box;
+
+}
+.vlc1{
+    width: 100%;
+    background:url(../../asset/img/gst_bj.png) center no-repeat;
     background-size:cover;
+}
+.video-hover{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    padding-right:15px;
+    height: 32px;
+    line-height: 32px;
+    background: rgba(0,0,0,.8);
+    text-align: right;
+    z-index: 2;
+    display: none;
+}
+
+.video-hover >a{
+    margin-left: 5px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.prevention-video .img{
+    width: 100%;
+}
+
+.opt-monitor{
+    position: absolute;
+    top: 33px;
+    right: 77px;
+    width: 80px;
+    height: 80px;
+    background: url("../../asset/img/opt_monitor_bg.png") no-repeat;
+    background-size: cover;
+    display: none;
+}
+
+.opt-top-lt{
+    top: 14px;
+    left: 12px;
+    width: 12px;
+    height: 14px;
+    background: url("../../asset/img/opt_toplt.png") no-repeat;
+}
+.opt-top-rt{
+    top: 14px;
+    right: 12px;
+    width: 12px;
+    height: 14px;
+    background: url("../../asset/img/opt_toprt.png") no-repeat;
+}
+.opt-top-ct{
+    top: 3px;
+    left: 35px;
+    width: 12px;
+    height: 12px;
+    background: url("../../asset/img/opt_topct.png") no-repeat;
+}
+.opt-mid-lt{
+    top: 35px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    background: url("../../asset/img/opt_middlelt.png") no-repeat;
+}
+.opt-mid-rt{
+    top: 35px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    background: url("../../asset/img/opt_middlert.png") no-repeat;
+}
+.opt-bot-lt{
+    bottom: 13px;
+    left: 12px;
+    width: 12px;
+    height: 13px;
+    background: url("../../asset/img/opt_bottomlt.png") no-repeat;
+}
+.opt-bot-rt{
+    bottom: 13px;
+    right: 12px;
+    width: 12px;
+    height: 13px;
+    background: url("../../asset/img/opt_bottomrt.png") no-repeat;
+}
+.opt-bot-ct{
+    bottom: 2px;
+    left: 35px;
+    width: 12px;
+    height: 13px;
+    background: url("../../asset/img/opt_bottomct.png") no-repeat;
+}
+.opt-big{
+    left: 24px;
+    top: 33px;
+    width: 14px;
+    height: 14px;
+    background: url("../../asset/img/opt_big.png") no-repeat;
+}
+.opt-small{
+    right: 20px;
+    top: 32px;
+    width: 14px;
+    height: 14px;
+    background: url("../../asset/img/opt_small.png") no-repeat;
+}
+.opt-item{
+    position: absolute;
+    background-size: contain;
 }
