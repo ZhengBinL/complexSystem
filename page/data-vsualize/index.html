@@ -28,27 +28,30 @@
     </div>
   </div>
   <!--侧边栏-->
+  <iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
+          marginwidth="0"
+          style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>
   <div class="aside">
     <div class="menu-tree-wrapper">
       <ul id="menu-tree" class="menu-tree ztree"></ul>
     </div>
-    <div class="palace">
-      <div class="palace-unit">111</div>
-      <div class="palace-unit">222</div>
-      <div class="palace-unit">333</div>
-      <div class="palace-unit">444</div>
-      <div class="palace-unit">555</div>
-      <div class="palace-unit">666</div>
-    </div>
+    <!-- <div class="palace">
+  <div class="palace-unit">111</div>
+  <div class="palace-unit">222</div>
+  <div class="palace-unit">333</div>
+  <div class="palace-unit palace-left">444</div>
+  <div class="palace-unit palace-ct">555</div>
+  <div class="palace-unit palace-last">666</div>
+</div> -->
     <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
   </div>
   <!-- 固定勤务 -->
   <dl class="wrapper">
     <dd class="data-vsualize">
-      <ul class="w33-3">
+      <ul class="data-left">
         <li class="dv-chart-box">
           <div class="dv-bg">
-            <i class="dvbg-right-lt"></i>
+            <i class="dvbg-right-lt unormal"></i>
             <i class="dvbg-left-mt"></i>
             <i class="dvbg-left-rt"></i>
             <i class="dvbg-left-lm"><img src="../../asset/img/dv-left-lm-img.png"></i>
@@ -59,14 +62,27 @@
             <i class="dvbg-left-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title"></h4>
+            <h4 class="dv-chart-title">近期报警统计</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+
+        <li class="dv-chart-box dv-bg-center">
+          <div class="dv-bg">
+            <i class="dvbg-middle-lt"></i>
+            <i class="dvbg-middle-rt"></i>
+            <i class="dvbg-middle-rb"></i>
+            <i class="dvbg-middle-lb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">报警率统计</h4>
             <div class="dv-chart-main"></div>
           </div>
         </li>
 
         <li class="dv-chart-box">
           <div class="dv-bg">
-            <i class="dvbg-left-lt"></i>
+            <i class="dvbg-right-lt unormal"></i>
             <i class="dvbg-left-mt"></i>
             <i class="dvbg-left-rt"></i>
             <i class="dvbg-left-lm"><img src="../../asset/img/dv-left-lm-img.png"></i>
@@ -77,13 +93,13 @@
             <i class="dvbg-left-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title"></h4>
+            <h4 class="dv-chart-title">近期报警统计</h4>
             <div class="dv-chart-main"></div>
           </div>
         </li>
       </ul>
 
-      <ul class="w33-3">
+      <ul class="data-middle">
         <li class="dv-title">
           <i class="dvbg-title-l"></i>
           <i class="dvbg-title-m"></i>
@@ -94,7 +110,7 @@
         <li class="dv-map"></li>
       </ul>
 
-      <ul class="w33-3">
+      <ul class="data-right">
         <li class="dv-chart-box">
           <div class="dv-bg">
             <i class="dvbg-right-lt"></i>
@@ -108,7 +124,20 @@
             <i class="dvbg-right-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title"></h4>
+            <h4 class="dv-chart-title">虚拟入侵统计</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+
+        <li class="dv-chart-box dv-bg-center">
+          <div class="dv-bg">
+            <i class="dvbg-middle-lt"></i>
+            <i class="dvbg-middle-rt"></i>
+            <i class="dvbg-middle-rb"></i>
+            <i class="dvbg-middle-lb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">报警统计</h4>
             <div class="dv-chart-main"></div>
           </div>
         </li>
@@ -126,7 +155,7 @@
             <i class="dvbg-right-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title"></h4>
+            <h4 class="dv-chart-title">智能分析和震动光纤</h4>
             <div class="dv-chart-main"></div>
           </div>
         </li>

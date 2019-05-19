@@ -159,18 +159,25 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 380px; /*todo*/
+  height: 300px; /*todo*/
 }
-
+.dv-chart-title{
+  line-height: 1;
+  padding:19px 0 0 36px;
+  font-size: 22px;
+  color: #34e1fd;
+  font-weight:normal;
+}
 .dv-title {
   position: relative;
-  height: 134px;
+  height: 126px;
   padding: 0 60px;
   text-align: center;
-  line-height: 134px;
+  line-height: 126px;
 }
 .dv-title > img {
   max-width: 322px;
+  position: relative;
 }
 .dv-title > i {
   position: absolute;
@@ -179,16 +186,62 @@
 }
 .dvbg-title-l {
   left: 0;
-  width: 50px;
-  background: url("../../asset/img/dv-title-bg-l.png") no-repeat;
+  width: 49px;
+  background: url("../../asset/img/dv-title-lt.png") no-repeat;
 }
 .dvbg-title-m {
-  left: 50px;
-  right: 60px;
-  background: url("../../asset/img/dv-title-bg-m.png") repeat-x;
+  left: 49px;
+  right: 68px;
+  background: url("../../asset/img/dv-title-ct.png") repeat-x;
 }
 .dvbg-title-r {
   right: 0;
-  width: 60px;
-  background: url("../../asset/img/dv-title-bg-r.png") no-repeat;
+  width: 68px;
+  background: url("../../asset/img/dv-title-rt.png") no-repeat;
+}
+.dv-bg-center i{
+  width: 16px;
+  height: 14px;
+}
+.dv-bg-center .dv-bg{
+  border: 1px solid #1e1671;
+  background: #131247;
+  background: rgba(19, 18, 71, 0.8);
+}
+.dv-bg-center .dv-chart-title{
+  padding:0 0 0 36px;
+  background: #1a1958;
+  background: rgba(26, 25, 88, 0.5);
+  border-bottom:1px solid #1e1671;
+  height: 51px;
+  line-height: 51px;
+}
+.dvbg-middle-lt{
+  left: 0;
+  background: url("../../asset/img/dv-ltct-top.png") no-repeat;
+}
+.dvbg-middle-rt{
+  right: 0;
+  background: url("../../asset/img/dv-ltct-right.png") no-repeat;
+}
+.dvbg-middle-rb{
+  bottom:0;
+  right: 0;
+  background: url("../../asset/img/dv-ltct-bottom.png") no-repeat;
+}
+.dvbg-middle-lb{
+  bottom: 0;
+  background: url("../../asset/img/dv-ltct-left.png") no-repeat;
+}
+.data-left{
+  width: 26%;
+}
+.data-right{
+  width: 26%;
+}
+.data-middle{
+  width: 48%;
+}
+.unormal{
+  background: url("../../asset/img/dv-unormal.png") no-repeat -1px 0;
 }
