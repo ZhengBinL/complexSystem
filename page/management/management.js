@@ -60,16 +60,11 @@ $(function () {
         zNodes = res.data
         $.fn.zTree.init($("#menu-tree"), setting, zNodes);
     })
-    // $.fn.zTree.init($("#menu-tree"), setting, zNodes);
     var indexNum
 
     function zTreeOnClick(event, treeId, treeNode) {
-        // $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=' + treeNode.id, function (res) {
-        //     play(res.data.url)
-        // })
-        console.log(treeNode,'treeNode')
+        // console.log(treeNode,'treeNode')
         $.get('http://172.16.5.228:18080/dvr/rtspUrl?id=1000000', function (res) {
-                // play(res.data.rtspUrl)
             if (indexNum == 1) {
                 var vlc = document.getElementById("vlc1");
                 var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
@@ -95,9 +90,8 @@ $(function () {
                 vlc.playlist.playItem(id);
                 vlc.playlist.play();
             }
-            // var vlc = document.getElementById("vlc1");
+            $('.videos-li').eq(indexNum-1).find('.icon-history').attr('data-szCameraId',res.data.cid)
         })
-
     }
 
     $('.videos-li').on('click', function () {
@@ -115,35 +109,35 @@ $(function () {
             'text="Waiting for video" name="vlc"></EMBED>' +
             '</OBJECT>'
         if (indexNum == 1) {
-            if($('#vlc1'))return
+            if($('#vlc1').length>0) return 
             $('#objvideo1').append(html)
             $('#vlc1').css({
                 "width": "100%",
                 "height": "100%"
             })
         } else if (indexNum == 2) {
-            if($('#vlc2'))return
+            if($('#vlc1').length>0) return 
             $('#objvideo2').append(html)
             $('#vlc2').css({
                 "width": "100%",
                 "height": "100%"
             })
         } else if (indexNum == 3) {
-            if($('#vlc3'))return
+            if($('#vlc1').length>0) return 
             $('#objvideo3').append(html)
             $('#vlc3').css({
                 "width": "100%",
                 "height": "100%"
             })
         } else if (indexNum == 4) {
-            if($('#vlc4'))return
+            if($('#vlc1').length>0) return 
             $('#objvideo4').append(html)
             $('#vlc4').css({
                 "width": "100%",
                 "height": "100%"
             })
         }
-
+        
     })
 
     function play(rtspUrl) {
@@ -168,6 +162,6 @@ $(function () {
         var vlc = document.getElementById("vlc1");
         vlc.playlist.stop();
     }
-
+    
 })
     

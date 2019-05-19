@@ -383,7 +383,7 @@
                         <dl class="inner-box">
                             <dd class="map-img-content" id='map-img-content'>
                                 <img class="map-img" id="img" src="../../asset/img/map.jpg">
-                                <img class="camera camera-hidden camera1" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera1"  src="../../asset/img/cam-small.png" alt="">
                                 <img class="camera camera-hidden camera2" src="../../asset/img/cam-small.png" alt="">
                                 <img class="camera camera-hidden camera3" src="../../asset/img/cam-small.png" alt="">
                                 <img class="camera camera-hidden camera4" src="../../asset/img/cam-small.png" alt="">
@@ -453,7 +453,7 @@
                                 <dl>
                                     <dd class="videos">
                                         <dt class="v-toolbar">
-                                            <a href="javascript:;" class="icon-history" data-szCameraId="1000121$1$0$0"><img
+                                            <a href="javascript:;" class="icon-history"><img
                                                     src="../../asset/img/icon-history.png" > 历史记录</a>
                                             <a href="javascript:;" class="js-control"><img
                                                     src="../../asset/img/icon-control.png"> 云台控制</a>
@@ -1017,6 +1017,79 @@
             })
         }
         bindDrag(document.getElementById('map-img-content'));
+    </script>
+
+
+
+    <script>
+    // 地图模式 视屏点击弹框
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        $('.camera').on('click',function(){
+            var html = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc100" codebase="" width="100%" height="85%" events="True">' +
+                '<div class="v-toolbar">'+
+                '<a href="javascript:;" class="icon-history" data-szCameraId="1000121$1$0$0">'+
+        '<img src="../../asset/img/icon-history.png" > 历史记录</a>'+
+        '<a href="javascript:;" class="js-control" id="js-btn-control">'+
+        '<img src="../../asset/img/icon-control.png"> 云台控制</a>'+
+        '<a href="javascript:;" id="js-btn-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+        '</div>'+
+        '<div class="opt-monitor">'+
+            '<a href="javascript:;" class="opt-item opt-top-lt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-top-ct"></a>'+
+            '<a href="javascript:;" class="opt-item opt-top-rt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-mid-lt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-mid-rt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-lt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-ct"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-rt"></a>'+
+            '<a href="javascript:;" class="opt-item opt-big"></a>'+
+            '<a href="javascript:;" class="opt-item opt-small"></a>'+
+        '</div> '+   
+            '<param name="AutoLoop" value="False" />' +
+            '<param name="AutoPlay" value="True" />' +
+            '<param name="Time" value="True" />' +
+            '<param name="ShowDisplay" value="True" />' +
+            '<param name="Controls" value="False">' +
+            '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"' +
+            'version="VideoLAN.VLCPlugin.2" width="100%" height="85%"' +
+            'text="Waiting for video" name="vlc"></EMBED>' +
+            '</OBJECT>'
+            var index = layer.open({
+                type: 1, 
+                title:'',
+                btn:'',
+                content: html,//这里content是一个普通的String
+                area: ['800px','450px'],
+                success: function(layero, index){
+                    $.get('',function(res){
+                        var vlc = document.getElementById("vlc100");
+                        var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                        vlc.playlist.playItem(id);
+                        vlc.playlist.play();
+                    })
+                    // console.log(layero, index);
+                }
+            });
+            //关闭弹框
+            $('#js-btn-close').on('click',function(){
+                layer.close(index);
+            })
+            //打开云台控制切换
+            $('#js-btn-control').on('click',function(){
+                $(this).parent().find('.opt-monitor').toggle()
+            })
+            //
+            $('#vlc100').on('mouseover',function(){
+                $(this).find('.v-toolbar').show()
+            })
+            $('#vlc100').on('mouseout',function(){
+                $(this).find('.v-toolbar').hide()
+            })
+        })
+      });
+
     </script>
 </body>
 
