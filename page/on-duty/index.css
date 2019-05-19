@@ -1,0 +1,126 @@
+.on-duty {
+}
+
+.right-form {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  display: table;
+  margin-bottom: 0;
+}
+
+.table {
+  width: 100%;
+  margin: 0 auto;
+  table-layout: fixed;
+  border-collapse:collapse;
+  background: #1e254d;
+  background: rgba(30,37,77,.68);
+}
+.table > thead > tr > th {
+  position: relative;
+  box-sizing: border-box;
+  border: 0;
+  text-align: center;
+  vertical-align: middle;
+  border: solid 1px #324484;
+  font-size: 16px;
+  font-weight: normal;
+}
+.table > thead > tr > th > p {
+  padding: 8px 10px;
+  background: #3171f8;
+}
+/*.table > thead > tr > th:first-child {
+  border-left-color: transparent;
+}
+.table > thead > tr > th:last-child {
+  border-right-color: transparent;
+}
+.table > thead > tr > th:first-child > p {
+  border-radius: 5px 0 0 0;
+}
+.table > thead > tr > th:last-child > p {
+  border-radius: 0 5px 0 0;
+}*/
+.table > tbody > tr > td, .table > tbody > tr > th {
+  position: relative;
+  padding: 7px 0;
+  border: solid 1px #324484;
+  font-weight: normal;
+}
+.table > tbody > tr > td > p {
+  white-space: nowrap;
+  text-align: center;
+}
+.table > tbody > tr:hover > td {
+  position: relative;
+  color: #fff;
+  background: #293dcf;
+  zoom:1;
+}
+.table > tbody > tr:hover .opt-outer {
+  display: block;
+}
+.opt-outer{
+  height:0px;
+  position:relative;
+  display:none;
+}
+.table-opt{
+  position: absolute;
+  right: 0;
+  top: -51px;
+  white-space: nowrap;
+  height: 25px;
+  line-height: 24px;
+  z-index: 99;
+}
+.table-opt > a.btn-row {
+  display: inline-block;
+  height: 24px;
+  padding: 0 10px;
+  margin: 0 1px 0 0;
+  box-sizing: border-box;
+  background-color: #293dcf;
+  border: none;
+  outline: none;
+  border-radius: 3px 3px 0 0;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 24px;
+}
+.table-opt > input.btn-row {
+  display: inline-block;
+  height: 22px;
+  padding: 0 10px;
+  margin: -4px 1px 0 0;
+  box-sizing: border-box;
+  background-color: #F6AB00;
+  border: none;
+  outline: none;
+  border-radius: 3px 3px 0 0;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 14px;
+}
+.table-opt > a.btn-row.btn-disabled, .table-opt > input.btn-row:disabled, .table-opt > input.btn-row.btn-disabled {
+  background-color: #cccccc;
+  color: #f0f0f0;
+  cursor: not-allowed;
+}
+.schedule, .duty-time {
+  display: inline-block;
+  text-align: center;
+}
+.duty-time {
+  width: 70px;
+  font-size: 12px;
+}
+.ranks {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 12px;
+  color: #88898f;
+}

@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 *{
     margin:0;
     padding:0
@@ -55,6 +57,9 @@ input{
 }
 .w75 {
   width: 75%;
+}
+.font-16 {
+  font-size: 16px;
 }
 
 /*
@@ -156,6 +161,11 @@ input{
     background-size:contain;
 	z-index: 999;
 }
+.menu-tree-wrapper{
+    padding-top:50px;
+    padding-left: 8px;
+    /* overflow: hidden; */
+}
 .palace{
     position: absolute;
     bottom:28px;
@@ -222,6 +232,7 @@ input{
   margin: 30px auto 20px;
 }
 .wrap > dt, .wrapper > dt {
+  position: relative;
   padding: 0;
   margin: 0 0 20px;
 }
@@ -234,7 +245,7 @@ input{
   width: 235px;
   height: 48px;
   padding: 0 0 0 3px;
-  margin: 20px 0 0;
+  margin: 0;
   background-image: url("../img/tabtit_bg.png");
   background-repeat: no-repeat;
   background-size: cover;

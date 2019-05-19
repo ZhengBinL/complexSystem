@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>执勤排班</title>
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <!--头部-->
+    <div class="header" id="header">
+        <div class="header-rt">
+            <ul>
+                <li class="notice-wrapper">
+                    <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+                </li>
+                <li class="user-notice">
+                    <div id="user-operate" class="user-operate">
+                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                        <a href="javascript:;">管理</a>
+                        <a href="javascript:;" class="exit" title="退出">退出</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--侧边栏-->
+    <div class="aside">
+        <div class="menu-tree-wrapper">
+            <ul id="menu-tree" class="menu-tree ztree"></ul>
+        </div>
+        <div class="palace">
+            <div class="palace-unit">111</div>
+            <div class="palace-unit">222</div>
+            <div class="palace-unit">333</div>
+            <div class="palace-unit">444</div>
+            <div class="palace-unit">555</div>
+            <div class="palace-unit">666</div>
+        </div>
+        <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
+    </div>
+
+    <!-- 主内容：报警 -->
+    <dl class="wrapper">
+      <dt>
+        <span class="page-title">执勤排班</span>
+        <!--<form class="layui-form right-form" action="">-->
+          <div class="layui-form-item right-form">
+
+            <div class="layui-inline">
+              <label class="layui-form-label">执勤时间：</label>
+              <div class="layui-input-inline">
+                <input type="text" name="dutyTime" id="dutyTime" autocomplete="off" class="layui-input js-laydate">
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <button class="layui-btn layui-btn-normal">查询</button>
+              <button class="layui-btn layui-btn-primary">修改</button>
+            </div>
+
+          </div>
+        <!--</form>-->
+      </dt>
+
+      <dd>
+        <table id="dutyList" class="table">
+          <colgroup>
+            <col width="33">
+            <col width="130">
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th colspan="2"><p>时间/班次</p></th>
+              <th><p>战备督查席</p></th>
+              <th><p>一号岗</p></th>
+              <th><p>二号岗</p></th>
+              <th><p>三号岗</p></th>
+              <th><p>四号岗</p></th>
+              <th><p>五号岗</p></th>
+              <th><p>六号岗</p></th>
+              <th><p>七号岗</p></th>
+              <th><p>八号岗</p></th>
+              <th><p>应急组</p></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th rowspan="7" class="font-16">昼<br>间</th>
+              <td><p>
+                <span class="schedule">第一班</span>
+                <span class="duty-time">6时-8时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三张三<span class="ranks">(军官军官军)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+              <th rowspan="15"><p></p></th>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第二班</span>
+                <span class="duty-time">8时-10时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第三班</span>
+                <span class="duty-time">10时-12时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第四班</span>
+                <span class="duty-time">12时-14时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第五班</span>
+                <span class="duty-time">14时-16时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第六班</span>
+                <span class="duty-time">16时-18时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第七班</span>
+                <span class="duty-time">18时-20时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+
+            <tr>
+              <th rowspan="5" class="font-16">夜<br>间</th>
+              <td><p>
+                <span class="schedule">第一班</span>
+                <span class="duty-time">20时-22时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第二班</span>
+                <span class="duty-time">22时-24时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第三班</span>
+                <span class="duty-time">0时-2时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第四班</span>
+                <span class="duty-time">2时-4时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <span class="schedule">第五班</span>
+                <span class="duty-time">4时-6时</span>
+              </p></td>
+              <td><p></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
+              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td class="cyan"><p>
+                李四<span class="ranks">(士兵)</span>
+                <div class="opt-outer">
+                  <div class="table-opt">
+                    <a href="#" class="js-copy btn-row">复制</a>
+                    <a href="#" class="js-paste btn-row">粘贴</a>
+                  </div>
+                </div>
+                </p></td>
+            </tr>
+            <tr>
+              <th rowspan="2" class="font-16"><p>在<br>外</p></th>
+              <td>
+                <p>应急班</p>
+              </td>
+              <td colspan="9"><p></p></td>
+            </tr>
+            <tr>
+              <td>
+                <p>集训</p>
+              </td>
+              <td colspan="9"><p></p></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <p>机动</p>
+              </td>
+              <td colspan="9"><p></p></td>
+            </tr>
+          </tbody>
+        </table>
+      </dd>
+    </dl>
+
+    <!--页脚-->
+    <div class="footer">
+      技术支持：北京国势通科技有限公司
+    </div>
+    <script src="../../asset/js/jquery.min.js"></script>
+    <script src="../../asset/js/aside.js"></script>
+    <script src="../../asset/js/utils.js"></script>
+    <script src="../../asset/introduce/layui/layui.js"></script>
+    <script>
+      layui.use(['laydate','table'], function(){
+        var laydate = layui.laydate;
+        laydate.render({
+          elem: '.js-laydate',
+          format: 'yyyy-MM-dd'
+        })
+
+        var layer = layui.layer;
+        querySchedule();
+
+        function querySchedule(d){
+          var _d = d || formatDate()
+          $.ajax({
+            url: 'http://172.16.5.236:18080/watch_schedule/getListByWatchTime/%7BwatchTime%7D?watchTime=' + _d,
+            type: 'get'
+          }).done(function(res) {
+            console.log(res)
+            var _html = '',
+                dt = res.data.list;
+            for(var i=0; i<dt.length; i++){
+              var _dt = dt[i];
+                _html += '<tr>'
+                if(i === 0){
+                  _html += '  <th rowspan="7" class="font-16">昼<br>间</th>'
+                }
+                if(i === 7){
+                  _html += '  <th rowspan="5" class="font-16">夜<br>间</th>'
+                }
+                _html += '    <td><p>'
+                _html += '    <span class="schedule">' + _dt.shift + '</span>'
+                _html += '    <span class="duty-time">' + _dt.startHour + '时-' + _dt.endHour + '时</span>'
+                _html += '  </p></td>'
+                _html += '  <td><p></p></td>'
+                var innerDt = _dt.personnelList;
+                for(var j=0; j<innerDt.length; j++) {
+                  if (j === innerDt.length) {
+                    _html += '  <td class="cyan"><p>' + innerDt[j].personnelName
+                    _html += '    <span class="ranks">(' + innerDt[j].militaryRank + ')</span>'
+                    _html += '    <div class="opt-outer">'
+                    _html += '    <div class="table-opt">'
+                    _html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>'
+                    _html += '      <a href="javascript:;" class="js-paste btn-row">粘贴</a>'
+                    _html += '    </div>'
+                    _html += '    </div>'
+                    _html += '    </p></td>'
+                  } else {
+                    _html += '  <td class="orange"><p>' + innerDt[j].personnelName || '' + '<span class="ranks">' + innerDt[j].militaryRank || '' + '</span></p></p></td>'
+                  }
+                }
+                if(i === 0){
+                  _html += '  <th rowspan="15"><p></p></th>'
+                }
+                _html += '</tr>'
+              }
+            // $('#dutyList > tbody').html(_html);
+          }).fail(function() {
+          })
+        }
+      })
+    </script>
+</body>
+
+</html>
