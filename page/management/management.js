@@ -63,10 +63,10 @@ $(function () {
         })
     }
 
-    $('.videos-li').on('click', function () {
+    $('body').on('click','.videos-li',function(){
         indexNum = $(this).attr('data-index')
-        $('.videos-li').removeClass('videos-border')
-        $(this).addClass('videos-border')
+        $('.videos-li').find('dd').removeClass('videos-border')
+        $(this).find('dd').addClass('videos-border')
         var html = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc' + $(this).attr('data-index') + '" codebase="" width="100%" height="85%" events="True">' +
             '<param name="AutoLoop" value="False" />' +
             '<param name="AutoPlay" value="True" />' +
@@ -107,8 +107,6 @@ $(function () {
             })
         } 
     })
-
-
     /*****地图模式按钮开始*******/
     //放大
     $('body').on('click','.btn-zoomin',function(){
@@ -317,9 +315,69 @@ $(function () {
         });
         /*******地图模式 视屏点击弹框结束*******/ 
 
-        /*******分屏模式渲染li开始*******/ 
+        /*******分屏模式渲染li开始*******/
+        var liHtml =''
+        var j=0
         for(var i =0;i<16;i++){
-            
+            j++
+            liHtml+=
+            ('<li class="videos-li" data-index="'+(i+1)+'">'+
+            '<dl>'+
+            '<dd class="videos">'+
+            '<dt class="v-toolbar">'+
+            '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
+            '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
+            '<a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+            '<iframe id="zhanwei'+(i+1)+'" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>'+
+            '<div class="opt-monitor">'+
+            '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
+            '<a href="javascript:;" class="opt-item opt-top-ct" data-direction="topC"></a>'+
+            '<a href="javascript:;" class="opt-item opt-top-rt" data-direction="topR"></a>'+
+            '<a href="javascript:;" class="opt-item opt-mid-lt" data-direction="midL"></a>'+
+            '<a href="javascript:;" class="opt-item opt-mid-rt" data-direction="midR"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-lt" data-direction="botL"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-ct" data-direction="botC"></a>'+
+            '<a href="javascript:;" class="opt-item opt-bot-rt" data-direction="botR"></a>'+
+            '<a href="javascript:;" class="opt-item opt-big"  data-direction="big"></a>'+
+            '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
+            '</div>'+
+            '</dt>'+
+            '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px;width: 100%;height: 100%;">'+
+                
+            '</div>'+
+            '</dd>'+
+            '</dl>'+
+            '</li>')
+        }
+       
+        $('#mode-rec').prepend(liHtml)
+        caleHeight(4)
+
+        function caleHeight(itemnumb) {
+            // 设置分屏模式视频高度
+            var itemWidth = $('.mode-content .videos').width();
+            var itemHeight = itemWidth * 9 / 16;
+            $('.mode-content .videos').css('height', itemHeight);
+            $('#vlc1').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#vlc2').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#vlc3').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#vlc4').css({
+                "width":itemWidth,
+                "height":itemHeight
+            })
+            $('#mode-rec').css({
+                'height': itemHeight * itemnumb,
+                'overflow': 'hidden'
+            })
         }
         /*******分屏模式渲染li结束*******/ 
 })
