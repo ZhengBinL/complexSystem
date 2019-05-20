@@ -1,3 +1,4 @@
+
 $(function () {
     // 侧边栏展开收起
     $('.icon-fold').click(function () {
@@ -56,7 +57,7 @@ $(function () {
     };
     var zNodes = []
     var url = "http://192.168.3.8:18080"
-    $.get("http://192.168.3.8:18080/resource/node", function (res) {
+    $.get("http://172.16.5.226:18080/resource/node", function (res) {
         zNodes = res.data
         $.fn.zTree.init($("#menu-tree"), setting, zNodes);
     })
@@ -64,7 +65,7 @@ $(function () {
 
     function zTreeOnClick(event, treeId, treeNode) {
         // console.log(treeNode,'treeNode')
-        $.get('http://172.16.5.228:18080/dvr/rtspUrl?id=1000000', function (res) {
+        $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=1000000', function (res) {
             if (indexNum == 1) {
                 var vlc = document.getElementById("vlc1");
                 var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
