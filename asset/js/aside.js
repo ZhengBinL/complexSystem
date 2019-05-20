@@ -26,23 +26,21 @@ $(function () {
 
 
       // 菜单树
-      var zTreeObj;
-      // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
-      var setting = {
-            data:    {
-                  simpleData:{
-                        enable:true,
-                        idKey: "id",
-                        pIdKey: "pid",
-                        rootPId: 0
-                  }
-            }
-      };
-      var zNodes =[];
-      $.get($ctx + "/resource/node",function(res){
-            zNodes =res.data
-            console.log(zNodes,'sdadwe')
-            $.fn.zTree.init($("#menu-tree"), setting,zNodes);
-      })
+      // var setting = {
+      //       data:    {
+      //             simpleData:{
+      //                   enable:true,
+      //                   idKey: "id",
+      //                   pIdKey: "pid",
+      //                   rootPId: 0
+      //             }
+      //       }
+      // };
+      // var zNodes =[];
+      // $.get($ctx + "/resource/node",function(res){
+      //       zNodes =res.data
+      //       console.log(zNodes,'sdadwe')
+      //       $.fn.zTree.init($("#menu-tree"), setting,zNodes);
+      // })
       
 })
