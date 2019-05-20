@@ -234,6 +234,7 @@ input{
 .wrapper { /*主内容满屏布局*/
   padding: 0;
   margin: 10px 50px 20px;
+  max-width: 1820px;
 }
 .wrap { /*主内容定宽居中*/
   width: 1280px;
