@@ -698,7 +698,8 @@
     <script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
     <script src="./management.js"></script>
     <script>
-        var _this = this
+        var _this = this;
+        var szCameraId="";
         //计算高度，超出隐藏
         function caleHeight(itemnumb) {
             // 设置分屏模式视频高度
@@ -820,7 +821,7 @@
             if (searchDate == null) {
                 searchDate = dateFtt("yyyy-MM-dd", new Date());
             }
-            var szCameraId = "1000121$1$0$0"
+//            var szCameraId = "1000121$1$0$0"
             var nRecordSource = 3;
             var nRecordType = 0;
             var strStartTime = searchDate + " 00:00:00";
@@ -836,6 +837,9 @@
         $('body').on('click', '.icon-history', function () {
             if(!$(this).attr("data-szCameraId")){
                 return
+            } else {
+                szCameraId=this.getAttribute("data-szCameraId")
+                console.log("data-szCameraId: "+szCameraId)
             }
             $('.split-mode').hide()
             $('.history-wrapper').show()
@@ -867,7 +871,7 @@
         })
         // 单击刻度条某一项
         $('body').on('click', '.scale-unit', function (e) {
-            var szCameraId = "1000121$1$0$0"
+//            var szCameraId = "1000121$1$0$0"
             var nRecordSource = 3;
             var nRecordType = 0;
             var nStartTime = this.getAttribute("data-start-time");

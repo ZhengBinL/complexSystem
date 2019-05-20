@@ -33,7 +33,7 @@
     </div>
 
     <!-- 主内容：报警 -->
-    <dl class="wrap">
+    <dl class="wrapper">
       <dt>
           <span class="page-title">联防联动</span>
           <div class="sign">
@@ -48,6 +48,32 @@
               <div class="prevention-map">
                   <div class="prevention-img">
                       <img src="../../asset/img/prevention-bj.png">
+                      <span class="warn1"></span>
+                      <span class="warn2"></span>
+                      <span class="warn3"></span>
+                      <span class="warn4"></span>
+                      <span class="warn5"></span>
+                      <span class="warn6"></span>
+                      <span class="warn7"></span>
+                      <span class="warn8"></span>
+                      <span class="warn9"></span>
+                      <span class="warn10"></span>
+                      <span class="warn11"></span>
+                      <span class="warn12"></span>
+                      <span class="warn13"></span>
+                      <span class="warn14"></span>
+                      <span class="warn15"></span>
+                      <span class="warn16"></span>
+                      <span class="warn17"></span>
+                      <span class="warn18"></span>
+                      <span class="warn19"></span>
+                      <span class="warn20"></span>
+                      <span class="warn21"></span>
+                      <span class="warn22"></span>
+                      <span class="warn23"></span>
+                      <span class="warn24"></span>
+                      <span class="warn25"></span>
+                      <span class="warn26"></span>
                   </div>
                   <span class="icon-corner corner-top-left"></span>
                   <span class="icon-corner corner-top-right"></span>
@@ -164,23 +190,25 @@
             })
         }
         caleHeight()
-        //鼠标滑过分屏模式视频&滑过历史记录视频
+        //鼠标滑过视频
         $('body').on('mouseenter', '.prevention-video', function () {
             $(this).children('.video-hover').show();
         }).on('mouseleave', '.prevention-video', function () {
             $(this).children('.video-hover').stop().hide();
         })
+        // 请求接口获取报警点
+//        $.ajax()
 
        // 点击云平台控制
-        $('body').on('click', '.js-control', function () {
-            $(this).parent().children('.opt-monitor').toggle()
-        })
+//        $('body').on('click', '.js-control', function () {
+//            $(this).parent().children('.opt-monitor').toggle()
+//        })
 
         // 点击历史记录中的关闭按钮
-        $('body').on('click', '.history-wrapper .icon-history', function () {
-            $('.history-wrapper').hide();
-            $('.split-mode').show();
-        })
+//        $('body').on('click', '.history-wrapper .icon-history', function () {
+//            $('.history-wrapper').hide();
+//            $('.split-mode').show();
+//        })
 
     </script>
 
