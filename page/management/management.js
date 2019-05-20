@@ -65,9 +65,9 @@ $(function () {
 
     $('body').on('click','.videos-li',function(){
         indexNum = $(this).attr('data-index')
-        $('.videos-li').find('dd').removeClass('videos-border')
-        $(this).find('dd').addClass('videos-border')
-        var html = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc' + $(this).attr('data-index') + '" codebase="" width="100%" height="85%" events="True">' +
+        $('.videos-li').removeClass('videos-border')
+        $(this).addClass('videos-border')
+        var html = '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc' + $(this).attr('data-index') + '" codebase="" events="True">' +
             '<param name="AutoLoop" value="False" />' +
             '<param name="AutoPlay" value="True" />' +
             '<param name="Time" value="True" />' +
@@ -82,28 +82,28 @@ $(function () {
             $('#objvideo1').append(html)
             $('#vlc1').css({
                 "width": "100%",
-                "height": "100%"
+                "height": "83%"
             })
         } else if (indexNum == 2) {
             if($('#vlc1').length>0) return 
             $('#objvideo2').append(html)
             $('#vlc2').css({
                 "width": "100%",
-                "height": "100%"
+                "height": "83%"
             })
         } else if (indexNum == 3) {
             if($('#vlc1').length>0) return 
             $('#objvideo3').append(html)
             $('#vlc3').css({
                 "width": "100%",
-                "height": "100%"
+                "height": "83%"
             })
         } else if (indexNum == 4) {
             if($('#vlc1').length>0) return 
             $('#objvideo4').append(html)
             $('#vlc4').css({
                 "width": "100%",
-                "height": "100%"
+                "height": "83%"
             })
         } 
     })
