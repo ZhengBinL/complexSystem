@@ -1,5 +1,6 @@
 
 $(function () {
+    var _this = this
     // 菜单树
     var zNodes = []//节点
     var indexNum//点击的某个点的index
@@ -34,13 +35,29 @@ $(function () {
         if(!!treeNode.isParent)return
         $.get($ctx+'/dvr/rtspUrl?id=1000000', function (res) {
             if (indexNum == 1) {
-                play($('#vlc1'))
+                var vlc = document.getElementById("vlc1")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
             } else if (indexNum == 2) {
-                play($('#vlc2'))
+                var vlc = document.getElementById("vlc2")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
             } else if (indexNum == 3) {
-                play($('#vlc3'))
+                var vlc = document.getElementById("vlc3")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
             } else if (indexNum == 4) {
-                play($('#vlc4'))
+                var vlc = document.getElementById("vlc4")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
             }
             $('.videos-li').eq(indexNum-1).find('.icon-history').attr('data-szCameraId',res.data.cid)
         })
@@ -90,12 +107,5 @@ $(function () {
             })
         } 
     })
-
-    function play(vlc){
-        var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
-        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
-        vlc.playlist.playItem(id);
-        vlc.playlist.play();
-    }
 })
     
