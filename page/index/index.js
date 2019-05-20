@@ -42,14 +42,24 @@
         });
         }
     };
-    var numb1 = '10240';
-    var final_arr1 = Event.number(numb1);
-    $("#alarmCount").html(Event.dom(final_arr1));
 
-    var final_arr2 = Event.number('13263');
-    $("#handleCount").html(Event.dom(final_arr2));
-
-    var final_arr3 = Event.number('227');
-    $("#unhandleCount").html(Event.dom(final_arr3));
-
-    Event.animation();
+    // 零点定时请求
+    var current = new Date();
+    var next = new Date();
+    next.setDate(current.getDate() + 1);
+    next.setHours(0);
+    next.setMinutes(0);
+    next.setSeconds(0);
+    
+    setTimeout(doIT, next - current);
+    
+    function doIT() {
+        $.get($ctx+"/sso/getWpYears", function (res) {
+        var final_arr2 = Event.number(res.data.data.continuousStability+'');
+        $("#handleCount").html(Event.dom(final_arr2));
+        var final_arr3 = Event.number(res.data.data.fourNoTarget+'');
+        $("#unhandleCount").html(Event.dom(final_arr3));
+        Event.animation();
+        })
+    }
+    doIT();
