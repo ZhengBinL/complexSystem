@@ -82,109 +82,326 @@
     height: 28px;
     background-size: contain;
 }
-.warn1{
+.r-warn1{
     left: 12.63%;
     bottom: 27.5%;
 }
-.warn2{
+.g-warn1{
+    left: 12%;
+    bottom: 26.5%;
+}
+.y-warn1{
+    left: 13.2%;
+    bottom: 26.4%;
+}
+.r-warn2{
     left: 4.94%;
     bottom: 32.9%;
 }
-.warn3{
+.g-warn2{
+    left: 4%;
+    bottom: 31.9%;
+}
+.y-warn2{
+    left: 5.4%;
+    bottom: 31.9%;
+}
+.r-warn3{
     left: 4%;
     bottom: 39.5%;
 }
-.warn4{
+.g-warn3{
+    left: 3%;
+    bottom: 38.5%;
+}
+.y-warn3{
+    left: 4.5%;
+    bottom: 38.5%;
+}
+.r-warn4{
     left: 12.63%;
     bottom: 49.3%;
 }
-.warn5{
+.g-warn4{
+    left: 12%;
+    bottom: 48.1%;
+}
+.y-warn4{
+    left: 13.3%;
+    bottom: 48.1%;
+}
+.r-warn5{
     left: 17.5%;
     bottom: 54.3%;
 }
-.warn6{
+.g-warn5{
+    left: 16.8%;
+    bottom: 53.3%;
+}
+.y-warn5{
+    left: 18%;
+    bottom: 53.3%;
+}
+.r-warn6{
     left: 27%;
     top: 30%;
 }
-.warn7{
+.g-warn6{
+    left: 26.2%;
+    top: 31%;
+}
+.y-warn6{
+    left: 27.5%;
+    top: 31%;
+}
+.r-warn7{
     left: 32.1%;
     top: 24.75%;
 }
-.warn8{
+.g-warn7{
+    left: 31.3%;
+    top: 25.75%;
+}
+.y-warn7{
+    left: 32.6%;
+    top: 25.75%;
+}
+.r-warn8{
     left: 39%;
     top: 17.76%;
 }
-.warn9{
+.g-warn8{
+    left: 38.2%;
+    top: 18.76%;
+}
+.y-warn8{
+    left: 39.4%;
+    top: 18.76%;
+}
+.r-warn9{
     left: 44.9%;
     top: 11.37%;
 }
-.warn10{
-    left: 50%;
-    top: 6.37%;
+.g-warn9{
+    left: 44.1%;
+    top: 12.37%;
 }
-.warn11{
+.y-warn9{
+    left: 45.4%;
+    top: 12.37%;
+}
+.r-warn10{
+    left: 49.9%;
+    top: 6.3%;
+}
+.g-warn10{
+    left: 49%;
+    top: 7.37%;
+}
+.y-warn10{
+    left: 50.4%;
+    top: 7.37%;
+}
+.r-warn11{
     right: 43.7%;
     top: 2.9%;
 }
-.warn12{
+.g-warn11{
+    right: 44.4%;
+    top: 3.9%;
+}
+.y-warn11{
+    right: 43.2%;
+    top: 3.9%;
+}
+.r-warn12{
     right: 40%;
     top: 2.9%;
 }
-.warn13{
+.g-warn12{
+    right: 40.5%;
+    top: 4.2%;
+}
+.y-warn12{
+    right: 39.5%;
+    top: 4.2%;
+}
+.r-warn13{
     right: 28.21%;
     top: 6.9%;
 }
-.warn14{
+.g-warn13{
+    right: 28.8%;
+    top: 8%;
+}
+.y-warn13{
+    right: 27.5%;
+    top: 8%;
+}
+.r-warn14{
     right: 29.3%;
     top: 13%;
 }
-.warn15{
+.g-warn14{
+    right: 30%;
+    top: 14%;
+}
+.y-warn14{
+    right: 28.5%;
+    top: 14%;
+}
+.r-warn15{
     right: 33%;
     top: 17.5%;
 }
-.warn16{
+.g-warn15{
+    right: 33.6%;
+    top: 18.5%;
+}
+.y-warn15{
+    right: 32.3%;
+    top: 18.5%;
+}
+.r-warn16{
     right: 36.8%;
     top: 22%;
 }
-.warn17{
-    right: 40.5%;
-    top: 26.5%;
+.g-warn16{
+    right: 37.4%;
+    top: 23%;
 }
-.warn18{
+.y-warn16{
+    right: 36.1%;
+    top: 23%;
+}
+.r-warn17{
+    right: 40.3%;
+    top: 25.8%;
+}
+.g-warn17{
+    right: 41%;
+    top: 26.7%;
+}
+.y-warn17{
+    right: 39.8%;
+    top: 26.7%;
+}
+.r-warn18{
     right: 43%;
     top: 28.8%;
 }
-.warn19{
+.g-warn18{
+    right: 43.6%;
+    top: 29.8%;
+}
+.y-warn18{
+    right: 42.2%;
+    top: 29.8%;
+}
+.r-warn19{
     right: 41%;
-    top: 33.5%;
+    top: 33.2%;
 }
-.warn20{
-    right: 27.8%;
-    top: 40.2%;
+.g-warn19{
+    right: 41.5%;
+    top: 34.5%;
 }
-.warn21{
+.y-warn19{
+    right: 40.5%;
+    top: 34.7%;
+}
+.r-warn20{
+    right: 27.6%;
+    top: 40%;
+}
+.g-warn20{
+    right: 28.4%;
+    top: 41.5%;
+}
+.y-warn20{
+    right: 27.2%;
+    top: 41.5%;
+}
+.r-warn21{
     right: 23.8%;
     top: 49.5%;
 }
-.warn22{
+.g-warn21{
+    right: 24.3%;
+    top: 50.7%;
+}
+.y-warn21{
+    right: 23.2%;
+    top: 50.7%;
+}
+.r-warn22{
     right: 29.8%;
     top: 60.5%;
 }
-.warn23{
+.g-warn22{
+    right: 30.4%;
+    top: 61.7%;
+}
+.y-warn22{
+    right: 29.2%;
+    top: 61.7%;
+}
+.r-warn23{
     right: 36.8%;
     bottom: 21%;
 }
-.warn24{
+.g-warn23{
+    right: 37.4%;
+    bottom: 19.8%;
+}
+.y-warn23{
+    right: 36.2%;
+    bottom: 19.8%;
+}
+.r-warn24{
     right: 44%;
     bottom: 7%;
 }
-.warn25{
+.g-warn24{
+    right: 44.6%;
+    bottom: 5.8%;
+}
+.y-warn24{
+    right: 43.4%;
+    bottom: 5.8%;
+}
+.r-warn25{
     right: 56%;
     bottom: 10%;
 }
-.warn26{
+.g-warn25{
+    right: 56.6%;
+    bottom: 8.8%;
+}
+.y-warn25{
+    right: 55.4%;
+    bottom: 8.8%;
+}
+.r-warn26{
     right: 64%;
     bottom: 14.3%;
+}
+.g-warn26{
+    right: 64.6%;
+    bottom: 13.1%;
+}
+.y-warn26{
+    right: 63.4%;
+    bottom: 13.1%;
+}
+.r-warn{
+    /*background: url("../../asset/img/sign-red.png") no-repeat;*/
+}
+.g-warn{
+    /*background: url("../../asset/img/sign-green.png") no-repeat;*/
+}
+.y-warn{
+    /*background: url("../../asset/img/sign-yellow.png") no-repeat;*/
 }
 .prevention-img .red{
     background: url("../../asset/img/sign-red.png") no-repeat;
