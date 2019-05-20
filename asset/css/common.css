@@ -66,6 +66,7 @@ input{
  ** 头部样式
 */
 .header{
+  position: relative;
     background: url('../img/index-title.png') center top no-repeat;
     height: 10.92%;
     margin:10px 0 0;
@@ -74,16 +75,15 @@ input{
     max-height:118px;
 }
 .header-lt{
-    float: left;
-    cursor:pointer;
+    display: inline-block;
     width: 60%;
     height: 55%;
-    margin-left:25%; 
-    /* background-color:red */
 }
 .header-rt{
-    float: right;
-    z-index: 10;
+  position: absolute;
+  right: 0;
+  top: -4px;
+  z-index: 10;
 }
 .notice-icon{
     width: 16px;
@@ -227,6 +227,7 @@ input{
 .wrapper { /*主内容满屏布局*/
   padding: 0;
   margin: 10px 50px 20px;
+  max-width: 1820px;
 }
 .wrap { /*主内容定宽居中*/
   width: 1280px;

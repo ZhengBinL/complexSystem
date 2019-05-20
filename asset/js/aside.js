@@ -29,11 +29,6 @@ $(function () {
       var zTreeObj;
       // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
       var setting = {
-            view:{
-                  fontCss:{
-                        "color":"#229fe6"
-                  }
-            },
             data:    {
                   simpleData:{
                         enable:true,
