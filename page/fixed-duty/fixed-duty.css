@@ -45,9 +45,13 @@
 
 .duty-content-item {
   float: left;
-  margin: 18px;
+  width: 33.3%;
   padding: 0;
-  width: 30%;
+  margin: 0;
+}
+.duty-content-item > li {
+  padding: 0;
+  margin: 9px;
   background: rgba(6, 4, 122, 0.6);
   border-radius: 5px;
   border: 1px solid #229fe6;

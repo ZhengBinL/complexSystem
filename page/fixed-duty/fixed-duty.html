@@ -54,7 +54,7 @@ style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height
         <span class="page-title">固定勤务</span>
     </dt>
     <dd>
-        <ul class="duty-content">
+        <div class="duty-content">
             <!--<li class="duty-content-item">-->
                 <!--<div class="duty-detail">-->
                     <!--<img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">-->
@@ -63,7 +63,7 @@ style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height
                 <!--</div>-->
                 <!--<div class="duty-video"></div>-->
             <!--</li>-->
-        </ul>
+        </div>
     </dd>
 </dl>
 <script src="../../asset/js/jquery.min.js"></script>
@@ -85,9 +85,19 @@ style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height
                 $.each(data, function (index, item) {
                     var dutyPersonTeam = data[index].dutyPersonTeam,
                         dutyPersonName = data[index].dutyPersonName,
-                        dutyPersonPic = data[index].dutyPersonPic,
+                        dutyPersonPic = data[index].dutyPersonPic || '../../asset/img/avatar.png',
                         rtspUrl = data[index].rtspUrl;
-                    html += '<li class="duty-content-item"><div class="duty-detail"><img class="duty-man-img" src="'+dutyPersonPic+'" alt="照片"><p>'+dutyPersonName+'</p><p>'+dutyPersonTeam+'</p></div><div class="duty-video"><OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc'+(index+1)+'" codebase="" width="100%" height="100%" events="True"><param name="AutoLoop" value="False" /><param name="AutoPlay" value="True" /><param name="Time" value="True" /><param name="ShowDisplay" value="True" /><param name="Controls" value="False"><EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="100%" height="85%" text="Waiting for video" name="vlc"></EMBED></OBJECT></div></li>'
+                    html += '<ul class="duty-content-item"><li>' +
+                      '<div class="duty-detail"><img class="duty-man-img" src="'+dutyPersonPic+'" alt="照片">' +
+                      '<p>'+dutyPersonName+'</p><p>'+dutyPersonTeam+'</p></div>' +
+                      '<div class="duty-video">' +
+                      '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc'+(index+1)+'" codebase="" width="100%" height="100%" events="True">' +
+                      '<param name="AutoLoop" value="False" /><param name="AutoPlay" value="True" />' +
+                      '<param name="Time" value="True" />' +
+                      '<param name="ShowDisplay" value="True" />' +
+                      '<param name="Controls" value="False">' +
+                      '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="100%" height="85%" text="Waiting for video" name="vlc"></EMBED>' +
+                      '</OBJECT></div></li></ul>'
                 })
                 $('.duty-content').html(html)
                 var itemWidth = $('.duty-video').width();
