@@ -65,9 +65,6 @@
     top: 0;
 }
 /* 摄像头定位 */
-.camera-hidden{
-    /* display: none; */
-}
 .camera{
     position: absolute;
     cursor: pointer;
@@ -342,7 +339,7 @@
   background: rgba(0,0,0,.8);
   text-align: right;
   z-index: 2;
-  display: none;
+  /*display: none;*/
 }
 .v-toolbar > a {
   margin-left: 15px;
