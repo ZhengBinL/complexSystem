@@ -8,8 +8,8 @@ website:	http://code.google.com/p/jquerytree/
 
 -------------------------------------*/
 
-.ztree * {padding:0; margin:0; font-size:14px; font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif}
-.ztree {margin:0; padding:8px 25px 14px; color:#229fe6; border-top: solid 1px #E4E7EA}
+.ztree * {padding:0; margin:0; font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif}
+.ztree {margin:0; padding:8px 25px 14px; border-top: solid 1px #E4E7EA}
 .ztree:first-child {
 	border-top: solid 1px transparent;
 }
@@ -62,8 +62,8 @@ website:	http://code.google.com/p/jquerytree/
 .ztree li span.button.roots_close{background-position:-98px 0}
 .ztree li span.button.center_open{background-position:-122px -28px}
 .ztree li span.button.center_close{background-position:-98px -28px}
-.ztree li span.button.bottom_open{background-position:-122px -64px}
-.ztree li span.button.bottom_close{background-position:-98px -57px}
+.ztree li span.button.bottom_open{background-position:-122px -58px}
+.ztree li span.button.bottom_close{background-position:-98px -58px}
 .ztree li span.button.noline_open{background-position:-92px -72px}
 .ztree li span.button.noline_close{background-position:-74px -72px}
 .ztree li span.button.root_docu{ background:none;}
@@ -94,11 +94,40 @@ span.tmpzTreeMove_arrow {width:16px; height:16px; display: inline-block; padding
 ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height:auto;overflow:hidden; background-color:#cfcfcf; border:1px #00B83F dotted; opacity:0.8; filter:alpha(opacity=80)}
 .zTreeMask {z-index:10000; background-color:#cfcfcf; opacity:0.0; filter:alpha(opacity=0); position:absolute}
 
-/* level style*/
-/*.ztree li span.button.level0 {
-	display:none;
+/* 自定义icon */
+.ztree li span.button.around_ico_open, .ztree li span.button.around_ico_close {
+	background-position: -147px -57px;
 }
-.ztree li ul.level0 {
-	padding:0;
-	background:none;
-}*/
+.ztree li a.curSelectedNode span.button.around_ico_open, .ztree li a.curSelectedNode span.button.around_ico_close {
+	background-position: -173px -57px;
+}
+.ztree li span.button.digital_ico_open, .ztree li span.button.digital_ico_close {
+	background-position: -147px -81px;
+}
+.ztree li a.curSelectedNode span.button.digital_ico_open, .ztree li a.curSelectedNode span.button.digital_ico_close {
+	background-position: -173px -81px;
+}
+.ztree li span.button.sentry_ico_open, .ztree li span.button.sentry_ico_close {
+	background-position: -147px -105px;
+}
+.ztree li a.curSelectedNode span.button.sentry_ico_open, .ztree li a.curSelectedNode span.button.sentry_ico_close {
+	background-position: -173px -105px;
+}
+.ztree li span.button.zip_ico_open, .ztree li span.button.zip_ico_close {
+	background-position: -147px -129px;
+}
+.ztree li a.curSelectedNode span.button.zip_ico_open, .ztree li a.curSelectedNode span.button.zip_ico_close {
+	background-position: -173px -129px;
+}
+.ztree li span.button.soldier_ico_open, .ztree li span.button.soldier_ico_close {
+	background-position: -147px -155px;
+}
+.ztree li a.curSelectedNode span.button.soldier_ico_open, .ztree li a.curSelectedNode span.button.soldier_ico_close {
+	background-position: -173px -155px;
+}
+.ztree li span.button.cam_ico_open, .ztree li span.button.cam_ico_close {
+	background-position: -147px -182px;
+}
+.ztree li a.curSelectedNode span.button.cam_ico_open, .ztree li a.curSelectedNode span.button.cam_ico_close {
+	background-position: -173px -182px;
+}

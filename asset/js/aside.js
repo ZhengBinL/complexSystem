@@ -27,13 +27,18 @@ $(function () {
 
       // 菜单树
       // var setting = {
-      //       data:    {
-      //             simpleData:{
-      //                   enable:true,
-      //                   idKey: "id",
-      //                   pIdKey: "pid",
-      //                   rootPId: 0
-      //             }
+      //       data:{
+      //         view:{
+      //           fontCss:{
+      //             "color":"#229fe6"
+      //           }
+      //         },
+      //         simpleData:{
+      //           enable:true,
+      //           idKey: "id",
+      //           pIdKey: "pid",
+      //           rootPId: 0
+      //         }
       //       }
       // };
       // var zNodes =[];
