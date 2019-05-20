@@ -697,6 +697,7 @@
     <script src="../../asset/js/config.js"></script>
     <script src="../../asset/introduce/layui/layui.js"></script>
     <script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
+    <script src="../../asset/js/aside.js"></script>
     <script src="./management.js"></script>
     <script>
         var _this = this;
@@ -888,43 +889,6 @@
         $('body').on('click', '.playAndsuspend', function () {
             playAndsuspend();
         })
-        // 双击刻度条某一项
-        //    $('body').on('dblclick', '.scale-unit', function (e) {
-        //        var count = parseInt(e.currentTarget.dataset.count);
-        //        $(this).addClass('active').siblings().removeClass('active')
-        //        $('.scale-unit').removeClass('active')
-        //        for (var i = 0; i <= count; i++){
-        //            $('.scale-unit').eq(i).addClass('active')
-        //        }
-        //    })
-        // 刻度条
-        //    var initCount = null
-        //    $('body').on('click', '.scale-unit', function (e) {
-        //      var count1 = null,
-        //          count2 = null;
-        //      var $that = $(this);
-        //      $('.scale-unit').removeClass('active');
-        //      $that.addClass('active');
-        //      if (initCount){
-        //          count2 = parseInt(e.currentTarget.dataset.count);
-        //          var delta = parseInt(initCount)
-        //          if (delta < count2){
-        //              for (var i = delta; i <= count2; i++){
-        //                  $('.scale-unit').eq(i).addClass('active')
-        //
-        //              }
-        //          }else {
-        //              for (var j = count2; j <= delta; j++){
-        //                  $('.scale-unit').eq(j).addClass('active')
-        //              }
-        //          }
-        //
-        //          initCount = count2
-        //      }else{
-        //          count1 = e.currentTarget.dataset.count;
-        //          initCount = count1
-        //      }
-        //    })
     </script>
     <script>
         //放大
