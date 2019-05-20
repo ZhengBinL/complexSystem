@@ -16,7 +16,7 @@ function checkForm() {
             "userCode": first
         }
         $.ajax({
-            url: "http://172.16.5.248:18080/sso/login",
+            url: $ctx+"/sso/login",
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',
