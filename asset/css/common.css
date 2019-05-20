@@ -67,22 +67,28 @@ input{
 */
 .header{
   position: relative;
-    background: url('../img/index-title.png') center top no-repeat;
+    background: url('../img/index-title.png') center 10px no-repeat;
     height: 10.92%;
-    margin:10px 0 0;
+    padding:10px 0 0;
     background-size: contain;
     min-height: 70px;
     max-height:118px;
 }
-.header-lt{
-    display: inline-block;
-    width: 60%;
-    height: 55%;
+.header-lt {
+  display: inline-block;
+  width: 46%;
+  max-width: 750px;
+  height: 55%;
+  position: absolute;
+  left: 27%;
+  right: 27%;
 }
 .header-rt{
   position: absolute;
   right: 0;
-  top: -4px;
+  top: 0;
+  height: 16px;
+  padding: 3px 0;
   z-index: 10;
 }
 .notice-icon{
@@ -94,6 +100,7 @@ input{
 .header-rt .user-img{
     width: 24px;
     height: 24px;
+  line-height: 100%;
     border:1px solid #ccc;
     border-radius:50%;
 }
@@ -106,18 +113,18 @@ input{
     vertical-align: middle;
 }
 .notice-wrapper{
-    padding:0 20px 0 0;
+    padding: 2% 10px 0 0;
 }
 .user-notice{
     position: relative;
-    padding-right: 20px;
+    padding: 2% 10px 0 0;
 }
 .user-operate{
     font-size: 0;
     line-height: 1;
 }
 .user-operate a{
-    padding:0 12px;
+    padding: 0 10px;
     font-size: 14px;
     line-height: 24px;
     display: inline-block;
