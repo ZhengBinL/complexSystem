@@ -499,7 +499,6 @@ $(function () {
         liHtml+=
         ('<li class="videos-li" data-index="'+(i+1)+'">'+
         '<dl>'+
-        '<dd class="videos">'+
         '<dt class="v-toolbar">'+
         '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
         '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
@@ -518,8 +517,8 @@ $(function () {
         '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
         '</div>'+
         '</dt>'+
-        '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px;width: 100%;height: 88%;">'+
-            
+        '<dd class="videos">'+
+        '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px; bottom: 0;width: 100%;">'+
         '</div>'+
         '</dd>'+
         '</dl>'+
@@ -532,7 +531,7 @@ $(function () {
     function caleHeight(itemnumb) {
         // 设置分屏模式视频高度
         var itemWidth = $('.mode-content .videos').width();
-        var itemHeight = itemWidth * 9 / 16;
+        var itemHeight = itemWidth * 9 / 16 + 32;
         $('.mode-content .videos').css('height', itemHeight);
         $('#vlc1').css({
             "width":itemWidth,
