@@ -427,3 +427,6 @@ input{
 .btn-wrapper a{
     margin:0 20px;
 }
+.layui-btn-primary:hover{
+    color: #fff9ec;
+}

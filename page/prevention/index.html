@@ -42,6 +42,10 @@
             <span class="icon-sign-red">震动光纤报警</span>
             <span class="icon-sign-yellow">激光对射报警</span>
             <span class="icon-sign-green">周界入侵报警</span>
+            <span class="btn-police">
+                <a href="javascript:;" class="js-police-btn-yes layui-btn layui-btn-sm layui-btn-normal">确定</a>
+                <a href="javascript:;" class="js-police-btn-no layui-btn layui-btn-sm layui-btn-primary">取消</a>
+            </span>
         </div>
     </dt>
 
@@ -193,20 +197,20 @@
     技术支持：北京国势通科技有限公司
 </div>
 <script src="../../asset/js/jquery.min.js"></script>
-<script src="../../asset/js/jquery.cookie.js"></script>
 <script src="../../asset/js/config.js"></script>
-<script src="../../asset/js/utils.js"></script>
+<!--<script src="../../asset/js/utils.js"></script>-->
 <script src="../fixed-duty/fixed-duty.js"></script>
 <script>
-    console.log($cookieParam, 'cookie')
-
     //鼠标滑过视频
     $('body').on('mouseenter', '.prevention-video', function () {
+        if (!$(this).find('OBJECT').length){
+            return
+        }
         $(this).children('.video-hover').show();
     }).on('mouseleave', '.prevention-video', function () {
         $(this).children('.video-hover').stop().hide();
     })
-
+    // 初始化渲染右侧视频列表
     function renderList() {
         var html = '';
         for (var j = 0; j < 4; j++) {
@@ -219,42 +223,152 @@
         $('.vlc1').css("height", itemHeight);
     }
     renderList()
+    /*
+    * 如果是跳转页面，需要获取cookie并渲染
+    * */
+    // 判断是否是从报警弹框进入该页面
+    function isPageJump() {
+        var url = window.location.href
+        var flag = url.split('?')[1];
+        return flag ? true : false;
+    }
+
+    function renderPageJump() {
+        var oldMsg = JSON.parse(document.cookie.split(";")[0].split("=")[1]);
+        if (isPageJump() && oldMsg && !initMsg){
+            var rtspUrls = document.cookie.split(";")[1].split("=")[1];
+            renderVideo([rtspUrls])
+            var pos = oldMsg.AlarmSource.IPDeviceName; // 岗哨
+            var type = oldMsg.AlarmType.SystemOptionName; // 报警类型
+            $('.prevention-img span').each(function (index, item) {
+                var _pos = $(item).data('pos');
+                var _type = $(item).data('type');
+                if (_pos == pos && type == _type){
+                    if (type == '光纤震动') {
+                        $(item).addClass('red cookie-dom');
+                        setTimeout(function () {
+//                            document.cookie= "hrefParam="+null;
+                            $(item).removeClass('red')
+                        }, 30000)
+                    } else if (type == '周界入侵') {
+                        $(item).addClass('green cookie-dom');
+                        setTimeout(function () {
+//                            document.cookie= "hrefParam="+null;
+                            $(item).removeClass('green');
+                        }, 30000)
+                    } else {
+                        $(item).addClass('yellow cookie-dom');
+                        setTimeout(function () {
+//                            document.cookie= "hrefParam="+null;
+                            $(item).removeClass('yellow');
+                        }, 30000)
+                    }
+                }
+            })
+        }
+    }
+    renderPageJump()
+    // 点击确定或者取消，移除class
+    $('body').on('click', '.js-police-btn-yes', function () {
+        removeCls('yes')
+    }).on('click', '.js-police-btn-no', function () {
+        removeCls('no')
+    })
+    function removeCls(result) {
+        // 调用接口且有数据msg
+        if (initMsg){
+            $.ajax({
+                type:'PUT',
+                dataType:'json',
+                contentType:'application/json',
+                url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(initMsg) + '&op=' + result,
+                success:function(res){
+                    if (res.code == 0){
+                        var _initMsg = JSON.parse(initMsg)
+                        var pos = _initMsg.AlarmSource.IPDeviceName; // 岗哨
+                        var type = _initMsg.AlarmType.SystemOptionName; // 报警类型
+                        $('.prevention-img span').each(function (index, item) {
+                            var _pos = $(item).data('pos');
+                            var _type = $(item).data('type');
+                            if (_pos == pos && type == _type){
+                                if (type == '光纤震动') {
+                                    $(item).removeClass('red')
+                                } else if (type == '周界入侵') {
+                                    $(item).removeClass('green');
+                                } else {
+                                    $(item).removeClass('yellow');
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+        }
+        else if (!initMsg && isPageJump()){
+            var cookieMsg = document.cookie.split(";")[0].split("=")[1]
+            $.ajax({
+                type:'PUT',
+                dataType:'json',
+                contentType:'application/json',
+                url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(cookieMsg) + '&op=' + result,
+                success:function(res){
+                    if (res.code == 0){
+                        $('.cookie-dom').removeClass('red green yellow');
+                        document.cookie = "hrefParam="+ null
+                    }
+                }
+            })
+        }
+    }
+    /**
+     *  渲染视频list
+     */
+    function renderVideo(urls) {
+        var html = '';
+        for (var j = 0; j < 4; j++) {
+            html += '<div class="prevention-video"><div class="video-hover"><a href="javascript:;"><img src="../../asset/img/icon-close.png" width="15px" height="15px"> 关闭</a></div><div class="vlc1">';
+            if (j < urls.length) {
+                html += '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc' + (j + 1) + '" codebase="" width="100%" height="100%" events="True"><param name="AutoLoop" value="False" /><param name="AutoPlay" value="True" /><param name="Time" value="True" /><param name="ShowDisplay" value="True" /><param name="Controls" value="False"><EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="100%" height="85%" text="Waiting for video" name="vlc"></EMBED></OBJECT>'
+            } else {
+                html += ''
+            }
+            html += '</div></div>'
+        }
+        $('#video-wrapper').html(html)
+        var itemWidth = $('.vlc1').width();
+        var itemHeight = itemWidth * 20 / 36;
+        $('.vlc1').css("height", itemHeight);
+        /**
+         * 渲染视频
+         */
+        for (var i = 0; i < urls.length; i++) {
+            play(urls[i]["rtspUrl"], "vlc" + (i + 1));
+            $('#vlc' + (i + 1)).css({width: '100%', height: '100%'})
+        }
+    }
     // 请求接口获取报警点
-    setInterval(getAlarmInfo, 10000)
+//    setInterval(getAlarmInfo, 1000)
     var initPos,
-        initType;
+        initType,
+        initMsg;
 
     function getAlarmInfo() {
         $.ajax({
             type: 'GET',
             dataType: 'json',
             contentType: 'application/json',
-            url: 'http://172.20.10.7:18080/alarm/getAlarmTimeForAction',
+            url: $ctx +'/alarm/getAlarmTimeForAction',
             success: function (res) {
                 if (res.code == 0) {
                     if (res.data.msg) {
+                        initMsg = res.data.msg
                         if (res.data.rtspUrls && res.data.rtspUrls.length) {
-                            var html = '';
-                            for (var j = 0; j < 4; j++) {
-                                html += '<div class="prevention-video"><div class="video-hover"><a href="javascript:;"><img src="../../asset/img/icon-close.png" width="15px" height="15px"> 关闭</a></div><div class="vlc1">';
-                                if (j < res.data.rtspUrls.length) {
-                                    html += '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc' + (j + 1) + '" codebase="" width="100%" height="100%" events="True"><param name="AutoLoop" value="False" /><param name="AutoPlay" value="True" /><param name="Time" value="True" /><param name="ShowDisplay" value="True" /><param name="Controls" value="False"><EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="100%" height="85%" text="Waiting for video" name="vlc"></EMBED></OBJECT>'
-                                } else {
-                                    html += ''
-                                }
-                                html += '</div></div>'
-                            }
-                            $('#video-wrapper').html(html)
-                            var itemWidth = $('.vlc1').width();
-                            var itemHeight = itemWidth * 20 / 36;
-                            $('.vlc1').css("height", itemHeight);
-
-                            for (var i = 0; i < res.data.rtspUrls.length; i++) {
-                                play(res.data.rtspUrls[i]["rtspUrl"], "vlc" + (i + 1));
-                                $('#vlc' + (i + 1)).css({width: '100%', height: '100%'})
-                            }
+                            // 渲染视频
+                            renderVideo(res.data.rtspUrls)
                         }
-
+                        /**
+                         * 渲染灯笼
+                         * */
                         var msg = JSON.parse(res.data.msg); // 返回信息
                         var pos = msg.AlarmSource.IPDeviceName; // 岗哨
                         var type = msg.AlarmType.SystemOptionName; // 报警类型
@@ -266,10 +380,6 @@
                         } else {
                             $el = $('.prevention-img .y-warn')
                         }
-//                            console.log(pos,'pos')
-//                            console.log(type,'type')
-//                            console.log(initPos, 'initPos')
-//                            console.log(initType, 'initType')
                         $el.each(function (index, item) {
                             var _pos = $(item).data('pos');
                             var _type = $(item).data('type');
@@ -280,7 +390,7 @@
                                         return
                                     }
                                     $(item).removeClass('red')
-                                }, 15000)
+                                }, 30000)
                             } else if (pos == _pos && _type == '周界入侵') {
                                 $(item).addClass('green')
                                 setTimeout(function () {
@@ -288,7 +398,7 @@
                                         return
                                     }
                                     $(item).removeClass('green')
-                                }, 15000)
+                                }, 30000)
                             } else if (pos == _pos && _type == '激光对射') {
                                 $(item).addClass('yellow')
                                 setTimeout(function () {
@@ -296,7 +406,7 @@
                                         return
                                     }
                                     $(item).removeClass('yellow')
-                                }, 15000)
+                                }, 30000)
                             }
                         })
                         initPos = pos;
@@ -304,8 +414,8 @@
                     }
                 }
             },
-            error: function () {
-
+            error: function (err) {
+                console.log(err)
             }
         })
     }
