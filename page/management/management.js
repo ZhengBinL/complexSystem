@@ -509,6 +509,7 @@ $(function () {
     // 点击云平台控制
     $('body').on('click', '.js-control', function () {
         $(this).parent().children('.opt-monitor').toggle()
+        $(this).parent().find('iframe').toggle()
     })
     /*******分屏模式渲染li结束*******/ 
     /*******方向按钮事件开始*******/ 
