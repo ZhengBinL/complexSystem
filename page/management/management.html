@@ -604,10 +604,10 @@
             })
         }
     // 鼠标滑过分屏模式视频&滑过历史记录视频
-    $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
+    $('body').on('mouseenter', '.video-wrapper .video', function () {
         $(this).children('.v-toolbar').show();
         $(this).find('.opt-monitor').stop().hide();
-    }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
+    }).on('mouseleave', '.video-wrapper .video', function () {
         $(this).children('.v-toolbar').stop().hide();
         $('#zhanwei').stop().hide();
         $('.speed-wrapper').stop().hide();
@@ -668,13 +668,13 @@
         })
         
         // 鼠标滑过分屏模式视频&滑过历史记录视频
-        $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
-            $(this).children('.v-toolbar').show();
-            $(this).find('.opt-monitor').stop().hide();
-        }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
-            $(this).children('.v-toolbar').stop().hide();
-            $('#zhanwei').stop().hide();
-        })
+        // $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
+        //     $(this).children('.v-toolbar').show();
+        //     $(this).find('.opt-monitor').stop().hide();
+        // }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
+        //     $(this).children('.v-toolbar').stop().hide();
+        //     $('#zhanwei').stop().hide();
+        // })
         // 点击云平台控制
         $('body').on('click', '.js-control', function () {
             $(this).parent().children('.opt-monitor').toggle()
