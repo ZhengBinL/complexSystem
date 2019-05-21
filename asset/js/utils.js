@@ -35,7 +35,7 @@ $('body').on('click', '.js-police-pop-close', function () {
     window.location.href = '../../page/prevention/index.html?call=1'
 })
 var _top = 80
-setTimeout(function () {
+setInterval(function () {
     $.ajax({
         type:'GET',
         dataType:'json',
