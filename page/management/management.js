@@ -469,7 +469,7 @@ $(function () {
         '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
         '</div>'+
         '</dt>'+
-        '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px;width: 100%;height: 100%;">'+
+        '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px;width: 100%;height: 88%;">'+
             
         '</div>'+
         '</dd>'+
