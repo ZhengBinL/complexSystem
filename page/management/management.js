@@ -8,8 +8,7 @@ $(function () {
     var setting = {
         view: {
             fontCss: {
-                "color": "#fff",
-                "font-size": "28px"
+                "color": "#229fe6"
             },
             showLine:true
         },

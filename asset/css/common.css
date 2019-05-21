@@ -156,66 +156,116 @@ input{
 }
 /* 侧边栏 */
 .aside{
-    width: 260px;
-    height: 600px;
-    position: fixed;
-    left: -22%;
-    bottom: 0;
-    top:7%;
-    background: url('../../asset/img/aside_bg.png') center no-repeat;
-    overflow: auto;
-    box-sizing: content-box;
-    background-size:contain;
-	z-index: 999;
-}
-.menu-tree-wrapper{
-    margin-top:50px;
-    padding-left: 8px;
-    width: 235px;
-    height: 520px;
-    overflow: auto;
-}
-.palace{
-    position: absolute;
-    bottom:28px;
-    left: 16px;
-    overflow: hidden;
-    width: 228px;
-}
-.palace-unit{
-    width: 33.333333%;
-    height: 44px;
-    line-height: 44px;
-    text-align: center;
-    background: rgba(11, 77, 194);
-    float: left;
-    position: relative;
-    cursor: pointer;
-    border-right:3px solid rgba(0, 0, 0, 0.8);
-    border-bottom:2px solid rgba(0, 0, 0, 0.8);
-    box-sizing: border-box;
-}
-.palace-last{
-    border-radius: 0 0 8px 0;
-    border-bottom:none;
-}
-.palace-ct{
-    border-bottom:none;
-}
-.palace-left{
-    border-radius: 0 0 0 8px;
-    border-bottom:none;
-}
-.palace-unit:nth-child(3n){
-    border-right:none;
-}
-.icon-fold{
+  width: 450px;
   position: fixed;
-  top: 50%;
-  left: 18px;
+  left: -450px;
+  bottom: 0;
+  top:7%;
   z-index: 999;
-  cursor: pointer;
-  margin-top: -13px;
+}
+.aside-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 360px;
+}
+.aside-bg > i {
+  position: absolute;
+  display: inline-block;
+}
+.aside-bg-lt {
+  left: 0;
+  top: 0;
+  width: 203px;
+  height: 175px;
+  background: url("../../asset/img/aside-lt.png") left top no-repeat;
+}
+.aside-bg-mt {
+  left: 203px;
+  right: 155px;
+  top: 0;
+  height: 175px;
+  background: url("../../asset/img/aside-mt.png") left bottom repeat-x;
+}
+.aside-bg-mt-img {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 32px;
+  background: url("../../asset/img/aside-lm-img.png") center top no-repeat;
+}
+.aside-bg-rt {
+  right: 0;
+  top: 0;
+  width: 155px;
+  height: 175px;
+  background: url("../../asset/img/aside-rt.png") left top no-repeat;
+}
+.aside-bg-lm {
+  left: 0;
+  top: 175px;
+  bottom: 52px;
+  width: 203px;
+  background: url("../../asset/img/aside-lm.png") right top repeat-y;
+}
+.aside-bg-mm {
+  left: 203px;
+  right: 155px;
+  top: 175px;
+  bottom: 52px;
+  background: url("../../asset/img/aside-mm.png") repeat;
+}
+.aside-bg-rm {
+  right: 0;
+  top: 175px;
+  bottom: 52px;
+  width: 155px;
+  background: url("../../asset/img/aside-rm.png") left top repeat-y;
+}
+.aside-bg-lb {
+  left: 0;
+  bottom: 0;
+  width: 203px;
+  height: 52px;
+  background: url("../../asset/img/aside-lb.png") left top no-repeat;
+}
+.aside-bg-mb {
+  left: 203px;
+  right: 155px;
+  bottom: 0;
+  height: 52px;
+  background: url("../../asset/img/aside-mb.png") left bottom repeat-x;
+}
+.aside-bg-rb {
+  right: 0;
+  bottom: 0;
+  width: 155px;
+  height: 52px;
+  background: url("../../asset/img/aside-rb.png") left top no-repeat;
+}
+.menu-tree{
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  overflow: auto;
+  top: 50px;
+  bottom: 50px;
+}
+
+.icon-fold {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  display: inline-block;
+  width: 30px;
+  height: 27px;
+  background: url("../../asset/img/icon_expand.png") no-repeat;
+  background-size: 100%;
+}
+.icon-fold.unfolded {
+  background: url("../../asset/img/icon_fold.png") no-repeat;
 }
 .aside-cover{
 	position: fixed;
