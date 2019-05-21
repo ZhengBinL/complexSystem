@@ -434,7 +434,7 @@ $(function () {
                 'text="Waiting for video" name="vlc"></EMBED>' +
                 '</OBJECT>'
 
-            var index = layer.open({
+             var index = layer.open({
                 type: 1, 
                 title:'',
                 closeBtn:0,
