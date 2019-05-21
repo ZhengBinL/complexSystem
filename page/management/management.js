@@ -453,10 +453,8 @@ $(function () {
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
-                        // console.log($('#vlc100').parent().find('.v-toolbar'))
-                        $('#vlc100').parent().find('.v-toolbar').attr('data-szCameraId',res.data.cid)
+                        $('#vlc100').parent().find('.v-toolbar').find('.icon-history').attr('data-szCameraId',res.data.cid)
                     })
-                    // console.log(layero, index);
                 }
             });
             //关闭弹框
@@ -469,6 +467,27 @@ $(function () {
                 $('#zhanwei-tk2').toggle()
                 $('#opt-monitor').toggle()
             })
+             // 点击历史记录显示
+            // $('body').on('click', '.icon-history', function () {
+            //     layer.close(index);
+            //     $('.js-tabtop > li').eq(1).click()
+            //     if(!$(this).attr("data-szCameraId")){
+            //         return
+            //     } else {
+            //         szCameraId=this.getAttribute("data-szCameraId")
+            //         console.log("data-szCameraId: "+szCameraId)
+            //     }
+            //     $('.split-mode').hide()
+            //     $('.history-wrapper').show()
+
+            //     // 设置历史记录视频高度
+            //     var historyVideoWidth = $('.video-wrapper .video').width();
+            //     var historyVideoHeight = historyVideoWidth * 9 / 16;
+            //     var searchMarTop = (historyVideoHeight - 386) / 2
+            //     $('.video-wrapper .video').css('height', historyVideoHeight);
+            //     $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
+            //     init();
+            // })
         })
     });
     /*******地图模式 视屏点击弹框结束*******/ 
