@@ -290,7 +290,7 @@ $(function () {
     })
     function delLi(){
         for(var i = 0;i<$('.videos-li').length;i++){
-            if($('.videos-li').eq(i).attr('data-index')!==111){
+            if($('.videos-li').eq(i).attr('data-index') != 111){
                 $('.videos-li').eq(i).find('OBJECT').remove()
             }
         }
