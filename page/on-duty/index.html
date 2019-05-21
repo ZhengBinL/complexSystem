@@ -481,7 +481,7 @@
                   }
                 }
                 if(i === 0){
-                  _html += '  <th rowspan="15"><p></p></th>'
+                  _html += '  <th rowspan="15"><p class="js-urgent"></p></th>'
                 }
                 _html += '</tr>'
               }
@@ -497,6 +497,7 @@
             url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d,
             type: 'get'
           }).done(function(res) {
+            console.log(res);
             var _html = '',
               dt = res.data;
             for(var i=0; i<(dt.length-1); i++){
@@ -520,6 +521,12 @@
               _html += '</tr>'
             }
             $('#dutyList > tbody').append(_html);
+
+            var _last = dt[2].list;
+            var _urgents = _last.map(function(item){
+              return item.personnelName;
+            }).join('<br>');
+            $('.js-urgent').html(_urgents);
           }).fail(function() {
             layer.msg('请求错误')
           })

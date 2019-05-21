@@ -24,12 +24,12 @@
   text-align: center;
   vertical-align: middle;
   border: solid 1px #324484;
+  background: #3171f8;
   font-size: 16px;
   font-weight: normal;
 }
 .table > thead > tr > th > p {
   padding: 8px 10px;
-  background: #3171f8;
 }
 /*.table > thead > tr > th:first-child {
   border-left-color: transparent;
