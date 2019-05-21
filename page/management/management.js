@@ -162,23 +162,107 @@ $(function () {
                 "height": "100%"
             })
         } else if (indexNum == 2) {
-            if($('#vlc1').length>0) return 
+            if($('#vlc2').length>0) return 
             $('#objvideo2').append(html)
             $('#vlc2').css({
                 "width": "100%",
                 "height": "100%"
             })
         } else if (indexNum == 3) {
-            if($('#vlc1').length>0) return 
+            if($('#vlc3').length>0) return 
             $('#objvideo3').append(html)
             $('#vlc3').css({
                 "width": "100%",
                 "height": "100%"
             })
         } else if (indexNum == 4) {
-            if($('#vlc1').length>0) return 
+            if($('#vlc4').length>0) return 
             $('#objvideo4').append(html)
             $('#vlc4').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 5) {
+            if($('#vlc5').length>0) return 
+            $('#objvideo5').append(html)
+            $('#vlc5').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 6) {
+            if($('#vlc6').length>0) return 
+            $('#objvideo6').append(html)
+            $('#vlc6').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 7) {
+            if($('#vlc7').length>0) return 
+            $('#objvideo7').append(html)
+            $('#vlc7').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 8) {
+            if($('#vlc8').length>0) return 
+            $('#objvideo8').append(html)
+            $('#vlc8').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 9) {
+            if($('#vlc9').length>0) return 
+            $('#objvideo9').append(html)
+            $('#vlc9').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 10) {
+            if($('#vlc10').length>0) return 
+            $('#objvideo10').append(html)
+            $('#vlc10').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 11) {
+            if($('#vlc11').length>0) return 
+            $('#objvideo11').append(html)
+            $('#vlc11').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 12) {
+            if($('#vlc12').length>0) return 
+            $('#objvideo12').append(html)
+            $('#vlc12').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 13) {
+            if($('#vlc13').length>0) return 
+            $('#objvideo13').append(html)
+            $('#vlc13').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 14) {
+            if($('#vlc14').length>0) return 
+            $('#objvideo14').append(html)
+            $('#vlc14').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 15) {
+            if($('#vlc15').length>0) return 
+            $('#objvideo15').append(html)
+            $('#vlc15').css({
+                "width": "100%",
+                "height": "100%"
+            })
+        } else if (indexNum == 16) {
+            if($('#vlc16').length>0) return 
+            $('#objvideo16').append(html)
+            $('#vlc16').css({
                 "width": "100%",
                 "height": "100%"
             })
