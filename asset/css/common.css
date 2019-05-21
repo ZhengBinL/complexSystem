@@ -370,3 +370,10 @@ input{
 .police-content .police-detail{
     color: #a24e03;
 }
+.btn-wrapper{
+    text-align: center;
+    padding: 0 0 20px;
+}
+.btn-wrapper a{
+    margin:0 20px;
+}

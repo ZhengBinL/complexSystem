@@ -10,32 +10,50 @@ $(function(){
 /*--------------------
 ** 报警弹框
 * *-------------------*/
-$('body').on('click', '.police-close', function () {
+$('body').on('click', '.js-police-pop-close', function () {
     $(this).closest('.police-wrapper').remove();
+}).on('click', '.js-police-look', function () {
+$('body').on('click', '.js-police-look', function () {
+    var msg = $(this).closest('.police-wrapper').find('.js-police-msg').html()
+    $.cookie('param', msg)
+    console.log($.cookie('param'), 'ddd')
+    return
+    window.location.href = '../../page/prevention/index.html'
+})
 })
 var _top = 100
-// setInterval(function () {
-//     $.ajax({
-//         type:'GET',
-//         dataType:'json',
-//         contentType:'application/json',
-//         url:'http://172.16.5.224:18080/alarm/getAlarmTime',
-//         success:function(res){
-//             console.log(res)
-//             if (res.code == 0 && res.data){
-//                 _top += 10
-//                 var data = JSON.parse(res.data);
-//                 var html = ''
-//                 html += '<div class="police-wrapper" style="top: '+ _top +'px;"><div class="police-title">报警信息<img class="police-close" src="../../asset/img/icon-close.png" alt="关闭"></div><ul class="police-content"><li><span>报警类型：</span><span class="police-detail">' + data.AlarmType.SystemOptionName +'</span></li><li><span>设备名称：</span><span class="police-detail">'+ data.AlarmSource.IPDeviceName +'</span></li></ul></div>'
-//                 $('body').append(html)
-//             }
-//         },
-//         error:function(err){
-//             console.log(err)
-//         }
-//     })
-// }, 500)
+setTimeout(function () {
+    $.ajax({
+        type:'GET',
+        dataType:'json',
+        contentType:'application/json',
+        url:'http://172.20.10.7:18080/alarm/getAlarmTime',
+        success:function(res){
+            if (res.code == 0 && res.data){
+                _top += 10
+                var data = JSON.parse(res.data);
+                var html = ''
+                html += '<div class="police-wrapper" style="top: '+ _top +'px;">' +
+                        '<div class="police-title">报警信息<img class="js-police-pop-close" src="../../asset/img/icon-close.png" alt="关闭"></div>' +
+                        '<ul class="police-content">' +
+                        '<li><span>报警类型：</span><span class="police-detail">' + data.AlarmType.SystemOptionName +'</span></li>' +
+                        '<li><span>设备名称：</span><span class="police-detail">'+ data.AlarmSource.IPDeviceName +'</span></li></ul>' +
+                        '<div class="btn-wrapper">' +
+                        '<div style="display: none" class="js-police-msg">'+res.data+'</div>'+
+                        '<a href="javascript:;" class="js-police-look layui-btn layui-btn-sm layui-btn-normal" target="_self">查看</a>' +
+                        '<a href="javascript:;" class="js-police-pop-close layui-btn layui-btn-sm layui-btn-primary">关闭</a>' +
+                        '</div></div>'
+                $('body').append(html)
+            }
+        },
+        error:function(err){
+            console.log(err)
+        }
+    })
+}, 5000)
+
 })
+
 
 //格式化时间戳
 function formatDate(t, isTime) {
