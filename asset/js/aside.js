@@ -12,9 +12,15 @@ $(function () {
                   $('.aside').animate({
                         left: '0'
                   })
+                  $('#zhanwei-c').animate({
+                        left: '0'
+                  })
             } else {
                   $('.aside').animate({
                         left: '-264px'
+                  })
+                  $('#zhanwei-c').animate({
+                        left: ' -300px'
                   })
                   $(this).find('#showFlag').attr('alt', '1')
                   $(this).find('#showFlag').attr('src', '../../asset/img/icon_fold.png')

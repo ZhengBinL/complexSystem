@@ -32,14 +32,16 @@ $(function () {
     })
 
     function zTreeOnClick(event, treeId, treeNode) {
+        var treeNodeId = treeNode.id
         if(!!treeNode.isParent)return
-        $.get($ctx+'/dvr/rtspUrl?id=1000000', function (res) {
+        $.get($ctx+'/dvr/rtspUrl?id='+treeNodeId, function (res) {
             if (indexNum == 1) {
                 var vlc = document.getElementById("vlc1")
                 var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
                 var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                 vlc.playlist.playItem(id);
                 vlc.playlist.play();
+                
             } else if (indexNum == 2) {
                 var vlc = document.getElementById("vlc2")
                 var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
@@ -58,11 +60,86 @@ $(function () {
                 var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                 vlc.playlist.playItem(id);
                 vlc.playlist.play();
+            }else if (indexNum == 5) {
+                var vlc = document.getElementById("vlc5")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 6) {
+                var vlc = document.getElementById("vlc6")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 7) {
+                var vlc = document.getElementById("vlc7")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 8) {
+                var vlc = document.getElementById("vlc8")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 9) {
+                var vlc = document.getElementById("vlc9")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 10) {
+                var vlc = document.getElementById("vlc10")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 11) {
+                var vlc = document.getElementById("vlc11")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 12) {
+                var vlc = document.getElementById("vlc12")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 13) {
+                var vlc = document.getElementById("vlc13")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 14) {
+                var vlc = document.getElementById("vlc14")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 15) {
+                var vlc = document.getElementById("vlc15")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
+            }else if (indexNum == 16) {
+                var vlc = document.getElementById("vlc16")
+                var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                vlc.playlist.playItem(id);
+                vlc.playlist.play();
             }
+            $('.videos-li').eq(indexNum-1).find('.v-toolbar').show()
+            $('.videos-li').eq(indexNum-1).find('.opt-monitor').stop().hide()
             $('.videos-li').eq(indexNum-1).find('.icon-history').attr('data-szCameraId',res.data.cid)
         })
     }
 
+    // js添加视屏
     $('body').on('click','.videos-li',function(){
         indexNum = $(this).attr('data-index')
         $('.videos-li').removeClass('videos-border')
@@ -82,28 +159,28 @@ $(function () {
             $('#objvideo1').append(html)
             $('#vlc1').css({
                 "width": "100%",
-                "height": "83%"
+                "height": "100%"
             })
         } else if (indexNum == 2) {
             if($('#vlc1').length>0) return 
             $('#objvideo2').append(html)
             $('#vlc2').css({
                 "width": "100%",
-                "height": "83%"
+                "height": "100%"
             })
         } else if (indexNum == 3) {
             if($('#vlc1').length>0) return 
             $('#objvideo3').append(html)
             $('#vlc3').css({
                 "width": "100%",
-                "height": "83%"
+                "height": "100%"
             })
         } else if (indexNum == 4) {
             if($('#vlc1').length>0) return 
             $('#objvideo4').append(html)
             $('#vlc4').css({
                 "width": "100%",
-                "height": "83%"
+                "height": "100%"
             })
         } 
     })
@@ -236,15 +313,15 @@ $(function () {
                 '</div> '+
                 '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc100" codebase="" width="100%" height="85%" events="True">' +
                 '<param name="wmode" value="Transparent" />' +
-            '<param name="AutoLoop" value="False" />' +
-            '<param name="AutoPlay" value="True" />' +
-            '<param name="Time" value="True" />' +
-            '<param name="ShowDisplay" value="True" />' +
-            '<param name="Controls" value="False">' +
-            '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"' +
-            'version="VideoLAN.VLCPlugin.2" width="100%" height="85%"' +
-            'text="Waiting for video" name="vlc"></EMBED>' +
-            '</OBJECT>'
+                '<param name="AutoLoop" value="False" />' +
+                '<param name="AutoPlay" value="True" />' +
+                '<param name="Time" value="True" />' +
+                '<param name="ShowDisplay" value="True" />' +
+                '<param name="Controls" value="False">' +
+                '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"' +
+                'version="VideoLAN.VLCPlugin.2" width="100%" height="85%"' +
+                'text="Waiting for video" name="vlc"></EMBED>' +
+                '</OBJECT>'
 
             var index = layer.open({
                 type: 1, 
@@ -257,13 +334,13 @@ $(function () {
                         "width": "100%",
                         "height": "100%",
                     })
-                    $.get('http://172.16.5.226:18080/dvr/rtspUrl?id=1000000',function(res){
-                        console.log(res.data.rtspUrl,'resddgfads')
+                    $.get($ctx+'/dvr/rtspUrl?id=1000000',function(res){
                         var vlc = document.getElementById("vlc100");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
+                        $('#vlc100').parent().find('.icon-history').attr('data-szCameraId',res.data.cid)
                     })
                     // console.log(layero, index);
                 }
@@ -278,107 +355,112 @@ $(function () {
                 $('#zhanwei-tk2').toggle()
                 $('#opt-monitor').toggle()
             })
-            $('body').on('click','.opt-item',function(){
-                var direct = $(this).data('direction')
-                if(direct = "topL"){
-                    directHandle(5)
-                }else if(direct = "topC"){
-                    directHandle(7)
-                }else if(direct = "topR"){
-                    directHandle(1)
-                }else if(direct = "midL"){
-                    directHandle(3)
-                }else if(direct = "midR"){
-                    directHandle(4)
-                }else if(direct = "botL"){
-                    directHandle(6)
-                }else if(direct = "botC"){
-                    directHandle(3)
-                }else if(direct = "botR"){
-                    directHandle(8)
-                }else if(direct = "big"){
-                    cameraHandle(0)
-                }else if(direct = "small"){
-                    cameraHandle(3)
-                }
-
-            })
-            //摄像头方向
-            function directHandle(direct){
-                $.get('http://172.16.5.226:18080/pzt/direction?nDirect='+direct+'&id=1000000')
-            }
-            //摄像头放大缩小
-            function cameraHandle(direct){
-                $.get('http://172.16.5.226:18080/pzt/cameraOperation?nDirect='+direct+'&id=1000000')
-            }
         })
-        });
-        /*******地图模式 视屏点击弹框结束*******/ 
+    });
+    /*******地图模式 视屏点击弹框结束*******/ 
 
-        /*******分屏模式渲染li开始*******/
-        var liHtml =''
-        var j=0
-        for(var i =0;i<16;i++){
-            j++
-            liHtml+=
-            ('<li class="videos-li" data-index="'+(i+1)+'">'+
-            '<dl>'+
-            '<dd class="videos">'+
-            '<dt class="v-toolbar">'+
-            '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
-            '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
-            '<a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
-            '<iframe id="zhanwei'+(i+1)+'" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>'+
-            '<div class="opt-monitor">'+
-            '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
-            '<a href="javascript:;" class="opt-item opt-top-ct" data-direction="topC"></a>'+
-            '<a href="javascript:;" class="opt-item opt-top-rt" data-direction="topR"></a>'+
-            '<a href="javascript:;" class="opt-item opt-mid-lt" data-direction="midL"></a>'+
-            '<a href="javascript:;" class="opt-item opt-mid-rt" data-direction="midR"></a>'+
-            '<a href="javascript:;" class="opt-item opt-bot-lt" data-direction="botL"></a>'+
-            '<a href="javascript:;" class="opt-item opt-bot-ct" data-direction="botC"></a>'+
-            '<a href="javascript:;" class="opt-item opt-bot-rt" data-direction="botR"></a>'+
-            '<a href="javascript:;" class="opt-item opt-big"  data-direction="big"></a>'+
-            '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
-            '</div>'+
-            '</dt>'+
-            '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px;width: 100%;height: 100%;">'+
-                
-            '</div>'+
-            '</dd>'+
-            '</dl>'+
-            '</li>')
-        }
-       
-        $('#mode-rec').prepend(liHtml)
-        caleHeight(4)
+    /*******分屏模式渲染li开始*******/
+    var liHtml =''
+    var j=0
+    for(var i =0;i<16;i++){
+        liHtml+=
+        ('<li class="videos-li" data-index="'+(i+1)+'">'+
+        '<dl>'+
+        '<dd class="videos">'+
+        '<dt class="v-toolbar">'+
+        '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
+        '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
+        '<a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+        '<iframe id="zhanwei'+(i+1)+'" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>'+
+        '<div class="opt-monitor">'+
+        '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
+        '<a href="javascript:;" class="opt-item opt-top-ct" data-direction="topC"></a>'+
+        '<a href="javascript:;" class="opt-item opt-top-rt" data-direction="topR"></a>'+
+        '<a href="javascript:;" class="opt-item opt-mid-lt" data-direction="midL"></a>'+
+        '<a href="javascript:;" class="opt-item opt-mid-rt" data-direction="midR"></a>'+
+        '<a href="javascript:;" class="opt-item opt-bot-lt" data-direction="botL"></a>'+
+        '<a href="javascript:;" class="opt-item opt-bot-ct" data-direction="botC"></a>'+
+        '<a href="javascript:;" class="opt-item opt-bot-rt" data-direction="botR"></a>'+
+        '<a href="javascript:;" class="opt-item opt-big"  data-direction="big"></a>'+
+        '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
+        '</div>'+
+        '</dt>'+
+        '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px;width: 100%;height: 100%;">'+
+            
+        '</div>'+
+        '</dd>'+
+        '</dl>'+
+        '</li>')
+    }
+    
+    $('#mode-rec').prepend(liHtml)
+    caleHeight(4)
 
-        function caleHeight(itemnumb) {
-            // 设置分屏模式视频高度
-            var itemWidth = $('.mode-content .videos').width();
-            var itemHeight = itemWidth * 9 / 16;
-            $('.mode-content .videos').css('height', itemHeight);
-            $('#vlc1').css({
-                "width":itemWidth,
-                "height":itemHeight
-            })
-            $('#vlc2').css({
-                "width":itemWidth,
-                "height":itemHeight
-            })
-            $('#vlc3').css({
-                "width":itemWidth,
-                "height":itemHeight
-            })
-            $('#vlc4').css({
-                "width":itemWidth,
-                "height":itemHeight
-            })
-            $('#mode-rec').css({
-                'height': itemHeight * itemnumb,
-                'overflow': 'hidden'
-            })
+    function caleHeight(itemnumb) {
+        // 设置分屏模式视频高度
+        var itemWidth = $('.mode-content .videos').width();
+        var itemHeight = itemWidth * 9 / 16;
+        $('.mode-content .videos').css('height', itemHeight);
+        $('#vlc1').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#vlc2').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#vlc3').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#vlc4').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#mode-rec').css({
+            'height': itemHeight * itemnumb,
+            'overflow': 'hidden'
+        })
+    }
+    // 点击云平台控制
+    $('body').on('click', '.js-control', function () {
+        $(this).parent().children('.opt-monitor').toggle()
+    })
+    /*******分屏模式渲染li结束*******/ 
+    /*******方向按钮事件开始*******/ 
+    $('body').on('click','.opt-item',function(){
+        var direct = $(this).data('direction')
+        if(direct = "topL"){
+            directHandle(5)
+        }else if(direct = "topC"){
+            directHandle(7)
+        }else if(direct = "topR"){
+            directHandle(1)
+        }else if(direct = "midL"){
+            directHandle(3)
+        }else if(direct = "midR"){
+            directHandle(4)
+        }else if(direct = "botL"){
+            directHandle(6)
+        }else if(direct = "botC"){
+            directHandle(3)
+        }else if(direct = "botR"){
+            directHandle(8)
+        }else if(direct = "big"){
+            cameraHandle(0)
+        }else if(direct = "small"){
+            cameraHandle(3)
         }
-        /*******分屏模式渲染li结束*******/ 
+
+    })
+    //摄像头方向
+    function directHandle(direct){
+        $.get($ctx+ '/pzt/direction?nDirect='+direct+'&id=1000000')
+    }
+    //摄像头放大缩小
+    function cameraHandle(direct){
+        $.get($ctx+ '/pzt/cameraOperation?nDirect='+direct+'&id=1000000')
+    }
+    /*******方向按钮事件开始*******/ 
 })
     
