@@ -17,7 +17,7 @@ $(function () {
       })
     } else {
       $('.aside').animate({
-        left: '-40px'
+        left: '-450px'
       })
       $('#zhanwei-c').animate({
             left: '-480px'
