@@ -314,7 +314,8 @@
   margin: 5px;
 }
 .videos-li{
-    box-sizing: border-box
+    box-sizing: border-box;
+    border:1px solid transparent;
 }
 .videos {
   width: 100%;
