@@ -132,6 +132,7 @@ $(function () {
                 vlc.playlist.playItem(id);
                 vlc.playlist.play();
             }
+            $('.videos-li').eq(indexNum-1).attr('data-index','111')
             $('.videos-li').eq(indexNum-1).find('.v-toolbar').show()
             $('.videos-li').eq(indexNum-1).find('.opt-monitor').stop().hide()
             $('.videos-li').eq(indexNum-1).find('.icon-history').attr('data-szCameraId',res.data.cid)
@@ -154,14 +155,19 @@ $(function () {
             'text="Waiting for video" name="vlc"></EMBED>' +
             '</OBJECT>'
         if (indexNum == 1) {
+            //只能添加一个
             if($('#vlc1').length>0) return 
+            //如果没有选择视屏删除obj
+            delLi()
             $('#objvideo1').append(html)
+
             $('#vlc1').css({
                 "width": "100%",
                 "height": "100%"
             })
         } else if (indexNum == 2) {
             if($('#vlc2').length>0) return 
+            delLi()
             $('#objvideo2').append(html)
             $('#vlc2').css({
                 "width": "100%",
@@ -169,6 +175,7 @@ $(function () {
             })
         } else if (indexNum == 3) {
             if($('#vlc3').length>0) return 
+            delLi()
             $('#objvideo3').append(html)
             $('#vlc3').css({
                 "width": "100%",
@@ -176,6 +183,7 @@ $(function () {
             })
         } else if (indexNum == 4) {
             if($('#vlc4').length>0) return 
+            delLi()
             $('#objvideo4').append(html)
             $('#vlc4').css({
                 "width": "100%",
@@ -183,6 +191,7 @@ $(function () {
             })
         } else if (indexNum == 5) {
             if($('#vlc5').length>0) return 
+            delLi()
             $('#objvideo5').append(html)
             $('#vlc5').css({
                 "width": "100%",
@@ -190,6 +199,7 @@ $(function () {
             })
         } else if (indexNum == 6) {
             if($('#vlc6').length>0) return 
+            delLi()
             $('#objvideo6').append(html)
             $('#vlc6').css({
                 "width": "100%",
@@ -197,6 +207,7 @@ $(function () {
             })
         } else if (indexNum == 7) {
             if($('#vlc7').length>0) return 
+            delLi()
             $('#objvideo7').append(html)
             $('#vlc7').css({
                 "width": "100%",
@@ -204,6 +215,7 @@ $(function () {
             })
         } else if (indexNum == 8) {
             if($('#vlc8').length>0) return 
+            delLi()
             $('#objvideo8').append(html)
             $('#vlc8').css({
                 "width": "100%",
@@ -211,6 +223,7 @@ $(function () {
             })
         } else if (indexNum == 9) {
             if($('#vlc9').length>0) return 
+            delLi()
             $('#objvideo9').append(html)
             $('#vlc9').css({
                 "width": "100%",
@@ -218,6 +231,7 @@ $(function () {
             })
         } else if (indexNum == 10) {
             if($('#vlc10').length>0) return 
+            delLi()
             $('#objvideo10').append(html)
             $('#vlc10').css({
                 "width": "100%",
@@ -225,6 +239,7 @@ $(function () {
             })
         } else if (indexNum == 11) {
             if($('#vlc11').length>0) return 
+            delLi()
             $('#objvideo11').append(html)
             $('#vlc11').css({
                 "width": "100%",
@@ -232,6 +247,7 @@ $(function () {
             })
         } else if (indexNum == 12) {
             if($('#vlc12').length>0) return 
+            delLi()
             $('#objvideo12').append(html)
             $('#vlc12').css({
                 "width": "100%",
@@ -239,6 +255,7 @@ $(function () {
             })
         } else if (indexNum == 13) {
             if($('#vlc13').length>0) return 
+            delLi()
             $('#objvideo13').append(html)
             $('#vlc13').css({
                 "width": "100%",
@@ -246,6 +263,7 @@ $(function () {
             })
         } else if (indexNum == 14) {
             if($('#vlc14').length>0) return 
+            delLi()
             $('#objvideo14').append(html)
             $('#vlc14').css({
                 "width": "100%",
@@ -253,6 +271,7 @@ $(function () {
             })
         } else if (indexNum == 15) {
             if($('#vlc15').length>0) return 
+            delLi()
             $('#objvideo15').append(html)
             $('#vlc15').css({
                 "width": "100%",
@@ -260,13 +279,22 @@ $(function () {
             })
         } else if (indexNum == 16) {
             if($('#vlc16').length>0) return 
+            delLi()
             $('#objvideo16').append(html)
             $('#vlc16').css({
                 "width": "100%",
                 "height": "100%"
             })
         } 
+        
     })
+    function delLi(){
+        for(var i = 0;i<$('.videos-li').length;i++){
+            if($('.videos-li').eq(i).attr('data-index')!==111){
+                $('.videos-li').eq(i).find('OBJECT').remove()
+            }
+        }
+    }
     /*****地图模式按钮开始*******/
     //放大
     $('body').on('click','.btn-zoomin',function(){
@@ -370,8 +398,8 @@ $(function () {
     layui.use('layer', function(){
         var layer = layui.layer;
         $('.camera').on('click',function(){
-            var cameraNum
-            // var cameraNum = $(this).data('index')
+            // var cameraNum
+            var cameraNum = $(this).data('index')
             var html =
                 '<iframe id="zhanwei-tk1" src="about:blank" frameborder="0" marginheight="0 marginwidth="0" style="position: absolute;display: block;top: 0px;right: 0px;width: 100%;height: 32px;z-index: 0;background: transparent;"></iframe>'+
                 '<div class="v-toolbar">'+
@@ -417,13 +445,16 @@ $(function () {
                         "width": "100%",
                         "height": "100%",
                     })
-                    $.get($ctx+'/dvr/rtspUrl?id=1000000',function(res){
+                    $('#vlc100').parent().find('.v-toolbar').show()
+                    $('#vlc100').parent().find('#js-btn-control').attr('data-index',cameraNum)
+                    $.get($ctx+'/dvr/rtspUrl?id='+cameraNum,function(res){
                         var vlc = document.getElementById("vlc100");
                         var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
-                        $('#vlc100').parent().find('.icon-history').attr('data-szCameraId',res.data.cid)
+                        // console.log($('#vlc100').parent().find('.v-toolbar'))
+                        $('#vlc100').parent().find('.v-toolbar').attr('data-szCameraId',res.data.cid)
                     })
                     // console.log(layero, index);
                 }
@@ -511,9 +542,11 @@ $(function () {
         $(this).parent().find('iframe').toggle()
     })
     /*******分屏模式渲染li结束*******/ 
+
     /*******方向按钮事件开始*******/ 
     $('body').on('click','.opt-item',function(){
         var direct = $(this).data('direction')
+        var directNum = $(this).parent().parent().find('.js-control').attr('data-index')
         if(direct = "topL"){
             directHandle(5)
         }else if(direct = "topC"){
@@ -539,11 +572,11 @@ $(function () {
     })
     //摄像头方向
     function directHandle(direct){
-        $.get($ctx+ '/pzt/direction?nDirect='+direct+'&id=1000000')
+        $.get($ctx+ '/pzt/direction?nDirect='+direct+'&id='+directNum)
     }
     //摄像头放大缩小
     function cameraHandle(direct){
-        $.get($ctx+ '/pzt/cameraOperation?nDirect='+direct+'&id=1000000')
+        $.get($ctx+ '/pzt/cameraOperation?nDirect='+direct+'&id='+directNum)
     }
     /*******方向按钮事件开始*******/ 
 })
