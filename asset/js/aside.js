@@ -1,17 +1,26 @@
 $(function () {
       // 侧边栏展开收起
-  $('#showFlag').click(function () {
+  $('.icon-fold').click(function () {
     $tis = $(this);
-    if($tis.hasClass('unfolded')) {
+    var _alt = $tis.find('#showFlag').attr('alt')
+    if (_alt == '1') {
+      $tis.find('#showFlag').attr('alt', '2')
+      $tis.find('#showFlag').attr('src', '../../asset/img/icon_expand.png')
+      $tis.animate({
+        left: '450px'
+      })
       $('.aside').animate({
         left: '0'
       })
-      $tis.removeClass('unfolded');
     } else {
       $('.aside').animate({
         left: '-450px'
       })
-      $tis.addClass('unfolded');
+      $tis.find('#showFlag').attr('alt', '1')
+      $tis.find('#showFlag').attr('src', '../../asset/img/icon_fold.png')
+      $tis.animate({
+        left: '0'
+      })
     }
   })
 
