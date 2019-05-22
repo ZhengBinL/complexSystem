@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>固定勤务</title>
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
     <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
     <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
     <link rel="stylesheet" href="./fixed-duty.css">
 </head>
@@ -33,9 +35,9 @@
     </div>
 </div>
 <!--侧边栏-->
-<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
-marginwidth="0"
-style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>
+<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0" marginwidth="0"
+style="position: fixed;display: block;top: 75px;left: -480px;width: 480px;height: 600px;z-index: 90;background: transparent;">
+</iframe>
 <div class="aside">
   <div class="aside-bg">
     <i class="aside-bg-lt"></i>
@@ -74,6 +76,7 @@ style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height
     </dd>
 </dl>
 <script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/js/jquery.cookie.js"></script>
 <script src="../../asset/js/config.js"></script>
 <script src="../../asset/js/utils.js"></script>
 <script src="./fixed-duty.js"></script>
@@ -86,7 +89,6 @@ style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height
         contentType: 'application/json',
         url: $ctx + '/fixed_duty/dutyInfo',
         success: function (res) {
-          alert(res.code)
             if (res.code == 0 && res.data) {
                 var data = res.data.dutyInfo
                 var html = ''
