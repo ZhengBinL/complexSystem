@@ -238,12 +238,14 @@
     }
 
     function renderPageJump() {
-        var oldMsg = JSON.parse(document.cookie.split(";")[0].split("=")[1]);  
+        var oldMsg = JSON.parse(document.cookie.split(";")[0].split("=")[1]);
+        var date = new Date();
+        date.setTime(date.getTime() - 10000)
         //console.log(oldMsg)  
         if (isPageJump() && oldMsg && !initMsg){
             var rtspUrls = document.cookie.split(";")[1].split("=")[1];
-            //console.log([rtspUrls], '[ff]')
-            renderVideo([rtspUrls])
+            console.log(rtspUrls.split(','), '[ff]')
+            renderVideo(rtspUrls.split(','))
             var pos = oldMsg.alarmSource.iPDeviceName; // 岗哨
             var type = oldMsg.alarmType.systemOptionName; // 报警类型
             $('.prevention-img span').each(function (index, item) {
@@ -254,25 +256,25 @@
                     
                         $(item).addClass('red cookie-dom');
                         setTimeout(function () {
-                            //document.cookie= "hrefParam='';path=/";
-                            //document.cookie="rtspUrls='';path=/";
-                            //console.log(document.cookie, 'documentcookie')
+                            document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
+                            document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
+                            console.log(document.cookie, 'documentcookie')
                             $(item).removeClass('red')
                             removeVideo();
                         }, 30000)
                     } else if (type == '周界入侵') {
                         $(item).addClass('green cookie-dom');
                         setTimeout(function () {
-                            //document.cookie= "hrefParam="+null;
-                            //document.cookie="rtspUrls=" + null;
+                          document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
+                          document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
                             $(item).removeClass('green');
                             removeVideo();
                         }, 30000)
                     } else {
                         $(item).addClass('yellow cookie-dom');
                         setTimeout(function () {
-                            //document.cookie= "hrefParam="+null;
-                            //document.cookie="rtspUrls=" + null;
+                          document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
+                          document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
                             $(item).removeClass('yellow');
                             removeVideo();
                         }, 30000)
@@ -386,7 +388,7 @@
     }
     
     // 请求接口获取报警点
-    setInterval(getAlarmInfo, 1000)
+    // setInterval(getAlarmInfo, 1000)
     var initPos,
         initType,
         initRtsp,

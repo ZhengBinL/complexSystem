@@ -27,7 +27,10 @@ $('body').on('click', '.js-police-pop-close', function () {
 }).on('click', '.js-police-look', function () {
     var msg = $(this).closest('.police-wrapper').find('.js-police-msg').html()
     var rtspUrls = $(this).closest('.police-wrapper').find('.js-rtspUrls').html()
-
+    // setCookie('param', msg)
+  console.log(rtspUrls, 'rtspUrls')
+    console.log(document.cookie, 'cookieceshi')
+  return
     document.cookie="hrefParam="+ msg + ';path=/'; // 存储cookie
     document.cookie="rtspUrls="+rtspUrls + ';path=/';
      //console.log(document.cookie)
@@ -70,13 +73,19 @@ setInterval(function () {
 }, 1000)
 
 })
-function setCookie(name,value)
-{
-    var Days = 30;
-    var exp = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";path=/";
+function setCookie(key,value,t)
+  { if(t>0){
+    var oDate=new Date();
+    oDate.setDate(oDate.getDate()+t);
+    document.cookie=key+"="+value+"; expires="+oDate.toDateString()+ ";path=/";
+  }
 }
+function removeCookie(key){
+  setCookie(key,"",-1);//把cookie设置为过期
+}
+
+
+
 function getCookie(name)
 {
     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
