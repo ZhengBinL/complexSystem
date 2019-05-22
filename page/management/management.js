@@ -1,6 +1,7 @@
 
 $(function () {
     var _this = this
+    var szCameraId="";
     // 菜单树
     var zNodes = []//节点
     var indexNum//点击的某个点的index
@@ -398,6 +399,7 @@ $(function () {
     layui.use('layer', function(){
         var layer = layui.layer;
         var index
+        var dataSzCameraId
         $('.camera').on('click',function(){
             // var cameraNum
             var cameraNum = $(this).data('index')
@@ -455,26 +457,9 @@ $(function () {
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
-                        $('#vlc100').parent().find('.v-toolbar').find('.icon-history-open').attr('data-szCameraId',res.data.cid)
+                        dataSzCameraId = res.data.cid
+                        // $('#vlc100').parent().find('.v-toolbar').find('.icon-history-open').attr('data-szCameraId',res.data.cid)
                     })
-                },
-                end:function(){
-                    $('.js-tabtop > li').eq(1).click()
-                    if(!$('#vlc100').parent().find('.v-toolbar').find('.icon-history-open').attr("data-szCameraId")){
-                        return
-                    } else {
-                        szCameraId=$('#vlc100').parent().find('.v-toolbar').find('.icon-history-open').getAttribute("data-szCameraId")
-                    }
-                    $('.split-mode').hide()
-                    $('.history-wrapper').show()
-
-                    // 设置历史记录视频高度
-                    var historyVideoWidth = $('.video-wrapper .video').width();
-                    var historyVideoHeight = historyVideoWidth * 9 / 16;
-                    var searchMarTop = (historyVideoHeight - 386) / 2
-                    $('.video-wrapper .video').css('height', historyVideoHeight);
-                    $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
-                    init();
                 }
             });
             //关闭弹框
@@ -494,7 +479,22 @@ $(function () {
         // 历史视屏
         // 点击历史记录显示
         $('body').on('click', '.icon-history-open', function () {
+            console.log(123132)
             layer.close(index);
+            if(!dataSzCameraId){
+                return
+            } else {
+                szCameraId=dataSzCameraId
+            }
+            $('.split-mode').hide()
+            $('.history-wrapper').show()
+            // 设置历史记录视频高度
+            var historyVideoWidth = $('.video-wrapper .video').width();
+            var historyVideoHeight = historyVideoWidth * 9 / 16;
+            var searchMarTop = (historyVideoHeight - 386) / 2
+            $('.video-wrapper .video').css('height', historyVideoHeight);
+            $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
+            init();
         })
     });
     /*******地图模式 视屏点击弹框结束*******/ 
