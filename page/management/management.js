@@ -538,8 +538,8 @@ $(function () {
     function caleHeight(itemnumb) {
         // 设置分屏模式视频高度
         var itemWidth = $('.mode-content .videos').width();
-        var itemHeight = itemWidth * 9 / 16 + 32;
-        $('.mode-content .videos').css('height', itemHeight);
+        var itemHeight = itemWidth * 9 / 16;
+        $('.mode-content .videos').css('height', (itemHeight + 32   ));
         $('#vlc1').css({
             "width":itemWidth,
             "height":itemHeight
@@ -557,7 +557,7 @@ $(function () {
             "height":itemHeight
         })
         $('#mode-rec').css({
-            'height': itemHeight * itemnumb,
+            'height': itemHeight * itemnumb + (itemnumb + 1) * 8 + itemnumb * 32, // 8：item元素边距；
             'overflow': 'hidden'
         })
     }
