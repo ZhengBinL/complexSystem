@@ -604,7 +604,7 @@
                 "height":itemHeight
             })
             $('#mode-rec').css({
-                'height': itemHeight * itemnumb,
+                'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
                 'overflow': 'hidden'
             })
         }

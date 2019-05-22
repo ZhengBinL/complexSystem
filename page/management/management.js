@@ -556,8 +556,9 @@ $(function () {
             "width":itemWidth,
             "height":itemHeight
         })
+      console.count();
         $('#mode-rec').css({
-            'height': itemHeight * itemnumb + (itemnumb + 1) * 8 + itemnumb * 32, // 8：item元素边距；
+            'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
             'overflow': 'hidden'
         })
     }
