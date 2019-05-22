@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数据可视化</title>
+  <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+  <link rel="stylesheet" href="../../asset/css/reset.css">
+  <link rel="stylesheet" href="../../asset/css/common.css">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <!--头部-->
+  <div class="header">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
+      <ul>
+        <li class="notice-wrapper">
+          <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+        </li>
+        <li class="user-notice">
+          <div id="user-operate" class="user-operate">
+            <a href="javascript:;">
+              <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+              管理
+            </a>
+            <a href="javascript:;" class="exit" title="退出">退出</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--侧边栏-->
+  <iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
+          marginwidth="0"
+          style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>
+  <div class="aside">
+    <div class="menu-tree-wrapper">
+      <ul id="menu-tree" class="menu-tree ztree"></ul>
+    </div>
+    <!-- <div class="palace">
+  <div class="palace-unit">111</div>
+  <div class="palace-unit">222</div>
+  <div class="palace-unit">333</div>
+  <div class="palace-unit palace-left">444</div>
+  <div class="palace-unit palace-ct">555</div>
+  <div class="palace-unit palace-last">666</div>
+</div> -->
+    <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
+  </div>
+  <!-- 固定勤务 -->
+  <dl class="wrapper">
+    <dd class="data-vsualize">
+      <ul class="data-left">
+        <li class="dv-chart-box">
+          <div class="dv-bg">
+            <i class="dvbg-right-lt unormal"></i>
+            <i class="dvbg-left-mt"></i>
+            <i class="dvbg-left-rt"></i>
+            <i class="dvbg-left-lm"><img src="../../asset/img/dv-left-lm-img.png"></i>
+            <i class="dvbg-left-mm"></i>
+            <i class="dvbg-left-rm"></i>
+            <i class="dvbg-left-lb"></i>
+            <i class="dvbg-left-mb"></i>
+            <i class="dvbg-left-rb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">近期报警统计</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+
+        <li class="dv-chart-box dv-bg-center">
+          <div class="dv-bg">
+            <i class="dvbg-middle-lt"></i>
+            <i class="dvbg-middle-rt"></i>
+            <i class="dvbg-middle-rb"></i>
+            <i class="dvbg-middle-lb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">报警率统计</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+
+        <li class="dv-chart-box">
+          <div class="dv-bg">
+            <i class="dvbg-right-lt unormal"></i>
+            <i class="dvbg-left-mt"></i>
+            <i class="dvbg-left-rt"></i>
+            <i class="dvbg-left-lm"><img src="../../asset/img/dv-left-lm-img.png"></i>
+            <i class="dvbg-left-mm"></i>
+            <i class="dvbg-left-rm"></i>
+            <i class="dvbg-left-lb"></i>
+            <i class="dvbg-left-mb"></i>
+            <i class="dvbg-left-rb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">近期报警统计</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="data-middle">
+        <li class="dv-title">
+          <i class="dvbg-title-l"></i>
+          <i class="dvbg-title-m"></i>
+          <i class="dvbg-title-r"></i>
+          <img src="../../asset/img/dv-title.png" alt="数据可视化">
+        </li>
+
+        <li class="dv-map">
+          <input type="text" name="notautosubmit" style="display:none"/>
+          <div class="layui-form-item">
+
+            <div class="layui-inline">
+              <label class="layui-form-label">开始时间：</label>
+              <div class="layui-input-inline">
+                <input type="text" name="startTime" id="startTime" autocomplete="off"
+                       class="layui-input js-laydate">
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <label class="layui-form-label">结束时间：</label>
+              <div class="layui-input-inline">
+                <input type="text" name="endTime" id="endTime" autocomplete="off"
+                       class="layui-input js-laydate">
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <label class="layui-form-label">IP地址：</label>
+              <div class="layui-input-inline">
+                <input type="text" name="ipAddr" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <label class="layui-form-label">设备名称：</label>
+              <div class="layui-input-inline">
+                <input type="text" name="eqName" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-inline">
+              <button type="button" class="layui-btn layui-btn-normal js-btn-search">查询</button>
+              <!--<button class="layui-btn layui-btn-primary">导出</button>-->
+            </div>
+
+          </div>
+          <table class="layui-hide" id="alarmList-table"></table>
+        </li>
+      </ul>
+
+      <ul class="data-right">
+        <li class="dv-chart-box">
+          <div class="dv-bg">
+            <i class="dvbg-right-lt"></i>
+            <i class="dvbg-right-mt"></i>
+            <i class="dvbg-right-rt"></i>
+            <i class="dvbg-right-lm"></i>
+            <i class="dvbg-right-mm"></i>
+            <i class="dvbg-right-rm"><img src="../../asset/img/dv-right-rm-img.png"></i>
+            <i class="dvbg-right-lb"></i>
+            <i class="dvbg-right-mb"></i>
+            <i class="dvbg-right-rb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">虚拟入侵统计</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+
+        <li class="dv-chart-box dv-bg-center">
+          <div class="dv-bg">
+            <i class="dvbg-middle-lt"></i>
+            <i class="dvbg-middle-rt"></i>
+            <i class="dvbg-middle-rb"></i>
+            <i class="dvbg-middle-lb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">报警统计</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+
+        <li class="dv-chart-box">
+          <div class="dv-bg">
+            <i class="dvbg-right-lt"></i>
+            <i class="dvbg-right-mt"></i>
+            <i class="dvbg-right-rt"></i>
+            <i class="dvbg-right-lm"></i>
+            <i class="dvbg-right-mm"></i>
+            <i class="dvbg-right-rm"><img src="../../asset/img/dv-right-rm-img.png"></i>
+            <i class="dvbg-right-lb"></i>
+            <i class="dvbg-right-mb"></i>
+            <i class="dvbg-right-rb"></i>
+          </div>
+          <div class="dv-chart">
+            <h4 class="dv-chart-title">智能分析和震动光纤</h4>
+            <div class="dv-chart-main"></div>
+          </div>
+        </li>
+      </ul>
+
+      <span class="clearfix"></span>
+    </dd>
+  </dl>
+  <script src="../../asset/js/jquery.min.js"></script>
+  <script src="../../asset/js/config.js"></script>
+  <script src="../../asset/js/utils.js"></script>
+  <script src="../../asset/introduce/layui/layui.js"></script>
+  <script>
+      layui.use(['laydate', 'table'], function () {
+          var laydate = layui.laydate;
+          $('.js-laydate').each(function(){
+              var elm = $(this).attr('id');
+              laydate.render({
+                  elem: '#' + elm,
+                  format: 'yyyy-MM-dd'
+              })
+          })
+
+          var table = layui.table;
+          var TABLE_CONFIG = {
+              alarmList: {
+                  loaded: false,
+                  loading: false,
+                  id: 'alarmList',
+                  url: 'http://172.16.5.224:18080/alarm/getAlarmList',
+                  cols: [ //标题栏
+                      {type: 'checkbox', width: 80},
+                      {type: 'numbers', title: '序号', width: 80},
+                      {field: 'createTime', title: '时间'},
+                      {field: 'ipAddress', title: 'IP地址'},
+                      {field: 'deviceName', title: '设备名称'},
+                      {field: 'alarmType', title: '报警类型', style: 'color: #f69506;'},
+//                    {
+//                        title: '',
+//                        toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>',
+//                        width: 80
+//                    }
+                  ]
+              }
+          }
+          var current = TABLE_CONFIG['alarmList']
+          initTable(current)
+          $('body').on('click', '.js-btn-search', function () {
+              var startTime = $('input[name=startTime]').val();
+              var endTime = $('input[name=endTime]').val();
+              var deviceName = $('input[name=eqName]').val();
+              var ipAddress = $('input[name=ipAddr]').val();
+              var cur = TABLE_CONFIG['alarmList']
+              var where = null
+              if (startTime && endTime){
+                  where = {
+                      startTime: startTime,
+                      endTime: endTime,
+                      deviceName: deviceName,
+                      ipAddress: ipAddress
+                  }
+              }else if (startTime && !endTime){
+                  where = {
+                      startTime: startTime,
+                      deviceName: deviceName,
+                      ipAddress: ipAddress
+                  }
+              }else if (!startTime && endTime){
+                  where = {
+                      endTime: endTime,
+                      deviceName: deviceName,
+                      ipAddress: ipAddress
+                  }
+              }else {
+                  where = {
+                      deviceName: deviceName,
+                      ipAddress: ipAddress
+                  }
+              }
+              table.reload('alarmList-table',{
+                  where:where,
+                  page:{
+                      pageNum: 1
+                  }
+              })
+          })
+      })
+      function initTable(currentTable) {
+          var Table = layui.table
+          var id = currentTable.id
+          var tableId = id + '-table'
+
+          if (currentTable.loading) return
+          if (currentTable.loaded) {
+              Table.reload(tableId)
+              return
+          }
+
+          currentTable.loading = true
+          currentTable.table = Table.render({
+              elem: '#' + tableId,
+              id: tableId, // height: 'full-0',
+              url: currentTable.url,
+              page: true,
+              cols: [currentTable.cols],
+              autoSort: currentTable.autoSort || false,
+              request: {
+                  pageName: 'pageNum', //页码的参数名称，默认：page
+                  limitName: 'pageSize' //每页数据量的参数名，默认：limit
+              },
+              parseData: function (res) { //res 即为原始返回的数据
+                  return {
+                      "code": res.code, //解析接口状态
+                      "msg": res.message, //解析提示文本
+                      "count": res.data.total, //解析数据长度
+                      "data": res.data.list //解析数据列表
+                  };
+              },
+              where: currentTable.where || {},
+              done(arg) {
+                  if (!currentTable.loaded) {
+                      currentTable.loading = false
+                      currentTable.loaded = true
+                  }
+                  if (typeof currentTable.done == 'function') {
+                      currentTable.done(arg)
+                  }
+              }
+          })
+      }
+  </script>
+</body>
+</html>
