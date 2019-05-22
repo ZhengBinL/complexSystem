@@ -132,7 +132,7 @@ $(function () {
                 vlc.playlist.playItem(id);
                 vlc.playlist.play();
             }
-            $('.videos-li').eq(indexNum-1).attr('data-index','111')
+            $('.videos-li').eq(indexNum-1).attr('data-active','111')
             $('.videos-li').eq(indexNum-1).find('.v-toolbar').show()
             $('.videos-li').eq(indexNum-1).find('.opt-monitor').stop().hide()
             $('.videos-li').eq(indexNum-1).find('.icon-history').attr('data-szCameraId',res.data.cid)
@@ -290,7 +290,7 @@ $(function () {
     })
     function delLi(){
         for(var i = 0;i<$('.videos-li').length;i++){
-            if($('.videos-li').eq(i).attr('data-index') != 111){
+            if($('.videos-li').eq(i).attr('data-active') != 111){
                 $('.videos-li').eq(i).find('OBJECT').remove()
             }
         }
@@ -459,6 +459,8 @@ $(function () {
             });
             //关闭弹框
             $('#js-btn-close').on('click',function(){
+                var vlc = document.getElementById("vlc100");
+                vlc.playlist.stop();
                 layer.close(index);
             })
 
@@ -467,27 +469,6 @@ $(function () {
                 $('#zhanwei-tk2').toggle()
                 $('#opt-monitor').toggle()
             })
-             // 点击历史记录显示
-            // $('body').on('click', '.icon-history', function () {
-            //     layer.close(index);
-            //     $('.js-tabtop > li').eq(1).click()
-            //     if(!$(this).attr("data-szCameraId")){
-            //         return
-            //     } else {
-            //         szCameraId=this.getAttribute("data-szCameraId")
-            //         console.log("data-szCameraId: "+szCameraId)
-            //     }
-            //     $('.split-mode').hide()
-            //     $('.history-wrapper').show()
-
-            //     // 设置历史记录视频高度
-            //     var historyVideoWidth = $('.video-wrapper .video').width();
-            //     var historyVideoHeight = historyVideoWidth * 9 / 16;
-            //     var searchMarTop = (historyVideoHeight - 386) / 2
-            //     $('.video-wrapper .video').css('height', historyVideoHeight);
-            //     $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
-            //     init();
-            // })
         })
     });
     /*******地图模式 视屏点击弹框结束*******/ 
@@ -503,7 +484,7 @@ $(function () {
         '<dt class="v-toolbar">'+
         '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
         '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
-        '<a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+        '<a href="javascript:;" class="js-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
         '<iframe id="zhanwei'+(i+1)+'" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>'+
         '<div class="opt-monitor">'+
         '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
@@ -560,6 +541,12 @@ $(function () {
         $(this).parent().children('.opt-monitor').toggle()
         $(this).parent().find('iframe').toggle()
     })
+    //点击关闭
+    $('body').on('click','.js-close',function(){
+        $(this).parents('.videos-li').attr('data-active',123)
+        $(this).parents('.videos-li').find('.v-toolbar').hide()
+        $(this).parents('.videos-li').find('OBJECT').remove()
+    })
     /*******分屏模式渲染li结束*******/ 
 
     /*******方向按钮事件开始*******/ 
@@ -598,5 +585,27 @@ $(function () {
         $.get($ctx+ '/pzt/cameraOperation?nDirect='+direct+'&id='+directNum)
     }
     /*******方向按钮事件开始*******/ 
+
+    // 历史视屏
+    // 点击历史记录显示
+    $('body').on('click', '.icon-history', function () {
+        $('.js-tabtop > li').eq(1).click()
+        if(!$(this).attr("data-szCameraId")){
+            return
+        } else {
+            szCameraId=this.getAttribute("data-szCameraId")
+            console.log("data-szCameraId: "+szCameraId)
+        }
+        $('.split-mode').hide()
+        $('.history-wrapper').show()
+
+        // 设置历史记录视频高度
+        var historyVideoWidth = $('.video-wrapper .video').width();
+        var historyVideoHeight = historyVideoWidth * 9 / 16;
+        var searchMarTop = (historyVideoHeight - 386) / 2
+        $('.video-wrapper .video').css('height', historyVideoHeight);
+        $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
+        init();
+    })
 })
     

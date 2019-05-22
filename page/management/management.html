@@ -672,14 +672,6 @@
             })
         })
         
-        // 鼠标滑过分屏模式视频&滑过历史记录视频
-        // $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
-        //     $(this).children('.v-toolbar').show();
-        //     $(this).find('.opt-monitor').stop().hide();
-        // }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
-        //     $(this).children('.v-toolbar').stop().hide();
-        //     $('#zhanwei').stop().hide();
-        // })
         // 点击云平台控制
         $('body').on('click', '.js-control', function () {
             $(this).parent().children('.opt-monitor').toggle()
@@ -714,26 +706,7 @@
             /*播放录像信息*/
             ButtonStartTimePlaybackByWndNo_onclick2(szCameraId, nRecordSource, nStartTime, nEndTime);
         });
-        // 点击历史记录显示
-        $('body').on('click', '.icon-history', function () {
-            $('.js-tabtop > li').eq(1).click()
-            if(!$(this).attr("data-szCameraId")){
-                return
-            } else {
-                szCameraId=this.getAttribute("data-szCameraId")
-                console.log("data-szCameraId: "+szCameraId)
-            }
-            $('.split-mode').hide()
-            $('.history-wrapper').show()
 
-            // 设置历史记录视频高度
-            var historyVideoWidth = $('.video-wrapper .video').width();
-            var historyVideoHeight = historyVideoWidth * 9 / 16;
-            var searchMarTop = (historyVideoHeight - 386) / 2
-            $('.video-wrapper .video').css('height', historyVideoHeight);
-            $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
-            init();
-        })
         //点击倍速
         $('body').on('click', '.icon-speed', function () {
             $('.speed-wrapper').stop().toggle();

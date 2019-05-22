@@ -16,11 +16,11 @@ $(function () {
             left: '0'
       })
     } else {
-      $('.aside').animate({
-        left: '-40px'
-      })
       $('#zhanwei-c').animate({
-            left: '-480px'
+        left: '-480px'
+      })
+      $('.aside').animate({
+        left: '-450px'
       })
       $tis.find('#showFlag').attr('alt', '1')
       $tis.find('#showFlag').attr('src', '../../asset/img/icon_fold.png')
