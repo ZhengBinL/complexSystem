@@ -20,7 +20,7 @@ $(function () {
         left: '-450px'
       })
       $('#zhanwei-c').animate({
-            left: '-480px'
+        left: '-480px'
       })
       $tis.find('#showFlag').attr('alt', '1')
       $tis.find('#showFlag').attr('src', '../../asset/img/icon_fold.png')

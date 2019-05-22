@@ -307,7 +307,8 @@
         document.getElementById("GlobalInfo").innerText = str;
     </script>
 
-    <title>综合管理</title>
+    <title>武警智慧磐石执勤安保信息管理平台</title>
+    <!-- <title>综合管理</title> -->
     <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
     <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
     <link rel="stylesheet" href="../../asset/css/common.css">
@@ -580,13 +581,13 @@
     <script src="./management.js"></script>
     <script>
         var _this = this;
-        var szCameraId="";
+        // var szCameraId="";
         //计算高度，超出隐藏
         function caleHeight(itemnumb) {
             // 设置分屏模式视频高度
             var itemWidth = $('.mode-content .videos').width();
-            var itemHeight = itemWidth * 9 / 16 + 32;
-            $('.mode-content .videos').css('height', itemHeight);
+            var itemHeight = itemWidth * 9 / 16;
+            $('.mode-content .videos').css('height', (itemHeight+32));
             $('#vlc1').css({
                 "width":itemWidth,
                 "height":itemHeight
@@ -604,7 +605,7 @@
                 "height":itemHeight
             })
             $('#mode-rec').css({
-                'height': itemHeight * itemnumb,
+                'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
                 'overflow': 'hidden'
             })
         }
@@ -672,18 +673,10 @@
             })
         })
         
-        // 鼠标滑过分屏模式视频&滑过历史记录视频
-        // $('body').on('mouseenter', '#mode-rec dl, .video-wrapper .video', function () {
-        //     $(this).children('.v-toolbar').show();
-        //     $(this).find('.opt-monitor').stop().hide();
-        // }).on('mouseleave', '#mode-rec dl, .video-wrapper .video', function () {
-        //     $(this).children('.v-toolbar').stop().hide();
-        //     $('#zhanwei').stop().hide();
-        // })
         // 点击云平台控制
-        $('body').on('click', '.js-control', function () {
-            $(this).parent().children('.opt-monitor').toggle()
-        })
+        // $('body').on('click', '.js-control', function () {
+        //     $(this).parent().children('.opt-monitor').toggle()
+        // })
 
         // 渲染日期组件
         layui.use('laydate', function () {
@@ -714,26 +707,7 @@
             /*播放录像信息*/
             ButtonStartTimePlaybackByWndNo_onclick2(szCameraId, nRecordSource, nStartTime, nEndTime);
         });
-        // 点击历史记录显示
-        $('body').on('click', '.icon-history', function () {
-            $('.js-tabtop > li').eq(1).click()
-            if(!$(this).attr("data-szCameraId")){
-                return
-            } else {
-                szCameraId=this.getAttribute("data-szCameraId")
-                console.log("data-szCameraId: "+szCameraId)
-            }
-            $('.split-mode').hide()
-            $('.history-wrapper').show()
 
-            // 设置历史记录视频高度
-            var historyVideoWidth = $('.video-wrapper .video').width();
-            var historyVideoHeight = historyVideoWidth * 9 / 16;
-            var searchMarTop = (historyVideoHeight - 386) / 2
-            $('.video-wrapper .video').css('height', historyVideoHeight);
-            $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
-            init();
-        })
         //点击倍速
         $('body').on('click', '.icon-speed', function () {
             $('.speed-wrapper').stop().toggle();

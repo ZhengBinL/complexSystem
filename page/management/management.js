@@ -1,6 +1,7 @@
 
 $(function () {
     var _this = this
+    var szCameraId="";
     // 菜单树
     var zNodes = []//节点
     var indexNum//点击的某个点的index
@@ -132,7 +133,7 @@ $(function () {
                 vlc.playlist.playItem(id);
                 vlc.playlist.play();
             }
-            $('.videos-li').eq(indexNum-1).attr('data-index','111')
+            $('.videos-li').eq(indexNum-1).attr('data-active','111')
             $('.videos-li').eq(indexNum-1).find('.v-toolbar').show()
             $('.videos-li').eq(indexNum-1).find('.opt-monitor').stop().hide()
             $('.videos-li').eq(indexNum-1).find('.icon-history').attr('data-szCameraId',res.data.cid)
@@ -290,7 +291,7 @@ $(function () {
     })
     function delLi(){
         for(var i = 0;i<$('.videos-li').length;i++){
-            if($('.videos-li').eq(i).attr('data-index') != 111){
+            if($('.videos-li').eq(i).attr('data-active') != 111){
                 $('.videos-li').eq(i).find('OBJECT').remove()
             }
         }
@@ -397,6 +398,8 @@ $(function () {
     /*******地图模式 视屏点击弹框开始*******/ 
     layui.use('layer', function(){
         var layer = layui.layer;
+        var index
+        var dataSzCameraId
         $('.camera').on('click',function(){
             // var cameraNum
             var cameraNum = $(this).data('index')
@@ -422,7 +425,7 @@ $(function () {
                 '<a href="javascript:;" class="opt-item opt-big" data-direction="big"></a>'+
                 '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
                 '</div> '+
-                '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc100" codebase="" width="100%" height="85%" events="True">' +
+                '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc100" codebase="" width="100%" height="100%" events="True">' +
                 '<param name="wmode" value="Transparent" />' +
                 '<param name="AutoLoop" value="False" />' +
                 '<param name="AutoPlay" value="True" />' +
@@ -430,20 +433,21 @@ $(function () {
                 '<param name="ShowDisplay" value="True" />' +
                 '<param name="Controls" value="False">' +
                 '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"' +
-                'version="VideoLAN.VLCPlugin.2" width="100%" height="85%"' +
+                'version="VideoLAN.VLCPlugin.2" width="100%" height="100%"' +
                 'text="Waiting for video" name="vlc"></EMBED>' +
                 '</OBJECT>'
 
-             var index = layer.open({
-                type: 1, 
+             index = layer.open({
+                type: 1,
                 title:'',
                 closeBtn:0,
+                scrollbar: false,//不允许浏览器滚动
                 content: html,//这里content是一个普通的String
-                area: ['800px','450px'],
+                area: ['800px','482px'],
                 success: function(layero, index){
                     $('#vlc100').css({
                         "width": "100%",
-                        "height": "100%",
+                        "height": "450px",
                     })
                     $('#vlc100').parent().find('.v-toolbar').show()
                     $('#vlc100').parent().find('#js-btn-control').attr('data-index',cameraNum)
@@ -453,12 +457,15 @@ $(function () {
                         var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
                         vlc.playlist.playItem(id);
                         vlc.playlist.play();
+                        // dataSzCameraId = res.data.cid
                         $('#vlc100').parent().find('.v-toolbar').find('.icon-history').attr('data-szCameraId',res.data.cid)
                     })
                 }
             });
             //关闭弹框
             $('#js-btn-close').on('click',function(){
+                var vlc = document.getElementById("vlc100");
+                vlc.playlist.stop();
                 layer.close(index);
             })
 
@@ -467,27 +474,29 @@ $(function () {
                 $('#zhanwei-tk2').toggle()
                 $('#opt-monitor').toggle()
             })
-             // 点击历史记录显示
-            // $('body').on('click', '.icon-history', function () {
-            //     layer.close(index);
-            //     $('.js-tabtop > li').eq(1).click()
-            //     if(!$(this).attr("data-szCameraId")){
-            //         return
-            //     } else {
-            //         szCameraId=this.getAttribute("data-szCameraId")
-            //         console.log("data-szCameraId: "+szCameraId)
-            //     }
-            //     $('.split-mode').hide()
-            //     $('.history-wrapper').show()
 
-            //     // 设置历史记录视频高度
-            //     var historyVideoWidth = $('.video-wrapper .video').width();
-            //     var historyVideoHeight = historyVideoWidth * 9 / 16;
-            //     var searchMarTop = (historyVideoHeight - 386) / 2
-            //     $('.video-wrapper .video').css('height', historyVideoHeight);
-            //     $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
-            //     init();
-            // })
+        })
+        // 历史视屏
+        // 点击历史记录显示
+        $('body').on('click', '.icon-history', function () {
+          layer.close(index);
+          $('.js-tabtop > li').click()
+          if(!$(this).attr("data-szCameraId")){
+            return
+          } else {
+            szCameraId=this.getAttribute("data-szCameraId")
+          }
+
+          $('.split-mode').hide()
+          $('.history-wrapper').show()
+
+          // 设置历史记录视频高度
+          var historyVideoWidth = $('.video-wrapper .video').width();
+          var historyVideoHeight = historyVideoWidth * 9 / 16;
+          var searchMarTop = (historyVideoHeight - 386) / 2
+          $('.video-wrapper .video').css('height', historyVideoHeight);
+          $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
+          init();
         })
     });
     /*******地图模式 视屏点击弹框结束*******/ 
@@ -502,7 +511,7 @@ $(function () {
         '<dt class="v-toolbar">'+
         '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
         '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
-        '<a href="javascript:;"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+        '<a href="javascript:;" class="js-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
         '<iframe id="zhanwei'+(i+1)+'" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>'+
         '<div class="opt-monitor">'+
         '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
@@ -531,8 +540,8 @@ $(function () {
     function caleHeight(itemnumb) {
         // 设置分屏模式视频高度
         var itemWidth = $('.mode-content .videos').width();
-        var itemHeight = itemWidth * 9 / 16 + 32;
-        $('.mode-content .videos').css('height', itemHeight);
+        var itemHeight = itemWidth * 9 / 16;
+        $('.mode-content .videos').css('height', (itemHeight + 32   ));
         $('#vlc1').css({
             "width":itemWidth,
             "height":itemHeight
@@ -549,8 +558,9 @@ $(function () {
             "width":itemWidth,
             "height":itemHeight
         })
+      console.count();
         $('#mode-rec').css({
-            'height': itemHeight * itemnumb,
+            'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
             'overflow': 'hidden'
         })
     }
@@ -558,6 +568,12 @@ $(function () {
     $('body').on('click', '.js-control', function () {
         $(this).parent().children('.opt-monitor').toggle()
         $(this).parent().find('iframe').toggle()
+    })
+    //点击关闭
+    $('body').on('click','.js-close',function(){
+        $(this).parents('.videos-li').attr('data-active',123)
+        $(this).parents('.videos-li').find('.v-toolbar').hide()
+        $(this).parents('.videos-li').find('OBJECT').remove()
     })
     /*******分屏模式渲染li结束*******/ 
 
@@ -597,5 +613,26 @@ $(function () {
         $.get($ctx+ '/pzt/cameraOperation?nDirect='+direct+'&id='+directNum)
     }
     /*******方向按钮事件开始*******/ 
+
+    // 历史视屏
+    // 点击历史记录显示
+    // $('body').on('click', '.icon-history', function () {
+    //     $('.js-tabtop > li').click()
+    //     if(!$(this).attr("data-szCameraId")){
+    //         return
+    //     } else {
+    //         szCameraId=this.getAttribute("data-szCameraId")
+    //     }
+    //     $('.split-mode').hide()
+    //     $('.history-wrapper').show()
+    //
+    //     // 设置历史记录视频高度
+    //     var historyVideoWidth = $('.video-wrapper .video').width();
+    //     var historyVideoHeight = historyVideoWidth * 9 / 16;
+    //     var searchMarTop = (historyVideoHeight - 386) / 2
+    //     $('.video-wrapper .video').css('height', historyVideoHeight);
+    //     $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
+    //     init();
+    // })
 })
     
