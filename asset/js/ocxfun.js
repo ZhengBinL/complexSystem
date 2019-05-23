@@ -70,21 +70,22 @@ function getStrLength(str)
 }
 
 function init(){
-	var obj = document.getElementById("DPSDK_OCX");
-    gWndId = obj.DPSDK_CreateSmartWnd(0, 0, 100, 100);
-	var i=obj.DPSDK_Login("19.14.62.1", 9000, "GST0101", "GST0101")
-	// var i=obj.DPSDK_Login("172.16.9.239", 9000, "admin", "admin")
-    if(i==0){
-        console.log("登录CODE码："+i);
-    }
-	ButtonCreateWnd_onclick();
-	obj.DPSDK_SetLog(2, "D:\\DPSDK_OCX_log", false, false); //初始化后设置日志路径
-	//var obj = document.getElementById("DPSDK_OCX");
-	//ShowCallRetInfo(obj.DPSDK_Login("172.7.123.123", 9000, "1", "1"), "登录");
-	//ShowCallRetInfo(obj.DPSDK_AsyncLoadDGroupInfo(), "异步加载组织结构");
-	//var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
-	//ShowCallRetInfo(obj.DPSDK_DirectRealplayByWndNo(gWndId, nWndNo, "1000121$1$0$0", 9000, GST0101, GST0101), "直接实时播放");
-
+    setTimeout( function(){
+		var obj = document.getElementById("DPSDK_OCX");
+		gWndId = obj.DPSDK_CreateSmartWnd(0, 0, 100, 100);
+		//var i=obj.DPSDK_Login("19.14.62.1", 9000, "GST0101", "GST0101")
+		 var i=obj.DPSDK_Login("172.16.9.239", 9000, "admin", "admin")
+		if(i==0){
+			console.log("登录CODE码："+i);
+		}
+		ButtonCreateWnd_onclick();
+		obj.DPSDK_SetLog(2, "D:\\DPSDK_OCX_log", false, false); //初始化后设置日志路径
+		//var obj = document.getElementById("DPSDK_OCX");
+		//ShowCallRetInfo(obj.DPSDK_Login("172.7.123.123", 9000, "1", "1"), "登录");
+		//ShowCallRetInfo(obj.DPSDK_AsyncLoadDGroupInfo(), "异步加载组织结构");
+		//var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
+		//ShowCallRetInfo(obj.DPSDK_DirectRealplayByWndNo(gWndId, nWndNo, "1000121$1$0$0", 9000, GST0101, GST0101), "直接实时播放");
+    }, 10 );
 }
 function SetLog()
 {
