@@ -303,35 +303,37 @@
     }
     // 2、如果是通过报警弹框进入该页面，则渲染renderPageJump方法
     function renderPageJump() {
-        //  oldMsg表示存储的msg信息
-        var oldMsg = JSON.parse(document.cookie.split(';')[0].split('=')[1]);
-        //console.log(oldMsg)
         // 如果是跳转页面，且oldMsg有数据，并且未获取到请求数据
-        if (isPageJump() && oldMsg && !initMsg){
-            var rtspUrls = document.cookie.split(";")[1].split("=")[1]; // 获取视频地址
-            //console.log(decodeURIComponent(rtspUrls), 'decode')
-            var decodeRtsp = decodeURIComponent(rtspUrls);  // 解析视频地址
-            // 渲染视频
-            renderVideo(decodeRtsp.split(','))
-
-            var pos = oldMsg.alarmSource.iPDeviceName; // 报警岗哨
-            var type = oldMsg.alarmType.systemOptionName; // 报警类型
-            $('.prevention-img span').each(function (index, item) {
-                var _pos = $(item).data('pos');
-                var _type = $(item).data('type');
-                if (_pos == pos && type == _type){
-                    if (type == '光纤震动') {
-                        $(item).addClass('red cookie-dom');
-                        delayOpt('red', true);
-                    } else if (type == '周界入侵') {
-                        $(item).addClass('green cookie-dom');
-                        delayOpt('green', true);
-                    } else {
-                        $(item).addClass('yellow cookie-dom');
-                        delayOpt('yellow', true);
+        if (isPageJump()){
+            //  oldMsg表示存储的msg信息
+            var oldMsg = JSON.parse(document.cookie.split(';')[0].split('=')[1]);
+            //console.log(oldMsg)
+            if( oldMsg && !initMsg){
+                var rtspUrls = document.cookie.split(";")[1].split("=")[1]; // 获取视频地址
+                //console.log(decodeURIComponent(rtspUrls), 'decode')
+                var decodeRtsp = decodeURIComponent(rtspUrls);  // 解析视频地址
+                // 渲染视频
+                renderVideo(decodeRtsp.split(','))
+                var pos = oldMsg.alarmSource.iPDeviceName; // 报警岗哨
+                var type = oldMsg.alarmType.systemOptionName; // 报警类型
+                $('.prevention-img span').each(function (index, item) {
+                    var _pos = $(item).data('pos');
+                    var _type = $(item).data('type');
+                    if (_pos == pos && type == _type){
+                        if (type == '光纤震动') {
+                            $(item).addClass('red cookie-dom');
+                            delayOpt('red', true);
+                        } else if (type == '周界入侵') {
+                            $(item).addClass('green cookie-dom');
+                            delayOpt('green', true);
+                        } else {
+                            $(item).addClass('yellow cookie-dom');
+                            delayOpt('yellow', true);
+                        }
                     }
-                }
-            })
+                })
+            }
+
         }
     }
     // 3、30秒后清除cookie，并且移除掉视频, flag表示有cookie
