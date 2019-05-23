@@ -159,12 +159,18 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 300px; /*todo*/
+  height: 280px; /*todo*/
+}
+.dv-in-chart {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 160px;
 }
 .dv-chart-title{
   line-height: 1;
   padding:19px 0 0 36px;
-  font-size: 22px;
+  font-size: 18px;
   color: #34e1fd;
   font-weight:normal;
 }
@@ -243,10 +249,17 @@
   width: 48%;
 }
 .unormal{
-  background: url("../../asset/img/dv-unormal.png") no-repeat -1px 0;
+  background: url("../../asset/img/dv-unormal.png") no-repeat -2px 0;
 }
 
 /*表格*/
+.data-vsualize > ul > li.dv-table {
+  position: relative;
+  padding: 22px;
+  margin: 10px 50px;
+  border: solid 1px #563ad2;
+  box-shadow: 0 0 22px rgba(115,85,251,0.6), inset 0 0 22px rgba(115,85,251,0.6);
+}
 .fixed-duty {
   color: #fff;
   max-width: 1400px;
