@@ -133,10 +133,13 @@ $(function () {
                 vlc.playlist.playItem(id);
                 vlc.playlist.play();
             }
-            $('.videos-li').eq(indexNum-1).attr('data-active','111')
-            $('.videos-li').eq(indexNum-1).find('.v-toolbar').show()
-            $('.videos-li').eq(indexNum-1).find('.opt-monitor').stop().hide()
-            $('.videos-li').eq(indexNum-1).find('.icon-history').attr('data-szCameraId',res.data.cid)
+            var $videoli = $('.videos-li').eq(indexNum-1);
+            var videoWidth = $videoli.find('.videos').width();
+            $videoli.find('.videos').css('height', (videoWidth*9/16));
+            $videoli.attr('data-active','111');
+            $videoli.find('.v-toolbar').show();
+            $videoli.find('.opt-monitor').stop().hide();
+            $videoli.find('.icon-history').attr('data-szCameraId',res.data.cid);
         })
     }
 
@@ -152,7 +155,7 @@ $(function () {
             '<param name="ShowDisplay" value="True" />' +
             '<param name="Controls" value="False">' +
             '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"' +
-            'version="VideoLAN.VLCPlugin.2" width="100%" height="85%"' +
+            'version="VideoLAN.VLCPlugin.2" width="100%" height="100%"' +
             'text="Waiting for video" name="vlc"></EMBED>' +
             '</OBJECT>'
         if (indexNum == 1) {
@@ -540,7 +543,7 @@ $(function () {
         // 设置分屏模式视频高度
         var itemWidth = $('.mode-content .videos').width();
         var itemHeight = itemWidth * 9 / 16;
-        $('.mode-content .videos').css('height', (itemHeight + 32   ));
+        $('.mode-content .videos').css('height', itemWidth);
         $('#vlc1').css({
             "width":itemWidth,
             "height":itemHeight
@@ -557,7 +560,6 @@ $(function () {
             "width":itemWidth,
             "height":itemHeight
         })
-      console.count();
         $('#mode-rec').css({
             'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
             'overflow': 'hidden'
