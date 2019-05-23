@@ -298,8 +298,8 @@
     // 1、首先判断是否是从报警弹框进入该页面
     function isPageJump() {
         var url = window.location.href
-        var flag = url.split('?')[1].split('=')[1]; // 弹框页面传入call=1的值
-        return flag == 1 ? true : false;
+        var flag = url.split('?')[1]; // 弹框页面传入call=1的值
+        return flag ? true : false;
     }
     // 2、如果是通过报警弹框进入该页面，则渲染renderPageJump方法
     function renderPageJump() {

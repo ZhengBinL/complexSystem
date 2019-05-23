@@ -342,7 +342,7 @@
     <!--侧边栏-->
     <iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
     marginwidth="0"
-    style="position: fixed;display: block;top: 75px;left: -480px;width: 480px;height: 600px;z-index: 90;background: transparent;"></iframe>
+    style="position: fixed;display: block;top: 75px;left: -480px;width: 480px;height: 2000px;z-index: 90;background: transparent;"></iframe>
     <div class="aside">
       <div class="aside-bg">
         <i class="aside-bg-lt"></i>
@@ -482,7 +482,7 @@
                                                 <div id="obj">
                                                     <object id="DPSDK_OCX"
                                                         classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D"
-                                                        style="width: 100%; height: 70%"
+                                                        style="width: 100%; height: 100%"
                                                         codebase="DpsdkOcx.cab#version=1.0.0.0"></object>
                                                 </div>
                                             </div>
@@ -491,7 +491,7 @@
                                     <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0"
                                         marginwidth="0"
                                         style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
-                                    <div class="v-toolbar">
+                                    <div class="v-toolbar" style="position: absolute;left: 0;right: 0;top: 0;">
                                         <a href="javascript:;" class="icon-speed"><img
                                                 src="../../asset/img/icon_speed.png"> 倍速</a>
                                         <a href="javascript:;" class="playAndsuspend"><img
@@ -581,7 +581,7 @@
     <script src="./management.js"></script>
     <script>
         var _this = this;
-        // var szCameraId="";
+         var szCameraId="";
         //计算高度，超出隐藏
         function caleHeight(itemnumb) {
             // 设置分屏模式视频高度
@@ -674,7 +674,7 @@
                 sliderSet.setValue(0)
             })
         })
-        
+
         // 点击云平台控制
         // $('body').on('click', '.js-control', function () {
         //     $(this).parent().children('.opt-monitor').toggle()

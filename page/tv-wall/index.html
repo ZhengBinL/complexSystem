@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>武警智慧磐石执勤安保信息管理平台</title>
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <!--头部-->
+    <div class="header" id="header">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
+            <ul>
+              <li class="notice-wrapper">
+                  <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+              </li>
+              <li class="user-notice">
+                <div id="user-operate" class="user-operate">
+                  <a href="javascript:;">
+                    <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                    管理
+                  </a>
+                  <a href="javascript:;" class="exit" title="退出">退出</a>
+                </div>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <!-主体-->
+    <div class="wrapper">
+        <dt>
+            <span class="page-title">电视墙</span>
+        </dt>
+        <dd>
+            <div class="tv-left">
+                <a href="javascript:;" id="tv-rcya"><img src="../../asset/img/tv-rcya.png" width="200"></a>
+                <a href="javascript:;" id="tv_ljht"><img src="../../asset/img/tv_ljht.png" width="200"></a>
+                <a href="javascript:;" id="tv-abzq"><img src="../../asset/img/tv-abzq.png" width="200"></a>
+                <div><img src="../../asset/img/tv_qh.png" width="200"></div>
+            </div>
+            <div class="tv-right">
+                <div class="tv-bg">
+                    <!--<i class="tv-left-lt"></i>-->
+                    <!--<i></i>-->
+                    <ul class="tv-video">
+                        <li class="video-li-l">
+                           <div class="video-max js-video">视频1</div>
+                           <div class="video-min">
+                                <span class="video-bor js-video-min">视频3</span>
+                                <span class="js-video-min">视频4</span>
+                           </div>
+                        </li>
+                        <li>
+                            <div class="video-max js-video">视频2</div>
+                            <div class="video-min">
+                                <span class="video-bor js-video-min">视频5</span>
+                                <span class="js-video-min">视频6</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </dd>
+    </div>
+
+
+    <!--页脚-->
+    <div class="footer">
+      技术支持：北京国势通科技有限公司
+    </div>
+    <script src="../../asset/js/jquery.min.js"></script>
+    <script>
+        //计算高度，超出隐藏
+        function caleHeight() {
+            // 设置分屏模式视频高度
+            var itemWidth = $('.js-video').width();
+            var itemHeight = itemWidth * 9 / 16;
+            $('.js-video').css('height', (itemHeight));
+            $('.js-video').css('line-height', (itemHeight)+'px');
+
+            var minWidth = $('.js-video-min').width();
+            var minHeight = minWidth * 9 / 16;
+            $('.js-video-min').css('height', (minHeight));
+            $('.js-video-min').css('line-height', (minHeight)+'px');
+        }
+        caleHeight()
+        //鼠标滑过视频
+         $('#tv-rcya').on('mouseover',function () {
+             $(this).find('img').attr('src','../../asset/img/tv-rcya-on.png')
+
+         }).on('mouseout',function () {
+             $(this).find('img').attr('src','../../asset/img/tv-rcya.png')
+         })
+        $('#tv_ljht').on('mouseover',function () {
+            $(this).find('img').attr('src','../../asset/img/tv_ljht_on.png')
+
+        }).on('mouseout',function () {
+            $(this).find('img').attr('src','../../asset/img/tv_ljht.png')
+        })
+        $('#tv-abzq').on('mouseover',function () {
+            $(this).find('img').attr('src','../../asset/img/tv-abzq-on.png')
+
+        }).on('mouseout',function () {
+            $(this).find('img').attr('src','../../asset/img/tv-abzq.png')
+        })
+
+
+    </script>
+
+</body>
+
+</html>
