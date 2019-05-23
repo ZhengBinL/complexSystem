@@ -369,7 +369,7 @@
                 <li class="js-tabhd on">
                     <a href="javascript:void(0)">地图模式</a>
                 </li>
-                <li class="js-tabhd">
+                <li class="js-tabhd" id="devidMode">
                     <a href="javascript:void(0)">分屏模式</a>
                 </li>
             </ul>
@@ -622,7 +622,9 @@
     $('body').on('click', '.js-control', function () {
         $(this).parent().children('.opt-monitor').toggle()
     })
-        _this.caleHeight(4)
+        $('.js-tabtop').on('click', '#devidMode',function () {
+          _this.caleHeight(4)
+        })
         //滑块
         layui.use('slider', function () {
             var slider = layui.slider;

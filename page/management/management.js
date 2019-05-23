@@ -404,7 +404,6 @@ $(function () {
             // var cameraNum
             var cameraNum = $(this).data('index')
             var html =
-                '<iframe id="zhanwei-tk1" src="about:blank" frameborder="0" marginheight="0 marginwidth="0" style="position: absolute;display: block;top: 0px;right: 0px;width: 100%;height: 32px;z-index: 0;background: transparent;"></iframe>'+
                 '<div class="v-toolbar">'+
                 '<a href="javascript:;" class="icon-history">'+
                 '<img src="../../asset/img/icon-history.png" > 历史记录</a>'+
