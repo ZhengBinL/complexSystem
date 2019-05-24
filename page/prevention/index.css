@@ -8,6 +8,7 @@
     margin:0 0px 0 40px;
 }
 .sign .btn-police{
+    display: none;
     float: right;
     margin:-7px 0 0;
 }
