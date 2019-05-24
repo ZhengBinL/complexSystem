@@ -7,25 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>武警智慧磐石执勤安保信息管理平台</title>
     <!-- <title>执勤排班</title> -->
-    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/asset/introduce/layui/css/layui.css">
-    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/asset/css/reset.css">
-    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/asset/css/common.css">
-    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/page/on-duty/index.css">
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
     <!--头部-->
     <div class="header" id="header">
-    <a class="header-lt" id="header" href="../../../../workspace/jyxt/jyxt/page/index/index.html"></a>
+    <a class="header-lt" id="header" href="../index/index.html"></a>
     <div class="header-rt">
             <ul>
               <li class="notice-wrapper">
-                  <img class="notice-icon" src="../../../../workspace/jyxt/jyxt/asset/img/notice.png" alt="通知">
+                  <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
               </li>
               <li class="user-notice">
                 <div id="user-operate" class="user-operate">
                   <a href="javascript:;">
-                    <img class="user-img" src="../../../../workspace/jyxt/jyxt/asset/img/logo.png" alt="头像">
+                    <img class="user-img" src="../../asset/img/logo.png" alt="头像">
                     管理
                   </a>
                   <a href="javascript:;" class="exit" title="退出">退出</a>
@@ -51,7 +51,7 @@
       <div class="palace-unit palace-ct">555</div>
       <div class="palace-unit palace-last">666</div>
     </div> -->
-        <div class="icon-fold"><img id="showFlag" src="../../../../workspace/jyxt/jyxt/asset/img/icon_fold.png" alt="1"></div>
+        <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
     </div>
 
     <!-- 主内容：报警 -->
@@ -417,11 +417,11 @@
     <div class="footer">
       技术支持：北京国势通科技有限公司
     </div>
-    <script src="../../../../workspace/jyxt/jyxt/asset/js/jquery.min.js"></script>
-    <script src="../../../../workspace/jyxt/jyxt/asset/js/config.js"></script>
-    <script src="../../../../workspace/jyxt/jyxt/asset/js/aside.js"></script>
-    <script src="../../../../workspace/jyxt/jyxt/asset/js/utils.js"></script>
-    <script src="../../../../workspace/jyxt/jyxt/asset/introduce/layui/layui.js"></script>
+    <script src="../../asset/js/jquery.min.js"></script>
+    <script src="../../asset/js/config.js"></script>
+    <script src="../../asset/js/aside.js"></script>
+    <script src="../../asset/js/utils.js"></script>
+    <script src="../../asset/introduce/layui/layui.js"></script>
     <script>
       layui.use(['laydate','table'], function(){
         var laydate = layui.laydate;
@@ -506,10 +506,10 @@
 				watchScheduleList.push(json)
 			}
 			
-			console.log(watchScheduleList)
+			// console.log(watchScheduleList)
 			$.ajax({
 				url: $ctx + '/watch_schedule/saveOrUpdate',
-				data: JSON.stringify({ watchScheduleList }),
+				data: JSON.stringify( watchScheduleList ),
 				contentType: 'application/json',
 				type: 'put'
 			}).done(function(res) {

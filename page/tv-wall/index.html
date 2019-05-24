@@ -40,27 +40,37 @@
         </dt>
         <dd>
             <div class="tv-left">
-                <a href="#" class="tv-rcya"></a>
-                <a href="#" class="tv_ljht"></a>
-                <a href="#" class="tv-abzq"></a>
-                <div><img src="../../asset/img/tv_qh.png" width="200"></div>
+                <div class="tv-menu">
 
-                <!--<a href="javascript:;" id="tv-rcya"><img src="../../asset/img/tv-rcya.png" width="200"></a>-->
-                <!--<a href="javascript:;" id="tv_ljht"><img src="../../asset/img/tv_ljht.png" width="200"></a>-->
-                <!--<a href="javascript:;" id="tv-abzq"><img src="../../asset/img/tv-abzq.png" width="200"></a>-->
-                <!--<div><img src="../../asset/img/tv_qh.png" width="200"></div>-->
+                </div>
+                <div><img src="../../asset/img/tv_qh.png" width="200"></div>
             </div>
+
             <div class="tv-right">
-                <div class="tv-bg">
+                <!--<div class="tv-bg">-->
                     <!--<i class="tv-left-lt"></i>-->
-                    <!--<i></i>-->
+                    <!--<i class="tv-left-mt"></i>-->
+                <!--</div>-->
+                    <div class="video-bg">
+                        <i class="videobg-lt"></i>
+                        <i class="videobg-mt"></i>
+                        <i class="videobg-mt-img"></i>
+                        <i class="videobg-rt"></i>
+                        <i class="videobg-lm"></i>
+                        <i class="videobg-mm"></i>
+                        <i class="videobg-rm"></i>
+                        <i class="videobg-lb"></i>
+                        <i class="videobg-mb"></i>
+                        <i class="videobg-mb-img"></i>
+                        <i class="videobg-rb"></i>
+                    </div>
                     <ul class="tv-video">
                         <li class="video-li-l">
-                           <div class="video-max js-video">视频1</div>
-                           <div class="video-min">
+                            <div class="video-max js-video">视频1</div>
+                            <div class="video-min">
                                 <span class="video-bor js-video-min">视频3</span>
                                 <span class="js-video-min">视频4</span>
-                           </div>
+                            </div>
                         </li>
                         <li>
                             <div class="video-max js-video">视频2</div>
@@ -70,7 +80,9 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+
+
+
             </div>
         </dd>
     </div>
@@ -81,6 +93,9 @@
       技术支持：北京国势通科技有限公司
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
+    <script src="../../asset/js/config.js"></script>
+    <!--<script src="../../asset/js/utils.js"></script>-->
+    <script src="./index.js"></script>
     <script>
         //计算高度，超出隐藏
         function caleHeight() {
@@ -96,26 +111,30 @@
             $('.js-video-min').css('line-height', (minHeight)+'px');
         }
         caleHeight()
-        //鼠标滑过视频
-        //  $('#tv-rcya').on('mouseover',function () {
-        //      $(this).find('img').attr('src','../../asset/img/tv-rcya-on.png')
-        //
-        //  }).on('mouseout',function () {
-        //      $(this).find('img').attr('src','../../asset/img/tv-rcya.png')
-        //  })
-        // $('#tv_ljht').on('mouseover',function () {
-        //     $(this).find('img').attr('src','../../asset/img/tv_ljht_on.png')
-        //
-        // }).on('mouseout',function () {
-        //     $(this).find('img').attr('src','../../asset/img/tv_ljht.png')
-        // })
-        // $('#tv-abzq').on('mouseover',function () {
-        //     $(this).find('img').attr('src','../../asset/img/tv-abzq-on.png')
-        //
-        // }).on('mouseout',function () {
-        //     $(this).find('img').attr('src','../../asset/img/tv-abzq.png')
-        // })
+        readMenu()
+        function readMenu(){
+            $.ajax({
+                url: $ctx + '/tvWall/getAllTaskList',
+                type: 'get'
+            }).done(function(res) {
+                console.log(res,'=====')
+                var data = res.data
+                var html = ''
+                $.each(data, function (index, item) {
+                    var szName = data[index].szName || '';
 
+                    html +='<span class="tv-rcya">' +
+                            '<a href="#">' + szName + '</a>' +
+                            '</span>'
+
+                    $('.tv-menu').html(html)
+                })
+
+
+            }).fail(function() {
+                layer.msg('请求错误')
+            })
+        }
 
     </script>
 
