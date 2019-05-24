@@ -7,25 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>武警智慧磐石执勤安保信息管理平台</title>
     <!-- <title>执勤排班</title> -->
-    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
-    <link rel="stylesheet" href="../../asset/css/reset.css">
-    <link rel="stylesheet" href="../../asset/css/common.css">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/asset/css/reset.css">
+    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/asset/css/common.css">
+    <link rel="stylesheet" href="../../../../workspace/jyxt/jyxt/page/on-duty/index.css">
 </head>
 
 <body>
     <!--头部-->
     <div class="header" id="header">
-    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <a class="header-lt" id="header" href="../../../../workspace/jyxt/jyxt/page/index/index.html"></a>
     <div class="header-rt">
             <ul>
               <li class="notice-wrapper">
-                  <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+                  <img class="notice-icon" src="../../../../workspace/jyxt/jyxt/asset/img/notice.png" alt="通知">
               </li>
               <li class="user-notice">
                 <div id="user-operate" class="user-operate">
                   <a href="javascript:;">
-                    <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                    <img class="user-img" src="../../../../workspace/jyxt/jyxt/asset/img/logo.png" alt="头像">
                     管理
                   </a>
                   <a href="javascript:;" class="exit" title="退出">退出</a>
@@ -51,7 +51,7 @@
       <div class="palace-unit palace-ct">555</div>
       <div class="palace-unit palace-last">666</div>
     </div> -->
-        <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
+        <div class="icon-fold"><img id="showFlag" src="../../../../workspace/jyxt/jyxt/asset/img/icon_fold.png" alt="1"></div>
     </div>
 
     <!-- 主内容：报警 -->
@@ -417,11 +417,11 @@
     <div class="footer">
       技术支持：北京国势通科技有限公司
     </div>
-    <script src="../../asset/js/jquery.min.js"></script>
-    <script src="../../asset/js/config.js"></script>
-    <script src="../../asset/js/aside.js"></script>
-    <script src="../../asset/js/utils.js"></script>
-    <script src="../../asset/introduce/layui/layui.js"></script>
+    <script src="../../../../workspace/jyxt/jyxt/asset/js/jquery.min.js"></script>
+    <script src="../../../../workspace/jyxt/jyxt/asset/js/config.js"></script>
+    <script src="../../../../workspace/jyxt/jyxt/asset/js/aside.js"></script>
+    <script src="../../../../workspace/jyxt/jyxt/asset/js/utils.js"></script>
+    <script src="../../../../workspace/jyxt/jyxt/asset/introduce/layui/layui.js"></script>
     <script>
       layui.use(['laydate','table'], function(){
         var laydate = layui.laydate;
@@ -441,7 +441,209 @@
           }
           querySchedule(val);
         })
-
+		
+		var officer;
+		var police;
+		var tower;
+		var mirror;
+		
+		// 初始化人员
+		(function () {
+			$.ajax({
+				url: $ctx + '/sys_armed_police/findOfficer',
+				type: 'get'
+			}).done(function(res) {
+				officer = res.data;
+			});
+			$.ajax({
+				url: $ctx + '/sys_armed_police/find_police_list/1/99999999',
+				type: 'post',
+			}).done(function(res) {
+				police = res.data.list;
+			});
+			$.ajax({
+				url: $ctx + '/watch_tower/getList',
+				type: 'get',
+			}).done(function(res) {
+				tower = res.data;
+			});
+		})();
+		
+		$('.js-edit').on('click',function() {
+			if($('.js-edit').text() == "保存") {
+				add();
+			} else {
+				edit();
+			}
+		});
+		
+		function copy(before, after) {
+			let date = $('#dutyTime').val() || formatDate()
+			let watchScheduleList = [];
+			
+			let rowid = after.attr("rowid");
+			let tds = after.find('td');
+			
+			let resources = before.find('td');
+			
+			for(let j = 1; j <= 9; j++) {
+				let columnid = tower[j - 1].id;
+				let cellid = $(tds[j]).attr("cellid");
+				
+				let pid = $(resources[j]).find("p").attr('pid');
+				
+				let json = {
+					personnelId: pid,
+					type: "2",
+					watchHourId: rowid,
+					watchTime: date,
+					watchTowerId: columnid,
+				}
+				
+				if(cellid)
+					json.id = cellid;
+				
+				watchScheduleList.push(json)
+			}
+			
+			console.log(watchScheduleList)
+			$.ajax({
+				url: $ctx + '/watch_schedule/saveOrUpdate',
+				data: JSON.stringify({ watchScheduleList }),
+				contentType: 'application/json',
+				type: 'put'
+			}).done(function(res) {
+				$('.js-edit').text('修改成功')
+				querySchedule(date);
+			});
+		}
+		
+		function add() {
+			let date = $('#dutyTime').val() || formatDate()
+			let data = {
+				watchScheduleList: [],
+				jdPersonnelIdList: [],
+				jxPersonnelIdList: [],
+				yjbPersonnelIdList: [],
+				yjzPersonnelIdList: [],
+				watchTime: date,
+			}
+			
+			let trs = $('#dutyList tr');
+			for(let i = 1; i < 13; i++) {
+				let rowid = $(trs[i]).attr("rowid");
+				
+				let tds = $(trs[i]).find('td');
+				for(let j = 1; j <= 9; j++) {
+					let columnid = tower[j - 1].id;
+					let cellid = $(tds[j]).attr("cellid");
+					
+					console.log(tds[j])
+					
+					let pid = $(tds[j]).find("select").val();
+					
+					let json = {
+						personnelId: pid,
+						type: "2",
+						watchHourId: rowid,
+						watchTime: date,
+						watchTowerId: columnid,
+						
+						// row: $(trs[i]).find('.duty-time').text(),
+						// column: tower[j - 1].wtName
+					}
+					
+					if(cellid)
+						json.id = cellid;
+					
+					data.watchScheduleList.push(json)
+				}
+			}
+			
+			let ids = $('.js-urgent select');
+			
+			for(let i = 0; i < ids.length; i++) {
+				data.yjzPersonnelIdList.push($(ids[i]).val());
+			}
+			
+			let types = $('.save_type');
+			for(let i = 0; i < types.length; i++) {
+				ids = $(types[i]).find("select");
+				let type = $(types[i]).attr("type");
+				for(let j = 0; j < ids.length; j++) {
+					data[type].push($(ids[j]).val());
+				}
+			}
+			
+			console.log(data);
+			
+			$.ajax({
+				url: $ctx + '/watch_schedule/saveOrUpdate',
+				data: JSON.stringify(data),
+				contentType: 'application/json',
+				type: 'put'
+			}).done(function(res) {
+				$('.js-edit').text('修改')
+				querySchedule(date);
+			});
+		}
+		
+		function edit() {
+			let trs = $('#dutyList tr');
+			for(let i = 1; i < 13; i++) {
+				let tds = $(trs[i]).find('td');
+				
+				for(let j = 1; j <= 9; j++) {
+					if(j < tds.length) {
+						let pid = $(tds[j]).find("p").attr('pid');
+						if(j == 1) {
+							$(tds[j]).html(getOfficer(pid));
+						} else {
+							$(tds[j]).html(getPolice(pid));
+						}
+					}
+				}
+			}
+			
+			let ids = $('.js-urgent').empty().attr("ids").split(",");
+			
+			for(let i = 0; i < ids.length; i++) {
+				$('.js-urgent').append($("<div></div>").append(getPolice(ids[i])));
+			}
+			
+			let types = $('.save_type');
+			for(let i = 0; i < types.length; i++) {
+				ids = $(types[i]).empty().attr("ids").split(",");
+				for(let j = 0; j < ids.length; j++) {
+					$(types[i]).append($("<div></div>").append(getPolice(ids[j])));
+				}
+			}
+			
+			$('.js-edit').text('保存');
+		}
+		
+		function getOfficer(id) {
+			let select = $('<select></select>');
+			for(let i = 0; i < officer.length; i++) {
+				select.append($('<option></option>')
+					.val(officer[i].id)
+					.attr("selected", id == officer[i].id)
+					.text(officer[i].personnelName + "(" + officer[i].militaryRank + ")"))
+			}
+			return select;
+		}
+		
+		function getPolice(id) {
+			let select = $('<select></select>');
+			for(let i = 0; i < police.length; i++) {
+				select.append($('<option></option>')
+					.val(police[i].id)
+					.attr("selected", id == police[i].id)
+					.text(police[i].personnelName + "(" + police[i].militaryRank + ")"))
+			}
+			return select;
+		}
+		
         function querySchedule(d){
           var _d = d || formatDate()
           $.ajax({
@@ -451,9 +653,9 @@
             // todo: 空表格样式未做
             var _html = '',
                 dt = res.data.list;
-            for(var i=0; i<dt.length; i++){
+            for(var i = 0; i < dt.length; i++){
               var _dt = dt[i];
-                _html += '<tr>'
+                _html += '<tr rowid="' + _dt.id + '">'
                 if(i === 0){
                   _html += '  <th rowspan="7" class="font-16">昼<br>间</th>'
                 }
@@ -465,21 +667,25 @@
                 _html += '    <span class="duty-time">' + _dt.startHour + '时-' + _dt.endHour + '时</span>'
                 _html += '  </p></td>'
                 var innerDt = _dt.personnelList;
-                for(var j=0; j<innerDt.length; j++) {
-                  var rowColor = ((j%2)===0) ? 'cyan' : 'orange';
-                  if (j === (innerDt.length-1)) {
-                    _html += '  <td class="' + rowColor + '"><p>' + innerDt[j].personnelName
-                    _html += '    <span class="ranks">(' + innerDt[j].militaryRank + ')</span>'
-                    _html += '    <div class="opt-outer">'
-                    _html += '    <div class="table-opt">'
-                    _html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>'
-                    _html += '      <a href="javascript:;" class="js-paste btn-row">粘贴</a>'
-                    _html += '    </div>'
-                    _html += '    </div>'
-                    _html += '    </p></td>'
-                  } else {
-                    _html += '  <td class="' + rowColor + '"><p>' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRank + '</span></p></td>'
-                  }
+                for(var j = 0; j < 9; j++) {
+					if(j < innerDt.length) {
+					  var rowColor = ((j%2)===0) ? 'cyan' : 'orange';
+					  if (j === (innerDt.length - 1)) {
+						_html += '  <td class="' + rowColor + '" cellid="' + innerDt[j].id +'"><p pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName
+						_html += '    <span class="ranks">(' + innerDt[j].militaryRank + ')</span>'
+						_html += '    <div class="opt-outer">'
+						_html += '    <div class="table-opt">'
+						_html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>'
+						_html += '      <a href="javascript:;" class="js-paste btn-row">粘贴</a>'
+						_html += '    </div>'
+						_html += '    </div>'
+						_html += '    </p></td>'
+					  } else {
+						_html += '  <td class="' + rowColor + '" cellid="' + innerDt[j].id +'"><p pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRank + '</span></p></td>'
+					  }
+					} else {
+						_html += '<td></td>'
+					}
                 }
                 if(i === 0){
                   _html += '  <th rowspan="15"><p class="js-urgent"></p></th>'
@@ -487,6 +693,21 @@
                 _html += '</tr>'
               }
             $('#dutyList > tbody').html(_html);
+			
+			$('.js-copy').click(function() {
+				mirror = $(this).parent().parent().parent().parent();
+				layer.msg('复制成功');
+			});
+			
+			$('.js-paste').click(function() {
+				if(!mirror) {
+					layer.msg('请先复制再粘贴');
+					return;
+				}
+				
+				let row = $(this).parent().parent().parent().parent();
+				copy(mirror, row);
+			});
             queryOuter(_d);
           }).fail(function() {
             layer.msg('请求错误')
@@ -494,45 +715,54 @@
         }
 
         function queryOuter(d){
-          $.ajax({
-            url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d,
-            type: 'get'
-          }).done(function(res) {
-            console.log(res);
-            var _html = '',
-              dt = res.data;
-            for(var i=0; i<(dt.length-1); i++){
-              var _dt = dt[i];
-              _html += '<tr>'
-              if(i === 0){
-                _html += '<th rowspan="2" class="font-16">在<br>外</th>'
-              }
-              if(i === 2){
-                _html += '<th colspan="2" class="font-16">' + _dt.name + '</th>'
-              }else{
-                _html += '<td><p>' + _dt.name + '</p></td>'
-              }
-              var innerDt = _dt.list;
-              var innerHtml = ''
-              for(var j=0; j<innerDt.length; j++) {
-                innerHtml += innerDt[j].personnelName + '，'
-              }
-              innerHtml = innerHtml.slice(0,-1);
-              _html += '  <td colspan="9"><p>' + innerHtml + '</p></td>'
-              _html += '</tr>'
-            }
-            $('#dutyList > tbody').append(_html);
+			$.ajax({
+				url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d,
+				type: 'get'
+			}).done(function(res) {
+				console.log(res);
+				var _html = '',
+				dt = res.data;
+				for(var i=0; i<(dt.length-1); i++){
+					var _dt = dt[i];
+					_html += '<tr>'
+					if(i === 0){
+						_html += '<th rowspan="2" class="font-16">在<br>外</th>'
+					}
+					if(i === 2){
+						_html += '<th colspan="2" class="font-16">' + _dt.name + '</th>'
+					}else{
+						_html += '<td><p>' + _dt.name + '</p></td>'
+					}
+					var innerDt = _dt.list;
+					var innerHtml = ''
+					for(var j = 0; j<innerDt.length; j++) {
+						innerHtml += innerDt[j].personnelName + '，'
+					}
+					innerHtml = innerHtml.slice(0,-1);
+					
+					let ids = innerDt.map(function(item){
+						return item.personnelId;
+					}).join(',');
+					
+					let type = {0:'yjbPersonnelIdList', 1:'jxPersonnelIdList', 2:'jdPersonnelIdList'}[i];
+					_html += '  <td colspan="9"><p class="save_type" type="' + type + '" ids="' + ids + '">' + innerHtml + '</p></td>'
+					_html += '</tr>'
+				}
+				$('#dutyList > tbody').append(_html);
 
-            var _last = dt[2].list;
-            var _urgents = _last.map(function(item){
-              return item.personnelName;
-            }).join('<br>');
-            $('.js-urgent').html(_urgents);
-          }).fail(function() {
-            layer.msg('请求错误')
-          })
-        }
-      })
+				var _last = dt[3].list;
+				var _urgents = _last.map(function(item){
+					return item.personnelName;
+				}).join('<br>');
+				var ids = _last.map(function(item){
+					return item.personnelId;
+				}).join(',');
+				$('.js-urgent').attr("ids", ids).html(_urgents);
+			}).fail(function() {
+				layer.msg('请求错误')
+			})
+		}
+	})
     </script>
 </body>
 
