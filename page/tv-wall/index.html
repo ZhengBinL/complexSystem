@@ -43,6 +43,8 @@
                 <div class="tv-menu">
                 </div>
                 <div id="check-btn"><img src="../../asset/img/tv_qh.png" width="200"></div>
+
+
             </div>
 
             <div class="tv-right">
@@ -123,7 +125,7 @@
             $('.js-video-min').css('height', minHeight);
             $('.js-video-min').css('line-height', (minHeight)+'px');
 
-            var minHeight = $('.js-video').height()*2+2;
+            var minHeight = $('.js-video').height()*2+3;
             $('.js-video-50').css({'height': minHeight,'line-height': minHeight+'px'});
 
             var minWidth = $('.js-video-25').width();
@@ -133,12 +135,12 @@
         }
         caleHeight()
 
-        $('.js-wqzj').on('click',function () {
+        $('body').on('click','.js-wqzj',function () {
             $(this).addClass('act').siblings('span').removeClass('act');
             $('.js-video').removeClass('video-max').addClass('video-min');
         })
 
-        $('.js-rcsw').on('click',function () {
+        $('body').on('click','.js-rcsw',function () {
             $(this).addClass('act').siblings('span').removeClass('act');
             $('.js-video').removeClass('video-min').addClass('video-max');
         })
@@ -154,36 +156,39 @@
 //                console.log(data,'data')
                 var html = ''
                 html +=
-                    '<span class="tv-rcya act js-wqzj" data-ntaskId='+data[0].ntaskId+' data-ntvWallId='+data[0].ntvWallId+' >'+
+                    '<span class="tv-rcya act js-wqzj" data-ntaskId='+data[0].nTaskId+' data-ntvWallId='+data[0].nTvWallId+' >'+
                     data[0].szName+
                 '</span>'+
-                '<span class="tv-rcya js-wqzj"  data-ntaskId='+data[1].ntaskId+' data-ntvWallId='+data[1].ntvWallId+'>'+
-                    data[1].szName
+                '<span class="tv-rcya js-wqzj"  data-ntaskId='+data[1].nTaskId+' data-ntvWallId='+data[1].nTvWallId+'>'+
+                    data[1].szName+
                     '</span>'+
-                    '<span class="tv-rcya js-rcsw" data-ntaskId='+data[2].ntaskId+' data-ntvWallId='+data[2].ntvWallId+'>'+
-                    data[2].szName
+                    '<span class="tv-rcya js-rcsw" data-ntaskId='+data[2].nTaskId+' data-ntvWallId='+data[2].nTvWallId+'>'+
+                    data[2].szName+
                     '</span>'+
-                    '<span class="tv-rcya js-wqzj" data-ntaskId='+data[3].ntaskId+' data-ntvWallId='+data[3].ntvWallId+'>'+
-                    data[3].szName
+                    '<span class="tv-rcya js-wqzj" data-ntaskId='+data[3].nTaskId+' data-ntvWallId='+data[3].nTvWallId+'>'+
+                    data[3].szName+
                     '</span>'
 
                 $('.tv-menu').html(html)
+
+                //        点击按钮获取后端所需要的值
+                $('body').on('click','.tv-rcya',function(){
+                    ntaskId=$(this).attr('data-ntaskId')
+                    ntvWallId = $(this).attr('data-ntvWallId')
+                })
+//        点击切换传给后台
+                $('body').on('click','#check-btn',function(){
+                    handleCheck(ntaskId,ntvWallId)
+                })
 
             }).fail(function() {
                 layer.msg('请求错误')
             })
         }
-//        点击按钮获取后端所需要的值
-        $('body').on('click','.tv-rcya',function(){
-            ntaskId=$(this).attr('data-ntaskId')
-            ntvWallId = $(this).attr('data-ntvWallId')
-        })
-//        点击切换传给后台
-        $('#check-btn').on('click',function(){
-            handleCheck(ntaskId,ntvWallId)
-        })
+
 //        ajax请求
         function handleCheck(ntaskId,ntvWallId){
+            if(!ntaskId||!ntvWallId){alert('请选择任务名称');return}
             $.ajax({
                 url: $ctx + '/tvWall/taskToWall/'+ntvWallId+'/'+ntaskId+'?'+new Date().getTime(),
                 type: 'get'
