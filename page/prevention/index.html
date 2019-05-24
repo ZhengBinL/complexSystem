@@ -221,8 +221,13 @@
     /*
     PS：实时获取报警点，注意放开代码
     */
-    setInterval(getAlarmInfo, 1000)
+    // setInterval(getAlarmInfo, 1000)
+    //如果从弹框过来
+    if (isPageJump()){
 
+    }else{
+        setInterval(getAlarmInfo, 1000)
+    }
     //实时获取报警信息
     function getAlarmInfo() {
         $.ajax({
