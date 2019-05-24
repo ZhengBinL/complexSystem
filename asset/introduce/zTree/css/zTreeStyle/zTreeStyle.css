@@ -131,3 +131,9 @@ ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height
 .ztree li a.curSelectedNode span.button.cam_ico_open, .ztree li a.curSelectedNode span.button.cam_ico_close {
 	background-position: -173px -184px;
 }
+.ztree li span.button.md_ico_open, .ztree li span.button.md_ico_close {
+  background-position: -200px -3px;
+}
+.ztree li a.curSelectedNode span.button.md_ico_open, .ztree li a.curSelectedNode span.button.md_ico_close {
+  background-position: -226px -3px;
+}
