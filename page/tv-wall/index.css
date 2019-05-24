@@ -4,12 +4,11 @@
     float: left;
     padding: 10px 30px 0 20px;
     margin-top: 144px;
-    box-sizing: border-box;
 }
 
 .tv-left a{
-    display: inline-block;
-    margin-bottom: 60px;
+    display: block;
+    margin-bottom: 50px;
 }
 
 .tv-right{
@@ -71,10 +70,40 @@
     border-right: 2px solid #fefb00;
 }
 
+.tv-rcya{
+    width: 200px;
+    background: url(../../asset/img/tv-rcya.png) no-repeat;
+    height: 58px;
+    background-size: 100% 100%;
+}
 
+.tv-rcya:hover{
+    background: url(../../asset/img/tv-rcya-on.png) no-repeat;
+    background-size: 100% 100%;
+}
 
+.tv_ljht{
+    width: 200px;
+    background: url(../../asset/img/tv_ljht.png) no-repeat;
+    height: 58px;
+    background-size: 100% 100%;
+}
+.tv_ljht:hover{
+    background: url(../../asset/img/tv_ljht_on.png) no-repeat;
+    background-size: 100% 100%;
+}
 
+.tv-abzq{
+    width: 200px;
+    background: url(../../asset/img/tv-abzq.png) no-repeat;
+    height: 58px;
+    background-size: 100% 100%;
+}
 
+.tv-abzq:hover{
+    background: url(../../asset/img/tv-abzq-on.png) no-repeat;
+    background-size: 100% 100%;
+}
 
 
 
