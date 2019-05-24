@@ -36,7 +36,6 @@
     float: left;
     width: 25%;
     height: 100%;
-    box-sizing: border-box;
 }
 .video-li-l{
     border-right: 2px solid #fefb00;
@@ -44,16 +43,13 @@
 
 .video-max{
     line-height: 300px;
-    width: 100%;
     text-align: center;
     background: url("../../asset/img/tv-video-bj.png") center center no-repeat;
     background-size: cover;
-
 }
 
 .video-min{
     width: 100%;
-
 }
 
 .video-min>span{

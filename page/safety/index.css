@@ -96,7 +96,8 @@
 }
 .safety-box > ul > li {
   padding: 0;
-  /*background: red;*/
+  background: url("../../asset/img/gst_bj.png") no-repeat;
+  background-size: contain;
 }
 .safe-video-lt {
   margin: 5px 8px 10px 0;

@@ -15,7 +15,7 @@
 <body>
     <!--头部-->
     <div class="header" id="header">
-    <a class="header-lt" id="header" href="../index/index.html"></a>
+      <a class="header-lt" href="../index/index.html"></a>
     <div class="header-rt">
             <ul>
               <li class="notice-wrapper">
@@ -79,7 +79,7 @@
                             <div class="video-max js-video bor-r">视频3</div>
                         </li>
                         <li class="w50" >
-                            <div class="video-max js-video-50 bor-r">视频4</div>
+                            <div class="video-max js-video-50 bor-r bor-b">视频4</div>
                             <div class="video-min">
                                 <span class="w50 bor-r js-video-min">视频5</span>
                                 <span class="js-video-min bor-r w50">视频6</span>
@@ -153,14 +153,11 @@
 
             var minWidth = $('.js-video-min').width();
             var minHeight = minWidth * 9 / 16;
-            $('.js-video-min').css('height', (minHeight));
+            $('.js-video-min').css('height', minHeight);
             $('.js-video-min').css('line-height', (minHeight)+'px');
 
-            var minWidth = $('.js-video-50').width();
-            var minHeight = minWidth * 9 / 16;
-            $('.js-video-50').css('height', (minHeight));
-            $('.js-video-50').css('line-height', (minHeight)+'px');
-
+            var minHeight = $('.js-video').height()*2+2;
+            $('.js-video-50').css({'height': minHeight,'line-height': minHeight+'px'});
 
             var minWidth = $('.js-video-25').width();
             var minHeight = minWidth * 9 / 16;
