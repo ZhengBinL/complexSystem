@@ -91,25 +91,21 @@
     text-align: center;
     padding-left: 5px;
     margin-bottom: 30px;
-}
-
-.tv-rcya a{
     font-family: 'microsoft yahei';
     font-size: 22px;
     color: #00a9e0;
     letter-spacing:5px;
 }
 
-.tv-rcya:hover{
+
+
+.act{
     background: #00a9e0;
-}
-.tv-rcya a:hover{
     font-family: 'microsoft yahei';
     font-size: 22px;
     color: #fff;
     letter-spacing:5px;
 }
-
 
 .tv-bg{
     position: relative;

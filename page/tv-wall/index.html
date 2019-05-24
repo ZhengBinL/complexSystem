@@ -41,17 +41,17 @@
         <dd>
             <div class="tv-left">
                 <div class="tv-menu">
-                    <span class="tv-rcya">
-                        <a href="#" class="wqzj">围墙周界</a>
+                    <span class="tv-rcya js-wqzj">
+                        围墙周界
+                    </span>
+                    <span class="tv-rcya js-zdbw">
+                       重点部位
+                    </span>
+                    <span class="tv-rcya js-rcsw">
+                       日常哨位
                     </span>
                     <span class="tv-rcya">
-                        <a href="#" class="zdbw">重点部位</a>
-                    </span>
-                    <span class="tv-rcya">
-                        <a href="#">日常哨位</a>
-                    </span>
-                    <span class="tv-rcya">
-                        <a href="#">三维日常</a>
+                        三维日常
                     </span>
                 </div>
                 <div><img src="../../asset/img/tv_qh.png" width="200"></div>
@@ -72,7 +72,36 @@
                         <i class="videobg-rb"></i>
                     </div>
 
-                    <ul class="tv-video" id="view1">
+                <ul class="tv-video" id="view1">
+                    <li class="w25">
+                        <div class="video-min">
+                            <span class="bor-b bor-r js-video-min">视频1</span>
+                            <span class="bor-b bor-r js-video-min">视频3</span>
+                        </div>
+                        <div class="video-min">
+                            <span class="bor-r js-video-min">视频4</span>
+                        </div>
+                    </li>
+                    <li class="w50" >
+                        <div class="video-max js-video bor-r bor-b">视频5</div>
+                        <div class="video-min">
+                            <span class="w50 bor-r js-video-min">视频6</span>
+                            <span class="js-video-min bor-r w50">视频7</span>
+                        </div>
+
+                    </li>
+                    <li class="w25">
+                        <div class="video-min">
+                            <span class="bor-b js-video-min">视频8</span>
+                            <span class="bor-b js-video-min">视频10</span>
+                        </div>
+                        <div class="video-min">
+                            <span class="js-video-min">视频11</span>
+                        </div>
+                    </li>
+                </ul>
+
+                    <ul class="tv-video" id="view2">
                         <li class="w25">
                             <div class="video-max js-video bor-r bor-b">视频1</div>
                             <div class="video-max js-video bor-r bor-b">视频2</div>
@@ -96,34 +125,7 @@
 
                 <!--围墙周界-->
 
-                <!--<ul class="tv-video" id="view2">-->
-                    <!--<li class="w25">-->
-                        <!--<div class="video-min">-->
-                            <!--<span class="bor-b bor-r js-video-min">视频3</span>-->
-                            <!--<span class="bor-b bor-r js-video-min">视频4</span>-->
-                        <!--</div>-->
-                        <!--<div class="video-min">-->
-                            <!--<span class="bor-r js-video-min">视频3</span>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li class="w50" >-->
-                        <!--<div class="video-max js-video bor-r">视频2</div>-->
-                        <!--<div class="video-min">-->
-                            <!--<span class="w50 bor-r js-video-min">视频5</span>-->
-                            <!--<span class="js-video-min bor-r w50">视频6</span>-->
-                        <!--</div>-->
 
-                    <!--</li>-->
-                    <!--<li class="w25">-->
-                        <!--<div class="video-min">-->
-                            <!--<span class="bor-b js-video-min">视频3</span>-->
-                            <!--<span class="bor-b js-video-min">视频4</span>-->
-                        <!--</div>-->
-                        <!--<div class="video-min">-->
-                            <!--<span class="js-video-min">视频3</span>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                <!--</ul>-->
 
 
 
@@ -144,37 +146,48 @@
     <script src="./index.js"></script>
     <script>
         //计算高度，超出隐藏
-        function caleHeight() {
+        function caleHeight(opt) {
             // 设置分屏模式视频高度
-            var itemWidth = $('.js-video').width();
+            $opt = $('#'+opt);
+            var itemWidth = $opt.find('.js-video').width();
             var itemHeight = itemWidth * 9 / 16;
-            $('.js-video').css('height', (itemHeight));
-            $('.js-video').css('line-height', (itemHeight)+'px');
+            $opt.find('.js-video').css('height', (itemHeight));
+            $opt.find('.js-video').css('line-height', (itemHeight)+'px');
 
             var minWidth = $('.js-video-min').width();
             var minHeight = minWidth * 9 / 16;
-            $('.js-video-min').css('height', minHeight);
-            $('.js-video-min').css('line-height', (minHeight)+'px');
+            $opt.find('.js-video-min').css('height', minHeight);
+            $opt.find('.js-video-min').css('line-height', (minHeight)+'px');
 
             var minHeight = $('.js-video').height()*2+2;
-            $('.js-video-50').css({'height': minHeight,'line-height': minHeight+'px'});
+            $opt.find('.js-video-50').css({'height': minHeight,'line-height': minHeight+'px'});
 
             var minWidth = $('.js-video-25').width();
             var minHeight = minWidth * 9 / 16;
-            $('.js-video-25').css('height', (minHeight));
-            $('.js-video-25').css('line-height', (minHeight)+'px');
+            $opt.find('.js-video-25').css('height', (minHeight));
+            $opt.find('.js-video-25').css('line-height', (minHeight)+'px');
         }
-        caleHeight()
+        caleHeight('view1')
+        $("#view2").hide();
 
-        $('.wqzj').on('click',function () {
+        $('.js-wqzj').on('click',function () {
+            $(this).addClass('act')
             $("#view2").hide();
-            $("#view1").show();
+            $("#view1").show(function(){
+                caleHeight('view1');
+            });
+
         })
 
-        $('.zdbw').on('click',function () {
-            $("#view2").show();
+        $('.js-rcsw').on('click',function () {
+            $(this).addClass('act')
             $("#view1").hide();
+            $("#view2").show(function () {
+                caleHeight('view2');
+            });
+
         })
+
 
 
         function readMenu(){
