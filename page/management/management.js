@@ -134,8 +134,8 @@ $(function () {
                 vlc.playlist.play();
             }
             var $videoli = $('.videos-li').eq(indexNum-1);
-            var videoHeight = $videoli.find('.videos').height()-32;
-            $videoli.find('.videos').css('height', videoHeight);
+            var videoWidth = $videoli.find('.videos').width();
+            $videoli.find('.videos').css('height', (videoWidth*9/16));
             $videoli.attr('data-active','111');
             $videoli.find('.v-toolbar').show();
             $videoli.find('.opt-monitor').stop().hide();
