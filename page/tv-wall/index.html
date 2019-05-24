@@ -41,16 +41,23 @@
         <dd>
             <div class="tv-left">
                 <div class="tv-menu">
-
+                    <span class="tv-rcya">
+                        <a href="#" class="wqzj">围墙周界</a>
+                    </span>
+                    <span class="tv-rcya">
+                        <a href="#" class="zdbw">重点部位</a>
+                    </span>
+                    <span class="tv-rcya">
+                        <a href="#">日常哨位</a>
+                    </span>
+                    <span class="tv-rcya">
+                        <a href="#">三维日常</a>
+                    </span>
                 </div>
                 <div><img src="../../asset/img/tv_qh.png" width="200"></div>
             </div>
 
             <div class="tv-right">
-                <!--<div class="tv-bg">-->
-                    <!--<i class="tv-left-lt"></i>-->
-                    <!--<i class="tv-left-mt"></i>-->
-                <!--</div>-->
                     <div class="video-bg">
                         <i class="videobg-lt"></i>
                         <i class="videobg-mt"></i>
@@ -64,22 +71,61 @@
                         <i class="videobg-mb-img"></i>
                         <i class="videobg-rb"></i>
                     </div>
-                    <ul class="tv-video">
-                        <li class="video-li-l">
-                            <div class="video-max js-video">视频1</div>
+
+                    <ul class="tv-video" id="view1">
+                        <li class="w25">
+                            <div class="video-max js-video bor-r bor-b">视频1</div>
+                            <div class="video-max js-video bor-r bor-b">视频2</div>
+                            <div class="video-max js-video bor-r">视频3</div>
+                        </li>
+                        <li class="w50" >
+                            <div class="video-max js-video-50 bor-r">视频4</div>
                             <div class="video-min">
-                                <span class="video-bor js-video-min">视频3</span>
-                                <span class="js-video-min">视频4</span>
+                                <span class="w50 bor-r js-video-min">视频5</span>
+                                <span class="js-video-min bor-r w50">视频6</span>
                             </div>
                         </li>
-                        <li>
-                            <div class="video-max js-video">视频2</div>
-                            <div class="video-min">
-                                <span class="video-bor js-video-min">视频5</span>
-                                <span class="js-video-min">视频6</span>
-                            </div>
+                        <li class="w25">
+                            <div class="video-max js-video bor-b">视频7</div>
+                            <div class="video-max js-video bor-b">视频8</div>
+                            <div class="video-max js-video">视频9</div>
                         </li>
                     </ul>
+
+
+
+                <!--围墙周界-->
+
+                <!--<ul class="tv-video" id="view2">-->
+                    <!--<li class="w25">-->
+                        <!--<div class="video-min">-->
+                            <!--<span class="bor-b bor-r js-video-min">视频3</span>-->
+                            <!--<span class="bor-b bor-r js-video-min">视频4</span>-->
+                        <!--</div>-->
+                        <!--<div class="video-min">-->
+                            <!--<span class="bor-r js-video-min">视频3</span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="w50" >-->
+                        <!--<div class="video-max js-video bor-r">视频2</div>-->
+                        <!--<div class="video-min">-->
+                            <!--<span class="w50 bor-r js-video-min">视频5</span>-->
+                            <!--<span class="js-video-min bor-r w50">视频6</span>-->
+                        <!--</div>-->
+
+                    <!--</li>-->
+                    <!--<li class="w25">-->
+                        <!--<div class="video-min">-->
+                            <!--<span class="bor-b js-video-min">视频3</span>-->
+                            <!--<span class="bor-b js-video-min">视频4</span>-->
+                        <!--</div>-->
+                        <!--<div class="video-min">-->
+                            <!--<span class="js-video-min">视频3</span>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+
+
 
 
 
@@ -109,9 +155,31 @@
             var minHeight = minWidth * 9 / 16;
             $('.js-video-min').css('height', (minHeight));
             $('.js-video-min').css('line-height', (minHeight)+'px');
+
+            var minWidth = $('.js-video-50').width();
+            var minHeight = minWidth * 9 / 16;
+            $('.js-video-50').css('height', (minHeight));
+            $('.js-video-50').css('line-height', (minHeight)+'px');
+
+
+            var minWidth = $('.js-video-25').width();
+            var minHeight = minWidth * 9 / 16;
+            $('.js-video-25').css('height', (minHeight));
+            $('.js-video-25').css('line-height', (minHeight)+'px');
         }
         caleHeight()
-        readMenu()
+
+        $('.wqzj').on('click',function () {
+            $("#view2").hide();
+            $("#view1").show();
+        })
+
+        $('.zdbw').on('click',function () {
+            $("#view2").show();
+            $("#view1").hide();
+        })
+
+
         function readMenu(){
             $.ajax({
                 url: $ctx + '/tvWall/getAllTaskList',

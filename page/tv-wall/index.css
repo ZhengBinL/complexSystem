@@ -34,7 +34,7 @@
 .tv-video li{
     display: block;
     float: left;
-    width: 50%;
+    width: 25%;
     height: 100%;
     box-sizing: border-box;
 }
@@ -46,7 +46,6 @@
     line-height: 300px;
     width: 100%;
     text-align: center;
-    border-bottom: 2px solid #fefb00;
     background: url("../../asset/img/tv-video-bj.png") center center no-repeat;
     background-size: cover;
 
@@ -61,7 +60,7 @@
     float: left;
     background: url("../../asset/img/video-min-bj.png") center center no-repeat;
     background-size: cover;
-    width: 50%;
+    width: 100%;
     text-align: center;
     box-sizing: border-box;
 }
@@ -69,6 +68,21 @@
 .video-bor{
     height: 100%;
     border-right: 2px solid #fefb00;
+}
+
+.bor-r{
+    height: 100%;
+    border-right: 2px solid #fefb00;
+}
+
+.bor-b{
+    height: 100%;
+    border-bottom: 2px solid #fefb00;
+}
+
+.bor-l{
+    height: 100%;
+    border-left: 2px solid #fefb00;
 }
 
 .tv-rcya{
@@ -190,3 +204,6 @@
     background: url("../../asset/img/tv-bg-rb.png") no-repeat;
 }
 
+.w50{
+    width: 50% !important;
+}
