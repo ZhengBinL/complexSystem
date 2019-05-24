@@ -3,7 +3,7 @@
     height: 100%;
     float: left;
     padding: 10px 30px 0 20px;
-    margin-top: 144px;
+    margin-top: 100px;
 }
 
 .tv-left a{
@@ -18,16 +18,15 @@
     margin-top: -70px;
 }
 
-
-.tv-bg{
-  height: 100%;
-}
 .tv-video{
+    position: relative;
     width: 100%;
+    height: 100%;
     border: 2px solid #fefb00;
     border-radius: 2px;
     box-sizing: border-box;
     overflow: hidden;
+    z-index: 1;
 }
 
 .tv-video li{
@@ -71,62 +70,67 @@
 }
 
 .tv-rcya{
+    display: block;
     width: 200px;
-    background: url(../../asset/img/tv-rcya.png) no-repeat;
     height: 58px;
-    background-size: 100% 100%;
+    line-height: 58px;
+    border: 1px solid #00bffe;
+    border-radius: 10px;
+    text-align: center;
+    padding-left: 5px;
+    margin-bottom: 30px;
+}
+
+.tv-rcya a{
+    font-family: 'microsoft yahei';
+    font-size: 24px;
+    color: #00a9e0;
+    letter-spacing:5px;
 }
 
 .tv-rcya:hover{
-    background: url(../../asset/img/tv-rcya-on.png) no-repeat;
-    background-size: 100% 100%;
+    background: #00a9e0;
 }
-
-.tv_ljht{
-    width: 200px;
-    background: url(../../asset/img/tv_ljht.png) no-repeat;
-    height: 58px;
-    background-size: 100% 100%;
-}
-.tv_ljht:hover{
-    background: url(../../asset/img/tv_ljht_on.png) no-repeat;
-    background-size: 100% 100%;
-}
-
-.tv-abzq{
-    width: 200px;
-    background: url(../../asset/img/tv-abzq.png) no-repeat;
-    height: 58px;
-    background-size: 100% 100%;
-}
-
-.tv-abzq:hover{
-    background: url(../../asset/img/tv-abzq-on.png) no-repeat;
-    background-size: 100% 100%;
+.tv-rcya a:hover{
+    font-family: 'microsoft yahei';
+    font-size: 24px;
+    color: #fff;
+    letter-spacing:5px;
 }
 
 
-
-
+.tv-bg{
+    position: absolute;
+    z-index: 0;
+}
 
 .tv-bg i{
     position: absolute;
     display: inline-block;
 }
 
-.tv-left-lt{
+.tv-top-lt{
     left: 0;
     top: 0;
     width: 184px;
     height: 78px;
-    background: url('../../asset/img/tv-bg-lt.png') no-repeat;
+    background: url('../../asset/img/tv-bg-lt.png') 0 0 no-repeat;
 
 }
 
-.tv-left-mt{
-    left: 50px;
+.tv-top-mt{
+    left: 184px;
     right: 108px;
     top: 0;
     height: 500px;
-    background: url('../../asset/img/tv-bg-mt.png') repeat-x;
+    width: 500px;
+    background: url('../../asset/img/tv-bg-mt.png') 0 0 repeat-x;
+}
+
+.tv-top-rt{
+    right: 0;
+    top: 0;
+    width: 108px;
+    height: 140px;
+    background: url('../../asset/img/tv-bg-rt.png') 0 0 repeat-x;
 }
