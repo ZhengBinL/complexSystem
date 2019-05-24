@@ -37,11 +37,11 @@ $('body').on('click', '.js-police-pop-close', function () {
     // document.cookie="hrefParam="+ msg + ';path=/'; // 存储cookie
     // document.cookie="rtspUrls="+_encodeRtsp + ';path=/';
     //console.log(document.cookie);
-    window.location.href = '../../page/prevention/index.html?call=1';
+    window.location.href = '../../prevention/index.html?call=1';
 })
 
 var _top = 80;
-/*setInterval(function () {
+setInterval(function () {
     $.ajax({
         type:'GET',
         dataType:'json',
@@ -71,7 +71,7 @@ var _top = 80;
             console.log(err);
         }
     })
-}, 1000);*/
+}, 1000);
 
 //格式化时间戳
 function formatDate(t, isTime) {
