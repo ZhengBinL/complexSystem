@@ -1,16 +1,10 @@
-.fixed-duty {
-    max-width: 1400px;
-    width: 73%;
-    margin:0 auto;
-}
-
 .duty-title {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .duty-video {
   clear: left;
-  margin: 15px 40% 15px 15px;
+  margin: 15px 29% 15px 15px;
   border-radius: 5px;
   background:url(../../asset/img/gst_bj.png) center no-repeat;
   background-size:cover;
@@ -18,20 +12,20 @@
 
 .duty-detail {
   float: right;
-  width: 39%;
+  width: 29%;
   padding: 15px;
   box-sizing: border-box;
   text-align: center
 }
 
 .duty-detail p {
-  padding: 3px 0;
+  padding: 1px 0;
   margin: 0;
 }
 
 .duty-man-img {
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   display: inline-block;
   background: #229fe6;
 }
@@ -51,7 +45,7 @@
 }
 .duty-content-item > li {
   padding: 0;
-  margin: 4%;
+  margin: 1%;
   background: rgba(6, 4, 122, 0.6);
   border-radius: 5px;
   border: 1px solid #229fe6;

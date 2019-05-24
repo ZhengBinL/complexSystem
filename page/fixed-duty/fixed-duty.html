@@ -36,22 +36,22 @@
     </div>
 </div>
 <!-- 固定勤务 -->
-<dl class="wrapper">
-    <dt>
-        <span class="page-title">固定勤务</span>
-    </dt>
-    <dd>
-        <div class="duty-content">
-            <!--<ul><li class="duty-content-item">-->
-                <!--<div class="duty-detail">-->
-                    <!--<img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">-->
-                    <!--<p>张建国</p>-->
-                    <!--<p>七中队3班</p>-->
-                <!--</div>-->
-                <!--<div class="duty-video"></div>-->
-            <!--</li></ul>-->
-        </div>
-    </dd>
+<dl class="wrap">
+  <dt>
+      <span class="page-title">固定勤务</span>
+  </dt>
+  <dd>
+      <div class="duty-content">
+          <!--<ul><li class="duty-content-item">-->
+              <!--<div class="duty-detail">-->
+                  <!--<img class="duty-man-img" src="../../asset/img/avatar.png" alt="照片">-->
+                  <!--<p>张建国</p>-->
+                  <!--<p>七中队3班</p>-->
+              <!--</div>-->
+              <!--<div class="duty-video"></div>-->
+          <!--</li></ul>-->
+      </div>
+  </dd>
 </dl>
 <script src="../../asset/js/jquery.min.js"></script>
 <script src="../../asset/js/jquery.cookie.js"></script>
@@ -91,7 +91,7 @@
                 })
                 $('.duty-content').html(html)
                 var itemWidth = $('.duty-video').width();
-                $('.duty-video').css('height', itemWidth+"px");
+                $('.duty-video').css('height', itemWidth*9/16);
 
                 for (var i = 0; i < data.length; i++){
                     play(data[i]["rtspUrl"], "vlc"+(i+1));
