@@ -36,31 +36,41 @@
     </div>
 
     <!--侧边栏-->
-    <iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
-    marginwidth="0"
-    style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>
-    <div class="aside">
-        <div class="menu-tree-wrapper">
-            <ul id="menu-tree" class="menu-tree ztree"></ul>
-        </div>
-        <!-- <div class="palace">
-      <div class="palace-unit">111</div>
-      <div class="palace-unit">222</div>
-      <div class="palace-unit">333</div>
-      <div class="palace-unit palace-left">444</div>
-      <div class="palace-unit palace-ct">555</div>
-      <div class="palace-unit palace-last">666</div>
-    </div> -->
-        <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
-    </div>
+    <!--<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"-->
+    <!--marginwidth="0"-->
+    <!--style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>-->
+    <!--<div class="aside">-->
+        <!--<div class="menu-tree-wrapper">-->
+            <!--<ul id="menu-tree" class="menu-tree ztree"></ul>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; <div class="palace">-->
+      <!--<div class="palace-unit">111</div>-->
+      <!--<div class="palace-unit">222</div>-->
+      <!--<div class="palace-unit">333</div>-->
+      <!--<div class="palace-unit palace-left">444</div>-->
+      <!--<div class="palace-unit palace-ct">555</div>-->
+      <!--<div class="palace-unit palace-last">666</div>-->
+    <!--</div> &ndash;&gt;-->
+        <!--<div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>-->
+    <!--</div>-->
 
     <!-- 主内容：报警 -->
     <dl class="wrapper">
       <dt>
         <span class="page-title">执勤排班</span>
-        <!--<form class="layui-form right-form" action="">-->
-          <div class="layui-form-item right-form">
-
+        <div class="layui-form right-form">
+          <div class="layui-form-item ">
+              <div class="layui-inline">
+                  <label class="layui-form-label">排班类型：</label>
+                  <div class="layui-input-inline">
+                      <select id="scheduleType" name="scheduleType">
+                          <option value=""></option>
+                          <option value="1">四包一</option>
+                          <option value="2">五包一</option>
+                          <option value="3">六包一</option>
+                      </select>
+                  </div>
+              </div>
             <div class="layui-inline">
               <label class="layui-form-label">执勤时间：</label>
               <div class="layui-input-inline">
@@ -74,7 +84,7 @@
             </div>
 
           </div>
-        <!--</form>-->
+        </div>
       </dt>
 
       <dd>
@@ -423,8 +433,9 @@
     <script src="../../asset/js/utils.js"></script>
     <script src="../../asset/introduce/layui/layui.js"></script>
     <script>
-      layui.use(['laydate','table'], function(){
+      layui.use(['laydate','table','form'], function(){
         var laydate = layui.laydate;
+          var form = layui.form;
         laydate.render({
           elem: '.js-laydate',
             value:formatDate(),
@@ -539,7 +550,7 @@
 					let columnid = tower[j - 1].id;
 					let cellid = $(tds[j]).attr("cellid");
 					
-					console.log(tds[j])
+					// console.log(tds[j])
 					
 					let pid = $(tds[j]).find("select").val();
 					
@@ -576,7 +587,7 @@
 				}
 			}
 			
-			console.log(data);
+			// console.log(data);
 			
 			$.ajax({
 				url: $ctx + '/watch_schedule/saveOrUpdate',
@@ -646,6 +657,7 @@
 		}
 		
         function querySchedule(d){
+		    console.log(d,'ds')
           var _d = d || formatDate()
           $.ajax({
             url: $ctx + '/watch_schedule/getListByWatchTime/'+ _d,
@@ -654,6 +666,16 @@
             // todo: 空表格样式未做
             var _html = '',
                 dt = res.data.list;
+            //根据后台返回值，确定下拉框的值
+              console.log(res.data.scheduleType)
+              for(var i=0;i<$('#scheduleType').find('option').length;i++){
+                  if($('#scheduleType').find('option').eq(i).attr('value')==res.data.scheduleType){
+                      $('#scheduleType').find('option').eq(i).attr('selected',true)
+                  }else{
+                      $('#scheduleType').find('option').eq(i).removeAttr('selected')
+                  }
+              }
+              form.render('select');
             for(var i = 0; i < dt.length; i++){
               var _dt = dt[i];
                 _html += '<tr rowid="' + _dt.id + '">'
@@ -720,7 +742,7 @@
 				url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d,
 				type: 'get'
 			}).done(function(res) {
-				console.log(res);
+				// console.log(res);
 				var _html = '',
 				dt = res.data;
 				for(var i=0; i<(dt.length-1); i++){
