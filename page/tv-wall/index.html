@@ -41,20 +41,8 @@
         <dd>
             <div class="tv-left">
                 <div class="tv-menu">
-                    <span class="tv-rcya act js-wqzj">
-                        围墙周界
-                    </span>
-                    <span class="tv-rcya js-zdbw">
-                       重点部位
-                    </span>
-                    <span class="tv-rcya js-rcsw">
-                       日常哨位
-                    </span>
-                    <span class="tv-rcya">
-                        三维日常
-                    </span>
                 </div>
-                <div><img src="../../asset/img/tv_qh.png" width="200"></div>
+                <div id="check-btn"><img src="../../asset/img/tv_qh.png" width="200"></div>
             </div>
 
             <div class="tv-right">
@@ -121,6 +109,7 @@
     <!--<script src="../../asset/js/utils.js"></script>-->
     <script src="./index.js"></script>
     <script>
+        var ntaskId ,ntvWallId//切换必须传值
         //计算高度，超出隐藏
         function caleHeight() {
             // 设置分屏模式视频高度
@@ -155,31 +144,51 @@
         })
 
 
-
+        readMenu();
         function readMenu(){
             $.ajax({
                 url: $ctx + '/tvWall/getAllTaskList',
                 type: 'get'
             }).done(function(res) {
-                console.log(res,'=====')
                 var data = res.data
+//                console.log(data,'data')
                 var html = ''
-                $.each(data, function (index, item) {
-                    var szName = data[index].szName || '';
+                html +=
+                    '<span class="tv-rcya act js-wqzj" data-ntaskId='+data[0].ntaskId+' data-ntvWallId='+data[0].ntvWallId+' >'+
+                    data[0].szName+
+                '</span>'+
+                '<span class="tv-rcya js-wqzj"  data-ntaskId='+data[1].ntaskId+' data-ntvWallId='+data[1].ntvWallId+'>'+
+                    data[1].szName
+                    '</span>'+
+                    '<span class="tv-rcya js-rcsw" data-ntaskId='+data[2].ntaskId+' data-ntvWallId='+data[2].ntvWallId+'>'+
+                    data[2].szName
+                    '</span>'+
+                    '<span class="tv-rcya js-wqzj" data-ntaskId='+data[3].ntaskId+' data-ntvWallId='+data[3].ntvWallId+'>'+
+                    data[3].szName
+                    '</span>'
 
-                    html +='<span class="tv-rcya">' +
-                            '<a href="#">' + szName + '</a>' +
-                            '</span>'
-
-                    $('.tv-menu').html(html)
-                })
-
+                $('.tv-menu').html(html)
 
             }).fail(function() {
                 layer.msg('请求错误')
             })
         }
-
+//        点击按钮获取后端所需要的值
+        $('body').on('click','.tv-rcya',function(){
+            ntaskId=$(this).attr('data-ntaskId')
+            ntvWallId = $(this).attr('data-ntvWallId')
+        })
+//        点击切换传给后台
+        $('#check-btn').on('click',function(){
+            handleCheck(ntaskId,ntvWallId)
+        })
+//        ajax请求
+        function handleCheck(ntaskId,ntvWallId){
+            $.ajax({
+                url: $ctx + '/tvWall/taskToWall/'+ntvWallId+'/'+ntaskId+'?'+new Date().getTime(),
+                type: 'get'
+            })
+        }
     </script>
 
 </body>
