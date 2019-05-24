@@ -82,15 +82,15 @@
 .tv-rcya{
     display: block;
     width: 200px;
-    height: 44px;
-    line-height: 44px;
+    height: 58px;
+    line-height: 58px;
     border: 1px solid #00bffe;
     border-radius: 10px;
     text-align: center;
     padding-left: 5px;
-    margin-bottom: 20%;
+    margin-bottom: 15%;
     font-family: 'microsoft yahei';
-    font-size: 20px;
+    font-size: 22px;
     color: #00a9e0;
     letter-spacing:5px;
 }
