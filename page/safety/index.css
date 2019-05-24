@@ -1,6 +1,5 @@
 .safety-wrapper {
   position: relative;
-  height: 550px;
   padding: 70px 60px;
 }
 .video-bg {
@@ -88,6 +87,23 @@
 }
 .safety-box {
   position: relative;
-  height: 30px;
   z-index: 1;
+}
+.safety-box > ul {
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+.safety-box > ul > li {
+  padding: 0;
+  /*background: red;*/
+}
+.safe-video-lt {
+  margin: 5px 8px 10px 0;
+}
+.safe-video-lb {
+  margin: 10px 8px 5px 0;
+}
+.safe-video-r {
+  margin: 5px 0 0 5px;
 }

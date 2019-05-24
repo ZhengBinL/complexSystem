@@ -36,10 +36,10 @@
 <div class="wrap">
   <div class="tabview">
     <ul class="tabtop js-tabtop">
-      <li class="js-tabhd on">
+      <li class="js-tabhd on" id="inControl">
         <a href="javascript:void(0)">监门防控</a>
       </li>
-      <li class="js-tabhd">
+      <li class="js-tabhd" id="outControl">
         <a href="javascript:void(0)">外围防控</a>
       </li>
     </ul>
@@ -64,6 +64,49 @@
             <i class="videobg-rb"></i>
           </div>
           <div class="safety-box">
+            <ul class="w33-3">
+              <li class="safe-video-lt">
+                <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc1" codebase="" events="True">
+                <param name="AutoLoop" value="False" />
+                <param name="AutoPlay" value="True" />
+                <param name="Time" value="True" />
+                <param name="ShowDisplay" value="True" />
+                <param name="Controls" value="False">
+                <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"
+                version="VideoLAN.VLCPlugin.2" width="100%" height="100%"
+                text="Waiting for video" name="vlc"></EMBED>
+                </OBJECT>
+              </li>
+              <li class="safe-video-lb">
+                <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc2" codebase="" events="True">
+                  <param name="AutoLoop" value="False" />
+                  <param name="AutoPlay" value="True" />
+                  <param name="Time" value="True" />
+                  <param name="ShowDisplay" value="True" />
+                  <param name="Controls" value="False">
+                  <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"
+                         version="VideoLAN.VLCPlugin.2" width="100%" height="100%"
+                         text="Waiting for video" name="vlc"></EMBED>
+                </OBJECT>
+              </li>
+            </ul>
+
+            <ul class="w66-6">
+              <li class="safe-video-r">
+                <OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc3" codebase="" events="True">
+                  <param name="AutoLoop" value="False" />
+                  <param name="AutoPlay" value="True" />
+                  <param name="Time" value="True" />
+                  <param name="ShowDisplay" value="True" />
+                  <param name="Controls" value="False">
+                  <EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"
+                         version="VideoLAN.VLCPlugin.2" width="100%" height="100%"
+                         text="Waiting for video" name="vlc"></EMBED>
+                </OBJECT>
+              </li>
+            </ul>
+
+            <div class="clearfix"></div>
           </div>
         </div>
         <!-- tab-bd>>>li =end= -->
@@ -76,10 +119,52 @@
   </div>
 </div>
 
-<script src="../asset/js/jquery.min.js"></script>
-<script src="../asset/js/config.js"></script>
-<script src="../asset/js/utils.js"></script>
+<script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/js/config.js"></script>
+<script src="../../asset/js/utils.js"></script>
+<script src="../fixed-duty/fixed-duty.js"></script>
 <script>
+  $('.safety-box > ul > li').each(function(){
+    var $tis = $(this);
+    var itemWidth = $tis.width();
+    var itemHeight = itemWidth * 9 / 16;
+    $tis.css('height', itemHeight);
+  })
+  $(function(){
+    //监门防控
+    $.get($ctx+'/security_control/prisonDoorControl',function(res){
+      // console.log(res,'res1');
+      if(res.code === 0){
+        play(res.data.faceRecognition,'vlc1');
+        play(res.data.bottomInspection,'vlc2');
+        play(res.data.abChecking,'vlc3');
+        caleHeight('.safe-video-lt','#vlc1');
+        caleHeight('.safe-video-lb','#vlc2');
+        caleHeight('.safe-video-r','#vlc3');
+      }
+    });
+    $('#outControl').on('click',function () {
+      $.get($ctx+'/security_control/outsideCtrlUrl',function(res){
+        if(res.code===0){
+          $('#inControl').click();
+          window.open(res.data.outsideUrl);
+        }else{
+          console.log(res.message)
+        }
+      })
+    });
+
+    //计算高度，超出隐藏
+    function caleHeight(liDom,objDom) {
+      // 设置分屏模式视频高度
+      var itemWidth = $(liDom).width();
+      var itemHeight = itemWidth * 9 / 16;
+      $(objDom).css({
+        "width":itemWidth,
+        "height":itemHeight
+      })
+    }
+  })
 </script>
 </body>
 

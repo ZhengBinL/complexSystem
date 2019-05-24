@@ -40,34 +40,37 @@
         </dt>
         <dd>
             <div class="tv-left">
-                <span class="tv-rcya">
-                    <a href="#">日常预案</a>
-                </span>
-                </span>
-                <span class="tv-rcya">
-                    <a href="#">两警互通预案</a>
-                </span>
-                <span class="tv-rcya">
-                    <a href="#">安保执勤预案</a>
-                </span>
-                <span class="tv-rcya">
-                    <a href="#">安保执勤预案</a>
-                </span>
+                <div class="tv-menu">
+
+                </div>
                 <div><img src="../../asset/img/tv_qh.png" width="200"></div>
             </div>
+
             <div class="tv-right">
                 <!--<div class="tv-bg">-->
                     <!--<i class="tv-left-lt"></i>-->
                     <!--<i class="tv-left-mt"></i>-->
                 <!--</div>-->
-
+                    <div class="video-bg">
+                        <i class="videobg-lt"></i>
+                        <i class="videobg-mt"></i>
+                        <i class="videobg-mt-img"></i>
+                        <i class="videobg-rt"></i>
+                        <i class="videobg-lm"></i>
+                        <i class="videobg-mm"></i>
+                        <i class="videobg-rm"></i>
+                        <i class="videobg-lb"></i>
+                        <i class="videobg-mb"></i>
+                        <i class="videobg-mb-img"></i>
+                        <i class="videobg-rb"></i>
+                    </div>
                     <ul class="tv-video">
                         <li class="video-li-l">
-                           <div class="video-max js-video">视频1</div>
-                           <div class="video-min">
+                            <div class="video-max js-video">视频1</div>
+                            <div class="video-min">
                                 <span class="video-bor js-video-min">视频3</span>
                                 <span class="js-video-min">视频4</span>
-                           </div>
+                            </div>
                         </li>
                         <li>
                             <div class="video-max js-video">视频2</div>
@@ -77,6 +80,9 @@
                             </div>
                         </li>
                     </ul>
+
+
+
             </div>
         </dd>
     </div>
@@ -87,9 +93,8 @@
       技术支持：北京国势通科技有限公司
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
-    <script src="../../asset/js/jquery.cookie.js"></script>
     <script src="../../asset/js/config.js"></script>
-    <script src="../../asset/js/utils.js"></script>
+    <!--<script src="../../asset/js/utils.js"></script>-->
     <script src="./index.js"></script>
     <script>
         //计算高度，超出隐藏
@@ -113,6 +118,17 @@
                 type: 'get'
             }).done(function(res) {
                 console.log(res,'=====')
+                var data = res.data
+                var html = ''
+                $.each(data, function (index, item) {
+                    var szName = data[index].szName || '';
+
+                    html +='<span class="tv-rcya">' +
+                            '<a href="#">' + szName + '</a>' +
+                            '</span>'
+
+                    $('.tv-menu').html(html)
+                })
 
 
             }).fail(function() {
