@@ -134,8 +134,8 @@ $(function () {
                 vlc.playlist.play();
             }
             var $videoli = $('.videos-li').eq(indexNum-1);
-            var videoWidth = $videoli.find('.videos').width();
-            $videoli.find('.videos').css('height', (videoWidth*9/16));
+            var videoHeight = $videoli.find('.videos').height()-32;
+            $videoli.find('.videos').css('height', videoHeight);
             $videoli.attr('data-active','111');
             $videoli.find('.v-toolbar').show();
             $videoli.find('.opt-monitor').stop().hide();
@@ -541,9 +541,7 @@ $(function () {
 
     function caleHeight(itemnumb) {
         // 设置分屏模式视频高度
-        var itemWidth = $('.mode-content .videos').width();
-        var itemHeight = itemWidth * 9 / 16;
-        $('.mode-content .videos').css('height', itemWidth);
+        var itemHeight = $('.mode-content .videos').height()-32;
         $('#vlc1').css({
             "width":itemWidth,
             "height":itemHeight
