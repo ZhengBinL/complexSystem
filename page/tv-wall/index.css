@@ -95,6 +95,9 @@
     letter-spacing:5px;
 }
 
+.tv-rcya:hover{
+    cursor: pointer;
+}
 
 
 .act{
@@ -103,6 +106,7 @@
     font-size: 22px;
     color: #fff;
     letter-spacing:5px;
+    cursor: pointer;
 }
 
 .tv-bg{
