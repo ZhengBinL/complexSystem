@@ -587,7 +587,12 @@
             // 设置分屏模式视频高度
             var itemWidth = $('.mode-content .videos').width();
             var itemHeight = itemWidth * 9 / 16;
-            $('.mode-content .videos').css({'height':(itemHeight+32), 'overflow': 'hidden'});
+            /*if($('.mode-content .video-li').attr('data-active')){
+              $('.mode-content .videos').css('height',itemHeight).attr('data-height',itemHeight);
+            }else{
+              $('.mode-content .videos').css('height',(itemHeight+32)).attr('data-height',itemHeight);
+            }*/
+            $('.mode-content .videos').css('height',(itemHeight+32)).attr('data-height',itemHeight);
             $('#vlc1').css({
                 "width":itemWidth,
                 "height":itemHeight
@@ -608,6 +613,12 @@
                 'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
                 'overflow': 'hidden'
             })
+            $('.mode-content li').each(function(){
+              var $tis = $(this);
+              if($tis.attr('data-active')!= undefined){
+                $tis.find('.videos').css('height',$tis.find('.videos').attr('data-height'));
+              }
+            })
         }
     // 鼠标滑过分屏模式视频&滑过历史记录视频
     $('body').on('mouseenter', '.video-wrapper .video', function () {
@@ -622,76 +633,77 @@
     $('body').on('click', '.js-control', function () {
         $(this).parent().children('.opt-monitor').toggle()
     })
-        $('.js-tabtop').on('click', '#devidMode',function () {
-          _this.caleHeight(4)
-        })
-        //滑块
-        layui.use('slider', function () {
-            var slider = layui.slider;
-            //设置步长
-            var sliderSet = slider.render({
-                elem: '#slide',
-                step: 1, //步长,
-                min: 1,
-                max: 4,
-                value: 4,
-                change: function (value) {
-                    //do something
-                    if (value == 4) {
-                        $('#mode-rec').removeClass('mode-rec-1')
-                        $('#mode-rec').removeClass('mode-rec-2')
-                        $('#mode-rec').removeClass('mode-rec-3')
-                        $('#mode-rec').addClass('mode-rec-4')
-                        _this.caleHeight(4)
-                    } else if (value == 3) {
-                        $('#mode-rec').removeClass('mode-rec-1')
-                        $('#mode-rec').removeClass('mode-rec-2')
-                        $('#mode-rec').removeClass('mode-rec-4')
-                        $('#mode-rec').addClass('mode-rec-3')
-                        _this.caleHeight(3)
-                    } else if (value == 2) {
-                        $('#mode-rec').removeClass('mode-rec-1')
-                        $('#mode-rec').removeClass('mode-rec-3')
-                        $('#mode-rec').removeClass('mode-rec-4')
-                        $('#mode-rec').addClass('mode-rec-2')
-                        _this.caleHeight(2)
-                    } else if (value == 1) {
-                        $('#mode-rec').removeClass('mode-rec-2')
-                        $('#mode-rec').removeClass('mode-rec-3')
-                        $('#mode-rec').removeClass('mode-rec-4')
-                        $('#mode-rec').addClass('mode-rec-1')
-                        _this.caleHeight(1)
-                    }
+    $('.js-tabtop').on('click', '#devidMode',function () {
+      _this.caleHeight(4)
+    })
+    //滑块
+    layui.use('slider', function () {
+        var slider = layui.slider;
+        //设置步长
+        var sliderSet = slider.render({
+            elem: '#slide',
+            step: 1, //步长,
+            min: 1,
+            max: 4,
+            value: 4,
+            change: function (value) {
+                //do something
+                if (value == 4) {
+                    $('#mode-rec').removeClass('mode-rec-1')
+                    $('#mode-rec').removeClass('mode-rec-2')
+                    $('#mode-rec').removeClass('mode-rec-3')
+                    $('#mode-rec').addClass('mode-rec-4')
+                    _this.caleHeight(4)
+                } else if (value == 3) {
+                    $('#mode-rec').removeClass('mode-rec-1')
+                    $('#mode-rec').removeClass('mode-rec-2')
+                    $('#mode-rec').removeClass('mode-rec-4')
+                    $('#mode-rec').addClass('mode-rec-3')
+                    _this.caleHeight(3)
+                } else if (value == 2) {
+                    $('#mode-rec').removeClass('mode-rec-1')
+                    $('#mode-rec').removeClass('mode-rec-3')
+                    $('#mode-rec').removeClass('mode-rec-4')
+                    $('#mode-rec').addClass('mode-rec-2')
+                    _this.caleHeight(2)
+                } else if (value == 1) {
+                    $('#mode-rec').removeClass('mode-rec-2')
+                    $('#mode-rec').removeClass('mode-rec-3')
+                    $('#mode-rec').removeClass('mode-rec-4')
+                    $('#mode-rec').addClass('mode-rec-1')
+                    _this.caleHeight(1)
                 }
-            });
-            // 分屏模式放大功能
-            $('.js-btn-big').on('click',function(){
-                $('#mode-rec').removeClass('mode-rec-2')
-                $('#mode-rec').removeClass('mode-rec-3')
-                $('#mode-rec').removeClass('mode-rec-4')
-                $('#mode-rec').addClass('mode-rec-1')
-                _this.caleHeight(1)
-                sliderSet.setValue(0)
-            })
-        })
 
-        // 点击云平台控制
-        // $('body').on('click', '.js-control', function () {
-        //     $(this).parent().children('.opt-monitor').toggle()
-        // })
-
-        // 渲染日期组件
-        layui.use('laydate', function () {
-            var laydate = layui.laydate;
-            laydate.render({
-                elem: '#calendar',
-                btns: [],
-                position: 'static',
-                done: function (value, date, endDate) {
-                    $(".search-btn").attr("data-search-time", value);
-                }
-            });
+            }
+        });
+        // 分屏模式放大功能
+        $('.js-btn-big').on('click',function(){
+            $('#mode-rec').removeClass('mode-rec-2')
+            $('#mode-rec').removeClass('mode-rec-3')
+            $('#mode-rec').removeClass('mode-rec-4')
+            $('#mode-rec').addClass('mode-rec-1')
+            _this.caleHeight(1)
+            sliderSet.setValue(0)
         })
+    })
+
+    // 点击云平台控制
+    // $('body').on('click', '.js-control', function () {
+    //     $(this).parent().children('.opt-monitor').toggle()
+    // })
+
+    // 渲染日期组件
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#calendar',
+            btns: [],
+            position: 'static',
+            done: function (value, date, endDate) {
+                $(".search-btn").attr("data-search-time", value);
+            }
+        });
+    })
 
     </script>
 </body>

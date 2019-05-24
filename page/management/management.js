@@ -541,7 +541,8 @@ $(function () {
 
     function caleHeight(itemnumb) {
         // 设置分屏模式视频高度
-        var itemHeight = $('.mode-content .videos').height()-32;
+        var itemWidth = $('.mode-content .videos').width();
+        var itemHeight = $('.mode-content .videos').attr('data-height');
         $('#vlc1').css({
             "width":itemWidth,
             "height":itemHeight
