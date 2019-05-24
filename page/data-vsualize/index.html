@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>数据可视化</title>
   <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
   <link rel="stylesheet" href="../../asset/css/reset.css">
@@ -34,7 +34,7 @@
   <!-- 固定勤务 -->
   <dl class="wrapper">
     <dd class="data-vsualize">
-      <ul class="w25">
+      <ul class="w30">
         <li class="dv-chart-box">
           <div class="dv-bg">
             <i class="dvbg-right-lt unormal"></i>
@@ -49,7 +49,7 @@
           </div>
           <div class="dv-chart">
             <h4 class="dv-chart-title">近期报警统计</h4>
-            <div class="dv-chart-main"></div>
+            <div class="dv-chart-main" id="alarmStatistics"></div>
           </div>
         </li>
 
@@ -61,8 +61,31 @@
             <i class="dvbg-middle-lb"></i>
           </div>
           <div class="dv-in-chart">
-            <h4 class="dv-chart-title">报警率统计</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">分类报警统计</h4>
+            <div class="dv-chart-icons">
+              <ul>
+                <li>
+                  周界
+                  <span class="statis-around">1030</span>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  手按
+                  <span class="statis-press">3200</span>
+                  <div class="popover">
+                    <div class="pop-title">手按</div>
+                    <div class="pop-chart" id="pressChart"></div>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  枪支离岗
+                  <span class="statis-gun">2000</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </li>
 
@@ -79,13 +102,13 @@
             <i class="dvbg-left-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">近期报警统计</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">近一年报警趋势</h4>
+            <div class="dv-chart-main" id="alarmTrend"></div>
           </div>
         </li>
       </ul>
 
-      <ul class="w75">
+      <ul class="w70">
         <li class="dv-title">
           <i class="dvbg-title-l"></i>
           <i class="dvbg-title-m"></i>
@@ -94,6 +117,10 @@
         </li>
 
         <li class="dv-table">
+          <i class="bg-conner conner-lt"></i>
+          <i class="bg-conner conner-rt"></i>
+          <i class="bg-conner conner-lb"></i>
+          <i class="bg-conner conner-rb"></i>
           <input type="text" name="notautosubmit" style="display:none"/>
           <div class="layui-form-item">
 
@@ -143,83 +170,230 @@
   <script src="../../asset/js/jquery.min.js"></script>
   <script src="../../asset/js/config.js"></script>
   <script src="../../asset/js/utils.js"></script>
+  <script src="../../asset/js/echarts.min.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
   <script>
-      layui.use(['laydate', 'table'], function () {
-          var laydate = layui.laydate;
-          $('.js-laydate').each(function(){
-              var elm = $(this).attr('id');
-              laydate.render({
-                  elem: '#' + elm,
-                  format: 'yyyy-MM-dd'
-              })
-          })
+    // 图表：近期报警统计
+    var statisticsChart = echarts.init(document.getElementById('alarmStatistics'))
+    var optionStatistics = {
+      calculable : true,
+      series : [
+        {
+          type:'pie',
+          radius : [30, 110],
+          center : ['50%', '50%'],
+          roseType : 'radius',
+          data:[
+            {value:35, name:'rose1'},
+            {value:5, name:'rose2'},
+            {value:15, name:'rose3'},
+            {value:25, name:'rose4'},
+            {value:20, name:'rose5'},
+            {value:10, name:'rose6'}
+          ]
+        }
+      ],
+      color: ['#563ad2','#438dc3','#dab54c','#d78155','#325df9','#ed5450']
+    };
+    statisticsChart.setOption(optionStatistics);
 
-          var table = layui.table;
-          var TABLE_CONFIG = {
-              alarmList: {
-                  loaded: false,
-                  loading: false,
-                  id: 'alarmList',
-                  url: $ctx + '/alarm/getAlarmList',
-                  cols: [ //标题栏
-                      {type: 'checkbox', width: 80},
-                      {type: 'numbers', title: '序号', width: 80},
-                      {field: 'createTime', title: '时间'},
-                      {field: 'ipAddress', title: 'IP地址'},
-                      {field: 'deviceName', title: '设备名称'},
-                      {field: 'alarmType', title: '报警类型', style: 'color: #f69506;'},
+    //图表-弹出层-手按
+    var pressChart = echarts.init(document.getElementById('pressChart'))
+    var pressOption = {
+      legend: {
+        orient: 'vertical',
+        x: 'right',
+        y: '10%',
+        data:['越狱','暴狱','袭击','灾害','劫持','突发'],
+        textStyle: {
+          color: '#ffffff'
+        }
+      },
+      left: '5%',
+      series: [
+        {
+          name:'访问来源',
+          type:'pie',
+          selectedMode: 'single',
+          radius: [0, '70%'],
+          data:[
+            {value:26, name:'越狱'},
+            {value:9, name:'暴狱'},
+            {value:24, name:'袭击'},
+            {value:11, name:'灾害'},
+            {value:20, name:'劫持'},
+            {value:10, name:'突发', selected:true}
+          ]
+        }
+      ]
+    };
+    pressChart.setOption(pressOption);
+
+    // 图表：近一年报警趋势
+    var trendChart = echarts.init(document.getElementById('alarmTrend'));
+    var optionTrend = {
+      xAxis: {
+        type: 'category',
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        axisLine: {
+          show: false
+        },
+        axisLabel: {
+          color: '#e5ebff'
+        },
+        axisTick: {
+          show: false
+        },
+        boundaryGap: false //顶头渲染
+      },
+      yAxis: [{
+        type: 'value',
+        axisLine: {
+          show: false
+        },
+        axisLabel: {
+          color: '#e5ebff'
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: ['#22366d'],
+            width: 1,
+            type: 'solid'
+          }
+        }
+      }],
+      grid: {
+        top: '13%',
+        bottom: '16%',
+        left: '10%',
+        right: '3%',
+      },
+      series: [{
+        data: [82, 93.2, 90.1, 93.4, 52.90, 43.30, 13.20, 62, 49, 55, 27, 90],
+        type: 'line',
+        smooth: true, //折现光滑
+        symbol: 'none', //取消这点圆圈
+        areaStyle: {
+          opacity: 0.2,
+          color: { //线性渐变
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 1,
+            y2: 0,
+            colorStops: [{
+              offset: 0,
+              color: '#dd78f3' // 0% 处的颜色
+            }, {
+              offset: 1,
+              color: '#6e4ed7' // 100% 处的颜色
+            }],
+            global: false // 缺省为 false
+          }
+        }, //出现阴影
+        lineStyle: {
+          width: 6,
+
+          color: { //线性渐变
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 1,
+            y2: 1,
+            colorStops: [{
+              offset: 0,
+              color: '#dd78f3' // 0% 处的颜色
+            }, {
+              offset: 1,
+              color: '#6e4ed7' // 100% 处的颜色
+            }],
+            global: false // 缺省为 false
+          }
+        }
+      }]
+
+    };
+    trendChart.setOption(optionTrend);
+
+   /* layui.use(['laydate', 'table'], function () {
+        var laydate = layui.laydate;
+        $('.js-laydate').each(function(){
+            var elm = $(this).attr('id');
+            laydate.render({
+                elem: '#' + elm,
+                format: 'yyyy-MM-dd'
+            })
+        })
+
+        var table = layui.table;
+        var TABLE_CONFIG = {
+            alarmList: {
+                loaded: false,
+                loading: false,
+                id: 'alarmList',
+                url: $ctx + '/alarm/getAlarmList',
+                cols: [ //标题栏
+                    {type: 'checkbox', width: 80},
+                    {type: 'numbers', title: '序号', width: 80},
+                    {field: 'createTime', title: '时间'},
+                    {field: 'ipAddress', title: 'IP地址'},
+                    {field: 'deviceName', title: '设备名称'},
+                    {field: 'alarmType', title: '报警类型', style: 'color: #f69506;'},
 //                    {
 //                        title: '',
 //                        toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>',
 //                        width: 80
 //                    }
-                  ]
-              }
-          }
-          var current = TABLE_CONFIG['alarmList']
-          initTable(current)
-          $('body').on('click', '.js-btn-search', function () {
-              var startTime = $('input[name=startTime]').val();
-              var endTime = $('input[name=endTime]').val();
-              var deviceName = $('input[name=eqName]').val();
-              var ipAddress = $('input[name=ipAddr]').val();
-              var cur = TABLE_CONFIG['alarmList']
-              var where = null
-              if (startTime && endTime){
-                  where = {
-                      startTime: startTime,
-                      endTime: endTime,
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
-                  }
-              }else if (startTime && !endTime){
-                  where = {
-                      startTime: startTime,
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
-                  }
-              }else if (!startTime && endTime){
-                  where = {
-                      endTime: endTime,
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
-                  }
-              }else {
-                  where = {
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
-                  }
-              }
-              table.reload('alarmList-table',{
-                  where:where,
-                  page:{
-                      pageNum: 1
-                  }
-              })
-          })
-      })
-      function initTable(currentTable) {
+                ]
+            }
+        }
+        var current = TABLE_CONFIG['alarmList']
+        initTable(current)
+        $('body').on('click', '.js-btn-search', function () {
+            var startTime = $('input[name=startTime]').val();
+            var endTime = $('input[name=endTime]').val();
+            var deviceName = $('input[name=eqName]').val();
+            var ipAddress = $('input[name=ipAddr]').val();
+            var cur = TABLE_CONFIG['alarmList']
+            var where = null
+            if (startTime && endTime){
+                where = {
+                    startTime: startTime,
+                    endTime: endTime,
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
+            }else if (startTime && !endTime){
+                where = {
+                    startTime: startTime,
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
+            }else if (!startTime && endTime){
+                where = {
+                    endTime: endTime,
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
+            }else {
+                where = {
+                    deviceName: deviceName,
+                    ipAddress: ipAddress
+                }
+            }
+            table.reload('alarmList-table',{
+                where:where,
+                page:{
+                    pageNum: 1
+                }
+            })
+        })
+    })
+    function initTable(currentTable) {
           var Table = layui.table
           var id = currentTable.id
           var tableId = id + '-table'
@@ -261,7 +435,7 @@
                   }
               }
           })
-      }
+      }*/
   </script>
 </body>
 </html>
