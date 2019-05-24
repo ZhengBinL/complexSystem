@@ -317,6 +317,7 @@
 
 /*表格*/
 .data-vsualize > ul > li.dv-table {
+  min-height: 700px;
   position: relative;
   padding: 22px;
   margin: 10px 20px;
