@@ -126,58 +126,59 @@
           <i class="bg-conner conner-lb"></i>
           <i class="bg-conner conner-rb"></i>
           <input type="text" name="notautosubmit" style="display:none"/>
-          <div class="layui-form-item">
-
-            <div class="layui-inline">
-              <label class="layui-form-label">开始时间：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="startTime" id="startTime" autocomplete="off"
-                       class="layui-input js-laydate">
+          <form class="layui-form">
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label">开始时间：</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="startTime" id="startTime" autocomplete="off" placeholder="开始时间"
+                         class="layui-input js-laydate">
+                </div>
               </div>
-            </div>
 
-            <div class="layui-inline">
-              <label class="layui-form-label">结束时间：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="endTime" id="endTime" autocomplete="off"
-                       class="layui-input js-laydate">
+              <div class="layui-inline">
+                <label class="layui-form-label">结束时间：</label>
+                <div class="layui-input-inline">
+                  <input type="text" name="endTime" id="endTime" autocomplete="off" placeholder="结束时间"
+                         class="layui-input js-laydate">
+                </div>
               </div>
-            </div>
 
-            <div class="layui-inline">
-              <label class="layui-form-label">报警类型：</label>
-              <div class="layui-input-inline">
-                <select id="alarmType" name="alarmType">
-                  <option value=""></option>
-                  <option value="81">激光对射</option>
-                  <option value="302">绊线入侵</option>
-                  <option value="303">区域入侵</option>
-                  <option value="309">快速移动</option>
-                  <option value="594">声音异常</option>
-                  <option value="596">攀高入侵</option>
-                  <option value="2602">震动光纤</option>
-                </select>
+              <div class="layui-inline">
+                <label class="layui-form-label">报警类型：</label>
+                <div class="layui-input-inline">
+                  <select id="alarmType" name="alarmType">
+                    <option value=""></option>
+                    <option value="81">激光对射</option>
+                    <option value="302">绊线入侵</option>
+                    <option value="303">区域入侵</option>
+                    <option value="309">快速移动</option>
+                    <option value="594">声音异常</option>
+                    <option value="596">攀高入侵</option>
+                    <option value="2602">震动光纤</option>
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <div class="layui-inline">
-              <label class="layui-form-label">报警级别：</label>
-              <div class="layui-input-inline">
-                <select id="alarmLevel" name="alarmLevel">
-                <option value=""></option>
-                <option value="1">一级报警</option>
-                <option value="2">二级报警</option>
-                <option value="3">三级报警</option>
-              </select>
+              <div class="layui-inline">
+                <label class="layui-form-label">报警级别：</label>
+                <div class="layui-input-inline">
+                  <select id="alarmLevel" name="alarmLevel">
+                    <option value=""></option>
+                    <option value="1">一级报警</option>
+                    <option value="2">二级报警</option>
+                    <option value="3">三级报警</option>
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <div class="layui-inline">
-              <button type="button" class="layui-btn layui-btn-normal js-btn-search">查询</button>
-              <!--<button class="layui-btn layui-btn-primary">导出</button>-->
-            </div>
+              <div class="layui-inline">
+                <button type="button" class="layui-btn layui-btn-normal js-btn-search">查询</button>
+                <!--<button class="layui-btn layui-btn-primary">导出</button>-->
+              </div>
 
-          </div>
+            </div>
+          </form>
           <table class="layui-hide" id="alarmList"></table>
         </li>
       </ul>

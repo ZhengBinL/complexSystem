@@ -111,3 +111,13 @@
 .layui-laydate .layui-laydate-footer{
   display: none;
 }
+/*下拉框样式*/
+.layui-form-select dl{
+  background: rgba(4,40,103, 0.88)!important;
+}
+.layui-form-select dl dd:hover{
+  background: #071d48!important;
+}
+.layui-form-select dl dd.layui-this{
+  background: #071d48!important;
+}
