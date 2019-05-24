@@ -4,7 +4,7 @@
 
 .duty-video {
   clear: left;
-  margin: 15px 29% 15px 15px;
+  margin: 10px 29% 10px 10px;
   border-radius: 5px;
   background:url(../../asset/img/gst_bj.png) center no-repeat;
   background-size:cover;
@@ -13,7 +13,7 @@
 .duty-detail {
   float: right;
   width: 29%;
-  padding: 15px;
+  padding: 10px 15px;
   box-sizing: border-box;
   text-align: center
 }
