@@ -38,27 +38,25 @@
     height: 100%;
 }
 .video-li-l{
-    border-right: 2px solid #fefb00;
+  border-right: 2px solid #fefb00;
 }
 
 .video-max{
-    line-height: 300px;
-    text-align: center;
-    background: url("../../asset/img/tv-video-bj.png") center center no-repeat;
-    background-size: cover;
+  line-height: 300px;
+  text-align: center;
+  background: url("../../asset/img/tv-video-bj.png") center center no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
 }
 
 .video-min{
-    width: 100%;
+  background: url("../../asset/img/video-min-bj.png") center center no-repeat;
+  background-size: cover;
+  text-align: center;
+  box-sizing: border-box;
 }
-
-.video-min>span{
-    float: left;
-    background: url("../../asset/img/video-min-bj.png") center center no-repeat;
-    background-size: cover;
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
+.flo-left {
+  float: left;
 }
 
 .video-bor{

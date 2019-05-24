@@ -41,7 +41,7 @@
         <dd>
             <div class="tv-left">
                 <div class="tv-menu">
-                    <span class="tv-rcya js-wqzj">
+                    <span class="tv-rcya act js-wqzj">
                         围墙周界
                     </span>
                     <span class="tv-rcya js-zdbw">
@@ -58,68 +58,44 @@
             </div>
 
             <div class="tv-right">
-                    <div class="video-bg">
-                        <i class="videobg-lt"></i>
-                        <i class="videobg-mt"></i>
-                        <i class="videobg-mt-img"></i>
-                        <i class="videobg-rt"></i>
-                        <i class="videobg-lm"></i>
-                        <i class="videobg-mm"></i>
-                        <i class="videobg-rm"></i>
-                        <i class="videobg-lb"></i>
-                        <i class="videobg-mb"></i>
-                        <i class="videobg-mb-img"></i>
-                        <i class="videobg-rb"></i>
-                    </div>
+                <div class="video-bg">
+                    <i class="videobg-lt"></i>
+                    <i class="videobg-mt"></i>
+                    <i class="videobg-mt-img"></i>
+                    <i class="videobg-rt"></i>
+                    <i class="videobg-lm"></i>
+                    <i class="videobg-mm"></i>
+                    <i class="videobg-rm"></i>
+                    <i class="videobg-lb"></i>
+                    <i class="videobg-mb"></i>
+                    <i class="videobg-mb-img"></i>
+                    <i class="videobg-rb"></i>
+                </div>
 
-                <ul class="tv-video" id="view1">
-                    <li class="w25">
-                        <div class="video-min">
-                            <span class="bor-b bor-r js-video-min">视频1</span>
-                            <span class="bor-b bor-r js-video-min">视频3</span>
-                        </div>
-                        <div class="video-min">
-                            <span class="bor-r js-video-min">视频4</span>
-                        </div>
-                    </li>
-                    <li class="w50" >
-                        <div class="video-max js-video bor-r bor-b">视频5</div>
-                        <div class="video-min">
-                            <span class="w50 bor-r js-video-min">视频6</span>
-                            <span class="js-video-min bor-r w50">视频7</span>
-                        </div>
 
-                    </li>
-                    <li class="w25">
-                        <div class="video-min">
-                            <span class="bor-b js-video-min">视频8</span>
-                            <span class="bor-b js-video-min">视频10</span>
-                        </div>
-                        <div class="video-min">
-                            <span class="js-video-min">视频11</span>
-                        </div>
-                    </li>
+                <ul class="tv-video">
+                  <li class="w25">
+                    <div class="video-min js-video bor-r bor-b">视频1</div>
+                    <div class="video-min js-video bor-r bor-b">视频2</div>
+                  </li>
+                  <li class="w50" >
+                    <div class="video-max js-video-50 bor-r bor-b">视频4</div>
+                  </li>
+                  <li class="w25">
+                    <div class="video-min js-video bor-b">视频7</div>
+                    <div class="video-min js-video bor-b">视频8</div>
+                  </li>
+                  <li class="w25">
+                    <div class="video-min js-video bor-r">视频3</div>
+                  </li>
+                  <li class="w50">
+                    <div class="flo-left video-min w50 bor-r js-video">视频5</div>
+                    <div class="flo-left video-min w50 bor-r js-video">视频6</div>
+                  </li>
+                  <li class="w25">
+                    <div class="video-min js-video">视频9</div>
+                  </li>
                 </ul>
-
-                    <ul class="tv-video" id="view2">
-                        <li class="w25">
-                            <div class="video-max js-video bor-r bor-b">视频1</div>
-                            <div class="video-max js-video bor-r bor-b">视频2</div>
-                            <div class="video-max js-video bor-r">视频3</div>
-                        </li>
-                        <li class="w50" >
-                            <div class="video-max js-video-50 bor-r bor-b">视频4</div>
-                            <div class="video-min">
-                                <span class="w50 bor-r js-video-min">视频5</span>
-                                <span class="js-video-min bor-r w50">视频6</span>
-                            </div>
-                        </li>
-                        <li class="w25">
-                            <div class="video-max js-video bor-b">视频7</div>
-                            <div class="video-max js-video bor-b">视频8</div>
-                            <div class="video-max js-video">视频9</div>
-                        </li>
-                    </ul>
 
 
 
@@ -146,46 +122,36 @@
     <script src="./index.js"></script>
     <script>
         //计算高度，超出隐藏
-        function caleHeight(opt) {
+        function caleHeight() {
             // 设置分屏模式视频高度
-            $opt = $('#'+opt);
-            var itemWidth = $opt.find('.js-video').width();
+            var itemWidth = $('.js-video').width();
             var itemHeight = itemWidth * 9 / 16;
-            $opt.find('.js-video').css('height', (itemHeight));
-            $opt.find('.js-video').css('line-height', (itemHeight)+'px');
+            $('.js-video').css('height', (itemHeight));
+            $('.js-video').css('line-height', (itemHeight)+'px');
 
             var minWidth = $('.js-video-min').width();
             var minHeight = minWidth * 9 / 16;
-            $opt.find('.js-video-min').css('height', minHeight);
-            $opt.find('.js-video-min').css('line-height', (minHeight)+'px');
+            $('.js-video-min').css('height', minHeight);
+            $('.js-video-min').css('line-height', (minHeight)+'px');
 
             var minHeight = $('.js-video').height()*2+2;
-            $opt.find('.js-video-50').css({'height': minHeight,'line-height': minHeight+'px'});
+            $('.js-video-50').css({'height': minHeight,'line-height': minHeight+'px'});
 
             var minWidth = $('.js-video-25').width();
             var minHeight = minWidth * 9 / 16;
-            $opt.find('.js-video-25').css('height', (minHeight));
-            $opt.find('.js-video-25').css('line-height', (minHeight)+'px');
+            $('.js-video-25').css('height', (minHeight));
+            $('.js-video-25').css('line-height', (minHeight)+'px');
         }
-        caleHeight('view1')
-        $("#view2").hide();
+        caleHeight()
 
         $('.js-wqzj').on('click',function () {
-            $(this).addClass('act')
-            $("#view2").hide();
-            $("#view1").show(function(){
-                caleHeight('view1');
-            });
-
+            $(this).addClass('act').siblings('span').removeClass('act');
+            $('.js-video').removeClass('video-max').addClass('video-min');
         })
 
         $('.js-rcsw').on('click',function () {
-            $(this).addClass('act')
-            $("#view1").hide();
-            $("#view2").show(function () {
-                caleHeight('view2');
-            });
-
+            $(this).addClass('act').siblings('span').removeClass('act');
+            $('.js-video').removeClass('video-min').addClass('video-max');
         })
 
 
