@@ -318,13 +318,13 @@ $(function () {
     })
     //智能追踪
     $('body').on('click','.btn-zoomtrack',function(){
-        $('.camera-2').hide()
-        $('.camera-hidden').show()
+        $('.camera-hidden').hide();
+        $('.camera-2').show()
     })
     //执勤监控
     $('body').on('click','.btn-zoommonitor',function(){
-        $('.camera-hidden').hide()
-        $('.camera-2').show()
+        $('.camera-2').hide();
+        $('.camera-hidden').show()
     })
     //拖动功能
     var _drag = {};
