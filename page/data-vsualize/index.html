@@ -86,7 +86,7 @@
               <ul>
                 <li>
                   枪支离岗
-                  <span class="statis-gun">2000</span>
+                  <span class="statis-gun" id="qiangzhi">2000</span>
                 </li>
               </ul>
             </div>
@@ -145,16 +145,30 @@
             </div>
 
             <div class="layui-inline">
-              <label class="layui-form-label">IP地址：</label>
+              <label class="layui-form-label">报警类型：</label>
               <div class="layui-input-inline">
-                <input type="text" name="ipAddr" autocomplete="off" class="layui-input">
+                <select id="alarmType" name="alarmType">
+                  <option value=""></option>
+                  <option value="81">激光对射</option>
+                  <option value="302">绊线入侵</option>
+                  <option value="303">区域入侵</option>
+                  <option value="309">快速移动</option>
+                  <option value="594">声音异常</option>
+                  <option value="596">攀高入侵</option>
+                  <option value="2602">震动光纤</option>
+                </select>
               </div>
             </div>
 
             <div class="layui-inline">
-              <label class="layui-form-label">设备名称：</label>
+              <label class="layui-form-label">报警级别：</label>
               <div class="layui-input-inline">
-                <input type="text" name="eqName" autocomplete="off" class="layui-input">
+                <select id="alarmLevel" name="alarmLevel">
+                <option value=""></option>
+                <option value="1">一级报警</option>
+                <option value="2">二级报警</option>
+                <option value="3">三级报警</option>
+              </select>
               </div>
             </div>
 
@@ -177,29 +191,118 @@
   <script src="../../asset/js/echarts.min.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
   <script>
-    // 图表：近期报警统计
-    var statisticsChart = echarts.init(document.getElementById('alarmStatistics'))
-    var optionStatistics = {
-      calculable : true,
-      series : [
-        {
-          type:'pie',
-          radius : [30, 110],
-          center : ['50%', '50%'],
-          roseType : 'radius',
-          data:[
-            {value:35, name:'rose1'},
-            {value:5, name:'rose2'},
-            {value:15, name:'rose3'},
-            {value:25, name:'rose4'},
-            {value:20, name:'rose5'},
-            {value:10, name:'rose6'}
-          ]
+    var alarmDataCount = [];
+    this.onLoad();
+    function onLoad(){
+
+      $.ajax({
+        url: $ctx+"/alarm/getViewData",
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (res) {
+          var zhoujie=res.data.zhouJieCount;
+          var shouan=res.data.shouAn;
+          var qiangzhiligang=res.data.qiangzhi;
+          $("#showAround").text(zhoujie);
+          $("#showPress").text(shouan);
+          $("#qiangzhi").text(zhoujie)
+
+          for (var i=0; i<res.data.bData.length;i++){
+            var data={};
+            data.name=res.data.bData[i].name;
+            data.value=parseFloat(res.data.bData[i].percent);
+            alarmDataCount.push(data);
+          }
+          // 图表：近期报警统计
+          var statisticsChart = echarts.init(document.getElementById('alarmStatistics'))
+          var optionStatistics = {
+            calculable : true,
+            series : [
+              {
+                type:'pie',
+                radius : [30, 110],
+                center : ['50%', '50%'],
+                roseType : 'radius',
+                data: [
+                  {value:35, name:'虚拟入侵 35%'},
+                  {value:15, name:'激光对射 15%'},
+                  {value:5, name:'绊线入侵 5%'},
+                  {value:30, name:'徘徊滞留 30%'},
+                  {value:15, name:'震动光纤 15%'},
+                  {value:10, name:'声音异常 10%'}
+                ]
+              }
+            ],
+            color: ['#563ad2','#438dc3','#dab54c','#d78155','#325df9','#ed5450']
+          };
+          statisticsChart.setOption(optionStatistics);
+          console.log(alarmDataCount)
+        },
+        error: function () {
+
         }
-      ],
-      color: ['#563ad2','#438dc3','#dab54c','#d78155','#325df9','#ed5450']
-    };
-    statisticsChart.setOption(optionStatistics);
+      })
+    }
+
+
+    layui.use(['laydate', 'table'], function () {
+      var laydate = layui.laydate;
+      $('.js-laydate').each(function(){
+        var elm = $(this).attr('id');
+        laydate.render({
+          elem: '#' + elm,
+          format: 'yyyy-MM-dd'
+        })
+      })
+
+      var table = layui.table;
+      $('body').on('click', '.js-btn-search', function () {
+        renderTable();
+      })
+      renderTable();
+      function renderTable(){
+        var startTime = $('#startTime').val();
+        var endTime = $('#endTime').val();
+        var alarmType = $('#alarmType').val();
+        var alarmLevel = $('#alarmLevel').val();
+        var where = {
+            startTime: startTime,
+            endTime: endTime,
+            alarmType: alarmType,
+            alarmLevel: alarmLevel
+          }
+        table.render({
+          elem: '#alarmList'
+          ,url: $ctx + '/alarm/findAlarmList'
+          ,method: 'get'
+          ,page: true //开启分页
+          ,layout: ['count', 'prev', 'page', 'next']
+          ,skin: 'nob' //重要属性：无连线表格
+          ,cols: [[ //标题栏
+            {type:'checkbox', width: 50}
+            ,{type:  'numbers', title: '序号', width: 80}
+            ,{field: 'cameraID', title: '报警通道'}
+            ,{field: 'typeName', title: '报警类型', style: 'color: #f69506;', width: 100}
+            ,{field: 'alarmTime', title: '报警时间', width: 160}
+            ,{field: 'levelName', title: '报警级别', style: 'color: #07dcef;', width: 100}
+            ,{field: 'processResult', title: '处理结果', width: 120}
+            ,{field: 'processTime', title: '处理时间', width: 120}
+          ]],
+          parseData: function(res){ //res 即为原始返回的数据
+            return {
+              "code": res.code, //解析接口状态
+              "msg": res.message, //解析提示文本
+              "count": res.data.total, //解析数据长度
+              "data": res.data.list //解析数据列表
+            };
+          },
+          where: where
+        });
+      }
+    })
+
+
 
     //图表-弹出层-周界
     $('#showAround').on('mouseover',function(){
@@ -283,7 +386,7 @@
     var optionTrend = {
       xAxis: {
         type: 'category',
-        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        data: ['1月', '2月', '3月', '4月', '5月'],
         axisLine: {
           show: false
         },
@@ -322,7 +425,7 @@
         right: '3%',
       },
       series: [{
-        data: [82, 93.2, 90.1, 93.4, 52.90, 43.30, 13.20, 62, 49, 55, 27, 90],
+        data: [54, 43.2, 57.1, 63.5, 52.90],
         type: 'line',
         smooth: true, //折现光滑
         symbol: 'none', //取消这点圆圈
@@ -368,78 +471,7 @@
     };
     trendChart.setOption(optionTrend);
 
-    layui.use(['laydate', 'table'], function () {
-      var laydate = layui.laydate;
-      $('.js-laydate').each(function(){
-        var elm = $(this).attr('id');
-        laydate.render({
-            elem: '#' + elm,
-            format: 'yyyy-MM-dd'
-        })
-      })
 
-      var table = layui.table;
-      $('body').on('click', '.js-btn-search', function () {
-        renderTable();
-      })
-      renderTable();
-      function renderTable(){
-        var startTime = $('input[name=startTime]').val();
-        var endTime = $('input[name=endTime]').val();
-        var deviceName = $('input[name=eqName]').val();
-        var ipAddress = $('input[name=ipAddr]').val();
-        var where = null
-        if (startTime && endTime){
-          where = {
-            startTime: startTime,
-            endTime: endTime,
-            deviceName: deviceName,
-            ipAddress: ipAddress
-          }
-        }else if (startTime && !endTime){
-          where = {
-            startTime: startTime,
-            deviceName: deviceName,
-            ipAddress: ipAddress
-          }
-        }else if (!startTime && endTime){
-          where = {
-            endTime: endTime,
-            deviceName: deviceName,
-            ipAddress: ipAddress
-          }
-        }else {
-          where = {
-            deviceName: deviceName,
-            ipAddress: ipAddress
-          }
-        }
-
-        table.render({
-          elem: '#alarmList'
-          ,url: $ctx + '/alarm/findAlarmList' //
-          ,method: 'post'
-          ,page: true //开启分页
-          ,layout: ['count', 'prev', 'page', 'next']
-          ,skin: 'nob' //重要属性：无连线表格
-          ,cols: [[ //标题栏
-            {type:'checkbox', width: 50}
-            ,{type:'numbers', title: '序号', width: 80}
-            ,{field: 'cameraID', title: '报警通道'}
-            ,{field: 'typeName', title: '报警类型', style: 'color: #f69506;', width: 100}
-            ,{field: 'alarmTime', title: '报警时间', width: 160}
-            ,{field: 'levelName', title: '报警级别', style: 'color: #07dcef;', width: 100}
-            ,{field: 'processResult', title: '处理结果', width: 120}
-            // ,{field: 'logs', title: '日志', style: 'color: #88898f;', width: 100}
-            // ,{title: '', toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>', width: 80}
-          ]]
-          ,where: {
-            pageNum: 1,
-            pageSize: 10
-          }
-        });
-      }
-    })
   </script>
 </body>
 </html>

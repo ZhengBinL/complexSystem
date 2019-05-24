@@ -414,7 +414,7 @@ $(function () {
                 '<img src="../../asset/img/icon-control.png"> 云台控制</a>'+
                 '<a href="javascript:;" id="js-btn-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
                 '</div>'+
-                '<iframe id="zhanwei-tk2" src="about:blank" frameborder="0" marginheight="0" allowTransparency="true" marginwidth="0" style="position: absolute; display: none;top: 33px;right: 77px;width: 130px;height: 130px;z-index: 0;background: transparent;"></iframe>'+
+                '<iframe id="zhanwei-tk2" src="about:blank" frameborder="0" marginheight="0" allowTransparency="true" marginwidth="0" style="position: absolute; display: none;top: 33px;right: 77px;width: 130px;height: 130px;z-index: 0;background: rgba(0,3,28,0.8);"></iframe>'+
                 '<div class="opt-monitor" id="opt-monitor">'+
                 '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
                 '<a href="javascript:;" class="opt-item opt-top-ct" data-direction="topC"></a>'+
@@ -616,24 +616,58 @@ $(function () {
     /*******方向按钮事件开始*******/ 
 
     // 历史视屏
-    // 点击历史记录显示
-    // $('body').on('click', '.icon-history', function () {
-    //     $('.js-tabtop > li').click()
-    //     if(!$(this).attr("data-szCameraId")){
-    //         return
-    //     } else {
-    //         szCameraId=this.getAttribute("data-szCameraId")
-    //     }
-    //     $('.split-mode').hide()
-    //     $('.history-wrapper').show()
-    //
-    //     // 设置历史记录视频高度
-    //     var historyVideoWidth = $('.video-wrapper .video').width();
-    //     var historyVideoHeight = historyVideoWidth * 9 / 16;
-    //     var searchMarTop = (historyVideoHeight - 386) / 2
-    //     $('.video-wrapper .video').css('height', historyVideoHeight);
-    //     $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
-    //     init();
-    // })
+    $('body').on('click', '.search-btn', function () {
+        var searchDate = this.getAttribute("data-search-time");
+        if (searchDate == null) {
+            searchDate = dateFtt("yyyy-MM-dd", new Date());
+        }
+//            var szCameraId = "1000121$1$0$0"
+        var nRecordSource = 3;
+        var nRecordType = 0;
+        var strStartTime = searchDate + " 00:00:00";
+        var strEndTime = searchDate + " 23:59:59";
+        var nStartTime = getDate(strStartTime).getTime() / 1000;
+        var nEndTime = getDate(strEndTime).getTime() / 1000;
+        /*查询录像信息*/
+        ButtonQueryRecord_onclick2(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
+        /*播放录像信息*/
+        ButtonStartTimePlaybackByWndNo_onclick2(szCameraId, nRecordSource, nStartTime, nEndTime);
+    });
+
+    //点击倍速
+    $('body').on('click', '.icon-speed', function () {
+        $('.speed-wrapper').stop().toggle();
+        $('#zhanwei').stop().toggle()
+    })
+    // 点击倍速的某一项
+    $('body').on('click', '.speed-item', function () {
+        var $that = $(this)
+        $that.addClass('on').siblings().removeClass('on')
+        $that.parent().slideUp('fast')
+        $('#zhanwei').stop().hide()
+    })
+    // 点击历史记录中的关闭按钮
+    $('body').on('click', '.history-wrapper .icon-history', function () {
+        $('.history-wrapper').hide();
+        $('.split-mode').show();
+    })
+    // 单击刻度条某一项
+    $('body').on('click', '.scale-unit', function (e) {
+//            var szCameraId = "1000121$1$0$0"
+        var nRecordSource = 3;
+        var nRecordType = 0;
+        var nStartTime = this.getAttribute("data-start-time");
+        var nEndTime = this.getAttribute("data-end-time");
+        console.log(nStartTime + "==" + nEndTime)
+        /*查询录像*/
+        ButtonQueryRecord_onclick3(szCameraId, nRecordSource, nRecordType, nStartTime, nEndTime);
+        /*播放录像信息*/
+        ButtonStartTimePlaybackByWndNo_onclick2(szCameraId, nRecordSource, nStartTime, nEndTime);
+
+    })
+    // 停止播放
+    $('body').on('click', '.playAndsuspend', function () {
+        playAndsuspend();
+    })
 })
     
