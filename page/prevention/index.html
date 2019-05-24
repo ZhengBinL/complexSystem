@@ -221,7 +221,7 @@
     /*
     PS：实时获取报警点，注意放开代码
     */
-    // setInterval(getAlarmInfo, 1000)
+    setInterval(getAlarmInfo, 1000)
 
     //实时获取报警信息
     function getAlarmInfo() {
@@ -241,10 +241,10 @@
                         var msg = JSON.parse(res.data.msg); // 返回信息
                         var pos = msg.AlarmSource.IPDeviceName; // 岗哨
                         var type = msg.AlarmType.SystemOptionName; // 报警类型
-                        console.log(pos)
-                        console.log(type)
-                        console.log(msg)
-
+                        // console.log(pos)
+                        // console.log(type)
+                        // console.log(msg)
+                        $('.btn-police').show();
                         var $el;
                         if (type == '光纤震动') {
                             $el = $('.prevention-img .r-warn')
@@ -259,7 +259,7 @@
                             var _type = $(item).data('type');
                             if (pos == _pos && _type == '光纤震动') {
                                 $(item).addClass('red');
-                                delayOpt('red');
+                                // delayOpt('red');
 //                                setTimeout(function () {
 //                                    if (initPos == pos && initType == type) {
 //                                        return
@@ -269,10 +269,10 @@
 //                                }, 30000)
                             } else if (pos == _pos && _type == '周界入侵') {
                                 $(item).addClass('green');
-                                delayOpt('green')
+                                // delayOpt('green')
                             } else if (pos == _pos && _type == '激光对射') {
                                 $(item).addClass('yellow');
-                                delayOpt('yellow');
+                                // delayOpt('yellow');
                             }
                         })
                         // 如果有视频地址信息，渲染视频
@@ -306,14 +306,17 @@
         // 如果是跳转页面，且oldMsg有数据，并且未获取到请求数据
         if (isPageJump()){
             //  oldMsg表示存储的msg信息
-            var oldMsg = JSON.parse(document.cookie.split(';')[0].split('=')[1]);
+
+
+            var oldMsg = JSON.parse(sessionStorage.getItem("hrefParam"));
+            // var oldMsg = sessionStorage.getItem("hrefParam");
             //console.log(oldMsg)
             if( oldMsg && !initMsg){
-                var rtspUrls = document.cookie.split(";")[1].split("=")[1]; // 获取视频地址
-                //console.log(decodeURIComponent(rtspUrls), 'decode')
+                var rtspUrls = sessionStorage.getItem("rtspUrls"); // 获取视频地址
+                console.log(decodeURIComponent(rtspUrls), 'decode');
                 var decodeRtsp = decodeURIComponent(rtspUrls);  // 解析视频地址
                 // 渲染视频
-                renderVideo(decodeRtsp.split(','))
+                renderVideo(decodeRtsp.split(','));
                 var pos = oldMsg.alarmSource.iPDeviceName; // 报警岗哨
                 var type = oldMsg.alarmType.systemOptionName; // 报警类型
                 $('.prevention-img span').each(function (index, item) {
@@ -322,13 +325,13 @@
                     if (_pos == pos && type == _type){
                         if (type == '光纤震动') {
                             $(item).addClass('red cookie-dom');
-                            delayOpt('red', true);
+                            // delayOpt('red', true);
                         } else if (type == '周界入侵') {
                             $(item).addClass('green cookie-dom');
-                            delayOpt('green', true);
+                            // delayOpt('green', true);
                         } else {
                             $(item).addClass('yellow cookie-dom');
-                            delayOpt('yellow', true);
+                            // delayOpt('yellow', true);
                         }
                     }
                 })
@@ -337,18 +340,23 @@
         }
     }
     // 3、30秒后清除cookie，并且移除掉视频, flag表示有cookie
-    function delayOpt(className, flag) {
-        var date = new Date();
-        date.setTime(date.getTime() - 10000);
-        setTimeout(function () {
-            if (flag){
-                document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
-                document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
-            }
-            $(item).removeClass(className);
-            removeVideo();
-        }, 30000)
-    }
+    // function delayOpt(className, flag) {
+    //     $(item).removeClass(className);
+    //     var date = new Date();
+    //     date.setTime(date.getTime() - 10000);
+    //     setTimeout(function () {
+    //         if (flag){
+    //             sessionStorage.removeItem("hrefParam");
+    //             sessionStorage.removeItem("rtspUrls");
+    //             // $('.btn-police').hide();
+    //             // console.log(sessionStorage,'sessionStorage');
+    //             // document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
+    //             // document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
+    //         }
+    //         $(item).removeClass(className);
+    //         removeVideo();
+    //     }, 30000)
+    // }
     // 4、渲染跳转页面的灯笼和视频
     renderPageJump()
 
@@ -361,10 +369,14 @@
         //  1.通过是否请求数据成功，如果initMsg有数据，则操作的是返回数据
         if (initMsg){
             $.ajax({
-                type:'PUT',
+                type:'GET',
                 dataType:'json',
-                contentType:'application/json',
-                url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(initMsg) + '&op=' + result,
+                // contentType:'application/json',
+                // data:{
+                //     'msg_info':initMsg,
+                //     "con_info":result
+                // },
+                url: $ctx +'/alarm/putAlarmCancel?msg_info='+encodeURIComponent(initMsg)+'&con_info='+result,
                 success:function(res){
                     if (res.code == 0){
                         var _initMsg = JSON.parse(initMsg);

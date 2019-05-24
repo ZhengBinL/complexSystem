@@ -27,18 +27,21 @@ $('body').on('click', '.js-police-pop-close', function () {
         }
     })
 }).on('click', '.js-police-look', function () {
-    var msg = $(this).closest('.police-wrapper').find('.js-police-msg').html()
-    var rtspUrls = $(this).closest('.police-wrapper').find('.js-rtspUrls').text()
+    var msg = $(this).closest('.police-wrapper').find('.js-police-msg').html();
+    var rtspUrls = $(this).closest('.police-wrapper').find('.js-rtspUrls').text();
     var _encodeRtsp = encodeURIComponent(rtspUrls);
     // console.log(_encodeRtsp, '_encodeRtsp');
-    document.cookie="hrefParam="+ msg + ';path=/'; // 存储cookie
-    document.cookie="rtspUrls="+_encodeRtsp + ';path=/';
+    sessionStorage.setItem("hrefParam",msg);
+    sessionStorage.setItem("rtspUrls",_encodeRtsp);
+
+    // document.cookie="hrefParam="+ msg + ';path=/'; // 存储cookie
+    // document.cookie="rtspUrls="+_encodeRtsp + ';path=/';
     //console.log(document.cookie);
     window.location.href = '../../page/prevention/index.html?call=1';
 })
 
-var _top = 80
-/*setInterval(function () {
+var _top = 80;
+setInterval(function () {
     $.ajax({
         type:'GET',
         dataType:'json',
@@ -60,15 +63,15 @@ var _top = 80
                     '<div class="js-rtspUrls" style="display: none;">'+res.data.rtspUrls+'</div>'+
                     '<a href="javascript:;" class="js-police-look layui-btn layui-btn-sm layui-btn-normal" target="_self">查看</a>' +
                     '<a href="javascript:;" class="js-police-pop-close layui-btn layui-btn-sm layui-btn-primary">关闭</a>' +
-                    '</div></div>'
-                $('body').append(html_pop)
+                    '</div></div>';
+                $('body').append(html_pop);
             }
         },
         error:function(err){
-            console.log(err)
+            console.log(err);
         }
     })
-}, 1000)*/
+}, 1000);
 
 //格式化时间戳
 function formatDate(t, isTime) {
