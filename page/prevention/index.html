@@ -304,8 +304,6 @@
                 var rtspUrls = sessionStorage.getItem("rtspUrls"); // 获取视频地址
                 console.log(decodeURIComponent(rtspUrls), 'decode');
                 var decodeRtsp = decodeURIComponent(rtspUrls);  // 解析视频地址
-                // 渲染视频
-                renderVideo(decodeRtsp.split(','));
                 var pos = oldMsg.alarmSource.iPDeviceName; // 报警岗哨
                 var type = oldMsg.alarmType.systemOptionName; // 报警类型
                 $('.prevention-img span').each(function (index, item) {
@@ -324,6 +322,8 @@
                         }
                     }
                 })
+                // 渲染视频
+                renderVideo(decodeRtsp.split(','));
             }
 
         }
