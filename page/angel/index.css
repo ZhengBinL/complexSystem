@@ -71,5 +71,11 @@
 .angel-video-wrapper{
     position: relative;
     z-index: 10;
-    padding: 90px 80px;
+    padding: 80px;
+}
+.angel-video{
+    padding:0 150px;
+}
+.video{
+    width: 100%;
 }
