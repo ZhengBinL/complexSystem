@@ -548,3 +548,11 @@
     position: absolute;
     background-size: contain;
 }
+.signer{
+    font-size: 0;
+    margin: 20px 0;
+}
+.signer span{
+    display: inline-block;
+    vertical-align: middle;
+}

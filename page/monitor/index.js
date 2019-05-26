@@ -307,11 +307,12 @@ $(function () {
     //点击关闭
     $('body').on('click','.js-close',function(){
         var $tis = $(this).parents('.videos-li');
+        var $vid = $(this).parent().next()
         $tis.attr('data-active',123);
         $tis.find('.v-toolbar').hide()
+        var resetHeight = parseInt($vid.attr('data-height')) + 32;
+        $tis.find('videos').css('height',resetHeight);
         $tis.find('OBJECT').remove()
-        // var resetHeight = parseInt($tis.attr('data-height')) - 32;
-        // $tis.find('videos').attr('data-height',resetHeight).css('height',resetHeight);
     })
     /*******分屏模式渲染li结束*******/
 
