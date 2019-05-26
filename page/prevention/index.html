@@ -226,6 +226,12 @@
     */
 
     //实时获取报警信息
+    //  激活ajax    
+dwr.engine.setActiveReverseAjax(true)
+// // 页面未加载的时候是否发送通知
+dwr.engine.setNotifyServerOnPageUnload(true,true)
+// // 出现错误后的处理方法
+dwr.engine.setErrorHandler(function(){})
     function getAlarmTimeForAction(dataValue) {
         if (dataValue.msg) { // 返回的有高亮数据点
             initMsg = dataValue.msg;      // 赋值msg
@@ -294,6 +300,7 @@
     function renderPageJump() {
         // 如果是跳转页面，且oldMsg有数据，并且未获取到请求数据
         if (isPageJump()){
+            $('.btn-police').show();
             //  oldMsg表示存储的msg信息
             var oldMsg = JSON.parse(sessionStorage.getItem("hrefParam"));
             // var oldMsg = sessionStorage.getItem("hrefParam");
@@ -357,66 +364,68 @@
     function removeCls(result) {
         //  1.通过是否请求数据成功，如果initMsg有数据，则操作的是返回数据
         if (initMsg){
-            $.ajax({
-                type:'GET',
-                dataType:'json',
-                // contentType:'application/json',
-                // data:{
-                //     'msg_info':initMsg,
-                //     "con_info":result
-                // },
-                url: $ctx +'/alarm/putAlarmCancel?msg_info='+encodeURIComponent(initMsg)+'&con_info='+result,
-                success:function(res){
-                    if (res.code == 0){
-                        var _initMsg = JSON.parse(initMsg);
-                        var _rtspUrls = initRtsp;
-                        var pos = _initMsg.AlarmSource.IPDeviceName; // 岗哨
-                        var type = _initMsg.AlarmType.SystemOptionName; // 报警类型
-                        $('OBJECT').each(function (index, item) {
-                            for(var i = 0; i < _rtspUrls.length; i++){
-                                if($(item).attr('rtsp') == _rtspUrls[i]){
-                                    $(item).closest('.prevention-video').children('.video-hover').hide();
-                                    $(item).closest('.prevention-video').children('iframe').hide();
-                                    $(item).remove();
-                                }
-                            }
-                        })
-                        $('.prevention-img span').each(function (index, item) {
-                            var _pos = $(item).data('pos');
-                            var _type = $(item).data('type');
-                            if (_pos == pos && type == _type){
-                                if (type == '光纤震动') {
-                                    $(item).removeClass('red')
-                                } else if (type == '周界入侵') {
-                                    $(item).removeClass('green');
-                                } else {
-                                    $(item).removeClass('yellow');
-                                }
-                            }
-                        })
+            // $('.btn-police').hide();
+            var _initMsg = JSON.parse(initMsg);
+            var _rtspUrls = initRtsp;
+            var pos = _initMsg.AlarmSource.IPDeviceName; // 岗哨
+            var type = _initMsg.AlarmType.SystemOptionName; // 报警类型
+            $('OBJECT').each(function (index, item) {
+                for(var i = 0; i < _rtspUrls.length; i++){
+                    if($(item).attr('rtsp') == _rtspUrls[i]){
+                        $(item).closest('.prevention-video').children('.video-hover').hide();
+                        $(item).closest('.prevention-video').children('iframe').hide();
+                        $(item).remove();
                     }
                 }
             })
+            $('.prevention-img span').each(function (index, item) {
+                var _pos = $(item).data('pos');
+                var _type = $(item).data('type');
+                if (_pos == pos && type == _type){
+                    if (type == '光纤震动') {
+                        $(item).removeClass('red')
+                    } else if (type == '周界入侵') {
+                        $(item).removeClass('green');
+                    } else {
+                        $(item).removeClass('yellow');
+                    }
+                }
+            })
+            // $.ajax({
+            //     type:'GET',
+            //     dataType:'json',
+            //     // contentType:'application/json',
+            //     // data:{
+            //     //     'msg_info':initMsg,
+            //     //     "con_info":result
+            //     // },
+            //     url: $ctx +'/alarm/putAlarmCancel?msg_info='+encodeURIComponent(initMsg)+'&con_info='+result,
+            //     success:function(res){
+            //         if (res.code == 0){
+            //             // 
+            //         }
+            //     }
+            // })
         }
         // 如果未请求到数据，并且是通过页面跳转，则操作的是cookie传入的数据
-        else if (!initMsg && isPageJump()){
-            var cookieMsg = document.cookie.split(";")[0].split("=")[1]
-            $.ajax({
-                type:'PUT',
-                dataType:'json',
-                contentType:'application/json',
-                url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(cookieMsg) + '&op=' + result,
-                success:function(res){
-                    if (res.code == 0){
-                        $('.cookie-dom').removeClass('red green yellow');
-                        var date = new Date();
-                        date.setTime(date.getTime() - 10000);
-                        document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
-                        document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
-                    }
-                }
-            })
-        }
+        // else if (!initMsg && isPageJump()){
+        //     var cookieMsg = document.cookie.split(";")[0].split("=")[1]
+        //     $.ajax({
+        //         type:'PUT',
+        //         dataType:'json',
+        //         contentType:'application/json',
+        //         url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(cookieMsg) + '&op=' + result,
+        //         success:function(res){
+        //             if (res.code == 0){
+        //                 $('.cookie-dom').removeClass('red green yellow');
+        //                 var date = new Date();
+        //                 date.setTime(date.getTime() - 10000);
+        //                 document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
+        //                 document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
+        //             }
+        //         }
+        //     })
+        // }
     }
     // 点击确定或者取消，移除class
     $('body').on('click', '.js-police-btn-yes', function () {
