@@ -45,11 +45,11 @@ $('body').on('click', '.js-police-pop-close', function () {
 var _top = 80;
 // 报警弹框 后端出发
 //  激活ajax    
-dwr.engine.setActiveReverseAjax(true)
-// // 页面未加载的时候是否发送通知
-dwr.engine.setNotifyServerOnPageUnload(true,true)
-// // 出现错误后的处理方法
-dwr.engine.setErrorHandler(function(){})
+// dwr.engine.setActiveReverseAjax(true)
+// // // 页面未加载的时候是否发送通知
+// dwr.engine.setNotifyServerOnPageUnload(true,true)
+// // // 出现错误后的处理方法
+// dwr.engine.setErrorHandler(function(){})
 
 
 function getAlarmTime(dataValue){
