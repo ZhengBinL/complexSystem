@@ -70,6 +70,9 @@ input{
 .font-16 {
   font-size: 16px;
 }
+.hide-elm {
+  display: none;
+}
 
 /*
  ** 头部样式

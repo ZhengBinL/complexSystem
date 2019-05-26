@@ -48,8 +48,10 @@
   padding: 7px 0;
   border: solid 1px #324484;
   font-weight: normal;
+  text-align: center;
 }
 .table > tbody > tr > td > p {
+  padding: 0 5px;
   white-space: nowrap;
   text-align: center;
 }
@@ -59,7 +61,7 @@
   background: #293dcf;
   zoom:1;
 }
-.table > tbody > tr:hover .opt-outer {
+.table > tbody > tr.isedit:hover .opt-outer {
   display: block;
 }
 .opt-outer{
