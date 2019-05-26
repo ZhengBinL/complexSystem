@@ -315,8 +315,6 @@
     <link rel="stylesheet" href="../../asset/css/reset.css">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" type="text/css" href="../../asset/css/DSSPlay.css"/>
-    <link rel="stylesheet" href="../angel/index.css">
-    <link rel="stylesheet" href="../prevention/index.css">
 </head>
 
 <body>
@@ -501,8 +499,6 @@
                 </div>
                 <!--历史记录 end-->
             </li>
-            <li class="js-tabbd">
-            </li>
         </ul>
     </div>
 </div>
@@ -524,74 +520,8 @@
 <script src="../../asset/js/aside.js"></script>
 <script src="./index.js"></script>
 <script>
-
-
     var _this = this;
     var szCameraId = "";
-    /*******分屏模式渲染li开始*******/
-
-    var liHtml =''
-    var j=0
-    for(var i =0;i<16;i++){
-        liHtml+=
-            ('<li class="videos-li" data-index="'+(i+1)+'">'+
-                '<dl>'+
-                '<dt class="v-toolbar">'+
-                '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
-                '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
-                '<a href="javascript:;" class="js-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
-                '<iframe id="zhanwei'+(i+1)+'" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>'+
-                '<div class="opt-monitor">'+
-                '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
-                '<a href="javascript:;" class="opt-item opt-top-ct" data-direction="topC"></a>'+
-                '<a href="javascript:;" class="opt-item opt-top-rt" data-direction="topR"></a>'+
-                '<a href="javascript:;" class="opt-item opt-mid-lt" data-direction="midL"></a>'+
-                '<a href="javascript:;" class="opt-item opt-mid-rt" data-direction="midR"></a>'+
-                '<a href="javascript:;" class="opt-item opt-bot-lt" data-direction="botL"></a>'+
-                '<a href="javascript:;" class="opt-item opt-bot-ct" data-direction="botC"></a>'+
-                '<a href="javascript:;" class="opt-item opt-bot-rt" data-direction="botR"></a>'+
-                '<a href="javascript:;" class="opt-item opt-big"  data-direction="big"></a>'+
-                '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
-                '</div>'+
-                '</dt>'+
-                '<dd class="videos">'+
-                '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px; bottom: 0;width: 100%;">'+
-                '</div>'+
-                '</dd>'+
-                '</dl>'+
-                '</li>')
-    }
-
-    $('#mode-rec').prepend(liHtml)
-    _caleHeight(4)
-    // 初始化计算高度
-    function _caleHeight(itemnumb) {
-        // 设置分屏模式视频高度
-        var itemWidth = $('.mode-content .videos').width();
-        var itemHeight = itemWidth * 9 / 16;
-        $('.videos').css('height', (itemHeight + 32)).attr('data-height', itemHeight);
-//        var itemHeight = $('.mode-content .videos').attr('data-height');
-        $('#vlc1').css({
-            "width":itemWidth,
-            "height":itemHeight
-        })
-        $('#vlc2').css({
-            "width":itemWidth,
-            "height":itemHeight
-        })
-        $('#vlc3').css({
-            "width":itemWidth,
-            "height":itemHeight
-        })
-        $('#vlc4').css({
-            "width":itemWidth,
-            "height":itemHeight
-        })
-        $('#mode-rec').css({
-            'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
-            'overflow': 'hidden'
-        })
-    }
 
     // slider计算高度
     function caleHeight(itemnumb) {
@@ -601,7 +531,7 @@
         $('.mode-content li').each(function () {
             var $tis = $(this);
             if ($tis.attr('data-active') != undefined) {
-                $tis.find('.videos').css('height', itemHeight).attr('data-height', itemHeight);
+                $tis.find('.videos').css('height', (itemHeight+32)).attr('data-height', itemHeight);
             } else {
                 $tis.find('.videos').css('height', (itemHeight + 32)).attr('data-height', itemHeight);
             }
@@ -641,9 +571,9 @@
     $('body').on('click', '.js-control', function () {
         $(this).parent().children('.opt-monitor').toggle()
     })
-    $('.js-tabtop').on('click', '#devidMode', function () {
-        _this.caleHeight(4)
-    })
+    // $('.js-tabtop').on('click', '#devidMode', function () {
+    //     _this.caleHeight(4)
+    // })
     //滑块
     layui.use('slider', function () {
         var slider = layui.slider;

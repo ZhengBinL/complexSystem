@@ -73,6 +73,37 @@ input{
 .hide-elm {
   display: none !important;
 }
+.chkbox {
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  width: 158px;
+  padding:  0 10px 0 30px;
+  border-radius: 15px;
+  color: #fff;
+  line-height: 30px;
+}
+.chkbox > input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.chkbox > input + i {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: solid 1px #383838;
+  border-radius: 3px;
+}
+.chkbox > input:checked + i {
+  background: url("../../asset/img/icon-checked.png");
+  background-size: contain;
+}
 
 /*
  ** 头部样式

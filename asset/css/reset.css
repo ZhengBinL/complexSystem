@@ -29,6 +29,9 @@
   background-color: transparent;
   color: #fff;
 }
+[lay-skin=primary].layui-form-checkbox span {
+  color: #fff !important;
+}
 
 /*--table--*/
 .layui-table {

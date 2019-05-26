@@ -289,23 +289,32 @@
     box-shadow: 0 0 12px rgba(4,211,255,0.7), inset 0 0 12px rgba(4,211,255,0.7);
 }
 /* 分屏1×1 */
+.mode-content{
+    font-size: 0;
+}
+.mode-content > li{
+    vertical-align: top;
+}
 .mode-content.mode-rec-1 > li {
     float: left;
     width: 100%;
 }
 /* 分屏2×2 */
 .mode-content.mode-rec-2 > li {
-    float: left;
+    /*float: left;*/
+    display: inline-block;
     width: 50%;
 }
 /* 分屏3×3 */
 .mode-content.mode-rec-3 > li {
-    float: left;
+    /*float: left;*/
+    display: inline-block;
     width: 33.33%;
 }
 /* 分屏4×4 */
 .mode-content.mode-rec-4 > li {
-    float: left;
+    /*float: left;*/
+    display: inline-block;
     width: 25%;
 }
 .mode-content > li > dl {
@@ -338,6 +347,7 @@
     text-align: right;
     z-index: 2;
     display: none;
+    font-size: 14px;
 }
 .v-toolbar > a {
     margin-left: 15px;
@@ -604,6 +614,7 @@
     -moz-border-radius: 30px;
     border-radius: 30px;
     cursor: pointer;
+    font-size: 14px;
 }
 .scale-title{
     line-height: 1;
