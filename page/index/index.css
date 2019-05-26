@@ -52,8 +52,8 @@
 }
 /* 功能操作按钮 */
 .container{
-    max-width: 1400px;
-    width: 72.92%;
+    max-width: 1460px;
+    width: 76.04%;
     margin:0 auto;
 }
 .row-first, .row-second{
@@ -61,7 +61,7 @@
 
 }
 .row-first{
-    margin:3.71% 0 3% 0;
+    margin:4% 0 3.5% 0;
 }
 .row-first a, .row-second a{
     display: block;
@@ -72,29 +72,29 @@
     background-size: 100% 100%;
 }
 .complex-monitor{
-    width:46.64%;
-    padding: 22.42% 0 0;
-    background-image: url("../../asset/img/complex-monitor.png");
+    width:30.137%;
+    padding: 19.657% 0 0;
+    background-image: url("../../asset/img/zongh-monitor.png");
 }
 .complex-monitor:hover{
-    background-image: url("../../asset/img/complex-monitor_on.png");
+    background-image: url("../../asset/img/zongh-monitor-on.png");
 }
-.fixed-duty{
-    width: 22.07%;
-    margin: 0 4%;
-    padding: 22.07% 0 0;
-    background-image: url("../../asset/img/fixed-duty.png");
+.safe-control{
+    width:30.137%;
+    padding: 19.657% 0 0;
+    margin: 0 4.65%;
+    background-image: url("../../asset/img/safe-control.png");
 }
-.fixed-duty:hover{
-    background-image: url("../../asset/img/fixed-duty_on.png");
+.safe-control:hover{
+    background-image: url("../../asset/img/safe-control-on.png");
 }
-.call-police{
-    width: 22.07%;
-    padding: 22.07% 0 0;
-    background-image: url("../../asset/img/call-police.png");
+.emergency-plan{
+    width:30.137%;
+    padding: 19.657% 0 0;
+    background-image: url("../../asset/img/emergency-plan.png");
 }
-.call-police:hover{
-    background-image: url("../../asset/img/call-police_on.png");
+.emergency-plan:hover{
+    background-image: url("../../asset/img/emergency-plan-on.png");
 }
 .row-second-lt{
     width: 21.71%;
@@ -128,13 +128,22 @@
     background-image: url("../../asset/img/tv-wall_on.png");
 }
 .data-view{
-    width: 22.14%;
-    padding: 22.14% 0 0;
-    margin:0 4.36% 0 4.07%;
-    background-image: url("../../asset/img/data-view.png");
+    width: 47.12%;
+    padding: 19.657% 0 0;
+    float: left;
+    background-image: url("../../asset/img/data-analysis.png");
 }
 .data-view:hover{
-    background-image: url("../../asset/img/data-view_on.png");
+    background-image: url("../../asset/img/data-analysis-on.png");
+}
+.row-second .duty-manage{
+    width: 47.12%;
+    padding: 19.657% 0 0;
+    float: right;
+    background-image: url("../../asset/img/duty-manage.png");
+}
+.duty-manage:hover{
+    background-image: url("../../asset/img/duty-manage-on.png");
 }
 .three-view{
     width: 22.14%;
