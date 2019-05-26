@@ -141,7 +141,174 @@ $(function () {
             $videoli.find('.icon-history').attr('data-szCameraId',res.data.cid);
         })
     }
+    /*******地图模式 视屏点击弹框开始*******/
+    layui.use('layer', function(){
+        var layer = layui.layer;
+        var index
+        var dataSzCameraId
+        $('.camera').on('click',function(){
+            // var cameraNum
+            var cameraNum = $(this).data('index')
+            var html =
+                '<div class="v-toolbar">'+
+                '<a href="javascript:;" class="icon-history">'+
+                '<img src="../../asset/img/icon-history.png" > 历史记录</a>'+
+                '<a href="javascript:;" class="js-control" id="js-btn-control">'+
+                '<img src="../../asset/img/icon-control.png"> 云台控制</a>'+
+                '<a href="javascript:;" id="js-btn-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+                '</div>'+
+                '<iframe id="zhanwei-tk2" src="about:blank" frameborder="0" marginheight="0" allowTransparency="true" marginwidth="0" style="position: absolute; display: none;top: 33px;right: 77px;width: 130px;height: 130px;z-index: 0;background: rgba(0,3,28,0.8);"></iframe>'+
+                '<div class="opt-monitor" id="opt-monitor">'+
+                '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
+                '<a href="javascript:;" class="opt-item opt-top-ct" data-direction="topC"></a>'+
+                '<a href="javascript:;" class="opt-item opt-top-rt" data-direction="topR"></a>'+
+                '<a href="javascript:;" class="opt-item opt-mid-lt" data-direction="midL"></a>'+
+                '<a href="javascript:;" class="opt-item opt-mid-rt" data-direction="midR"></a>'+
+                '<a href="javascript:;" class="opt-item opt-bot-lt" data-direction="botL"></a>'+
+                '<a href="javascript:;" class="opt-item opt-bot-ct" data-direction="botC"></a>'+
+                '<a href="javascript:;" class="opt-item opt-bot-rt" data-direction="botR"></a>'+
+                '<a href="javascript:;" class="opt-item opt-big" data-direction="big"></a>'+
+                '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
+                '</div> '+
+                '<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc100" codebase="" width="100%" height="100%" events="True">' +
+                '<param name="wmode" value="Transparent" />' +
+                '<param name="AutoLoop" value="False" />' +
+                '<param name="AutoPlay" value="True" />' +
+                '<param name="Time" value="True" />' +
+                '<param name="ShowDisplay" value="True" />' +
+                '<param name="Controls" value="False">' +
+                '<EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin"' +
+                'version="VideoLAN.VLCPlugin.2" width="100%" height="100%"' +
+                'text="Waiting for video" name="vlc"></EMBED>' +
+                '</OBJECT>'
 
+            index = layer.open({
+                type: 1,
+                title:'',
+                closeBtn:0,
+                scrollbar: false,//不允许浏览器滚动
+                content: html,//这里content是一个普通的String
+                area: ['800px','482px'],
+                success: function(layero, index){
+                    $('#vlc100').css({
+                        "width": "100%",
+                        "height": "450px",
+                    })
+                    $('#vlc100').parent().find('.v-toolbar').show()
+                    $('#vlc100').parent().find('#js-btn-control').attr('data-index',cameraNum)
+                    $.get($ctx+'/dvr/rtspUrl?id='+cameraNum,function(res){
+                        var vlc = document.getElementById("vlc100");
+                        var options = new Array(":aspect-ratio=16:9", "--rtsp-tcp");
+                        var id = vlc.playlist.add(res.data.rtspUrl, "fancy name", options);
+                        vlc.playlist.playItem(id);
+                        vlc.playlist.play();
+                        // dataSzCameraId = res.data.cid
+                        $('#vlc100').parent().find('.v-toolbar').find('.icon-history').attr('data-szCameraId',res.data.cid)
+                    })
+                }
+            });
+            //关闭弹框
+            $('#js-btn-close').on('click',function(){
+                var vlc = document.getElementById("vlc100");
+                vlc.playlist.stop();
+                layer.close(index);
+            })
+
+            //打开云台控制切换
+            $('body').on('click','#js-btn-control',function(){
+                $('#zhanwei-tk2').toggle()
+                $('#opt-monitor').toggle()
+            })
+
+        })
+        // 历史视屏
+        // 点击历史记录显示
+        $('body').on('click', '.icon-history', function () {
+            layer.close(index);
+            // $('.js-tabtop > li').click()
+            if(!$(this).attr("data-szCameraId")){
+                return
+            } else {
+                szCameraId=this.getAttribute("data-szCameraId")
+            }
+
+            $('.split-mode').hide()
+            $('.history-wrapper').show()
+
+            // 设置历史记录视频高度
+            var historyVideoWidth = $('.video-wrapper .video').width();
+            var historyVideoHeight = historyVideoWidth * 9 / 16;
+            var searchMarTop = (historyVideoHeight - 386) / 2
+            $('.video-wrapper .video').css('height', historyVideoHeight);
+            $('.search-btn').css('marginTop', searchMarTop); // 设置搜索按钮位置
+            init();
+        })
+    });
+    /*******地图模式 视屏点击弹框结束*******/
+
+    /*******分屏模式渲染li开始*******/
+    var liHtml =''
+    var j=0
+    for(var i =0;i<16;i++){
+        liHtml+=
+            ('<li class="videos-li" data-index="'+(i+1)+'">'+
+                '<dl>'+
+                '<dt class="v-toolbar">'+
+                '<a href="javascript:;" class="icon-history"><img src="../../asset/img/icon-history.png" > 历史记录</a>'+
+                '<a href="javascript:;" class="js-control"><img src="../../asset/img/icon-control.png"> 云台控制</a>'+
+                '<a href="javascript:;" class="js-close"><img src="../../asset/img/icon-close.png"> 关闭</a>'+
+                '<iframe id="zhanwei'+(i+1)+'" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute;display: none;top: 32px;right: 90px;width: 100px;height: 168px;z-index: 0;background: transparent;"></iframe>'+
+                '<div class="opt-monitor">'+
+                '<a href="javascript:;" class="opt-item opt-top-lt" data-direction="topL"></a>'+
+                '<a href="javascript:;" class="opt-item opt-top-ct" data-direction="topC"></a>'+
+                '<a href="javascript:;" class="opt-item opt-top-rt" data-direction="topR"></a>'+
+                '<a href="javascript:;" class="opt-item opt-mid-lt" data-direction="midL"></a>'+
+                '<a href="javascript:;" class="opt-item opt-mid-rt" data-direction="midR"></a>'+
+                '<a href="javascript:;" class="opt-item opt-bot-lt" data-direction="botL"></a>'+
+                '<a href="javascript:;" class="opt-item opt-bot-ct" data-direction="botC"></a>'+
+                '<a href="javascript:;" class="opt-item opt-bot-rt" data-direction="botR"></a>'+
+                '<a href="javascript:;" class="opt-item opt-big"  data-direction="big"></a>'+
+                '<a href="javascript:;" class="opt-item opt-small" data-direction="small"></a>'+
+                '</div>'+
+                '</dt>'+
+                '<dd class="videos">'+
+                '<div id="objvideo'+(i+1)+'" style="position: absolute;top:32px; bottom: 0;width: 100%;">'+
+                '</div>'+
+                '</dd>'+
+                '</dl>'+
+                '</li>')
+    }
+
+    $('#mode-rec').prepend(liHtml)
+    _caleHeight(4)
+    // 初始化计算高度
+    function _caleHeight(itemnumb) {
+        // 设置分屏模式视频高度
+        var itemWidth = $('.mode-content .videos').width();
+        var itemHeight = itemWidth * 9 / 16;
+        $('.videos').css('height', (itemHeight + 32)).attr('data-height', itemHeight);
+//        var itemHeight = $('.mode-content .videos').attr('data-height');
+        $('#vlc1').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#vlc2').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#vlc3').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#vlc4').css({
+            "width":itemWidth,
+            "height":itemHeight
+        })
+        $('#mode-rec').css({
+            'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
+            'overflow': 'hidden'
+        })
+    }
     // js添加视屏
     $('body').on('click','.videos-li',function(){
         indexNum = $(this).attr('data-index')
@@ -306,13 +473,13 @@ $(function () {
     })
     //点击关闭
     $('body').on('click','.js-close',function(){
-        var $tis = $(this).parents('.videos-li');
+        var $tis = $(this).closest('.videos-li');
         var $vid = $(this).parent().next()
         $tis.attr('data-active',123);
         $tis.find('.v-toolbar').hide()
         var resetHeight = parseInt($vid.attr('data-height')) + 32;
-        $tis.find('videos').css('height',resetHeight);
-        $tis.find('OBJECT').remove()
+        $tis.find('.videos').css('height',resetHeight);
+        $tis.find('OBJECT').remove();
     })
     /*******分屏模式渲染li结束*******/
 
