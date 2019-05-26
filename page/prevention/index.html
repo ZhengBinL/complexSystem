@@ -295,8 +295,6 @@
         // 如果是跳转页面，且oldMsg有数据，并且未获取到请求数据
         if (isPageJump()){
             //  oldMsg表示存储的msg信息
-
-
             var oldMsg = JSON.parse(sessionStorage.getItem("hrefParam"));
             // var oldMsg = sessionStorage.getItem("hrefParam");
             //console.log(oldMsg)
@@ -457,10 +455,35 @@
         var itemHeight = itemWidth * 20 / 36;
         $('.vlc1').css("height", itemHeight);
         // 渲染视频
-        for (var i = 0; i < urls.length; i++) {
-            play(urls[i], "vlc" + (i + 1));
-            $('#vlc' + (i + 1)).css({width: '100%', height: '100%'})
+        if(urls.length == 1){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+        }else if(urls.length == 2){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+            play(urls[1], "vlc2");
+            $('#vlc2').css({width: '100%', height: '100%'})
+        }else if(urls.length == 3){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+            play(urls[1], "vlc2");
+            $('#vlc2').css({width: '100%', height: '100%'})
+            play(urls[2], "vlc3");
+            $('#vlc3').css({width: '100%', height: '100%'})
+        }else if(urls.length == 4){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+            play(urls[1], "vlc2");
+            $('#vlc2').css({width: '100%', height: '100%'})
+            play(urls[2], "vlc3");
+            $('#vlc3').css({width: '100%', height: '100%'})
+            play(urls[3], "vlc4");
+            $('#vlc4').css({width: '100%', height: '100%'})
         }
+        // for (var i = 0; i < urls.length; i++) {
+        //     play(urls[i], "vlc" + (i + 1));
+        //     $('#vlc' + (i + 1)).css({width: '100%', height: '100%'})
+        // }
     }
 
 /*
