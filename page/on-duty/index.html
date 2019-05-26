@@ -14,45 +14,27 @@
 </head>
 
 <body>
-    <!--头部-->
-    <div class="header" id="header">
+  <!--头部-->
+  <div class="header">
     <a class="header-lt" id="header" href="../index/index.html"></a>
     <div class="header-rt">
-            <ul>
-              <li class="notice-wrapper">
-                  <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
-              </li>
-              <li class="user-notice">
-                <div id="user-operate" class="user-operate">
-                  <a href="javascript:;">
-                    <img class="user-img" src="../../asset/img/logo.png" alt="头像">
-                    管理
-                  </a>
-                  <a href="javascript:;" class="exit" title="退出">退出</a>
-                </div>
-              </li>
-            </ul>
-        </div>
+      <ul>
+        <li class="notice-wrapper">
+          <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+        </li>
+        <li class="user-notice">
+          <div id="user-operate" class="user-operate">
+            <a href="javascript:;">
+              <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+              管理
+            </a>
+            <a href="javascript:;" class="exit" title="退出">退出</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 
-    <!--侧边栏-->
-    <!--<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"-->
-    <!--marginwidth="0"-->
-    <!--style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>-->
-    <!--<div class="aside">-->
-        <!--<div class="menu-tree-wrapper">-->
-            <!--<ul id="menu-tree" class="menu-tree ztree"></ul>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; <div class="palace">-->
-      <!--<div class="palace-unit">111</div>-->
-      <!--<div class="palace-unit">222</div>-->
-      <!--<div class="palace-unit">333</div>-->
-      <!--<div class="palace-unit palace-left">444</div>-->
-      <!--<div class="palace-unit palace-ct">555</div>-->
-      <!--<div class="palace-unit palace-last">666</div>-->
-    <!--</div> &ndash;&gt;-->
-        <!--<div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>-->
-    <!--</div>-->
 
     <!-- 主内容：报警 -->
     <dl class="wrapper">
@@ -88,6 +70,7 @@
       </dt>
 
       <dd>
+        <form class="layui-form">
         <table id="dutyList" class="table">
           <colgroup>
             <col width="33">
@@ -119,52 +102,38 @@
             </tr>
           </thead>
           <tbody>
-            <!--<tr>
+            <tr>
               <th rowspan="7" class="font-16">昼<br>间</th>
               <td><p>
                 <span class="schedule">第一班</span>
                 <span class="duty-time">6时-8时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三张三<span class="ranks">(军官军官军)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
-              <th rowspan="15"><p></p></th>
+              <th rowspan="15" class="js-urgent"></th>
             </tr>
             <tr>
               <td><p>
                 <span class="schedule">第二班</span>
                 <span class="duty-time">8时-10时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -172,22 +141,15 @@
                 <span class="schedule">第三班</span>
                 <span class="duty-time">10时-12时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -195,22 +157,15 @@
                 <span class="schedule">第四班</span>
                 <span class="duty-time">12时-14时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -218,22 +173,15 @@
                 <span class="schedule">第五班</span>
                 <span class="duty-time">14时-16时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -241,22 +189,15 @@
                 <span class="schedule">第六班</span>
                 <span class="duty-time">16时-18时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -264,22 +205,15 @@
                 <span class="schedule">第七班</span>
                 <span class="duty-time">18时-20时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
 
@@ -289,22 +223,15 @@
                 <span class="schedule">第一班</span>
                 <span class="duty-time">20时-22时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -312,22 +239,15 @@
                 <span class="schedule">第二班</span>
                 <span class="duty-time">22时-24时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -335,22 +255,15 @@
                 <span class="schedule">第三班</span>
                 <span class="duty-time">0时-2时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -358,22 +271,15 @@
                 <span class="schedule">第四班</span>
                 <span class="duty-time">2时-4时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -381,22 +287,15 @@
                 <span class="schedule">第五班</span>
                 <span class="duty-time">4时-6时</span>
               </p></td>
-              <td><p></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
-              <td class="cyan"><p>李四<span class="ranks">(士兵)</span></p></td>
-              <td class="orange"><p>张三<span class="ranks">(军官)</span></p></p></td>
+              <td></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
+              <td class="cyan"></td>
+              <td class="orange"></td>
               <td class="cyan"><p>
-                李四<span class="ranks">(士兵)</span>
-                <div class="opt-outer">
-                  <div class="table-opt">
-                    <a href="#" class="js-copy btn-row">复制</a>
-                    <a href="#" class="js-paste btn-row">粘贴</a>
-                  </div>
-                </div>
                 </p></td>
             </tr>
             <tr>
@@ -404,22 +303,23 @@
               <td>
                 <p>应急班</p>
               </td>
-              <td colspan="9"><p></p></td>
+              <td colspan="9"></td>
             </tr>
             <tr>
               <td>
                 <p>集训</p>
               </td>
-              <td colspan="9"><p></p></td>
+              <td colspan="9"></td>
             </tr>
             <tr>
               <td colspan="2">
                 <p>机动</p>
               </td>
-              <td colspan="9"><p></p></td>
-            </tr>-->
+              <td colspan="9"></td>
+            </tr>
           </tbody>
         </table>
+        </form>
       </dd>
     </dl>
 
@@ -429,25 +329,29 @@
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
     <script src="../../asset/js/config.js"></script>
+<<<<<<< HEAD
+=======
     <!--<script src="../../asset/js/aside.js"></script>-->
     <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
     <script type='text/javascript' src='/dwr/util.js'></script>
+>>>>>>> f11da194f5a32a217786848ebae9327e7c9a971c
     <script src="../../asset/js/utils.js"></script>
     <script src="../../asset/introduce/layui/layui.js"></script>
 
     <script>
       layui.use(['laydate','table','form'], function(){
         var laydate = layui.laydate;
-          var form = layui.form;
+        var form = layui.form;
+        var d = formatDate();
         laydate.render({
           elem: '.js-laydate',
-            value:formatDate(),
+          value: d,
           format: 'yyyy-MM-dd'
         })
 
         var layer = layui.layer;
-        querySchedule();
+        querySchedule(d, form);
         
         $('.js-query').on('click',function () {
           var val = $('#dutyTime').val();
@@ -455,7 +359,7 @@
             layer.alert('请选择查询日期！')
             return false;
           }
-          querySchedule(val);
+          querySchedule(val, form);
         })
 		
 		var officer;
@@ -485,30 +389,22 @@
 			});
 		})();
 		
-		$('.js-edit').on('click',function() {
-			if($('.js-edit').text() == "保存") {
-				add();
-			} else {
-				edit();
-			}
-		});
-		
 		function copy(before, after) {
-			let date = $('#dutyTime').val() || formatDate()
-			let watchScheduleList = [];
+			var date = $('#dutyTime').val() || formatDate()
+			var watchScheduleList = [];
 			
-			let rowid = after.attr("rowid");
-			let tds = after.find('td');
+			var rowid = after.attr("rowid");
+			var tds = after.find('td');
 			
-			let resources = before.find('td');
+			var resources = before.find('td');
 			
-			for(let j = 1; j <= 9; j++) {
-				let columnid = tower[j - 1].id;
-				let cellid = $(tds[j]).attr("cellid");
+			for(var j = 1; j <= 9; j++) {
+				var columnid = tower[j - 1].id;
+				var cellid = $(tds[j]).attr("cellid");
 				
-				let pid = $(resources[j]).find("p").attr('pid');
+				var pid = $(resources[j]).find("p").attr('pid');
 				
-				let json = {
+				var json = {
 					personnelId: pid,
 					type: "2",
 					watchHourId: rowid,
@@ -522,7 +418,6 @@
 				watchScheduleList.push(json)
 			}
 			
-			// console.log(watchScheduleList)
 			$.ajax({
 				url: $ctx + '/watch_schedule/saveOrUpdate',
 				data: JSON.stringify( watchScheduleList ),
@@ -535,8 +430,8 @@
 		}
 		
 		function add() {
-			let date = $('#dutyTime').val() || formatDate()
-			let data = {
+			var date = $('#dutyTime').val() || formatDate();
+			var data = {
 				watchScheduleList: [],
 				jdPersonnelIdList: [],
 				jxPersonnelIdList: [],
@@ -545,28 +440,23 @@
 				watchTime: date,
 			}
 			
-			let trs = $('#dutyList tr');
-			for(let i = 1; i < 13; i++) {
-				let rowid = $(trs[i]).attr("rowid");
+			var trs = $('#dutyList tr');
+			for(var i = 1; i < 13; i++) {
+				var rowid = $(trs[i]).attr("rowid");
 				
-				let tds = $(trs[i]).find('td');
-				for(let j = 1; j <= 9; j++) {
-					let columnid = tower[j - 1].id;
-					let cellid = $(tds[j]).attr("cellid");
+				var tds = $(trs[i]).find('td');
+				for(var j = 1; j <= 9; j++) {
+					var columnid = tower[j - 1].id;
+					var cellid = $(tds[j]).attr("cellid");
 					
-					// console.log(tds[j])
+					var pid = $(tds[j]).find("select").val();
 					
-					let pid = $(tds[j]).find("select").val();
-					
-					let json = {
+					var json = {
 						personnelId: pid,
 						type: "2",
 						watchHourId: rowid,
 						watchTime: date,
 						watchTowerId: columnid,
-						
-						// row: $(trs[i]).find('.duty-time').text(),
-						// column: tower[j - 1].wtName
 					}
 					
 					if(cellid)
@@ -576,23 +466,21 @@
 				}
 			}
 			
-			let ids = $('.js-urgent select');
+			var ids = $('.js-urgent select');
 			
-			for(let i = 0; i < ids.length; i++) {
+			for(var i = 0; i < ids.length; i++) {
 				data.yjzPersonnelIdList.push($(ids[i]).val());
 			}
 			
-			let types = $('.save_type');
-			for(let i = 0; i < types.length; i++) {
+			var types = $('.save_type');
+			for(var i = 0; i < types.length; i++) {
 				ids = $(types[i]).find("select");
-				let type = $(types[i]).attr("type");
-				for(let j = 0; j < ids.length; j++) {
+				var type = $(types[i]).attr("type");
+				for(var j = 0; j < ids.length; j++) {
 					data[type].push($(ids[j]).val());
 				}
 			}
-			
-			// console.log(data);
-			
+
 			$.ajax({
 				url: $ctx + '/watch_schedule/saveOrUpdate',
 				data: JSON.stringify(data),
@@ -605,13 +493,13 @@
 		}
 		
 		function edit() {
-			let trs = $('#dutyList tr');
-			for(let i = 1; i < 13; i++) {
-				let tds = $(trs[i]).find('td');
+			var trs = $('#dutyList tr');
+			for(var i = 1; i < 13; i++) {
+				var tds = $(trs[i]).find('td');
 				
-				for(let j = 1; j <= 9; j++) {
+				for(var j = 1; j <= 9; j++) {
 					if(j < tds.length) {
-						let pid = $(tds[j]).find("p").attr('pid');
+						var pid = $(tds[j]).find("p").attr('pid');
 						if(j == 1) {
 							$(tds[j]).html(getOfficer(pid));
 						} else {
@@ -621,17 +509,17 @@
 				}
 			}
 			
-			let ids = $('.js-urgent').empty().attr("ids").split(",");
+			var ids = $('.js-urgent').empty().attr("ids").split(",");
 			
-			for(let i = 0; i < ids.length; i++) {
-				$('.js-urgent').append($("<div></div>").append(getPolice(ids[i])));
+			for(var i = 0; i < ids.length; i++) {
+				$('.js-urgent').append($("<span></span>").append(getPolice(ids[i])));
 			}
 			
-			let types = $('.save_type');
-			for(let i = 0; i < types.length; i++) {
+			var types = $('.save_type');
+			for(var i = 0; i < types.length; i++) {
 				ids = $(types[i]).empty().attr("ids").split(",");
-				for(let j = 0; j < ids.length; j++) {
-					$(types[i]).append($("<div></div>").append(getPolice(ids[j])));
+				for(var j = 0; j < ids.length; j++) {
+					$(types[i]).append($("<span></span>").append(getPolice(ids[j])));
 				}
 			}
 			
@@ -639,8 +527,8 @@
 		}
 		
 		function getOfficer(id) {
-			let select = $('<select></select>');
-			for(let i = 0; i < officer.length; i++) {
+			var select = $('<select></select>');
+			for(var i = 0; i < officer.length; i++) {
 				select.append($('<option></option>')
 					.val(officer[i].id)
 					.attr("selected", id == officer[i].id)
@@ -650,8 +538,8 @@
 		}
 		
 		function getPolice(id) {
-			let select = $('<select></select>');
-			for(let i = 0; i < police.length; i++) {
+			var select = $('<select></select>');
+			for(var i = 0; i < police.length; i++) {
 				select.append($('<option></option>')
 					.val(police[i].id)
 					.attr("selected", id == police[i].id)
@@ -660,131 +548,127 @@
 			return select;
 		}
 		
-        function querySchedule(d){
-		    console.log(d,'ds')
-          var _d = d || formatDate()
-          $.ajax({
-            url: $ctx + '/watch_schedule/getListByWatchTime/'+ _d,
-            type: 'get'
-          }).done(function(res) {
-            // todo: 空表格样式未做
-            var _html = '',
-                dt = res.data.list;
-            //根据后台返回值，确定下拉框的值
-              console.log(res.data.scheduleType)
-              for(var i=0;i<$('#scheduleType').find('option').length;i++){
-                  if($('#scheduleType').find('option').eq(i).attr('value')==res.data.scheduleType){
-                      $('#scheduleType').find('option').eq(i).attr('selected',true)
-                  }else{
-                      $('#scheduleType').find('option').eq(i).removeAttr('selected')
-                  }
-              }
-              form.render('select');
-            for(var i = 0; i < dt.length; i++){
-              var _dt = dt[i];
-                _html += '<tr rowid="' + _dt.id + '">'
-                if(i === 0){
-                  _html += '  <th rowspan="7" class="font-16">昼<br>间</th>'
-                }
-                if(i === 7){
-                  _html += '  <th rowspan="5" class="font-16">夜<br>间</th>'
-                }
-                _html += '    <td><p>'
-                _html += '    <span class="schedule">' + _dt.shift + '</span>'
-                _html += '    <span class="duty-time">' + _dt.startHour + '时-' + _dt.endHour + '时</span>'
-                _html += '  </p></td>'
-                var innerDt = _dt.personnelList;
-                for(var j = 0; j < 9; j++) {
-					if(j < innerDt.length) {
-					  var rowColor = ((j%2)===0) ? 'cyan' : 'orange';
-					  if (j === (innerDt.length - 1)) {
-						_html += '  <td class="' + rowColor + '" cellid="' + innerDt[j].id +'"><p pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName
-						_html += '    <span class="ranks">(' + innerDt[j].militaryRank + ')</span>'
-						_html += '    <div class="opt-outer">'
-						_html += '    <div class="table-opt">'
-						_html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>'
-						_html += '      <a href="javascript:;" class="js-paste btn-row">粘贴</a>'
-						_html += '    </div>'
-						_html += '    </div>'
-						_html += '    </p></td>'
-					  } else {
-						_html += '  <td class="' + rowColor + '" cellid="' + innerDt[j].id +'"><p pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRank + '</span></p></td>'
-					  }
-					} else {
-						_html += '<td></td>'
-					}
-                }
-                if(i === 0){
-                  _html += '  <th rowspan="15"><p class="js-urgent"></p></th>'
-                }
-                _html += '</tr>'
-              }
-            $('#dutyList > tbody').html(_html);
-			
-			$('.js-copy').click(function() {
-				mirror = $(this).parent().parent().parent().parent();
-				layer.msg('复制成功');
-			});
-			
-			$('.js-paste').click(function() {
-				if(!mirror) {
-					layer.msg('请先复制再粘贴');
-					return;
-				}
-				
-				let row = $(this).parent().parent().parent().parent();
-				copy(mirror, row);
-			});
-            queryOuter(_d);
-          }).fail(function() {
-            layer.msg('请求错误')
-          })
+    function querySchedule(d, form){
+      // var _d = d;
+      var _d = '2019-05-21';
+      $.ajax({
+        url: $ctx + '/watch_schedule/getListByWatchTime/'+ _d,
+        type: 'get'
+      }).done(function(res) {
+        // todo: 空表格样式未做
+
+        var dt = res.data.list;
+        //根据后台返回值，确定下拉框的值
+        for(var i=0;i<$('#scheduleType').find('option').length;i++){
+            if($('#scheduleType').find('option').eq(i).attr('value')==res.data.scheduleType){
+              $('#scheduleType').find('option').eq(i).attr('selected',true);
+            }else{
+              $('#scheduleType').find('option').eq(i).removeAttr('selected');
+            }
+        }
+        form.render('select');
+        for(var i = 0; i < dt.length; i++){
+          var $tr = $('#dutyList>tbody>tr').eq(i);
+          $tr.addClass('js-isEdit isedit');
+          var _dt = dt[i];
+          var innerDt = _dt.personnelList;
+          for(var j = 0; j < 9; j++) {
+            var $td = $tr.find('td').eq(j+1);
+            var _html = '';
+            _html += '<p class="layui-input-inline hide-elm js-select">';
+            _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="">';
+            _html += '  <option value="innerDt[j].personnelId">' + innerDt[j].personnelName + '(' + innerDt[j].militaryRank + ')</option>';
+            _html += '  </select>';
+            _html += '</p>';
+            if (j === (innerDt.length - 1)) {
+              _html += '<p pid="' + innerDt[j].personnelId + '" class="js-onduty">' + innerDt[j].personnelName;
+              _html += '  <span class="ranks">(' + innerDt[j].militaryRank + ')</span>';
+              _html += '  <div class="opt-outer">';
+              _html += '    <div class="table-opt">';
+              _html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>';
+              _html += '      <a href="javascript:;" class="js-paste btn-row">粘贴</a>';
+              _html += '    </div>';
+              _html += '  </div>';
+              _html += '</p>';
+            } else {
+              _html += '<p class="js-onduty" pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRank + '</span></p>'
+            }
+            $td.html(_html)
+          }
         }
 
-        function queryOuter(d){
+        $('.js-copy').click(function() {
+          mirror = $(this).parent().parent().parent().parent();
+          layer.msg('复制成功');
+        });
+
+        $('.js-paste').click(function() {
+          if(!mirror) {
+            layer.msg('请先复制再粘贴');
+            return;
+          }
+
+          var row = $(this).parent().parent().parent().parent();
+          copy(mirror, row);
+        });
+        queryOuter(_d, form);
+      }).fail(function() {
+        layer.msg('请求错误')
+      })
+    }
+
+    function queryOuter(d, form){
 			$.ajax({
 				url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d,
 				type: 'get'
 			}).done(function(res) {
-				// console.log(res);
-				var _html = '',
-				dt = res.data;
+				var dt = res.data;
 				for(var i=0; i<(dt.length-1); i++){
+				  var _html = '';
+          var $tr = $('#dutyList>tbody>tr').eq(i+12);
 					var _dt = dt[i];
-					_html += '<tr>'
-					if(i === 0){
-						_html += '<th rowspan="2" class="font-16">在<br>外</th>'
-					}
-					if(i === 2){
-						_html += '<th colspan="2" class="font-16">' + _dt.name + '</th>'
-					}else{
-						_html += '<td><p>' + _dt.name + '</p></td>'
-					}
 					var innerDt = _dt.list;
 					var innerHtml = ''
 					for(var j = 0; j<innerDt.length; j++) {
 						innerHtml += innerDt[j].personnelName + '，'
 					}
 					innerHtml = innerHtml.slice(0,-1);
-					
-					let ids = innerDt.map(function(item){
+
+					var ids = innerDt.map(function(item){
 						return item.personnelId;
 					}).join(',');
-					
-					let type = {0:'yjbPersonnelIdList', 1:'jxPersonnelIdList', 2:'jdPersonnelIdList'}[i];
-					_html += '  <td colspan="9"><p class="save_type" type="' + type + '" ids="' + ids + '">' + innerHtml + '</p></td>'
-					_html += '</tr>'
+
+					var type = {0:'yjbPersonnelIdList', 1:'jxPersonnelIdList', 2:'jdPersonnelIdList'}[i];
+					_html += '<p class="js-textarea hide-elm" ids="' + ids + '"><input type="text" class="layui-input" value="' + innerHtml + '" /></p>'
+					_html += '<p class="save_type js-onduty" type="' + type + '" ids="' + ids + '">' + innerHtml + '</p>'
+          $tr.find('td').eq(1).html(_html);
 				}
-				$('#dutyList > tbody').append(_html);
 
 				var _last = dt[3].list;
 				var _urgents = _last.map(function(item){
 					return item.personnelName;
-				}).join('<br>');
+				}).join('，');
 				var ids = _last.map(function(item){
 					return item.personnelId;
 				}).join(',');
 				$('.js-urgent').attr("ids", ids).html(_urgents);
+
+        $('.js-edit').on('click',function() {
+          if($('.js-edit').text() == "保存") {
+            $('.js-edit').text('修改')
+            $('.js-select').addClass('hide-elm');
+            $('.js-textarea').addClass('hide-elm');
+            $('.js-onduty').show();
+            $('.js-isEdit').addClass('isedit');
+          } else {
+            $('.js-edit').text('保存')
+            $('.js-select').removeClass('hide-elm');
+            $('.js-textarea').removeClass('hide-elm');
+            $('.js-onduty').hide();
+            $('.js-isEdit').removeClass('isedit');
+            form.render('select');
+          }
+        });
 			}).fail(function() {
 				layer.msg('请求错误')
 			})
