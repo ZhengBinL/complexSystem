@@ -303,7 +303,13 @@
               <td>
                 <p>应急班</p>
               </td>
-              <td colspan="9"></td>
+              <td colspan="9">
+                <div class="txt-area">
+                  <span>张三<a href="javascript:;" class="btn-del">&times;</a></span>
+                  <span>李四<a href="javascript:;" class="btn-del">&times;</a></span>
+                  <a href="javascript:;" class="btn-select">&times;</a>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>
@@ -329,13 +335,9 @@
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
     <script src="../../asset/js/config.js"></script>
-<<<<<<< HEAD
-=======
-    <!--<script src="../../asset/js/aside.js"></script>-->
     <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
     <script type='text/javascript' src='/dwr/util.js'></script>
->>>>>>> f11da194f5a32a217786848ebae9327e7c9a971c
     <script src="../../asset/js/utils.js"></script>
     <script src="../../asset/introduce/layui/layui.js"></script>
 
@@ -429,103 +431,6 @@
 			});
 		}
 		
-		function add() {
-			var date = $('#dutyTime').val() || formatDate();
-			var data = {
-				watchScheduleList: [],
-				jdPersonnelIdList: [],
-				jxPersonnelIdList: [],
-				yjbPersonnelIdList: [],
-				yjzPersonnelIdList: [],
-				watchTime: date,
-			}
-			
-			var trs = $('#dutyList tr');
-			for(var i = 1; i < 13; i++) {
-				var rowid = $(trs[i]).attr("rowid");
-				
-				var tds = $(trs[i]).find('td');
-				for(var j = 1; j <= 9; j++) {
-					var columnid = tower[j - 1].id;
-					var cellid = $(tds[j]).attr("cellid");
-					
-					var pid = $(tds[j]).find("select").val();
-					
-					var json = {
-						personnelId: pid,
-						type: "2",
-						watchHourId: rowid,
-						watchTime: date,
-						watchTowerId: columnid,
-					}
-					
-					if(cellid)
-						json.id = cellid;
-					
-					data.watchScheduleList.push(json)
-				}
-			}
-			
-			var ids = $('.js-urgent select');
-			
-			for(var i = 0; i < ids.length; i++) {
-				data.yjzPersonnelIdList.push($(ids[i]).val());
-			}
-			
-			var types = $('.save_type');
-			for(var i = 0; i < types.length; i++) {
-				ids = $(types[i]).find("select");
-				var type = $(types[i]).attr("type");
-				for(var j = 0; j < ids.length; j++) {
-					data[type].push($(ids[j]).val());
-				}
-			}
-
-			$.ajax({
-				url: $ctx + '/watch_schedule/saveOrUpdate',
-				data: JSON.stringify(data),
-				contentType: 'application/json',
-				type: 'put'
-			}).done(function(res) {
-				$('.js-edit').text('修改')
-				querySchedule(date);
-			});
-		}
-		
-		function edit() {
-			var trs = $('#dutyList tr');
-			for(var i = 1; i < 13; i++) {
-				var tds = $(trs[i]).find('td');
-				
-				for(var j = 1; j <= 9; j++) {
-					if(j < tds.length) {
-						var pid = $(tds[j]).find("p").attr('pid');
-						if(j == 1) {
-							$(tds[j]).html(getOfficer(pid));
-						} else {
-							$(tds[j]).html(getPolice(pid));
-						}
-					}
-				}
-			}
-			
-			var ids = $('.js-urgent').empty().attr("ids").split(",");
-			
-			for(var i = 0; i < ids.length; i++) {
-				$('.js-urgent').append($("<span></span>").append(getPolice(ids[i])));
-			}
-			
-			var types = $('.save_type');
-			for(var i = 0; i < types.length; i++) {
-				ids = $(types[i]).empty().attr("ids").split(",");
-				for(var j = 0; j < ids.length; j++) {
-					$(types[i]).append($("<span></span>").append(getPolice(ids[j])));
-				}
-			}
-			
-			$('.js-edit').text('保存');
-		}
-		
 		function getOfficer(id) {
 			var select = $('<select></select>');
 			for(var i = 0; i < officer.length; i++) {
@@ -555,8 +460,6 @@
         url: $ctx + '/watch_schedule/getListByWatchTime/'+ _d,
         type: 'get'
       }).done(function(res) {
-        // todo: 空表格样式未做
-
         var dt = res.data.list;
         //根据后台返回值，确定下拉框的值
         for(var i=0;i<$('#scheduleType').find('option').length;i++){
@@ -612,8 +515,8 @@
           copy(mirror, row);
         });
         queryOuter(_d, form);
-      }).fail(function() {
-        layer.msg('请求错误')
+      }).fail(function(err) {
+        console.log(err)
       })
     }
 
@@ -638,20 +541,23 @@
 						return item.personnelId;
 					}).join(',');
 
-					var type = {0:'yjbPersonnelIdList', 1:'jxPersonnelIdList', 2:'jdPersonnelIdList'}[i];
+					/*var type = {0:'yjbPersonnelIdList', 1:'jxPersonnelIdList', 2:'jdPersonnelIdList'}[i];
 					_html += '<p class="js-textarea hide-elm" ids="' + ids + '"><input type="text" class="layui-input" value="' + innerHtml + '" /></p>'
 					_html += '<p class="save_type js-onduty" type="' + type + '" ids="' + ids + '">' + innerHtml + '</p>'
-          $tr.find('td').eq(1).html(_html);
+          $tr.find('td').eq(1).html(_html);*/
 				}
 
 				var _last = dt[3].list;
 				var _urgents = _last.map(function(item){
 					return item.personnelName;
-				}).join('，');
+				}).join('<br>');
 				var ids = _last.map(function(item){
 					return item.personnelId;
 				}).join(',');
-				$('.js-urgent').attr("ids", ids).html(_urgents);
+				var urgentHtml = '';
+				urgentHtml += '<p class="text-area hide-elm js-textarea">' + _urgents + '</p>';
+				urgentHtml += '<p class="js-onduty">' + _urgents + '</p>';
+				$('.js-urgent').attr("ids", ids).html(urgentHtml);
 
         $('.js-edit').on('click',function() {
           if($('.js-edit').text() == "保存") {
