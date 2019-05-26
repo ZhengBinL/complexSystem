@@ -17,9 +17,9 @@
 .layui-input, .layui-select, .layui-textarea {
   height: 30px;
 }
-.layui-btn {
+.layui-btn, .layui-btn:focus {
   height: 30px;
-  line-height: 30px;
+  line-height: 28px;
 }
 .layui-btn-normal {
   background-color: #3d5ac6;
@@ -114,12 +114,10 @@
 /*下拉框样式*/
 .layui-form-select dl{
   background: rgba(4,40,103, 0.88)!important;
+  border: 0;
 }
-.layui-form-select dl dd:hover{
-  background: #071d48!important;
-}
-.layui-form-select dl dd.layui-this{
-  background: #071d48!important;
+.layui-form-select dl dd:hover, .layui-form-select dl dd.layui-this{
+  background: #0b4db2 !important;
 }
 /*查询条件角度*/
 .layui-input, .layui-select, .layui-textarea{
