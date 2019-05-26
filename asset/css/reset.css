@@ -121,3 +121,13 @@
 .layui-form-select dl dd.layui-this{
   background: #071d48!important;
 }
+/*查询条件角度*/
+.layui-input, .layui-select, .layui-textarea{
+  border-radius: 6px;
+}
+.layui-laypage-limits{
+  display: none!important;
+}
+.layui-table-grid-down{
+  display: none;
+}
