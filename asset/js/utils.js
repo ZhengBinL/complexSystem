@@ -15,17 +15,17 @@ $(function(){
 $('body').on('click', '.js-police-pop-close', function () {
     var msg = $(this).closest('.police-wrapper').find('.js-police-msg').html()
     var that = this;
-    $.ajax({
-        type:'PUT',
-        dataType:'json',
-        contentType:'application/json',
-        url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(msg) + '&op=no',
-        success:function(res){
-            if (res.code == 0){
+    // $.ajax({
+    //     type:'GET',
+    //     dataType:'json',
+    //     contentType:'application/json',
+    //     url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(msg) + '&op=no',
+    //     success:function(res){
+    //         if (res.code == 0){
                 $(that).closest('.police-wrapper').remove();
-            }
-        }
-    })
+    //         }
+    //     }
+    // })
 }).on('click', '.js-police-look', function () {
     var msg = $(this).closest('.police-wrapper').find('.js-police-msg').html();
     var rtspUrls = $(this).closest('.police-wrapper').find('.js-rtspUrls').text();
