@@ -304,24 +304,32 @@
                 <p>应急班</p>
               </td>
               <td colspan="9">
-                <div class="txt-area">
-                  <span>张三<a href="javascript:;" class="btn-del">&times;</a></span>
-                  <span>李四<a href="javascript:;" class="btn-del">&times;</a></span>
-                  <a href="javascript:;" class="btn-select">&times;</a>
-                </div>
+                <!--<div class="txt-area">
+                  <div class="js-onduty">
+                    <span>张三<a href="javascript:;" class="btn-del">&times;</a></span>
+                    <span>李四<a href="javascript:;" class="btn-del">&times;</a></span>
+                  </div>
+                  <a href="javascript:;" class="btn-select">选择</a>
+                  <div class="select-area">
+                    <input type="checkbox" name="write" lay-skin="primary" title="写作" checked="">
+                    <input type="checkbox" name="read" lay-skin="primary" title="阅读">
+                  </div>
+                </div>-->
               </td>
             </tr>
             <tr>
               <td>
                 <p>集训</p>
               </td>
-              <td colspan="9"></td>
+              <td colspan="9">
+              </td>
             </tr>
             <tr>
               <td colspan="2">
                 <p>机动</p>
               </td>
-              <td colspan="9"></td>
+              <td colspan="9">
+              </td>
             </tr>
           </tbody>
         </table>
@@ -335,12 +343,11 @@
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
     <script src="../../asset/js/config.js"></script>
-    <!-- <script type='text/javascript' src='/dwr/engine.js'></script>
+    <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
-    <script type='text/javascript' src='/dwr/util.js'></script> -->
+    <script type='text/javascript' src='/dwr/util.js'></script>
     <script src="../../asset/js/utils.js"></script>
     <script src="../../asset/introduce/layui/layui.js"></script>
-    <script src="./index.js"></script>
 
     <script>
       layui.use(['laydate','table','form'], function(){
@@ -355,7 +362,7 @@
 
         var layer = layui.layer;
         querySchedule(d, form);
-        
+
         $('.js-query').on('click',function () {
           var val = $('#dutyTime').val();
           if(val.trim() === ''){
@@ -364,124 +371,26 @@
           }
           querySchedule(val, form);
         })
-		
-		var officer;
-		var police;
+
 		var tower;
 		var mirror;
-		
-		// 初始化人员
-		(function () {
-			$.ajax({
-				url: $ctx + '/sys_armed_police/findPersonnelByNameAndRank',
-				type: 'get'
-			}).done(function(res) {
-				officer = res.data;
-			});
-			$.ajax({
-				url: $ctx + '/sys_armed_police/find_police_list/1/99999999',
-				type: 'post',
-			}).done(function(res) {
-				police = res.data.list;
-			});
-			$.ajax({
-				url: $ctx + '/watch_tower/getList',
-				type: 'get',
-			}).done(function(res) {
-				tower = res.data;
-			});
-		})();
-    // $('.js-edit').on('click',function() {
-		// 	if($('.js-edit').text() == "保存") {
-		// 		add();
-		// 	} else{
-    //     edit()
-    //   }
-    // });
-    // function add() {
-		// 	var date = $('#dutyTime').val() || formatDate()
-		// 	var data = {
-		// 		watchScheduleList: [],
-		// 		jdPersonnelIdList: [],
-		// 		jxPersonnelIdList: [],
-		// 		yjbPersonnelIdList: [],
-		// 		yjzPersonnelIdList: [],
-		// 		watchTime: date,
-		// 	}
-			
-		// 	var trs = $('#dutyList tr');
-		// 	for(var i = 1; i < 13; i++) {
-		// 		var rowid = $(trs[i]).attr("rowid");
-				
-		// 		var tds = $(trs[i]).find('td');
-		// 		for(var j = 1; j <= 9; j++) {
-    //       var columnid = tower[j - 1].id;
-		// 			var cellid = $(tds[j]).find('select').attr('data-index');
-					
-		// 			// console.log(tds[j])
-					
-    //       var pid = $(tds[j]).find("select").val();
-		// 			var json = {
-		// 				personnelId: pid,
-		// 				type: "2",
-		// 				watchHourId: rowid,
-		// 				watchTime: date,
-		// 				watchTowerId: columnid,
-						
-		// 				// row: $(trs[i]).find('.duty-time').text(),
-		// 				// column: tower[j - 1].wtName
-		// 			}
-					
-		// 			if(cellid)
-		// 				json.id = cellid;
-					
-		// 			data.watchScheduleList.push(json)
-		// 		}
-		// 	}
-			
-		// 	var ids = $('.js-urgent select');
-			
-		// 	for(var i = 0; i < ids.length; i++) {
-		// 		data.yjzPersonnelIdList.push($(ids[i]).val());
-		// 	}
-			
-		// 	var types = $('.save_type');
-		// 	for(var i = 0; i < types.length; i++) {
-		// 		ids = $(types[i]).find("select");
-		// 		var type = $(types[i]).attr("type");
-		// 		for(var j = 0; j < ids.length; j++) {
-		// 			data[type].push($(ids[j]).val());
-		// 		}
-		// 	}
-			
-		// 	// console.log(data);
-		// 	console.log(data,'data')
-		// 	// $.ajax({
-		// 	// 	url: $ctx + '/watch_schedule/saveOrUpdate',
-		// 	// 	data: JSON.stringify(data),
-		// 	// 	contentType: 'application/json',
-		// 	// 	type: 'put'
-		// 	// }).done(function(res) {
-		// 	// 	$('.js-edit').text('修改')
-		// 	// 	querySchedule(date);
-		// 	// });
-		// }
-  
+
+
 		function copy(before, after) {
 			var date = $('#dutyTime').val() || formatDate()
 			var watchScheduleList = [];
-			
+
 			var rowid = after.attr("rowid");
 			var tds = after.find('td');
-			
+
 			var resources = before.find('td');
-			
+
 			for(var j = 1; j <= 9; j++) {
 				var columnid = tower[j - 1].id;
 				var cellid = $(tds[j]).attr("cellid");
-				
+
 				var pid = $(resources[j]).find("p").attr('pid');
-				
+
 				var json = {
 					personnelId: pid,
 					type: "2",
@@ -489,13 +398,13 @@
 					watchTime: date,
 					watchTowerId: columnid,
 				}
-				
+
 				if(cellid)
 					json.id = cellid;
-				
+
 				watchScheduleList.push(json)
 			}
-			
+
 			$.ajax({
 				url: $ctx + '/watch_schedule/saveOrUpdate',
 				data: JSON.stringify( watchScheduleList ),
@@ -506,34 +415,11 @@
 				querySchedule(date);
 			});
 		}
-		
-		function getOfficer(id) {
-			var select = $('<select></select>');
-			for(var i = 0; i < officer.length; i++) {
-				select.append($('<option></option>')
-					.val(officer[i].id)
-					.attr("selected", id == officer[i].id)
-					.text(officer[i].personnelName + "(" + officer[i].militaryRankName + ")"))
-			}
-			return select;
-		}
-		
-		function getPolice(id) {
-			var select = $('<select></select>');
-			for(var i = 0; i < police.length; i++) {
-				select.append($('<option></option>')
-					.val(police[i].id)
-					.attr("selected", id == police[i].id)
-					.text(police[i].personnelName + "(" + police[i].militaryRankName + ")"))
-			}
-			return select;
-		}
-		
+
     function querySchedule(d, form){
-      // var _d = d;
-      // var _d = '2019-05-10';
+      var t = new Date().getTime();
       $.ajax({
-        url: $ctx + '/watch_schedule/getListByWatchTime/'+ _d,
+        url: $ctx + '/watch_schedule/getListByWatchTime/'+ d + '?' + t,
         type: 'get'
       }).done(function(res) {
         var dt = res.data.list;
@@ -545,19 +431,18 @@
               $('#scheduleType').find('option').eq(i).removeAttr('selected');
             }
         }
-        // form.render('select');
+        form.render('select');
         for(var i = 0; i < dt.length; i++){
           var $tr = $('#dutyList>tbody>tr').eq(i);
           $tr.addClass('js-isEdit isedit');
           var _dt = dt[i];
           var innerDt = _dt.personnelList;
-          // console.log(innerDt)
           for(var j = 0; j < 9; j++) {
             var $td = $tr.find('td').eq(j+1);
             var _html = '';
             _html += '<p class="layui-input-inline hide-elm js-select">';
-            _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="" data-index='+innerDt[j].id+'>';
-            _html += '  <option value="'+innerDt[j].personnelId+'" data-rank='+innerDt[j].militaryRank+'>' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
+            _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="">';
+            _html += '  <option value="innerDt[j].personnelId">' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
             _html += '  </select>';
             _html += '</p>';
             if (j === (innerDt.length - 1)) {
@@ -591,135 +476,169 @@
           var row = $(this).parent().parent().parent().parent();
           copy(mirror, row);
         });
-        queryOuter(_d, form);
+        queryOuter(d, form);
       }).fail(function(err) {
         console.log(err)
       })
     }
 
     function queryOuter(d, form){
+		  var t = new Date().getTime();
 			$.ajax({
-				url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d,
+				url: $ctx + '/watch_schedule/getOutPersonnelByDate/'+ d + '?' + t,
 				type: 'get'
 			}).done(function(res) {
 				var dt = res.data;
-				for(var i=0; i<(dt.length-1); i++){
+        var ids = [];
+				for(var i=0; i<dt.length; i++){
 				  var _html = '';
           var $tr = $('#dutyList>tbody>tr').eq(i+12);
 					var _dt = dt[i];
 					var innerDt = _dt.list;
-					var innerHtml = ''
+					var innerHtml = '';
+					var innerTxt = '';
+					var _style = (i===3) ? 'text-area' : 'txt-area';
+					if(i===3){
+            innerTxt = innerDt.map(function(item){
+              return item.personnelName;
+            }).join('<br>');
+          }else{
+            innerTxt = innerDt.map(function(item){
+              return item.personnelName;
+            }).join('，');
+          }
+
 					for(var j = 0; j<innerDt.length; j++) {
-						innerHtml += innerDt[j].personnelName + '，'
+					  ids.push(innerDt[j].personnelId);
+            innerHtml += '<span data-id="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<a href="javascript:;" class="btn-del">&times;</a></span>';
 					}
-					innerHtml = innerHtml.slice(0,-1);
-
-					var ids = innerDt.map(function(item){
-						return item.personnelId;
-					}).join(',');
-
-					/*var type = {0:'yjbPersonnelIdList', 1:'jxPersonnelIdList', 2:'jdPersonnelIdList'}[i];
-					_html += '<p class="js-textarea hide-elm" ids="' + ids + '"><input type="text" class="layui-input" value="' + innerHtml + '" /></p>'
-					_html += '<p class="save_type js-onduty" type="' + type + '" ids="' + ids + '">' + innerHtml + '</p>'
-          $tr.find('td').eq(1).html(_html);*/
+          var dutyHtml = '';
+          if(i===3){
+            dutyHtml += '<p class="js-onduty">' + innerTxt + '</p>';
+            dutyHtml += '<div class="' + _style + ' hide-elm js-select">';
+            dutyHtml += '  <div class="show-select">';
+            dutyHtml += innerHtml + '  </div>';
+            dutyHtml += '  <a href="javascript:;" class="btn-select">选择</a>';
+            dutyHtml += '  <ul class="select-area">';
+            dutyHtml += '    <li>';
+            dutyHtml += '    </li>';
+            dutyHtml += '  </ul>';
+            dutyHtml += '</div>';
+            $('#dutyList').find('.js-urgent').html(dutyHtml);
+          }else{
+            dutyHtml += '<p class="js-onduty">' + innerTxt + '</p>';
+            dutyHtml += '<div class="' + _style + ' hide-elm js-select">';
+            dutyHtml += '  <ul class="select-area">';
+            dutyHtml += '    <li>';
+            dutyHtml += '    </li>';
+            dutyHtml += '  </ul>';
+            dutyHtml += '  <div class="show-select">';
+            dutyHtml += innerHtml + '  </div>';
+            dutyHtml += '  <a href="javascript:;" class="btn-select">选择</a>';
+            dutyHtml += '</div>';
+            $tr.find('td').eq(1).html(dutyHtml);
+          }
 				}
 
-				var _last = dt[3].list;
-				var _urgents = _last.map(function(item){
-					return item.personnelName;
-				}).join('<br>');
-				var ids = _last.map(function(item){
-					return item.personnelId;
-				}).join(',');
-				var urgentHtml = '';
-				urgentHtml += '<p class="text-area hide-elm js-textarea">' + _urgents + '</p>';
-				urgentHtml += '<p class="js-onduty">' + _urgents + '</p>';
-				$('.js-urgent').attr("ids", ids).html(urgentHtml);
-
-        $('.js-edit').on('click',function() {
+        $('.js-edit').off().on('click',function(e) {
           if($('.js-edit').text() == "保存") {
-            // add();
             $('.js-edit').text('修改')
             $('.js-select').addClass('hide-elm');
             $('.js-textarea').addClass('hide-elm');
             $('.js-onduty').show();
             $('.js-isEdit').addClass('isedit');
+
+            //开始保存
+
           } else {
             $('.js-edit').text('保存')
             $('.js-select').removeClass('hide-elm');
             $('.js-textarea').removeClass('hide-elm');
             $('.js-onduty').hide();
             $('.js-isEdit').removeClass('isedit');
-            // form.render('select');
-            $.ajax({
-              type:'GET',
-              url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name=&ranks=3,4,5',
-            }).done(function(res){
-              var resDate = res.data;
-              var _html="";
-              for(var i=0;i<resDate.length;i++){
-                _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
-              }
-              for(var j=0;j<$('.js-select').length;j++){
-                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]==0){
-                  $('.js-select').eq(j).find('select').append(_html)
-                }
-              }
-              form.render('select');
-            })
-
-            $.ajax({
-              type:'GET',
-              url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name=&ranks=',
-            }).done(function(res){
-              var resDate = res.data;
-              var _html="";
-              for(var i=0;i<resDate.length;i++){
-                _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
-              }
-              for(var j=0;j<$('.js-select').length;j++){
-                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]!=0){
-                  $('.js-select').eq(j).find('select').append(_html)
-                }
-              }
-              form.render('select');
-            })
+            form.render('select');
           }
         });
-			}).fail(function() {
-				layer.msg('请求错误')
-			})
+
+        $('.btn-select').on('click',function(e){
+          e.stopPropagation();
+          var $tis = $(this);
+          if($tis.parent('.js-select').find('.select-area li').find('label').length>0){
+            $tis.parent('.js-select').find('.select-area').show()
+          }else{
+            renderSelectarea($tis,ids);
+          }
+        })
+      }).fail(function(err) {
+        console.log(err)
+      })
 		}
 
- //更新
-    form.on('select()', function(data){
-      var dataValue = {
-				watchScheduleList: [
-          {
-            "id": $(data.elem).attr('data-index'),
-            "personnelId":data.value,
-          }
-        ],
-				jdPersonnelIdList: [],
-				jxPersonnelIdList: [],
-				yjbPersonnelIdList: [],
-				yjzPersonnelIdList: [],
-			}
-      // console.log(dataValue,'data')
+		function renderSelectarea(tis, ids){
       $.ajax({
-				url: $ctx + '/watch_schedule/saveOrUpdate',
-				data: JSON.stringify(dataValue),
-				contentType: 'application/json',
-				type: 'put'
-			}).done(function(res) {
-				$('.js-edit').text('修改')
-				querySchedule();
-			});
-    });
-  })
-    </script>
-    <script>
+        url: $ctx + '/sys_armed_police/findPersonnelByNameAndRank',
+        type: 'get'
+      }).done(function(res) {
+        var dt = res.data;
+        var chkHtml = '';
+        for(var i=0; i<dt.length; i++){
+          var item = dt[i];
+          var isCheck = false;
+          var _title = item.personnelName + '(' + item.militaryRankName + ')';
+          for(var j=0; j<ids.length; j++){
+            if(ids[j]===item.id){
+              isCheck = true;
+              break;
+            }
+          }
+          if(isCheck){
+            chkHtml += '<label class="chkbox"><input type="checkbox" name="soldier" data-name="' + item.personnelName + '" value="' + item.id + '" checked="">' + _title + '<i></i></label>'
+          }else{
+            chkHtml += '<label class="chkbox"><input type="checkbox" name="soldier" data-name="' + item.personnelName + '" value="' + item.id + '">' + _title + '<i></i></label>'
+          }
+        }
+        tis.parent('.js-select').find('.select-area').show().find('li').html(chkHtml);
 
+        $("input[name='soldier']").click(function(){
+          var $tis = $(this);
+          var val = $tis.val();
+          if($tis.prop('checked')){
+            var str = '<span data-id="' + val + '">' + $tis.attr('data-name') + '<a href="javascript:;" class="btn-del">&times;</a></span>';
+            $tis.parents('.js-select').find('.show-select').append(str);
+          }else{
+            $tis.parents('.js-select').find('.show-select span').each(function(){
+              var $that = $(this);
+              if(val === $that.attr('data-id')){
+                $that.remove();
+              }
+            })
+          }
+
+          $('.btn-del').off().on('click',function(){
+            var $tis = $(this);
+            var val = $tis.parent('span').attr('data-id');
+            $tis.parents('.js-select').find('input[name="soldier"]').each(function(){
+              var $that = $(this);
+              if(val === $that.val()){
+                $that.prop('checked',false);
+                $tis.parent('span').remove();
+              }
+            })
+          })
+        });
+
+        $(document).click(function () {
+          $('.select-area').hide();
+        })
+        $('.select-area').click(function (e) {
+          e.stopPropagation()
+        })
+
+      }).fail(function(err) {
+        console.log(err)
+      })
+    }
+	})
     </script>
 </body>
 
