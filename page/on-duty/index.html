@@ -303,7 +303,7 @@
               <td>
                 <p>应急班</p>
               </td>
-              <td colspan="9">
+              <td colspan="9" class="js-yingjiban">
                 <!--<div class="txt-area">
                   <div class="js-onduty">
                     <span>张三<a href="javascript:;" class="btn-del">&times;</a></span>
@@ -321,14 +321,14 @@
               <td>
                 <p>集训</p>
               </td>
-              <td colspan="9">
+              <td colspan="9" class="js-jixun">
               </td>
             </tr>
             <tr>
               <td colspan="2">
                 <p>机动</p>
               </td>
-              <td colspan="9">
+              <td colspan="9" class="js-jidong">
               </td>
             </tr>
           </tbody>
@@ -637,6 +637,33 @@
       }).fail(function(err) {
         console.log(err)
       })
+    }
+
+    function getParams(){
+		  var jddata = [];
+      $('.js-jidong').find('.show-select span').each(function(){
+        jddata.push($(this).attr('data-id'));
+      })
+      var jxdata = [];
+      $('.js-jixun').find('.show-select span').each(function(){
+        jxdata.push($(this).attr('data-id'));
+      })
+      var yjbdata = [];
+      $('.js-yingjiban').find('.show-select span').each(function(){
+        yjbdata.push($(this).attr('data-id'));
+      })
+      var yjzdata = [];
+      $('.js-urgent').find('.show-select span').each(function(){
+        yjzdata.push($(this).attr('data-id'));
+      })
+      var params = {
+        jdPersonnelIdList: jddata,
+        jxPersonnelIdList: jxdata,
+        yjbPersonnelIdList: yjbdata,
+        yjzPersonnelIdList: yjzdata,
+        watchScheduleList: [],
+        watchTime: $('#dutyTime').val()
+      }
     }
 	})
     </script>
