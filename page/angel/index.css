@@ -69,5 +69,6 @@
     width: 88px;
 }
 .angel-video-wrapper{
-
+    position: relative;
+    z-index: 10;
 }

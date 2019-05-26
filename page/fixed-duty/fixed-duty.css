@@ -24,7 +24,7 @@
 }
 
 .duty-man-img {
-  width: 100%;
+  max-width: 100%;
   margin-bottom: 3px;
   display: inline-block;
   background: #229fe6;
