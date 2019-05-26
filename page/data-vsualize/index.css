@@ -300,6 +300,7 @@
   width: 373px;
   height: 244px;
   padding: 40px 30px 30px;
+  margin: 0 0 0 25px;
   background: url("../../asset/img/bg-popover.png") no-repeat;
   z-index: 100;
 }
@@ -311,10 +312,9 @@
 }
 .pop-chart {
   margin-top: 15px;
-  width: 100%;
+  width: 373px;
   height: 180px;
 }
-
 /*表格*/
 .data-vsualize > ul > li.dv-table {
   min-height: 700px;
@@ -405,4 +405,18 @@
 .layui-table-page .layui-laypage a,
 .layui-table-page .layui-laypage span.layui-laypage-curr{
   color: #fff;
+}
+.layui-table-box .layui-form-checkbox i{
+  color: #a1a2b3;
+  background: #a1a2b3;
+  border-color: #a1a2b3;
+}
+.layui-table-box .layui-form-checkbox i:hover{
+  color: #a1a2b3;
+  border-color: #a1a2b3;
+}
+.layui-table-box .layui-form-checked[lay-skin=primary] i{
+  border-color: #2ba1ef;
+  background-color: #2ba1ef;
+  color: #141746;
 }
