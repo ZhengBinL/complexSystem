@@ -587,12 +587,14 @@
             // 设置分屏模式视频高度
             var itemWidth = $('.mode-content .videos').width();
             var itemHeight = itemWidth * 9 / 16;
-            /*if($('.mode-content .video-li').attr('data-active')){
-              $('.mode-content .videos').css('height',itemHeight).attr('data-height',itemHeight);
-            }else{
-              $('.mode-content .videos').css('height',(itemHeight+32)).attr('data-height',itemHeight);
-            }*/
-            $('.mode-content .videos').css('height',(itemHeight+32)).attr('data-height',itemHeight);
+            $('.mode-content li').each(function(){
+              var $tis = $(this);
+              if($tis.attr('data-active')!= undefined){
+                $tis.find('.videos').css('height',itemHeight).attr('data-height',itemHeight);
+              }else{
+                $tis.find('.videos').css('height',(itemHeight+32)).attr('data-height',itemHeight);
+              }
+            })
             $('#vlc1').css({
                 "width":itemWidth,
                 "height":itemHeight
@@ -612,12 +614,6 @@
             $('#mode-rec').css({
                 'height': (itemHeight+32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
                 'overflow': 'hidden'
-            })
-            $('.mode-content li').each(function(){
-              var $tis = $(this);
-              if($tis.attr('data-active')!= undefined){
-                $tis.find('.videos').css('height',$tis.find('.videos').attr('data-height'));
-              }
             })
         }
     // 鼠标滑过分屏模式视频&滑过历史记录视频
