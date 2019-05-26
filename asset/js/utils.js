@@ -41,6 +41,21 @@ $('body').on('click', '.js-police-pop-close', function () {
 })
 
 var _top = 80;
+// 报警弹框 后端出发
+//  激活ajax    
+dwr.engine.setActiveReverseAjax(true)
+// 页面未加载的时候是否发送通知
+dwr.engine.setNotifyServerOnPageUnload(true,true)
+// 出现错误后的处理方法
+dwr.engine.setErrorHandler(function(){})
+
+function getMessageTime(data){
+  console.log(data,'坦克弹框')
+    // if (window.eventBus) {
+    //     window.eventBus.$emit('getDwr',data);
+    // }
+}
+
 // setInterval(function () {
 //     $.ajax({
 //         type:'GET',
