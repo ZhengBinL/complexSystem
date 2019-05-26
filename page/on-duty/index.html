@@ -335,11 +335,12 @@
     </div>
     <script src="../../asset/js/jquery.min.js"></script>
     <script src="../../asset/js/config.js"></script>
-    <script type='text/javascript' src='/dwr/engine.js'></script>
+    <!-- <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
-    <script type='text/javascript' src='/dwr/util.js'></script>
+    <script type='text/javascript' src='/dwr/util.js'></script> -->
     <script src="../../asset/js/utils.js"></script>
     <script src="../../asset/introduce/layui/layui.js"></script>
+    <script src="./index.js"></script>
 
     <script>
       layui.use(['laydate','table','form'], function(){
@@ -372,7 +373,7 @@
 		// 初始化人员
 		(function () {
 			$.ajax({
-				url: $ctx + '/sys_armed_police/findOfficer',
+				url: $ctx + '/sys_armed_police/findPersonnelByNameAndRank',
 				type: 'get'
 			}).done(function(res) {
 				officer = res.data;
@@ -437,7 +438,7 @@
 				select.append($('<option></option>')
 					.val(officer[i].id)
 					.attr("selected", id == officer[i].id)
-					.text(officer[i].personnelName + "(" + officer[i].militaryRank + ")"))
+					.text(officer[i].personnelName + "(" + officer[i].militaryRankName + ")"))
 			}
 			return select;
 		}
@@ -448,7 +449,7 @@
 				select.append($('<option></option>')
 					.val(police[i].id)
 					.attr("selected", id == police[i].id)
-					.text(police[i].personnelName + "(" + police[i].militaryRank + ")"))
+					.text(police[i].personnelName + "(" + police[i].militaryRankName + ")"))
 			}
 			return select;
 		}
@@ -478,14 +479,14 @@
           for(var j = 0; j < 9; j++) {
             var $td = $tr.find('td').eq(j+1);
             var _html = '';
-            _html += '<p class="layui-input-inline hide-elm js-select">';
+            _html += '<p class="layui-input-inline hide-elm js-select" onclick="return false;">';
             _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="">';
-            _html += '  <option value="innerDt[j].personnelId">' + innerDt[j].personnelName + '(' + innerDt[j].militaryRank + ')</option>';
+            _html += '  <option value="'+innerDt[j].personnelName+'" data-rank='+innerDt[j].militaryRank+'>' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
             _html += '  </select>';
             _html += '</p>';
             if (j === (innerDt.length - 1)) {
               _html += '<p pid="' + innerDt[j].personnelId + '" class="js-onduty">' + innerDt[j].personnelName;
-              _html += '  <span class="ranks">(' + innerDt[j].militaryRank + ')</span>';
+              _html += '  <span class="ranks">(' + innerDt[j].militaryRankName + ')</span>';
               _html += '  <div class="opt-outer">';
               _html += '    <div class="table-opt">';
               _html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>';
@@ -494,7 +495,7 @@
               _html += '  </div>';
               _html += '</p>';
             } else {
-              _html += '<p class="js-onduty" pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRank + '</span></p>'
+              _html += '<p class="js-onduty" pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRankName + '</span></p>'
             }
             $td.html(_html)
           }
@@ -579,7 +580,62 @@
 				layer.msg('请求错误')
 			})
 		}
-	})
+     
+    
+    // 点击下拉框渲染下拉列表
+    $('body').off('click').on('click','.js-select',function(){
+
+      console.log("111111111")
+      // var personName = $(this).find('option').val();
+      var _this = this;
+      if($(_this).find(".layui-form-select").hasClass(".layui-form-selected")){
+        alert(1)
+      }
+      var personName ='';
+      var rankNum = $(this).find('option').attr('data-rank');
+      // console.log(rankNum)
+      if(rankNum ==3||rankNum ==4||rankNum ==5){
+        rankNum = '3,4,5'
+      }else{
+        rankNum = ''
+      }
+        $.ajax({
+          type:'GET',
+          // async:false,
+          url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name='+personName+'&ranks='+rankNum,
+        }).done(function(res){
+          var resDate = res.data
+          var _html=""
+          for(var i=0;i<resDate.length;i++){
+            _html += '<option value="'+resDate[i].personnelName+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
+          }
+          $(_this).find('select').html(_html);
+          // console.log(form.render)
+          // setTimeout(function(){
+          //   form.render('select');
+          // }, 10000)
+          form.render('select');
+
+        })
+    })
+
+ 
+    // 在下拉框中进行修改，支持模糊搜索
+    $('body').on('input','input',function(){
+      var personName = $(this).val().split('(')[0].toString();
+      var rankNum = $(this).parents('.js-select').find('option').attr('data-rank');
+      console.log(rankNum)
+        $.ajax({
+          type:'GET',
+          url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name='+personName+'&ranks='+rankNum,
+        }).done(function(){
+          //请求回来数据，然后进行渲染
+        })
+    })
+  })
+    </script>
+    <script>
+
     </script>
 </body>
 
