@@ -728,7 +728,6 @@
 				yjbPersonnelIdList: [],
 				yjzPersonnelIdList: [],
 			}
-      // console.log(dataValue,'data')
       $.ajax({
 				url: $ctx + '/watch_schedule/saveOrUpdate',
 				data: JSON.stringify(dataValue),
@@ -736,7 +735,7 @@
 				type: 'put'
 			}).done(function(res) {
 				$('.js-edit').text('修改')
-				querySchedule();
+				querySchedule(d, form);
 			});
     });
   })
