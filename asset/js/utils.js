@@ -60,7 +60,7 @@ setInterval(function () {
         _top += 10
         var html_pop = ''
         var data = JSON.parse(res.data.msg);
-        html_pop += '<iframe id="zhanwei-police" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: fixed;display: block;top:  '+ _top +'px;right: 30px;width: 290px;height: 302px;z-index: 0;background: transparent;"></iframe><div class="police-wrapper" style="top: '+ _top +'px;">' +
+        html_pop += '<iframe class="zhanwei-police" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: fixed;display: block;top:  '+ _top +'px;right: 30px;width: 290px;height: 302px;z-index: 0;background: transparent;"></iframe><div class="police-wrapper" style="top: '+ _top +'px;">' +
           '<div class="police-title">报警信息<img class="police-close js-police-pop-close" src="../../asset/img/icon-close.png" alt="关闭"></div>' +
           '<ul class="police-content">' +
           '<li><span>报警类型：</span><span class="police-detail">' + data.alarmType.systemOptionName +'</span></li>' +
