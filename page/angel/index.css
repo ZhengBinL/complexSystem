@@ -1,0 +1,73 @@
+.angel-wrapper{
+    position: relative;
+    min-height: 600px;
+}
+.angel-bg{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.angel-bg span{
+    position: absolute;
+}
+.big-lt{
+    left: 0;
+    top: 0;
+    background: url("../../asset/img/big-lt.png") no-repeat;
+    width: 729px;
+    height: 179px;
+}
+.big-ct{
+    left: 729px;
+    right: 230px;
+    top: 0;
+    background: url("../../asset/img/big-ct.png") repeat-x;
+    height: 84px;
+}
+.big-rt{
+    right: 0;
+    top: 0;
+    background: url("../../asset/img/big-rt.png") no-repeat;
+    width: 230px;
+    height: 421px;
+}
+.big-rc{
+    right: 1px;
+    top: 421px;
+    bottom: 105px;
+    background: url("../../asset/img/big-rc.png") repeat-y;
+    width: 72px;
+}
+.big-rb{
+    bottom: 0;
+    right: 0;
+    background: url("../../asset/img/big-rb.png") no-repeat;
+    width: 230px;
+    height: 105px;
+}
+.big-bc{
+    right: 230px;
+    left: 729px;
+    bottom: 1px;
+    height: 70px;
+    background: url("../../asset/img/big-bc.png") repeat-x;
+}
+.big-lb{
+    left: 0;
+    bottom: 0;
+    background: url("../../asset/img/big-lb.png") no-repeat;
+    width: 729px;
+    height: 369px;
+}
+.big-lc{
+    left: 0;
+    top: 179px;
+    bottom: 369px;
+    background: url("../../asset/img/big-lc.png") repeat-y;
+    width: 88px;
+}
+.angel-video-wrapper{
+
+}

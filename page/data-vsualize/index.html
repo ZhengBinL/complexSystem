@@ -66,7 +66,7 @@
               <ul>
                 <li>
                   周界
-                  <span class="statis-around" id="showAround">1030</span>
+                  <span class="statis-around" id="showAround">103</span>
                   <div class="popover popover-around">
                     <div class="pop-title">周界</div>
                     <div class="pop-chart" id="aroundChart"></div>
@@ -76,7 +76,7 @@
               <ul>
                 <li>
                   手按
-                  <span class="statis-press" id="showPress">3200</span>
+                  <span class="statis-press" id="showPress">245</span>
                   <div class="popover">
                     <div class="pop-title">手按</div>
                     <div class="pop-chart" id="pressChart"></div>
@@ -86,7 +86,7 @@
               <ul>
                 <li>
                   枪支离岗
-                  <span class="statis-gun" id="qiangzhi">2000</span>
+                  <span class="statis-gun" id="qiangzhi">36</span>
                 </li>
               </ul>
             </div>
@@ -106,7 +106,7 @@
             <i class="dvbg-left-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">近一年报警趋势</h4>
+            <h4 class="dv-chart-title">近5月报警趋势</h4>
             <div class="dv-chart-main" id="alarmTrend"></div>
           </div>
         </li>
@@ -208,9 +208,9 @@
           var zhoujie=res.data.zhouJieCount;
           var shouan=res.data.shouAn;
           var qiangzhiligang=res.data.qiangzhi;
-          $("#showAround").text(zhoujie);
-          $("#showPress").text(shouan);
-          $("#qiangzhi").text(zhoujie)
+//          $("#showAround").text(zhoujie);
+//          $("#showPress").text(shouan);
+//          $("#qiangzhi").text(zhoujie)
 
           for (var i=0; i<res.data.bData.length;i++){
             var data={};
@@ -218,29 +218,7 @@
             data.value=parseFloat(res.data.bData[i].percent);
             alarmDataCount.push(data);
           }
-          // 图表：近期报警统计
-          var statisticsChart = echarts.init(document.getElementById('alarmStatistics'))
-          var optionStatistics = {
-            calculable : true,
-            series : [
-              {
-                type:'pie',
-                radius : [30, 110],
-                center : ['50%', '50%'],
-                roseType : 'radius',
-                data: [
-                  {value:35, name:'虚拟入侵 35%'},
-                  {value:15, name:'激光对射 15%'},
-                  {value:5, name:'绊线入侵 5%'},
-                  {value:30, name:'徘徊滞留 30%'},
-                  {value:15, name:'震动光纤 15%'},
-                  {value:10, name:'声音异常 10%'}
-                ]
-              }
-            ],
-            color: ['#563ad2','#438dc3','#dab54c','#d78155','#325df9','#ed5450']
-          };
-          statisticsChart.setOption(optionStatistics);
+
           console.log(alarmDataCount)
         },
         error: function () {
@@ -305,8 +283,29 @@
         });
       }
     })
-
-
+    // 图表：近期报警统计
+    var statisticsChart = echarts.init(document.getElementById('alarmStatistics'))
+    var optionStatistics = {
+        calculable : true,
+        series : [
+            {
+                type:'pie',
+                radius : [30, 110],
+                center : ['50%', '50%'],
+                roseType : 'radius',
+                data: [
+                    {value:35, name:'虚拟入侵 35%'},
+                    {value:15, name:'激光对射 15%'},
+                    {value:5, name:'绊线入侵 5%'},
+                    {value:30, name:'徘徊滞留 30%'},
+                    {value:15, name:'震动光纤 15%'},
+                    {value:10, name:'声音异常 10%'}
+                ]
+            }
+        ],
+        color: ['#563ad2','#438dc3','#dab54c','#d78155','#325df9','#ed5450']
+    };
+    statisticsChart.setOption(optionStatistics);
 
     //图表-弹出层-周界
     $('#showAround').on('mouseover',function(){

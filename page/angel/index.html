@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>武警智慧磐石执勤安保信息管理平台</title>
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<!--头部-->
+<div class="header">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
+        <ul>
+            <li class="notice-wrapper">
+                <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+            </li>
+            <li class="user-notice">
+                <div id="user-operate" class="user-operate">
+                    <a href="javascript:;">
+                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                        管理
+                    </a>
+                    <a href="javascript:;" class="exit" title="退出">退出</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--侧边栏-->
+<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
+        marginwidth="0"
+        style="position: fixed;display: block;top: 75px;left: -480px;width: 480px;height: 2000px;z-index: 90;background: transparent;"></iframe>
+<div class="aside">
+    <div class="aside-bg">
+        <i class="aside-bg-lt"></i>
+        <i class="aside-bg-mt"></i>
+        <i class="aside-bg-mt-img"></i>
+        <i class="aside-bg-rt"></i>
+        <i class="aside-bg-lm"></i>
+        <i class="aside-bg-mm"></i>
+        <i class="aside-bg-rm"></i>
+        <i class="aside-bg-lb"></i>
+        <i class="aside-bg-mb"></i>
+        <i class="aside-bg-rb"></i>
+    </div>
+    <div class="menu-tree">
+        <ul id="menu-tree" class="ztree"></ul>
+    </div>
+    <!--<a href="javascript:;" id="showFlag" class="icon-fold unfolded"></a>-->
+</div>
+<a href="javascript:;" class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></a>
+<!--主体-->
+<div class="main">
+    <div class="tabview">
+        <ul class="tabtop js-tabtop">
+            <li class="js-tabhd on">
+                <a href="javascript:void(0)">三维立体全景监控</a>
+            </li>
+        </ul>
+        <ul class="tabmain js-tabmain">
+            <li class="js-tabbd on">
+                <div class="angel-wrapper">
+                    <div class="angel-bg">
+                        <span class="big-lt"></span>
+                        <span class="big-ct"></span>
+                        <span class="big-rt"></span>
+                        <span class="big-rc"></span>
+                        <span class="big-rb"></span>
+                        <span class="big-bc"></span>
+                        <span class="big-lb"></span>
+                        <span class="big-lc"></span>
+                    </div>
+                    <div class="angel-video-wrapper">
+                        <object id="MediaPlayer" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" width="800" height="600" type="application/x-oleobject">
+                            <param name="FileName" value="../../asset/8888.avi">
+                        </object>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>
