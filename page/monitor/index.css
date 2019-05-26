@@ -1,0 +1,698 @@
+/* tab样式 */
+
+/* body {
+    background: #000;
+} */
+
+.map-box {
+    position: relative;
+    /* width: 1324px;
+    height: 801px; */
+    width: 100%;
+    margin: 0 auto;
+}
+.map-img-bg{
+    width: 100%;
+}
+.map-img{
+    width: 87%;
+}
+.map-box>img,
+.inner-box>dd>.map-img {
+    position: relative;
+    /* max-width: 100%; */
+    z-index: 0;
+}
+.map-box>.inner-box {
+    position: absolute;
+    left: 6.66%;
+    right: 6.66%;
+    top: 12.5%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.map-box>.inner-box>dd,
+.map-box>.inner-box>dt {
+    padding: 0;
+    margin: 0;
+}
+
+/*.map-box > .inner-box > dd {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }*/
+.scale-img{
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
+.map-box>.inner-box>dt {
+    position: absolute;
+    right: 0;
+    bottom: 3%;
+    width: 90px;
+}
+.map-img-content{
+    position: relative;
+    left:0;
+    top: 0;
+}
+/* 摄像头定位 */
+.camera{
+    position: absolute;
+    cursor: pointer;
+    width: 30px;
+}
+.camera1{
+    left: 2%;
+    top: 63%;
+}
+.camera2{
+    left: 1%;
+    top: 55%;
+}
+.camera3{
+    left: 13%;
+    top: 71%;
+}
+.camera4{
+    left: 21%;
+    top: 69%;
+}
+.camera5{
+    left: 26%;
+    top: 80%;
+}
+.camera6{
+    left: 15%;
+    top: 92%;
+}
+.camera7{
+    left: 42%;
+    top: 92%;
+}
+.camera8{
+    left: 46%;
+    top: 90%;
+}
+.camera9{
+    left: 52%;
+    top: 75%;
+}
+.camera10{
+    left: 59%;
+    top: 61%;
+}
+.camera11{
+    left: 65%;
+    top: 49%;
+}
+.camera12{
+    left: 49%;
+    top: 34%;
+}
+.camera13{
+    left: 51%;
+    top: 24%;
+}
+.camera14{
+    left: 56%;
+    top: 18%;
+}
+.camera15{
+    left: 61%;
+    top: 11%;
+}
+.camera16{
+    left: 62%;
+    top: 6%;
+}
+.camera17{
+    left: 56%;
+    top: 8%;
+}
+.camera18{
+    left: 52%;
+    top: 3%;
+}
+.camera19{
+    left: 46%;
+    top: 2%;
+}
+.camera20{
+    left: 41%;
+    top: 8%;
+}
+.camera21{
+    left: 36%;
+    top: 14%;
+}
+.camera22{
+    left: 22%;
+    top: 32%;
+}
+.camera23{
+    left: 8%;
+    top: 67%;
+}
+.camera24{
+    left: 59%;
+    top: 9%;
+}
+.camera25{
+    left: 55%;
+    top: 5%;
+}
+/*  */
+.camera-1{
+    transform:rotate(180deg);
+    -ms-transform:rotate(180deg); 	/* IE 9 */
+    -moz-transform:rotate(180deg); 	/* Firefox */
+    -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+    -o-transform:rotate(180deg); 	/* Opera */
+}
+.camera1-1{
+    left: 47.7%;
+    top: -1%;
+}
+.camera1-2{
+    left: 58%;
+    top: 6%;
+}
+.camera1-3{
+    left: 63.5%;
+    top: 6.5%;
+}
+.camera1-4{
+    left: 30%;
+    top: 21%;
+}
+.camera1-5{
+    left: 45%;
+    top: 29%;
+}
+.camera1-6{
+    left: 66.7%;
+    top: 42%;
+}
+.camera1-7{
+    left: 43.8%;
+    top: 89%;
+}
+.camera1-8{
+    left: 17%;
+    top: 72%;
+}
+.camera1-9{
+    left: 0%;
+    top: 58%;
+}
+/* 执勤监控 */
+.camera-2{
+    display: none
+}
+.camera2-1{
+    left: 62%;
+    top: 10%;
+}
+.camera2-2{
+    left: 45%;
+    top: 31%;
+    transform: rotate(180deg)
+}
+.camera2-3{
+    left: 45%;
+    top: 33%;
+    transform: rotate(225deg)
+}
+.camera2-4{
+    left: 66%;
+    top: 45%;
+}
+.camera2-5{
+    left: 44%;
+    top: 91%;
+    transform: rotate(161deg)
+}
+.camera2-6{
+    left: 42%;
+    top: 92%;
+    transform: rotate(50deg)
+}
+/* 摄像头按钮 */
+.btn-zoom {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 5px 0;
+}
+
+.btn-zoom.btn-zoomin {
+    background: url("../../asset/img/btn-zoomin.png") no-repeat;
+    background-size: 100%;
+}
+
+.btn-zoom.btn-zoomout {
+    background: url("../../asset/img/btn-zoomout.png") no-repeat;
+    background-size: 100%;
+}
+.btn-zoomtrack {
+    display: inline-block;
+    width: 80px;
+    margin: 5px 0;
+}
+.btn-zoommonitor {
+    display: inline-block;
+    width: 80px;
+    margin: 5px 0;
+}
+.btn-zoommonitor img,
+.btn-zoomtrack img{
+    width: 100%
+}
+/* 分屏 */
+.split-mode {
+    position: relative;
+    padding-bottom: 100px;
+}
+.mode-content {
+    position: relative;
+    padding: 8px;
+    border: solid 2px #229fe6;
+    box-shadow: 0 0 12px rgba(4,211,255,0.7), inset 0 0 12px rgba(4,211,255,0.7);
+}
+/* 分屏1×1 */
+.mode-content.mode-rec-1 > li {
+    float: left;
+    width: 100%;
+}
+/* 分屏2×2 */
+.mode-content.mode-rec-2 > li {
+    float: left;
+    width: 50%;
+}
+/* 分屏3×3 */
+.mode-content.mode-rec-3 > li {
+    float: left;
+    width: 33.33%;
+}
+/* 分屏4×4 */
+.mode-content.mode-rec-4 > li {
+    float: left;
+    width: 25%;
+}
+.mode-content > li > dl {
+    position: relative;
+    padding: 0;
+    margin: 5px;
+}
+.videos-li{
+    box-sizing: border-box;
+    border:1px solid transparent;
+}
+.videos {
+    width: 100%;
+    height: 60px;
+    background:url(../../asset/img/gst_bj.png) center no-repeat;
+    background-size:cover;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+.videos-border{
+    border:1px solid #fef102
+}
+.v-toolbar {
+    padding-right:15px;
+    height: 32px;
+    line-height: 32px;
+    background: rgba(0,0,0,.8);
+    text-align: right;
+    z-index: 2;
+    display: none;
+}
+.v-toolbar > a {
+    margin-left: 15px;
+}
+
+
+.tab-content{
+    position: relative;
+    padding:30px;
+    overflow: hidden;
+}
+.slider-operate{
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    height: 55px;
+    padding-top:20px;
+    /* line-height: 75px; */
+    border: solid 1px #229fe6;
+    box-shadow: 0 0 12px #0482bd;
+    border-radius: 18px;
+    text-align: center;
+    background:rgba(0,0,0,0.3)
+}
+.slider-operate img{
+    width: 3%;
+    padding-right: 10px;
+}
+.slider{
+    display: inline-block;
+    width: 20%;
+}
+
+.video{
+    position: relative;
+    display: inline-block;
+    /* width: 100%; */
+}
+.video-content{
+    width: 1200px;
+    height: 675px;
+    background-color:red
+}
+.video-btn{
+    position: absolute;
+    bottom:8px;
+}
+.video-btn img{
+    width: 22%;
+    padding-left: 5px;
+    /* box-sizing: border-box */
+}
+/*云台控制操作项*/
+.mode-content li{
+    position: relative;
+}
+
+.opt-monitor{
+    position: absolute;
+    top: 33px;
+    right: 77px;
+    width: 130px;
+    height: 130px;
+    background: url("../../asset/img/opt_monitor_bg.png") no-repeat;
+    background-size: cover;
+    display: none;
+}
+.opt-item{
+    position: absolute;
+}
+.opt-top-lt{
+    top: 20px;
+    left: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_toplt.png") no-repeat;
+}
+.opt-top-rt{
+    top: 20px;
+    right: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_toprt.png") no-repeat;
+}
+.opt-top-ct{
+    top: 4px;
+    left: 56px;
+    width: 18px;
+    height: 18px;
+    background: url("../../asset/img/opt_topct.png") no-repeat;
+}
+.opt-mid-lt{
+    top: 55px;
+    left: 6px;
+    width: 18px;
+    height: 17px;
+    background: url("../../asset/img/opt_middlelt.png") no-repeat;
+}
+.opt-mid-rt{
+    top: 55px;
+    right: 6px;
+    width: 18px;
+    height: 17px;
+    background: url("../../asset/img/opt_middlert.png") no-repeat;
+}
+.opt-bot-lt{
+    bottom: 24px;
+    left: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_bottomlt.png") no-repeat;
+}
+.opt-bot-rt{
+    bottom: 24px;
+    right: 23px;
+    width: 19px;
+    height: 20px;
+    background: url("../../asset/img/opt_bottomrt.png") no-repeat;
+}
+.opt-bot-ct{
+    bottom: 7px;
+    left: 56px;
+    width: 18px;
+    height: 19px;
+    background: url("../../asset/img/opt_bottomct.png") no-repeat;
+}
+.opt-big{
+    left: 37px;
+    top: 57px;
+    width: 19px;
+    height: 18px;
+    background: url("../../asset/img/opt_big.png") no-repeat;
+}
+.opt-small{
+    right: 37px;
+    top: 57px;
+    width: 19px;
+    height: 18px;
+    background: url("../../asset/img/opt_small.png") no-repeat;
+}
+.mode-rec-4 .opt-monitor{
+    width: 97px;
+    height: 97px;
+    right: 92px;
+}
+.mode-rec-4 .opt-top-lt{
+    top: 14px;
+    left: 16px;
+    width: 12px;
+    height: 14px;
+}
+.mode-rec-4 .opt-top-rt{
+    top: 14px;
+    right: 16px;
+    width: 12px;
+    height: 14px;
+}
+.mode-rec-4 .opt-top-ct{
+    top: 3px;
+    left: 42px;
+    width: 12px;
+    height: 12px;
+
+}
+.mode-rec-4 .opt-mid-lt{
+    top: 42px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+}
+.mode-rec-4 .opt-mid-rt{
+    top: 42px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+}
+.mode-rec-4 .opt-bot-lt{
+    bottom: 16px;
+    left: 16px;
+    width: 12px;
+    height: 13px;
+}
+.mode-rec-4 .opt-bot-rt{
+    bottom: 14px;
+    right: 16px;
+    width: 12px;
+    height: 13px;
+}
+.mode-rec-4 .opt-bot-ct{
+    bottom: 4px;
+    left: 42px;
+    width: 12px;
+    height: 13px;
+}
+.mode-rec-4 .opt-big{
+    left: 27px;
+    top: 40px;
+    width: 14px;
+    height: 14px;
+}
+.mode-rec-4 .opt-small{
+    right: 27px;
+    top: 40px;
+    width: 14px;
+    height: 14px;
+}
+.mode-rec-4 .opt-item{
+    background-size: contain;
+}
+/*历史记录*/
+.history-wrapper{
+    display: none;
+}
+.history-top{
+    min-width: 990px;
+    overflow: hidden;
+}
+.speed-wrapper{
+    position: absolute;
+    right: 160px;
+    top: 32px;
+    background: rgba(0,0,0,.8);
+    display: none;
+}
+.speed-item{
+    display: block;
+    line-height: 28px;
+    text-align: center;
+    width: 80px;
+    color: #fff;
+}
+.speed-item:hover, .speed-item.on{
+    color: #36dffe;
+}
+.date-wrapper{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 38px;
+    width: 280px;
+}
+.video-wrapper{
+    position: relative;
+    width: 100%;
+    padding-right: 280px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.video-wrapper .video{
+    width: 100%;
+    background: url(../../asset/img/gst_bj.png) no-repeat center center;
+    background-size: 100%;
+}
+
+.search-btn{
+    display: block;
+    line-height: 36px;
+    width: 80%;
+    margin:0 auto;
+    background: #3984fb;
+    text-align: center;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.scale-title{
+    line-height: 1;
+    padding:22px 0;
+}
+.scale{
+    position: relative;
+    padding:5px 12px;
+    border: solid 1px #229fe6;
+    box-shadow: 0 0 12px #0482bd;
+    border-radius: 2px;
+    text-align: center;
+    background:rgba(0,0,0,0.3)
+}
+.scale-bar, .scale-num img{
+    display: block;
+    width: 100%;
+}
+.scale-num{
+    width: 100.36%;
+    padding:0 0 4px;
+}
+.scale-num img{
+    margin:0 0 0 -0.18%;
+}
+.scale-box{
+    padding:4px 0 5px;
+    font-size: 0;
+    white-space:nowrap;
+}
+.scale-unit{
+    display: inline-block;
+    border-left: 1px solid #232649;
+    width:4.166666%;
+    height: 30px;
+    background: #3984fb;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all .3s;
+}
+.scale-box .spec{
+    border:0 none;
+}
+.scale-unit:hover, .scale-unit.active{
+    background: #fef102;
+}
+
+
+/* 树节点样式 */
+.ztree li span.button.diy01_ico_open {
+    width: 100px;
+    background: url('../../asset/img/icon_jigu.png') center no-repeat
+}
+.ztree li span.button.diy01_ico_close{
+    width: 100px;
+    background: url('../../asset/img/icon_jigu_on.png') center no-repeat
+}
+.ztree li span.button.diy02_ico_open{
+    width: 100px;
+    background: url('../../asset/img/icon_group.png') center no-repeat
+}
+
+.ztree li span.button.diy02_ico_close{
+    width: 100px;
+    background: url('../../asset/img/icon_group_on.png') center no-repeat
+}
+
+.ztree li span.button.diy03_ico_open{
+    width: 100px;
+    background: url('../../asset/img/icon_default.png') center no-repeat
+}
+.ztree li span.button.diy03_ico_close{
+    width: 100px;
+    background: url('../../asset/img/icon_default.png') center no-repeat
+}
+
+.layui-layer-page .layui-layer-content {
+    overflow: hidden !important;
+}
+/* 震动光纤 */
+
+/* 联防联动 */
+.sign{
+    margin: 20px 0;
+    font-size: 0;
+    line-height: 28px;
+}
+.sign img{
+    width: 28px;
+    height: 28px;
+    vertical-align: top;
+}
