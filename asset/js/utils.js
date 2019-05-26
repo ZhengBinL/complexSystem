@@ -44,16 +44,30 @@ var _top = 80;
 // 报警弹框 后端出发
 //  激活ajax    
 dwr.engine.setActiveReverseAjax(true)
-// 页面未加载的时候是否发送通知
+// // 页面未加载的时候是否发送通知
 dwr.engine.setNotifyServerOnPageUnload(true,true)
-// 出现错误后的处理方法
+// // 出现错误后的处理方法
 dwr.engine.setErrorHandler(function(){})
 
-function getMessageTime(data){
-  console.log(data,'坦克弹框')
-    // if (window.eventBus) {
-    //     window.eventBus.$emit('getDwr',data);
-    // }
+
+function getAlarmTime(dataValue){
+  console.log(dataValue,'坦克弹框')
+    _top += 10;
+    var html_pop = '';
+    var data = JSON.parse(dataValue.msg);
+    html_pop += '<iframe id="zhanwei-police" src="about:blank" frameborder="0" marginheight="0" marginwidth="0" style="position: fixed;display: block;top:  '+ _top +'px;right: 30px;width: 290px;height: 302px;z-index: 0;background: transparent;"></iframe><div class="police-wrapper" style="top: '+ _top +'px;">' +
+        '<div class="police-title">报警信息<img class="police-close js-police-pop-close" src="../../asset/img/icon-close.png" alt="关闭"></div>' +
+        '<ul class="police-content">' +
+        '<li><span>报警类型：</span><span class="police-detail">' + data.alarmType.systemOptionName +'</span></li>' +
+        '<li><span>设备名称：</span><span class="police-detail">'+ data.alarmSource.iPDeviceName +'</span></li>' +
+        '<li><span>报警时间：</span><span class="police-detail">'+ data.timeCreated +'</span></li></ul>' +
+        '<div class="btn-wrapper">' +
+        '<div style="display: none" class="js-police-msg">'+res.data.msg+'</div>' +
+        '<div class="js-rtspUrls" style="display: none;">'+res.data.rtspUrls+'</div>'+
+        '<a href="javascript:;" class="js-police-look layui-btn layui-btn-sm layui-btn-normal" target="_self">查看</a>' +
+        '<a href="javascript:;" class="js-police-pop-close layui-btn layui-btn-sm layui-btn-primary">关闭</a>' +
+        '</div></div>';
+    $('body').append(html_pop);
 }
 
 // setInterval(function () {
