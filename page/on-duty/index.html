@@ -577,9 +577,12 @@
               for(var i=0;i<resDate.length;i++){
                 _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
               }
-              for(var j=0;j<9;j++){
-                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]==0){
-                  $('.js-select').eq(j).find('select').append(_html)
+              
+              for(var j=0;j<108;j++){
+                if($('.js-select').eq(j).find('select').attr('name')){
+                  if($('.js-select').eq(j).find('select').attr('name').split('-')[2]==0){
+                    $('.js-select').eq(j).find('select').append(_html)
+                  }
                 }
               }
               form.render('select');
@@ -593,9 +596,11 @@
               for(var i=0;i<resDate.length;i++){
                 _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
               }
-              for(var j=0;j<9;j++){
-                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]!=0){
-                  $('.js-select').eq(j).find('select').append(_html)
+              for(var j=0;j<109;j++){
+                if($('.js-select').eq(j).find('select').attr('name')){
+                  if($('.js-select').eq(j).find('select').attr('name').split('-')[2]!=0){
+                    $('.js-select').eq(j).find('select').append(_html)
+                  }
                 }
               }
               form.render('select');
