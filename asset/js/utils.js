@@ -37,7 +37,8 @@ $('body').on('click', '.js-police-pop-close', function () {
     // document.cookie="hrefParam="+ msg + ';path=/'; // 存储cookie
     // document.cookie="rtspUrls="+_encodeRtsp + ';path=/';
     //console.log(document.cookie);
-    window.location.href = '../../prevention/index.html?call=1';
+    // window.location.href = '../../prevention/index.html?call=1';
+    window.location.href = '../../monitor/index.html?call=1';
 })
 
 var _top = 80;
