@@ -199,6 +199,9 @@
 </div>
 <script src="../../asset/js/jquery.min.js"></script>
 <script src="../../asset/js/config.js"></script>
+<script type='text/javascript' src='/dwr/engine.js'></script>
+<script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
+<script type='text/javascript' src='/dwr/util.js'></script>
 <!--<script src="../../asset/js/utils.js"></script>-->
 <script src="../fixed-duty/fixed-duty.js"></script>
 <script>
@@ -221,50 +224,37 @@
     /*
     PS：实时获取报警点，注意放开代码
     */
-    // setInterval(getAlarmInfo, 1000)
-    //如果从弹框过来
-    if (isPageJump()){
 
-    }else{
-        setInterval(getAlarmInfo, 1000)
-    }
     //实时获取报警信息
-    function getAlarmInfo() {
-        $.ajax({
-            type: 'GET',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: $ctx +'/alarm/getAlarmTimeForAction?'+new Date().getTime(),
-            success: function (res) {
-                if (res.code == 0) {    // 请求成功
-                    if (res.data.msg) { // 返回的有高亮数据点
-                        initMsg = res.data.msg;      // 赋值msg
-                        initRtsp = res.data.rtspUrls;    // 赋值视频地址
-                        /**
-                         * 渲染灯笼
-                         * */
-                        var msg = JSON.parse(res.data.msg); // 返回信息
-                        var pos = msg.AlarmSource.IPDeviceName; // 岗哨
-                        var type = msg.AlarmType.SystemOptionName; // 报警类型
-                        // console.log(pos)
-                        // console.log(type)
-                        // console.log(msg)
-                        $('.btn-police').show();
-                        var $el;
-                        if (type == '光纤震动') {
-                            $el = $('.prevention-img .r-warn')
-                        } else if (type == '周界入侵') {
-                            $el = $('.prevention-img .g-warn')
-                        } else {
-                            $el = $('.prevention-img .y-warn')
-                        }
-                        // 点亮匹配数据
-                        $el.each(function (index, item) {
-                            var _pos = $(item).data('pos');
-                            var _type = $(item).data('type');
-                            if (pos == _pos && _type == '光纤震动') {
-                                $(item).addClass('red');
-                                // delayOpt('red');
+    function getAlarmTimeForAction(dataValue) {
+        if (dataValue.msg) { // 返回的有高亮数据点
+            initMsg = dataValue.msg;      // 赋值msg
+            initRtsp = dataValue.rtspUrls;    // 赋值视频地址
+            /**
+             * 渲染灯笼
+             * */
+            var msg = JSON.parse(dataValue.msg); // 返回信息
+            var pos = msg.AlarmSource.IPDeviceName; // 岗哨
+            var type = msg.AlarmType.SystemOptionName; // 报警类型
+            // console.log(pos)
+            // console.log(type)
+            // console.log(msg)
+            $('.btn-police').show();
+            var $el;
+            if (type == '光纤震动') {
+                $el = $('.prevention-img .r-warn')
+            } else if (type == '周界入侵') {
+                $el = $('.prevention-img .g-warn')
+            } else {
+                $el = $('.prevention-img .y-warn')
+            }
+            // 点亮匹配数据
+            $el.each(function (index, item) {
+                var _pos = $(item).data('pos');
+                var _type = $(item).data('type');
+                if (pos == _pos && _type == '光纤震动') {
+                    $(item).addClass('red');
+                    // delayOpt('red');
 //                                setTimeout(function () {
 //                                    if (initPos == pos && initType == type) {
 //                                        return
@@ -272,27 +262,21 @@
 //                                    $(item).removeClass('red')
 //                                    removeVideo()
 //                                }, 30000)
-                            } else if (pos == _pos && _type == '周界入侵') {
-                                $(item).addClass('green');
-                                // delayOpt('green')
-                            } else if (pos == _pos && _type == '激光对射') {
-                                $(item).addClass('yellow');
-                                // delayOpt('yellow');
-                            }
-                        })
-                        // 如果有视频地址信息，渲染视频
-                        if (res.data.rtspUrls && res.data.rtspUrls.length) {
-                            renderVideo(res.data.rtspUrls);
-                        }
-                        initPos = pos;       // 储存返回的报警位置信息
-                        initType = type;    // 储存返回的报警类型信息
-                    }
+                } else if (pos == _pos && _type == '周界入侵') {
+                    $(item).addClass('green');
+                    // delayOpt('green')
+                } else if (pos == _pos && _type == '激光对射') {
+                    $(item).addClass('yellow');
+                    // delayOpt('yellow');
                 }
-            },
-            error: function (err) {
-                console.log(err)
+            })
+            // 如果有视频地址信息，渲染视频
+            if (dataValue.rtspUrls && dataValue.rtspUrls.length) {
+                renderVideo(dataValue.rtspUrls);
             }
-        })
+            initPos = pos;       // 储存返回的报警位置信息
+            initType = type;    // 储存返回的报警类型信息
+        }
     }
 
 /*

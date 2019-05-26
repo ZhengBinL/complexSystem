@@ -74,7 +74,8 @@ function init(){
 		var obj = document.getElementById("DPSDK_OCX");
 		gWndId = obj.DPSDK_CreateSmartWnd(0, 0, 100, 100);
 		//var i=obj.DPSDK_Login("19.14.62.1", 9000, "GST0101", "GST0101")
-		 var i=obj.DPSDK_Login("172.16.9.239", 9000, "admin", "admin")
+		//  var i=obj.DPSDK_Login("172.16.9.239", 9000, "admin", "admin")
+        var i=obj.DPSDK_Login($ocsfun.url, $ocsfun.dk, $ocsfun.username, $ocsfun.password);
 		if(i==0){
 			console.log("登录CODE码："+i);
 		}
