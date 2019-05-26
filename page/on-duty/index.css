@@ -126,22 +126,19 @@
   font-size: 12px;
   color: #88898f;
 }
-/*
 .text-area {
   position: absolute;
   top: 5px;
   left: 5px;
   right: 5px;
-  bottom: 60%;
   display: inline-block;
-  min-height: 180px;
-  padding: 10px;
+  padding-bottom: 45px;
   background: #fff;
   border-radius: 6px;
   color: #383838;
   text-align: left;
   white-space: normal;
-}*/
+}
 .txt-area {
   position: relative;
   padding: 10px;
@@ -152,14 +149,17 @@
   text-align: left;
   white-space: normal;
 }
-.txt-area > span {
+.txt-area .show-select {
+  margin-right: 60px;
+}
+.show-select > span {
   position: relative;
   display: inline-block;
   margin: 5px 5px 0;
   padding: 5px 10px;
   background: #f0f0f0;
 }
-.txt-area > span > .btn-del {
+.show-select > span > .btn-del {
   position: absolute;
   right: -6px;
   top: -6px;
@@ -171,4 +171,45 @@
   text-align: center;
   background: #FF5722;
   color: #fff;
+}
+.btn-select {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-block;
+  padding: 5px 10px;
+  background: #00bffe;
+  color: #fff;
+}
+.txt-area .select-area, .text-area .select-area {
+  display: none;
+  position: relative;
+  height: 0;
+}
+.txt-area .select-area > li {
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  bottom: 12px;
+  padding: 10px;
+  margin: 0;
+  background: #042867;
+  border: 1px solid #060337;
+}
+.text-area .select-area > li {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 48px;
+  height: 500px;
+  overflow: auto;
+  padding: 10px;
+  margin: 0;
+  background: #042867;
+  border: 1px solid #060337;
+}
+.chk-item {
+  display: inline-block;
+  width: 170px;
+  padding: 2px;
 }
