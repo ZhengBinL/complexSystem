@@ -141,7 +141,7 @@
 }
 .txt-area {
   position: relative;
-  min-height: 142px;
+  min-height: 32px;
   padding: 10px;
   margin: 5px;
   background: #fff;
