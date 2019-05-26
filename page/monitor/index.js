@@ -298,7 +298,7 @@ $(function () {
             }
         }
     }
-    /*****地图模式按钮开始*******/
+    /*****地图模式按钮开始******
     //放大
     $('body').on('click','.btn-zoomin',function(){
         $('.map-img-content').addClass('scale-img')
@@ -397,7 +397,7 @@ $(function () {
     bindDrag(document.getElementById('map-img-content'));
     /*****地图模式按钮结束*******/
 
-    /*******地图模式 视屏点击弹框开始*******/
+    /*******地图模式 视屏点击弹框开始******
     layui.use('layer', function(){
         var layer = layui.layer;
         var index
