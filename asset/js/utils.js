@@ -51,7 +51,7 @@ dwr.engine.setErrorHandler(function(){})
 
 
 function getAlarmTime(dataValue){
-  console.log(dataValue,'坦克弹框')
+//   console.log(dataValue,'坦克弹框')
     _top += 10;
     var html_pop = '';
     var data = JSON.parse(dataValue.msg);
@@ -62,8 +62,8 @@ function getAlarmTime(dataValue){
         '<li><span>设备名称：</span><span class="police-detail">'+ data.alarmSource.iPDeviceName +'</span></li>' +
         '<li><span>报警时间：</span><span class="police-detail">'+ data.timeCreated +'</span></li></ul>' +
         '<div class="btn-wrapper">' +
-        '<div style="display: none" class="js-police-msg">'+res.data.msg+'</div>' +
-        '<div class="js-rtspUrls" style="display: none;">'+res.data.rtspUrls+'</div>'+
+        '<div style="display: none" class="js-police-msg">'+dataValue.msg+'</div>' +
+        '<div class="js-rtspUrls" style="display: none;">'+dataValue.rtspUrls+'</div>'+
         '<a href="javascript:;" class="js-police-look layui-btn layui-btn-sm layui-btn-normal" target="_self">查看</a>' +
         '<a href="javascript:;" class="js-police-pop-close layui-btn layui-btn-sm layui-btn-primary">关闭</a>' +
         '</div></div>';
