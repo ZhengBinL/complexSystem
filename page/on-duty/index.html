@@ -39,7 +39,18 @@
     <!-- 主内容：报警 -->
     <dl class="wrapper">
       <dt>
-        <span class="page-title">执勤排班</span>
+        <!--<span class="page-title">执勤排班</span>-->
+        <div class="tabview">
+          <ul class="tabtop">
+            <li>
+              <a href="../fixed-duty/fixed-duty.html">固定勤务</a>
+            </li>
+            <li class="on">
+              <a href="javascript:void(0)">执勤排班</a>
+            </li>
+          </ul>
+        </div>
+
         <div class="layui-form right-form">
           <div class="layui-form-item ">
               <div class="layui-inline">
@@ -431,7 +442,7 @@
               $('#scheduleType').find('option').eq(i).removeAttr('selected');
             }
         }
-        form.render('select');
+        // form.render('select');
         for(var i = 0; i < dt.length; i++){
           var $tr = $('#dutyList>tbody>tr').eq(i);
           $tr.addClass('js-isEdit isedit');
@@ -441,8 +452,8 @@
             var $td = $tr.find('td').eq(j+1);
             var _html = '';
             _html += '<p class="layui-input-inline hide-elm js-select">';
-            _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="">';
-            _html += '  <option value="innerDt[j].personnelId">' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
+            _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="" data-index='+innerDt[j].id+'>';
+            _html += '  <option value="'+innerDt[j].personnelId+'" data-rank='+innerDt[j].militaryRank+'>' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
             _html += '  </select>';
             _html += '</p>';
             if (j === (innerDt.length - 1)) {
@@ -549,14 +560,47 @@
             $('.js-isEdit').addClass('isedit');
 
             //开始保存
-
+            toSave();
           } else {
             $('.js-edit').text('保存')
             $('.js-select').removeClass('hide-elm');
             $('.js-textarea').removeClass('hide-elm');
             $('.js-onduty').hide();
             $('.js-isEdit').removeClass('isedit');
-            form.render('select');
+            // form.render('select');
+            $.ajax({
+              type:'GET',
+              url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name=&ranks=3,4,5',
+            }).done(function(res){
+              var resDate = res.data;
+              var _html="";
+              for(var i=0;i<resDate.length;i++){
+                _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
+              }
+              for(var j=0;j<9;j++){
+                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]==0){
+                  $('.js-select').eq(j).find('select').append(_html)
+                }
+              }
+              form.render('select');
+            })
+             $.ajax({
+              type:'GET',
+              url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name=&ranks=',
+            }).done(function(res){
+              var resDate = res.data;
+              var _html="";
+              for(var i=0;i<resDate.length;i++){
+                _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
+              }
+              for(var j=0;j<9;j++){
+                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]!=0){
+                  $('.js-select').eq(j).find('select').append(_html)
+                }
+              }
+              form.render('select');
+            })
+
           }
         });
 
@@ -639,8 +683,8 @@
       })
     }
 
-    function getParams(){
-		  var jddata = [];
+    function toSave(){
+      var jddata = [];
       $('.js-jidong').find('.show-select span').each(function(){
         jddata.push($(this).attr('data-id'));
       })
@@ -665,7 +709,32 @@
         watchTime: $('#dutyTime').val()
       }
     }
-	})
+
+    form.on('select()', function(data){
+      var dataValue = {
+				watchScheduleList: [
+          {
+            "id": $(data.elem).attr('data-index'),
+            "personnelId":data.value,
+          }
+          ],
+				jdPersonnelIdList: [],
+				jxPersonnelIdList: [],
+				yjbPersonnelIdList: [],
+				yjzPersonnelIdList: [],
+			}
+      // console.log(dataValue,'data')
+      $.ajax({
+				url: $ctx + '/watch_schedule/saveOrUpdate',
+				data: JSON.stringify(dataValue),
+				contentType: 'application/json',
+				type: 'put'
+			}).done(function(res) {
+				$('.js-edit').text('修改')
+				querySchedule();
+			});
+    });
+  })
     </script>
 </body>
 
