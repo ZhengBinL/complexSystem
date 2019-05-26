@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../asset/js/My97DatePicker/WdatePicker.js"></script>
+    <script src="../../asset/js/json2.js"></script>
+
+    <script language="javascript" for="DPSDK_OCX"
+            event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
+        var str = ("Correct Talk Param [nTalkType=" + nTalkType + "]" + " [nAudioType=" + nAudioType + "]" +
+            " [nAudioBit=" + nAudioBit +
+            "]" + " [nSampleRate=" + nSampleRate + "]");
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX"
+            event="OnMediaDataFirstFrameEvent(szCameraID, nCameraIDLen, nFactoryType, nPlayMode)">
+        var str = (" Media Data First Frame [szCameraID=" + szCameraID + "]" + " [nCameraIDLen=" + nCameraIDLen + "]" +
+            " [nFactoryType=" + nFactoryType + "]" +
+            " [nPlayMode=" + nPlayMode + "]");
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX"
+            event="OnCorrectTalkParamEvent(nTalkType, nAudioType, nAudioBit, nSampleRate, nTransMode)">
+        var str = ("Correct Talk Param [nTalkType=]" + nTalkType + " [nAudioType=]" + nAudioType + " [nAudioBit=]" +
+            nAudioBit +
+            " [nSampleRate=]" + nSampleRate + " [nTransMode=]" + nTransMode);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordProgress(szFileName,fProgress)">
+        document.getElementById("textDownloadProgress").innerText = fProgress;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnDownloadRecordComplete(szFileName)">
+        document.getElementById("textDownloadProgress").innerText = 100;
+        alert("下载完成!");
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX"
+            event="OnAlarmEvent(szAlarmId, szCameraId, szDeviceName, szChannelName, nAlarmType, nEventType, nLevel, nTime)">
+        var str = ("OnAlarmEvent [szAlarmId=]" + szAlarmId + " [szCameraId=]" + szCameraId + "[szDeviceName=]" +
+            szDeviceName +
+            "[szChannelName=]" + szChannelName + "[nAlarmType=]" + nAlarmType + "[nEventType=]" + nEventType +
+            "[nLevel=]" + nLevel + "[nTime=]" + nTime);
+        document.getElementById("GlobalInfo").innerText = str;
+
+        if (8 == nAlarmType) {
+            //alert(szChannelName);
+        } else if ((300 < nAlarmType) && (nAlarmType < 1100)) {
+            //alert(szChannelName);
+        } else {
+            //alert(szCameraId);
+        }
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnDevStatusEvent(szDevId, nStatus)">
+        var str = "";
+        switch (nStatus) {
+            case 1:
+                //alert("设备上线！" + szDevId);
+                str = "设备上线！" + szDevId;
+                break;
+            case 2:
+                //alert("设备离线！" + szDevId);
+                str = "设备离线！" + szDevId;
+                break;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnNvrChannelStatusEvent(szChnlId, nStatus)">
+        var str = "";
+        switch (nStatus) {
+            case 1:
+                str = "通道上线！" + szChnlId;
+                break;
+            case 2:
+                str = "通道离线！" + szChnlId;
+                break;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnGeneralJsonCallBack(Json)">
+        var str1 = "json返回结果：";
+        var str = str1 + Json;
+        document.getElementById("JsonResult").innerText = str;
+
+        var jsonObj = JSON.parse(Json);
+        var strMethod = jsonObj.method;
+
+        if (strMethod == "cu.searchSnapPicUrl") {
+            var obj = document.getElementById("DPSDK_OCX");
+            var ftpInfo = obj.DPSDK_GetFTPInfo();
+            var picurl = jsonObj.params.snapPicList[0].snapPicUrl;
+            var ftpurl = ftpInfo + picurl;
+            alert(ftpurl);
+            document.getElementById("snapPicture").src = ftpurl;
+        } else if (strMethod == "dms.getSnapPic") {
+            var picdata = jsonObj.params.PicData;
+            alert(picdata);
+        } else if (strMethod == "Scs.NotifyBye") {
+            alert("通话结束");
+        } else if (strMethod == "client.getSystemState" || strMethod == "client.getServiceState") {
+            alert(Json);
+        }
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnServerStatusChangeEvent(nStatus)">
+        var str = "";
+        switch (nStatus) {
+            case 1:
+                str = "服务上线！";
+                var obj = document.getElementById("DPSDK_OCX");
+                ShowCallRetInfo(obj.DPSDK_LoadDGroupInfo(), "加载组织结构");
+                break;
+            case 2:
+                str = "服务离线！";
+                break;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoadDGroupInfoComplete(nRet, nGroupLen)">
+        var str = ("AsyncLoadDGroupInfoComplete [nRet=]" + nRet + " [nGroupLen=]" + nGroupLen);
+        document.getElementById("RetInfo").innerText = str;
+        var obj = document.getElementById("DPSDK_OCX");
+        //	document.getElementById("DGroupInfo").innerText = obj.DPSDK_GetDGroupStr();
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnWndLBtnClick(nWndId, nWndNo, xPos, yPos)">
+        var str = ("OnWndLBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnWndRBtnClick(nWndId, nWndNo, xPos, yPos)">
+        var str = ("OnWndRBtnClick [nWndId=]" + nWndId + " [nWndNo=]" + nWndNo + " [xPos=]" + xPos + " [yPos=]" + yPos);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnDoorStatusReportEvent(szCameraId, status, time)">
+        var doorstatus = "";
+        switch (status) {
+            case 1:
+                doorstatus = "开门！";
+                break;
+            case 0:
+                doorstatus = "关门！";
+                break;
+            case 2:
+                doorstatus = "离线！";
+                break;
+        }
+        var str = ("DoorStatusReport [szCameraId=]" + szCameraId + " [status=]" + doorstatus + " [time=]" + time);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX"
+            event="OnNetAlarmHostStatusReportEvent(szDeviceId, nReportType, nOperationType, nStatus)">
+        var strReportType = "";
+        var strOperationType = "";
+        var strStatus = "";
+        switch (nReportType) {
+            case 1:
+                strReportType = "留守布防";
+                break;
+            case 2:
+                strReportType = "防区旁路";
+                break;
+            default:
+                strReportType = "未知";
+                break;
+        }
+        switch (nOperationType) {
+            case 1:
+                strOperationType = "设备 布/撤防";
+                break;
+            case 2:
+                strOperationType = "通道 布/撤防";
+                break;
+            case 3:
+                strOperationType = "报警输出通道操作";
+                break;
+            default:
+                strOperationType = "未知";
+                break;
+        }
+        switch (nStatus) {
+            case 1:
+                strStatus = "布防/旁路";
+                break;
+            case 2:
+                strStatus = "撤防/取消旁路";
+                break;
+            default:
+                strStatus = "未知";
+                break;
+        }
+        var str = ("网络报警主机状态上报 [szCameraId=]" + szDeviceId + " [ReportType=]" + strReportType + " [OperationType=]" +
+            strOperationType + " [Status=]" + strStatus);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX"
+            event="OnVideoAlarmHostStatusReportEvent(szDeviceId, nChannelNO, nStatus)">
+        var strStatus = "";
+        switch (nStatus) {
+            case 1:
+                strStatus = "针对设备布防";
+                break;
+            case 3:
+                strStatus = "针对设备撤防";
+                break;
+            case 4:
+                strStatus = "针对通道旁路";
+                break;
+            case 5:
+                strStatus = "针对通道取消旁路";
+                break;
+            case 6:
+                strStatus = "针对设备在家布防";
+                break;
+            case 7:
+                strStatus = "针对设备外出布防";
+                break;
+            default:
+                strStatus = "未知";
+                break;
+        }
+        var str = ("视频报警主机状态上报 [szCameraId=]" + szDeviceId + " [ChannelNO=]" + nChannelNO + " [Status=]" + strStatus);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnBayCarInfoEvent(szBayCarInfo)">
+        document.getElementById("GlobalInfo").innerText = szBayCarInfo;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnPlaybackCompleteByWndNo(nWndId, nWndNo)">
+        var obj = document.getElementById("DPSDK_OCX");
+        obj.DPSDK_StartFilePlaybackByWndNo(nWndId, nWndNo, 1);
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX"
+            event="OnChannelViewInfoReportEvent(szCamearId, nDistance, nAngelH, nAzimuthH, nInclinationH)">
+        var str = ("OnChannelViewInfoReportEvent [szCamearId=]" + szCamearId + " [nDistance=]" + nDistance +
+            "[nAngelH=]" + nAngelH +
+            "[nAzimuthH=]" + nAzimuthH + "[nInclinationH=]" + nInclinationH);
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncLoginComplete(nRet)">
+        if (nRet == 0) {
+            bLogin = 1;
+        }
+        ShowCallRetInfo(nRet, "异步登录");
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncStartRealplayComplete(nRet, nWndId, nWndNo)">
+        var str;
+        if (nRet == 0) {
+            str = "异步播放视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
+            var szCameraId = document.getElementById("textCameraID").value;
+            var obj = document.getElementById("DPSDK_OCX");
+            var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
+            insertRealplayHistory(szCameraId);
+            ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 1, bIVS), "规则线显示"); //打开规则线显示
+            ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 2, bIVS), "目标框显示"); //打开目标框显示
+            ShowCallRetInfo(obj.DPSDK_SetIvsShowFlagByWndNo(gWndId, nWndNo, 3, bIVS), "轨迹线显示"); //打开轨迹线显示
+        } else {
+            str = "异步播放视频失败，错误码：" + nRet;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncStopRealplayComplete(nRet, nWndId, nWndNo)">
+        var str;
+        if (nRet == 0) {
+            str = "异步停止视频成功，nWndId = " + nWndId + "，nWndNo = " + nWndNo;
+        } else {
+            str = "异步停止视频失败，错误码：" + nRet;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnAsyncPtzDirectionComplete(nRet, szCameraId)">
+        var str;
+        if (nRet == 0) {
+            str = "异步云台方向控制成功，szCameraId = " + szCameraId;
+        } else {
+            str = "异步云台方向控制失败，错误码：" + nRet;
+        }
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnVtCallInviteCallback(szUserId)">
+        var str = szUserId + "请求可视对讲";
+        alert(str);
+    </script>
+
+    <script language="javascript" for="DPSDK_OCX" event="OnBusyVtCallCallback()">
+        var str = "呼叫繁忙";
+        document.getElementById("GlobalInfo").innerText = str;
+    </script>
+
+    <title>武警智慧磐石执勤安保信息管理平台</title>
+    <!-- <title>综合管理</title> -->
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" type="text/css" href="../../asset/css/DSSPlay.css"/>
+</head>
+
+<body>
+<!--头部-->
+<div class="header">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
+        <ul>
+            <li class="notice-wrapper">
+                <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+            </li>
+            <li class="user-notice">
+                <div id="user-operate" class="user-operate">
+                    <a href="javascript:;">
+                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                        管理
+                    </a>
+                    <a href="javascript:;" class="exit" title="退出">退出</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--侧边栏-->
+<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
+        marginwidth="0"
+        style="position: fixed;display: block;top: 75px;left: -480px;width: 480px;height: 2000px;z-index: 90;background: transparent;"></iframe>
+<div class="aside">
+    <div class="aside-bg">
+        <i class="aside-bg-lt"></i>
+        <i class="aside-bg-mt"></i>
+        <i class="aside-bg-mt-img"></i>
+        <i class="aside-bg-rt"></i>
+        <i class="aside-bg-lm"></i>
+        <i class="aside-bg-mm"></i>
+        <i class="aside-bg-rm"></i>
+        <i class="aside-bg-lb"></i>
+        <i class="aside-bg-mb"></i>
+        <i class="aside-bg-rb"></i>
+    </div>
+    <div class="menu-tree">
+        <ul id="menu-tree" class="ztree"></ul>
+    </div>
+    <!--<a href="javascript:;" id="showFlag" class="icon-fold unfolded"></a>-->
+</div>
+<a href="javascript:;" class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></a>
+<!--主体-->
+<div class="main">
+    <div class="tabview">
+        <ul class="tabtop js-tabtop">
+            <li class="js-tabhd">
+                <a href="../angel/index.html">三维立体全景监控</a>
+            </li>
+            <li class="js-tabhd on" id="devidMode">
+                <a href="javascript:void(0)">分屏模式</a>
+            </li>
+            <li class="js-tabhd">
+                <a href="../prevention-tab/index.html">联防联动</a>
+            </li>
+        </ul>
+        <!-- tab-hd =end= -->
+
+        <!-- tab-bd =start= -->
+        <ul class="tabmain js-tabmain">
+            <li class="js-tabbd">
+                <!-- tab-bd>>>li =start= -->
+
+                <!-- tab-bd>>>li =end= -->
+            </li>
+            <li class="js-tabbd on">
+                <!-- tab-bd>>>li =start= -->
+                <div class="split-mode">
+                    <ul id="mode-rec" class="mode-content mode-rec-4">
+                        <!-- js添加li -->
+                        <span class="clearfix"></span>
+                    </ul>
+
+                    <div class="slider-operate">
+                        <img src="../../asset/img/btn_1_1.png" alt="">
+                        <div id="slide" class="slider"></div>
+                        <img src="../../asset/img/btn_4_4.png" alt="">
+                        <img class="js-btn-big" src="../../asset/img/btn_big.png" alt="">
+                    </div>
+                </div>
+                <!-- tab-bd>>>li =end= -->
+                <!--历史记录 start-->
+                <div class="history-wrapper">
+                    <div class="history-top mode-content">
+                        <div class="video-wrapper">
+                            <div class="video">
+                                <div id="mainbg">
+                                    <div id="main">
+                                        <div style="width: 100%;height: 0;overflow: auto;" id="RetInfo">
+
+                                        </div>
+                                        <div style="width: 100%;height: 0px;overflow: auto;" id="GlobalInfo">
+
+                                        </div>
+                                        <div class="box_top"></div>
+                                        <div id="mviewl">
+                                            <div id="obj">
+                                                <object id="DPSDK_OCX"
+                                                        classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D"
+                                                        style="width: 100%; height: 100%"
+                                                        codebase="DpsdkOcx.cab#version=1.0.0.0"></object>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0"
+                                        marginwidth="0"
+                                        style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
+                                <div class="v-toolbar" style="position: absolute;left: 0;right: 0;top: 0;">
+                                    <a href="javascript:;" class="icon-speed"><img
+                                            src="../../asset/img/icon_speed.png"> 倍速</a>
+                                    <a href="javascript:;" class="playAndsuspend"><img
+                                            src="../../asset/img/icon_pause.png"> <span
+                                            id="playAndsuspend">停止播放</span></a>
+                                    <a href="javascript:;" class="icon-history"><img
+                                            src="../../asset/img/icon-close.png"> 关闭</a>
+                                    <div class="speed-wrapper">
+                                        <a href="javascript:;"
+                                           onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(64)"
+                                           class="speed-item">8.0X</a>
+                                        <a href="javascript:;"
+                                           onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(32)"
+                                           class="speed-item">4.0X</a>
+                                        <a href="javascript:;"
+                                           onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(16)"
+                                           class="speed-item">2.0X</a>
+                                        <a href="javascript:;"
+                                           onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(8)"
+                                           class="speed-item">1.0X</a>
+                                        <a href="javascript:;"
+                                           onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(4)"
+                                           class="speed-item">1/2X</a>
+                                        <a href="javascript:;"
+                                           onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(2)"
+                                           class="speed-item">1/4X</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="date-wrapper">
+                            <div class="calendar" id="calendar"></div>
+                            <div class="search-btn">搜索录像</div>
+                        </div>
+                    </div>
+                    <div class="scale-wrapper">
+                        <div class="scale-title">历史视频时间段控制</div>
+                        <div class="scale">
+                            <div class="scale-num"><img src="../../asset/img/scalenum.png"></div>
+                            <img src="../../asset/img/graduation.png" class="scale-bar"/>
+                            <div class="scale-box">
+                                <span data-count="0" class="scale-unit spec"></span>
+                                <span data-count="1" class="scale-unit"></span>
+                                <span data-count="2" class="scale-unit"></span>
+                                <span data-count="3" class="scale-unit"></span>
+                                <span data-count="4" class="scale-unit"></span>
+                                <span data-count="5" class="scale-unit"></span>
+                                <span data-count="6" class="scale-unit"></span>
+                                <span data-count="7" class="scale-unit"></span>
+                                <span data-count="8" class="scale-unit"></span>
+                                <span data-count="9" class="scale-unit"></span>
+                                <span data-count="10" class="scale-unit"></span>
+                                <span data-count="11" class="scale-unit"></span>
+                                <span data-count="12" class="scale-unit"></span>
+                                <span data-count="13" class="scale-unit"></span>
+                                <span data-count="14" class="scale-unit"></span>
+                                <span data-count="15" class="scale-unit"></span>
+                                <span data-count="16" class="scale-unit"></span>
+                                <span data-count="17" class="scale-unit"></span>
+                                <span data-count="18" class="scale-unit"></span>
+                                <span data-count="19" class="scale-unit"></span>
+                                <span data-count="20" class="scale-unit"></span>
+                                <span data-count="21" class="scale-unit"></span>
+                                <span data-count="22" class="scale-unit"></span>
+                                <span data-count="23" class="scale-unit"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--历史记录 end-->
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="footer">
+    技术支持：北京国势通科技有限公司
+</div>
+<!--报警弹框-->
+
+<script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/js/config.js"></script>
+<script type='text/javascript' src='/dwr/engine.js'></script>
+<script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
+<script type='text/javascript' src='/dwr/util.js'></script>
+<script src="../../asset/js/utils.js"></script>
+<script src="../../asset/introduce/layui/layui.js"></script>
+<script src="../../asset/introduce/zTree/js/jquery.ztree.all.min.js"></script>
+<script src="../../asset/js/ocxfun.js"></script>
+<script src="../../asset/js/aside.js"></script>
+<script src="./index.js"></script>
+<script>
+    var _this = this;
+    var szCameraId = "";
+
+    // slider计算高度
+    function caleHeight(itemnumb) {
+        // 设置分屏模式视频高度
+        var itemWidth = $('.mode-content .videos').width();
+        var itemHeight = itemWidth * 9 / 16;
+        $('.mode-content li').each(function () {
+            var $tis = $(this);
+            if ($tis.attr('data-active') != undefined) {
+                $tis.find('.videos').css('height', (itemHeight+32)).attr('data-height', itemHeight);
+            } else {
+                $tis.find('.videos').css('height', (itemHeight + 32)).attr('data-height', itemHeight);
+            }
+        })
+        $('#vlc1').css({
+            "width": itemWidth,
+            "height": itemHeight
+        })
+        $('#vlc2').css({
+            "width": itemWidth,
+            "height": itemHeight
+        })
+        $('#vlc3').css({
+            "width": itemWidth,
+            "height": itemHeight
+        })
+        $('#vlc4').css({
+            "width": itemWidth,
+            "height": itemHeight
+        })
+        $('#mode-rec').css({
+            'height': (itemHeight + 32) * itemnumb + (itemnumb + 1) * 10, // 10：item元素边距；32：toolbar高度
+            'overflow': 'hidden'
+        })
+    }
+
+    // 鼠标滑过分屏模式视频&滑过历史记录视频
+    $('body').on('mouseenter', '.video-wrapper .video', function () {
+        $(this).children('.v-toolbar').show();
+        $(this).find('.opt-monitor').stop().hide();
+    }).on('mouseleave', '.video-wrapper .video', function () {
+        $(this).children('.v-toolbar').stop().hide();
+        $('#zhanwei').stop().hide();
+        $('.speed-wrapper').stop().hide();
+    })
+    // 点击云平台控制
+    $('body').on('click', '.js-control', function () {
+        $(this).parent().children('.opt-monitor').toggle()
+    })
+    // $('.js-tabtop').on('click', '#devidMode', function () {
+    //     _this.caleHeight(4)
+    // })
+    //滑块
+    layui.use('slider', function () {
+        var slider = layui.slider;
+        //设置步长
+        var sliderSet = slider.render({
+            elem: '#slide',
+            step: 1, //步长,
+            min: 1,
+            max: 4,
+            value: 4,
+            change: function (value) {
+                //do something
+                if (value == 4) {
+                    $('#mode-rec').removeClass('mode-rec-1')
+                    $('#mode-rec').removeClass('mode-rec-2')
+                    $('#mode-rec').removeClass('mode-rec-3')
+                    $('#mode-rec').addClass('mode-rec-4')
+                    _this.caleHeight(4)
+                } else if (value == 3) {
+                    $('#mode-rec').removeClass('mode-rec-1')
+                    $('#mode-rec').removeClass('mode-rec-2')
+                    $('#mode-rec').removeClass('mode-rec-4')
+                    $('#mode-rec').addClass('mode-rec-3')
+                    _this.caleHeight(3)
+                } else if (value == 2) {
+                    $('#mode-rec').removeClass('mode-rec-1')
+                    $('#mode-rec').removeClass('mode-rec-3')
+                    $('#mode-rec').removeClass('mode-rec-4')
+                    $('#mode-rec').addClass('mode-rec-2')
+                    _this.caleHeight(2)
+                } else if (value == 1) {
+                    $('#mode-rec').removeClass('mode-rec-2')
+                    $('#mode-rec').removeClass('mode-rec-3')
+                    $('#mode-rec').removeClass('mode-rec-4')
+                    $('#mode-rec').addClass('mode-rec-1')
+                    _this.caleHeight(1)
+                }
+
+            }
+        });
+        // 分屏模式放大功能
+        $('.js-btn-big').on('click', function () {
+            $('#mode-rec').removeClass('mode-rec-2')
+            $('#mode-rec').removeClass('mode-rec-3')
+            $('#mode-rec').removeClass('mode-rec-4')
+            $('#mode-rec').addClass('mode-rec-1')
+            _this.caleHeight(1)
+            sliderSet.setValue(0)
+        })
+    })
+
+    // 点击云平台控制
+    // $('body').on('click', '.js-control', function () {
+    //     $(this).parent().children('.opt-monitor').toggle()
+    // })
+
+    // 渲染日期组件
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#calendar',
+            btns: [],
+            position: 'static',
+            done: function (value, date, endDate) {
+                $(".search-btn").attr("data-search-time", value);
+            }
+        });
+    })
+
+</script>
+</body>
+
+</html>

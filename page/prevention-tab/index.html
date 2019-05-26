@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>武警智慧磐石执勤安保信息管理平台</title>
+    <!-- <title>联防联动</title> -->
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../prevention/index.css">
+</head>
+
+<body>
+<!--头部-->
+<div class="header">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
+        <ul>
+            <li class="notice-wrapper">
+                <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+            </li>
+            <li class="user-notice">
+                <div id="user-operate" class="user-operate">
+                    <a href="javascript:;">
+                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                        管理
+                    </a>
+                    <a href="javascript:;" class="exit" title="退出">退出</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 主内容：报警 -->
+<dl class="wrapper">
+    <dt>
+        <div class="tabview">
+            <ul class="tabtop js-tabtop">
+                <li class="js-tabhd">
+                    <a href="../angel/index.html">三维立体全景监控</a>
+                </li>
+                <li class="js-tabhd" id="devidMode">
+                    <a href="../monitor/index.html">分屏模式</a>
+                </li>
+                <li class="js-tabhd on">
+                    <a href="../prevention-tab/index.html">联防联动</a>
+                </li>
+            </ul>
+        </div>
+        <div class="sign signer">
+            <span class="icon-police-red"><img src="../../asset/img/sign-red.png">震动光纤报警</span>
+            <span class="icon-police-yellow"><img src="../../asset/img/sign-yellow.png">激光对射报警</span>
+            <span class="icon-police-green"><img src="../../asset/img/sign-green.png">周界入侵报警</span>
+            <span class="btn-police">
+                <a href="javascript:;" class="js-police-btn-yes layui-btn layui-btn-sm layui-btn-normal">确定</a>
+                <a href="javascript:;" class="js-police-btn-no layui-btn layui-btn-sm layui-btn-primary">取消</a>
+            </span>
+        </div>
+    </dt>
+
+    <dd>
+        <div class="prevention-left">
+            <div class="prevention-map">
+                <div class="prevention-img">
+                    <img src="../../asset/img/prevention-bj.png">
+                    <span class="r-warn r-warn1" data-pos="震动光纤_1" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn1" data-pos="周界1号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn1" data-pos="激光对射1防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn2" data-pos="震动光纤_2" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn2" data-pos="周界2号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn2" data-pos="激光对射2防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn3" data-pos="震动光纤_3" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn3" data-pos="周界3号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn3" data-pos="激光对射3防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn4" data-pos="震动光纤_4" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn4" data-pos="周界4号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn4" data-pos="激光对射4防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn5" data-pos="震动光纤_5" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn5" data-pos="周界5号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn5" data-pos="激光对射5防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn6" data-pos="震动光纤_6" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn6" data-pos="周界6号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn6" data-pos="激光对射6防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn7" data-pos="震动光纤_7" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn7" data-pos="周界7号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn7" data-pos="激光对射7防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn8" data-pos="震动光纤_8" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn8" data-pos="周界8号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn8" data-pos="激光对射8防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn9" data-pos="震动光纤_9" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn9" data-pos="周界9号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn9" data-pos="激光对射9防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn10" data-pos="震动光纤_10" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn10" data-pos="周界10号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn10" data-pos="激光对射10防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn11" data-pos="震动光纤_11" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn11" data-pos="周界11号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn11" data-pos="激光对射11防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn12" data-pos="震动光纤_12" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn12" data-pos="周界12号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn12" data-pos="激光对射12防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn13" data-pos="震动光纤_13" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn13" data-pos="周界13号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn13" data-pos="激光对射13防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn14" data-pos="震动光纤_14" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn14" data-pos="周界14号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn14" data-pos="激光对射14防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn15" data-pos="震动光纤_15" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn15" data-pos="周界15号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn15" data-pos="激光对射15防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn16" data-pos="震动光纤_16" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn16" data-pos="周界16号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn16" data-pos="激光对射16防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn17" data-pos="震动光纤_17" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn17" data-pos="周界17号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn17" data-pos="激光对射17防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn18" data-pos="震动光纤_18" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn18" data-pos="周界18号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn18" data-pos="激光对射18防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn19" data-pos="震动光纤_19" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn19" data-pos="周界19号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn19" data-pos="激光对射19防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn20" data-pos="震动光纤_20" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn20" data-pos="周界20号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn20" data-pos="激光对射20防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn21" data-pos="震动光纤_21" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn21" data-pos="周界21号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn21" data-pos="激光对射21防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn22" data-pos="震动光纤_22" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn22" data-pos="周界22号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn22" data-pos="激光对射22防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn23" data-pos="震动光纤_23" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn23" data-pos="周界23号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn23" data-pos="激光对射23防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn24" data-pos="震动光纤_24" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn24" data-pos="周界24号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn24" data-pos="激光对射24防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn25" data-pos="震动光纤_25" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn25" data-pos="周界25号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn25" data-pos="激光对射25防区" data-type="激光对射"></span>
+
+                    <span class="r-warn r-warn26" data-pos="震动光纤_26" data-type="光纤震动"></span>
+                    <span class="g-warn g-warn26" data-pos="周界26号" data-type="周界入侵"></span>
+                    <span class="y-warn y-warn26" data-pos="激光对射26防区" data-type="激光对射"></span>
+                </div>
+                <span class="icon-corner corner-top-left"></span>
+                <span class="icon-corner corner-top-right"></span>
+                <span class="icon-corner corner-bottom-left"></span>
+                <span class="icon-corner corner-bottom-right"></span>
+            </div>
+        </div>
+        <div class="prevention-right" id="video-wrapper">
+        </div>
+
+
+    </dd>
+</dl>
+
+<!--页脚-->
+<div class="footer" style="clear: both;">
+    技术支持：北京国势通科技有限公司
+</div>
+<script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/js/config.js"></script>
+<script type='text/javascript' src='/dwr/engine.js'></script>
+<script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
+<script type='text/javascript' src='/dwr/util.js'></script>
+<script src="../fixed-duty/fixed-duty.js"></script>
+<script>
+    var initPos,    // 初始化位置信息-->请求返回的位置
+        initType,   // 初始化类型信息-->请求返回的类型
+        initRtsp,   // 初始化视频地址信息-->请求返回的地址
+        initMsg;    // 初始化msg信息-->请求返回的msg
+    /*
+    PS：实时获取报警点，注意放开代码
+    */
+
+    //实时获取报警信息
+    //  激活ajax
+    dwr.engine.setActiveReverseAjax(true)
+    // // 页面未加载的时候是否发送通知
+    dwr.engine.setNotifyServerOnPageUnload(true,true)
+    // // 出现错误后的处理方法
+    dwr.engine.setErrorHandler(function(){})
+    function getAlarmTimeForAction(dataValue) {
+        if (dataValue.msg) { // 返回的有高亮数据点
+            initMsg = dataValue.msg;      // 赋值msg
+            initRtsp = dataValue.rtspUrls;    // 赋值视频地址
+            /**
+             * 渲染灯笼
+             * */
+            var msg = JSON.parse(dataValue.msg); // 返回信息
+            var pos = msg.AlarmSource.IPDeviceName; // 岗哨
+            var type = msg.AlarmType.SystemOptionName; // 报警类型
+            // console.log(pos)
+            // console.log(type)
+            // console.log(msg)
+            $('.btn-police').show();
+            var $el;
+            if (type == '光纤震动') {
+                $el = $('.prevention-img .r-warn')
+            } else if (type == '周界入侵') {
+                $el = $('.prevention-img .g-warn')
+            } else {
+                $el = $('.prevention-img .y-warn')
+            }
+            // 点亮匹配数据
+            $el.each(function (index, item) {
+                var _pos = $(item).data('pos');
+                var _type = $(item).data('type');
+                if (pos == _pos && _type == '光纤震动') {
+                    $(item).addClass('red');
+                    // delayOpt('red');
+//                                setTimeout(function () {
+//                                    if (initPos == pos && initType == type) {
+//                                        return
+//                                    }
+//                                    $(item).removeClass('red')
+//                                    removeVideo()
+//                                }, 30000)
+                } else if (pos == _pos && _type == '周界入侵') {
+                    $(item).addClass('green');
+                    // delayOpt('green')
+                } else if (pos == _pos && _type == '激光对射') {
+                    $(item).addClass('yellow');
+                    // delayOpt('yellow');
+                }
+            })
+            // 如果有视频地址信息，渲染视频
+            if (dataValue.rtspUrls && dataValue.rtspUrls.length) {
+                renderVideo(dataValue.rtspUrls);
+            }
+            initPos = pos;       // 储存返回的报警位置信息
+            initType = type;    // 储存返回的报警类型信息
+        }
+    }
+
+    /*
+    * 如果是跳转页面，
+    * 需要获取cookie并渲染
+    * 1,2,3,4步
+    */
+    // 1、首先判断是否是从报警弹框进入该页面
+    function isPageJump() {
+        var url = window.location.href
+        var flag = url.split('?')[1]; // 弹框页面传入call=1的值
+        return flag ? true : false;
+    }
+    // 2、如果是通过报警弹框进入该页面，则渲染renderPageJump方法
+    function renderPageJump() {
+        // 如果是跳转页面，且oldMsg有数据，并且未获取到请求数据
+        if (isPageJump()){
+            $('.btn-police').show();
+            //  oldMsg表示存储的msg信息
+            var oldMsg = JSON.parse(sessionStorage.getItem("hrefParam"));
+            // var oldMsg = sessionStorage.getItem("hrefParam");
+            //console.log(oldMsg)
+            if( oldMsg && !initMsg){
+                var rtspUrls = sessionStorage.getItem("rtspUrls"); // 获取视频地址
+                console.log(decodeURIComponent(rtspUrls), 'decode');
+                var decodeRtsp = decodeURIComponent(rtspUrls);  // 解析视频地址
+                var pos = oldMsg.alarmSource.iPDeviceName; // 报警岗哨
+                var type = oldMsg.alarmType.systemOptionName; // 报警类型
+                $('.prevention-img span').each(function (index, item) {
+                    var _pos = $(item).data('pos');
+                    var _type = $(item).data('type');
+                    if (_pos == pos && type == _type){
+                        if (type == '光纤震动') {
+                            $(item).addClass('red cookie-dom');
+                            // delayOpt('red', true);
+                        } else if (type == '周界入侵') {
+                            $(item).addClass('green cookie-dom');
+                            // delayOpt('green', true);
+                        } else {
+                            $(item).addClass('yellow cookie-dom');
+                            // delayOpt('yellow', true);
+                        }
+                    }
+                })
+                // 渲染视频
+                setTimeout(function(){
+                    renderVideo(decodeRtsp.split(','));
+                },1000)
+            }
+
+        }
+    }
+    // 3、30秒后清除cookie，并且移除掉视频, flag表示有cookie
+    // function delayOpt(className, flag) {
+    //     $(item).removeClass(className);
+    //     var date = new Date();
+    //     date.setTime(date.getTime() - 10000);
+    //     setTimeout(function () {
+    //         if (flag){
+    //             sessionStorage.removeItem("hrefParam");
+    //             sessionStorage.removeItem("rtspUrls");
+    //             // $('.btn-police').hide();
+    //             // console.log(sessionStorage,'sessionStorage');
+    //             // document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
+    //             // document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
+    //         }
+    //         $(item).removeClass(className);
+    //         removeVideo();
+    //     }, 30000)
+    // }
+    // 4、渲染跳转页面的灯笼和视频
+    renderPageJump()
+
+    /*
+     * 点击确定与取消按钮操作
+     * @params
+     * result：yes表示点击确定，no表示点击取消
+    */
+    function removeCls(result) {
+        //  1.通过是否请求数据成功，如果initMsg有数据，则操作的是返回数据
+        if (initMsg){
+            // $('.btn-police').hide();
+            var _initMsg = JSON.parse(initMsg);
+            var _rtspUrls = initRtsp;
+            var pos = _initMsg.AlarmSource.IPDeviceName; // 岗哨
+            var type = _initMsg.AlarmType.SystemOptionName; // 报警类型
+            $('OBJECT').each(function (index, item) {
+                for(var i = 0; i < _rtspUrls.length; i++){
+                    if($(item).attr('rtsp') == _rtspUrls[i]){
+                        $(item).closest('.prevention-video').children('.video-hover').hide();
+                        $(item).closest('.prevention-video').children('iframe').hide();
+                        $(item).remove();
+                    }
+                }
+            })
+            $('.prevention-img span').each(function (index, item) {
+                var _pos = $(item).data('pos');
+                var _type = $(item).data('type');
+                if (_pos == pos && type == _type){
+                    if (type == '光纤震动') {
+                        $(item).removeClass('red')
+                    } else if (type == '周界入侵') {
+                        $(item).removeClass('green');
+                    } else {
+                        $(item).removeClass('yellow');
+                    }
+                }
+            })
+            // $.ajax({
+            //     type:'GET',
+            //     dataType:'json',
+            //     // contentType:'application/json',
+            //     // data:{
+            //     //     'msg_info':initMsg,
+            //     //     "con_info":result
+            //     // },
+            //     url: $ctx +'/alarm/putAlarmCancel?msg_info='+encodeURIComponent(initMsg)+'&con_info='+result,
+            //     success:function(res){
+            //         if (res.code == 0){
+            //             //
+            //         }
+            //     }
+            // })
+        }
+        // 如果未请求到数据，并且是通过页面跳转，则操作的是cookie传入的数据
+        // else if (!initMsg && isPageJump()){
+        //     var cookieMsg = document.cookie.split(";")[0].split("=")[1]
+        //     $.ajax({
+        //         type:'PUT',
+        //         dataType:'json',
+        //         contentType:'application/json',
+        //         url: $ctx +'/alarm/putAlarmCancel?msg=' + encodeURIComponent(cookieMsg) + '&op=' + result,
+        //         success:function(res){
+        //             if (res.code == 0){
+        //                 $('.cookie-dom').removeClass('red green yellow');
+        //                 var date = new Date();
+        //                 date.setTime(date.getTime() - 10000);
+        //                 document.cookie= "hrefParam='';expires="+ date.toGMTString +";path=/";
+        //                 document.cookie="rtspUrls='';expires="+ date.toGMTString +";path=/";
+        //             }
+        //         }
+        //     })
+        // }
+    }
+    // 点击确定或者取消，移除class
+    $('body').on('click', '.js-police-btn-yes', function () {
+        removeCls('yes')
+    }).on('click', '.js-police-btn-no', function () {
+        removeCls('no')
+    })
+
+    /*
+     * 有视频数据的渲染
+     * @params：
+     * urls是视频地址数组
+    */
+    function renderVideo(urls) {
+        var html = '';
+        for (var j = 0; j < 4; j++) {
+            html += '<div class="prevention-video">' +
+                '<div class="video-hover"><a href="javascript:;" class="js-prevent-close"><img src="../../asset/img/icon-close.png" width="15px" height="15px"> 关闭</a></div>' +
+                '<iframe class="iframe" style="position: absolute;left: 10px;right: 10px; top: 0px;z-index: 0;background: transparent;border: none;height: 32px;" marginwidth="0" marginheight="0"></iframe>' +
+                '<div class="vlc1">';
+            if (j < urls.length) {
+                html += '<OBJECT rtsp="' +urls[ j ]+'" classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" id="vlc' + (j + 1) + '" codebase="" width="100%" height="100%" events="True"><param name="AutoLoop" value="False" /><param name="AutoPlay" value="True" /><param name="Time" value="True" /><param name="ShowDisplay" value="True" /><param name="Controls" value="False"><EMBED pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" version="VideoLAN.VLCPlugin.2" width="100%" height="85%" text="Waiting for video" name="vlc"></EMBED></OBJECT>'
+            } else {
+                html += ''
+            }
+            html += '</div></div>'
+        }
+        $('#video-wrapper').html(html)
+
+        // 如果没有视频，则隐藏掉关闭按钮与iframe
+        $('.prevention-video').each(function(index, item) {
+            if (!$(item).find('OBJECT').length){
+                $(item).children('.video-hover, .iframe').hide();
+            }
+        })
+        // 填充视频数据后，设置dom高度
+        var itemWidth = $('.vlc1').width();
+        var itemHeight = itemWidth * 20 / 36;
+        $('.vlc1').css("height", itemHeight);
+        // 渲染视频
+        if(urls.length == 1){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+        }else if(urls.length == 2){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+            play(urls[1], "vlc2");
+            $('#vlc2').css({width: '100%', height: '100%'})
+        }else if(urls.length == 3){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+            play(urls[1], "vlc2");
+            $('#vlc2').css({width: '100%', height: '100%'})
+            play(urls[2], "vlc3");
+            $('#vlc3').css({width: '100%', height: '100%'})
+        }else if(urls.length == 4){
+            play(urls[0], "vlc1");
+            $('#vlc1').css({width: '100%', height: '100%'})
+            play(urls[1], "vlc2");
+            $('#vlc2').css({width: '100%', height: '100%'})
+            play(urls[2], "vlc3");
+            $('#vlc3').css({width: '100%', height: '100%'})
+            play(urls[3], "vlc4");
+            $('#vlc4').css({width: '100%', height: '100%'})
+        }
+        // for (var i = 0; i < urls.length; i++) {
+        //     play(urls[i], "vlc" + (i + 1));
+        //     $('#vlc' + (i + 1)).css({width: '100%', height: '100%'})
+        // }
+    }
+
+    /*
+    * 移除视频dom
+    */
+    function removeVideo(){
+        $('OBJECT').each(function (index, item) {
+            $(item).closest('.prevention-video').children('.video-hover').hide();
+            $(item).closest('.prevention-video').children('.iframe').hide();
+            $(item).remove();
+        })
+    }
+    /*
+    * 无视频，初始化渲染右侧视频列表
+    */
+    function renderList() {
+        var html = '';
+        for (var j = 0; j < 4; j++) {
+            html += '<div class="prevention-video"><div class="vlc1"></div></div>'
+        }
+        $('#video-wrapper').html(html)
+        var itemWidth = $('.vlc1').width();
+        var itemHeight = itemWidth * 20 / 36;
+        $('.vlc1').css("height", itemHeight);
+    }
+    renderList()
+
+    // 点击关闭按钮
+    $('body').on('click', '.js-prevent-close', function () {
+        $(this).closest('.prevention-video').find('OBJECT').remove();
+        $(this).parent().remove();
+    })
+    //     点击云平台控制
+    //    $('body').on('click', '.js-control', function () {
+    //        $(this).parent().children('.opt-monitor').toggle()
+    //    })
+</script>
+
+</body>
+
+</html>

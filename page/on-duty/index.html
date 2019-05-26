@@ -362,7 +362,7 @@
 
         var layer = layui.layer;
         querySchedule(d, form);
-        
+
         $('.js-query').on('click',function () {
           var val = $('#dutyTime').val();
           if(val.trim() === ''){
@@ -371,26 +371,26 @@
           }
           querySchedule(val, form);
         })
-		
+
 		var tower;
 		var mirror;
-		
+
 
 		function copy(before, after) {
 			var date = $('#dutyTime').val() || formatDate()
 			var watchScheduleList = [];
-			
+
 			var rowid = after.attr("rowid");
 			var tds = after.find('td');
-			
+
 			var resources = before.find('td');
-			
+
 			for(var j = 1; j <= 9; j++) {
 				var columnid = tower[j - 1].id;
 				var cellid = $(tds[j]).attr("cellid");
-				
+
 				var pid = $(resources[j]).find("p").attr('pid');
-				
+
 				var json = {
 					personnelId: pid,
 					type: "2",
@@ -398,13 +398,13 @@
 					watchTime: date,
 					watchTowerId: columnid,
 				}
-				
+
 				if(cellid)
 					json.id = cellid;
-				
+
 				watchScheduleList.push(json)
 			}
-			
+
 			$.ajax({
 				url: $ctx + '/watch_schedule/saveOrUpdate',
 				data: JSON.stringify( watchScheduleList ),
@@ -415,7 +415,7 @@
 				querySchedule(date);
 			});
 		}
-		
+
     function querySchedule(d, form){
       var t = new Date().getTime();
       $.ajax({
@@ -442,12 +442,12 @@
             var _html = '';
             _html += '<p class="layui-input-inline hide-elm js-select">';
             _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="">';
-            _html += '  <option value="innerDt[j].personnelId">' + innerDt[j].personnelName + '(' + innerDt[j].militaryRank + ')</option>';
+            _html += '  <option value="innerDt[j].personnelId">' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
             _html += '  </select>';
             _html += '</p>';
             if (j === (innerDt.length - 1)) {
               _html += '<p pid="' + innerDt[j].personnelId + '" class="js-onduty">' + innerDt[j].personnelName;
-              _html += '  <span class="ranks">(' + innerDt[j].militaryRank + ')</span>';
+              _html += '  <span class="ranks">(' + innerDt[j].militaryRankName + ')</span>';
               _html += '  <div class="opt-outer">';
               _html += '    <div class="table-opt">';
               _html += '      <a href="javascript:;" class="js-copy btn-row">复制</a>';
@@ -456,7 +456,7 @@
               _html += '  </div>';
               _html += '</p>';
             } else {
-              _html += '<p class="js-onduty" pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRank + '</span></p>'
+              _html += '<p class="js-onduty" pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<span class="ranks">' + innerDt[j].militaryRankName + '</span></p>'
             }
             $td.html(_html)
           }
