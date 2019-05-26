@@ -321,7 +321,9 @@
                     }
                 })
                 // 渲染视频
-                renderVideo(decodeRtsp.split(','));
+                setTimeout(function(){
+                    renderVideo(decodeRtsp.split(','));
+                },1000)
             }
 
         }
