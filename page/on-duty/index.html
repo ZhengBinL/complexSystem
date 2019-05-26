@@ -391,7 +391,82 @@
 				tower = res.data;
 			});
 		})();
-		
+    // $('.js-edit').on('click',function() {
+		// 	if($('.js-edit').text() == "保存") {
+		// 		add();
+		// 	} else{
+    //     edit()
+    //   }
+    // });
+    // function add() {
+		// 	var date = $('#dutyTime').val() || formatDate()
+		// 	var data = {
+		// 		watchScheduleList: [],
+		// 		jdPersonnelIdList: [],
+		// 		jxPersonnelIdList: [],
+		// 		yjbPersonnelIdList: [],
+		// 		yjzPersonnelIdList: [],
+		// 		watchTime: date,
+		// 	}
+			
+		// 	var trs = $('#dutyList tr');
+		// 	for(var i = 1; i < 13; i++) {
+		// 		var rowid = $(trs[i]).attr("rowid");
+				
+		// 		var tds = $(trs[i]).find('td');
+		// 		for(var j = 1; j <= 9; j++) {
+    //       var columnid = tower[j - 1].id;
+		// 			var cellid = $(tds[j]).find('select').attr('data-index');
+					
+		// 			// console.log(tds[j])
+					
+    //       var pid = $(tds[j]).find("select").val();
+		// 			var json = {
+		// 				personnelId: pid,
+		// 				type: "2",
+		// 				watchHourId: rowid,
+		// 				watchTime: date,
+		// 				watchTowerId: columnid,
+						
+		// 				// row: $(trs[i]).find('.duty-time').text(),
+		// 				// column: tower[j - 1].wtName
+		// 			}
+					
+		// 			if(cellid)
+		// 				json.id = cellid;
+					
+		// 			data.watchScheduleList.push(json)
+		// 		}
+		// 	}
+			
+		// 	var ids = $('.js-urgent select');
+			
+		// 	for(var i = 0; i < ids.length; i++) {
+		// 		data.yjzPersonnelIdList.push($(ids[i]).val());
+		// 	}
+			
+		// 	var types = $('.save_type');
+		// 	for(var i = 0; i < types.length; i++) {
+		// 		ids = $(types[i]).find("select");
+		// 		var type = $(types[i]).attr("type");
+		// 		for(var j = 0; j < ids.length; j++) {
+		// 			data[type].push($(ids[j]).val());
+		// 		}
+		// 	}
+			
+		// 	// console.log(data);
+		// 	console.log(data,'data')
+		// 	// $.ajax({
+		// 	// 	url: $ctx + '/watch_schedule/saveOrUpdate',
+		// 	// 	data: JSON.stringify(data),
+		// 	// 	contentType: 'application/json',
+		// 	// 	type: 'put'
+		// 	// }).done(function(res) {
+		// 	// 	$('.js-edit').text('修改')
+		// 	// 	querySchedule(date);
+		// 	// });
+		// }
+  
 		function copy(before, after) {
 			var date = $('#dutyTime').val() || formatDate()
 			var watchScheduleList = [];
@@ -456,7 +531,7 @@
 		
     function querySchedule(d, form){
       // var _d = d;
-      var _d = '2019-05-21';
+      // var _d = '2019-05-10';
       $.ajax({
         url: $ctx + '/watch_schedule/getListByWatchTime/'+ _d,
         type: 'get'
@@ -470,18 +545,19 @@
               $('#scheduleType').find('option').eq(i).removeAttr('selected');
             }
         }
-        form.render('select');
+        // form.render('select');
         for(var i = 0; i < dt.length; i++){
           var $tr = $('#dutyList>tbody>tr').eq(i);
           $tr.addClass('js-isEdit isedit');
           var _dt = dt[i];
           var innerDt = _dt.personnelList;
+          // console.log(innerDt)
           for(var j = 0; j < 9; j++) {
             var $td = $tr.find('td').eq(j+1);
             var _html = '';
-            _html += '<p class="layui-input-inline hide-elm js-select" onclick="return false;">';
-            _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="">';
-            _html += '  <option value="'+innerDt[j].personnelName+'" data-rank='+innerDt[j].militaryRank+'>' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
+            _html += '<p class="layui-input-inline hide-elm js-select">';
+            _html += '  <select name="dutyman-' + i + '-' + j +'" lay-verify="required" lay-search="" data-index='+innerDt[j].id+'>';
+            _html += '  <option value="'+innerDt[j].personnelId+'" data-rank='+innerDt[j].militaryRank+'>' + innerDt[j].personnelName + '(' + innerDt[j].militaryRankName + ')</option>';
             _html += '  </select>';
             _html += '</p>';
             if (j === (innerDt.length - 1)) {
@@ -562,6 +638,7 @@
 
         $('.js-edit').on('click',function() {
           if($('.js-edit').text() == "保存") {
+            // add();
             $('.js-edit').text('修改')
             $('.js-select').addClass('hide-elm');
             $('.js-textarea').addClass('hide-elm');
@@ -573,65 +650,72 @@
             $('.js-textarea').removeClass('hide-elm');
             $('.js-onduty').hide();
             $('.js-isEdit').removeClass('isedit');
-            form.render('select');
+            // form.render('select');
+            $.ajax({
+              type:'GET',
+              url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name=&ranks=3,4,5',
+            }).done(function(res){
+              var resDate = res.data;
+              var _html="";
+              for(var i=0;i<resDate.length;i++){
+                _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
+              }
+              for(var j=0;j<$('.js-select').length;j++){
+                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]==0){
+                  $('.js-select').eq(j).find('select').append(_html)
+                }
+              }
+              form.render('select');
+            })
+
+            $.ajax({
+              type:'GET',
+              url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name=&ranks=',
+            }).done(function(res){
+              var resDate = res.data;
+              var _html="";
+              for(var i=0;i<resDate.length;i++){
+                _html += '<option value="'+resDate[i].id+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
+              }
+              for(var j=0;j<$('.js-select').length;j++){
+                if($('.js-select').eq(j).find('select').attr('name').split('-')[2]!=0){
+                  $('.js-select').eq(j).find('select').append(_html)
+                }
+              }
+              form.render('select');
+            })
           }
         });
 			}).fail(function() {
 				layer.msg('请求错误')
 			})
 		}
-     
-    
-    // 点击下拉框渲染下拉列表
-    $('body').off('click').on('click','.js-select',function(){
 
-      console.log("111111111")
-      // var personName = $(this).find('option').val();
-      var _this = this;
-      if($(_this).find(".layui-form-select").hasClass(".layui-form-selected")){
-        alert(1)
-      }
-      var personName ='';
-      var rankNum = $(this).find('option').attr('data-rank');
-      // console.log(rankNum)
-      if(rankNum ==3||rankNum ==4||rankNum ==5){
-        rankNum = '3,4,5'
-      }else{
-        rankNum = ''
-      }
-        $.ajax({
-          type:'GET',
-          // async:false,
-          url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name='+personName+'&ranks='+rankNum,
-        }).done(function(res){
-          var resDate = res.data
-          var _html=""
-          for(var i=0;i<resDate.length;i++){
-            _html += '<option value="'+resDate[i].personnelName+'" data-rank='+resDate[i].militaryRank+'>' + resDate[i].personnelName + '(' + resDate[i].militaryRankName + ')</option>';
+ //更新
+    form.on('select()', function(data){
+      var dataValue = {
+				watchScheduleList: [
+          {
+            "id": $(data.elem).attr('data-index'),
+            "personnelId":data.value,
           }
-          $(_this).find('select').html(_html);
-          // console.log(form.render)
-          // setTimeout(function(){
-          //   form.render('select');
-          // }, 10000)
-          form.render('select');
-
-        })
-    })
-
- 
-    // 在下拉框中进行修改，支持模糊搜索
-    $('body').on('input','input',function(){
-      var personName = $(this).val().split('(')[0].toString();
-      var rankNum = $(this).parents('.js-select').find('option').attr('data-rank');
-      console.log(rankNum)
-        $.ajax({
-          type:'GET',
-          url:$ctx+'/sys_armed_police/findPersonnelByNameAndRank?name='+personName+'&ranks='+rankNum,
-        }).done(function(){
-          //请求回来数据，然后进行渲染
-        })
-    })
+        ],
+				jdPersonnelIdList: [],
+				jxPersonnelIdList: [],
+				yjbPersonnelIdList: [],
+				yjzPersonnelIdList: [],
+			}
+      // console.log(dataValue,'data')
+      $.ajax({
+				url: $ctx + '/watch_schedule/saveOrUpdate',
+				data: JSON.stringify(dataValue),
+				contentType: 'application/json',
+				type: 'put'
+			}).done(function(res) {
+				$('.js-edit').text('修改')
+				querySchedule();
+			});
+    });
   })
     </script>
     <script>
