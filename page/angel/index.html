@@ -30,35 +30,19 @@
         </ul>
     </div>
 </div>
-<!--侧边栏-->
-<iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
-        marginwidth="0"
-        style="position: fixed;display: block;top: 75px;left: -480px;width: 480px;height: 2000px;z-index: 90;background: transparent;"></iframe>
-<div class="aside">
-    <div class="aside-bg">
-        <i class="aside-bg-lt"></i>
-        <i class="aside-bg-mt"></i>
-        <i class="aside-bg-mt-img"></i>
-        <i class="aside-bg-rt"></i>
-        <i class="aside-bg-lm"></i>
-        <i class="aside-bg-mm"></i>
-        <i class="aside-bg-rm"></i>
-        <i class="aside-bg-lb"></i>
-        <i class="aside-bg-mb"></i>
-        <i class="aside-bg-rb"></i>
-    </div>
-    <div class="menu-tree">
-        <ul id="menu-tree" class="ztree"></ul>
-    </div>
-    <!--<a href="javascript:;" id="showFlag" class="icon-fold unfolded"></a>-->
-</div>
-<a href="javascript:;" class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></a>
+
 <!--主体-->
 <div class="main">
     <div class="tabview">
         <ul class="tabtop js-tabtop">
             <li class="js-tabhd on">
-                <a href="javascript:void(0)">三维立体全景监控</a>
+                <a href="javascript:;">三维立体全景监控</a>
+            </li>
+            <li class="js-tabhd" id="devidMode">
+                <a href="../monitor/index.html">分屏模式</a>
+            </li>
+            <li class="js-tabhd">
+                <a href="../prevention-tab/index.html">联防联动</a>
             </li>
         </ul>
         <ul class="tabmain js-tabmain">
@@ -84,7 +68,12 @@
         </ul>
     </div>
 </div>
-
+<script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/js/config.js"></script>
+<script type='text/javascript' src='/dwr/engine.js'></script>
+<script type='text/javascript' src='/dwr/interface/DwrImpl.js'></script>
+<script type='text/javascript' src='/dwr/util.js'></script>
+<script src="../../asset/js/utils.js"></script>
 
 </body>
 </html>
