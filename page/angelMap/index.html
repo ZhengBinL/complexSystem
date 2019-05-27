@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>武警智慧磐石执勤安保信息管理平台</title>
+    <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
+    <link rel="stylesheet" href="../../asset/introduce/zTree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="../../asset/css/common.css">
+    <link rel="stylesheet" href="../../asset/css/reset.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<!--头部-->
+<div class="header">
+    <a class="header-lt" id="header" href="../index/index.html"></a>
+    <div class="header-rt">
+        <ul>
+            <li class="notice-wrapper">
+                <img class="notice-icon" src="../../asset/img/notice.png" alt="通知">
+            </li>
+            <li class="user-notice">
+                <div id="user-operate" class="user-operate">
+                    <a href="javascript:;">
+                        <img class="user-img" src="../../asset/img/logo.png" alt="头像">
+                        管理
+                    </a>
+                    <a href="javascript:;" class="exit" title="退出">退出</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--主体-->
+<div class="main">
+    <div class="tabview">
+        <ul class="tabtop js-tabtop">
+            <li class="js-tabhd on">
+                <a href="javascript:;">三维立体全景监控</a>
+            </li>
+            <li class="js-tabhd" id="devidMode">
+                <a href="../monitor/index.html">分屏模式</a>
+            </li>
+            <li class="js-tabhd">
+                <a href="../prevention-tab/index.html">联防联动</a>
+            </li>
+        </ul>
+        <ul class="tabmain js-tabmain">
+                <li class="js-tabbd on">
+                    <!-- tab-bd>>>li =start= -->
+                    <div class="map-box">
+                        <img class="map-img-bg" src="../../asset/img/map_bg.png">
+
+                        <dl class="inner-box">
+                            <dd class="map-img-content" id='map-img-content'>
+                                <img class="map-img" id="img" src="../../asset/img/map.jpg">
+                                <img class="camera camera-hidden camera1" data-index="1000126" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera2" data-index="1000127" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera3" data-index="1000125" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera4" data-index="1000124" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera5" data-index="1000146" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera6" data-index="1000123" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera7" data-index="1000145" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera8" data-index="1000144" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera9" data-index="1000143" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera10" data-index="1000142" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera11" data-index="1000141" src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera12" data-index="1000140"  src="../../asset/img/cam-small.png" alt="">
+                                <!-- <img class="camera camera-hidden camera12" data-index="13"  src="../../asset/img/cam-small.png" alt=""> -->
+                                <!-- <img class="camera camera-hidden camera13" data-index="13"  src="../../asset/img/cam-small.png" alt=""> -->
+                                <img class="camera camera-hidden camera14" data-index="1000023"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera15" data-index="1000139"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera16" data-index="1000138"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera17" data-index="1000134"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera18" data-index="1000135"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera19" data-index="1000133"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera20" data-index="1000132"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera21" data-index="1000131"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera22" data-index="1000130"  src="../../asset/img/cam-small.png" alt="">
+                                <img class="camera camera-hidden camera23" data-index="1000129"  src="../../asset/img/cam-small.png" alt="">
+                                <!-- <img class="camera camera-hidden camera24" data-index="25"  src="../../asset/img/cam-small.png" alt=""> -->
+                                <img class="camera camera-hidden camera25" data-index="1000136"  src="../../asset/img/cam-small.png" alt="">
+
+                                <img class="camera camera-hidden camera-1 camera1-1" data-index="1000048" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-2" data-index="1000033" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-3" data-index="1000029" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-4" data-index="1000044" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-5" data-index="1000078" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-6" data-index="1000043" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-7" data-index="1000081" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-8" data-index="1000072" src="../../asset/img/cam-ball.png"
+                                    alt="">
+                                <img class="camera camera-hidden camera-1 camera1-9" data-index="1000087" src="../../asset/img/cam-ball.png"
+                                    alt="">
+
+                                <img class="camera camera-2 camera2-1" data-index="1000294" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-2" data-index="1000290" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-3" data-index="1000292" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-4" data-index="1000288" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-5" data-index="1000286" src="../../asset/img/cam-big.png" alt="">
+                                <img class="camera camera-2 camera2-6" data-index="1000274" src="../../asset/img/cam-big.png" alt="">
+                            </dd>
+                            <dt>
+                                <a href="javascript:;" class="btn-zoom btn-zoomin"></a>
+                                <a href="javascript:;" class="btn-zoom btn-zoomout"></a>
+                                <a href="javascript:;" class="btn-zoomtrack"><img src="../../asset/img/intelligence.png" alt=""></a>
+                                <a href="javascript:;" class="btn-zoommonitor"><img src="../../asset/img/dutymonitor.png" alt=""></a>
+                            </dt>
+                        </dl>
+                    </div>
+                    <!-- tab-bd>>>li =end= -->
+                </li>
+                <li class="js-tabbd">
+                    <!-- tab-bd>>>li =start= -->
+                    <div class="split-mode">
+                        <ul id="mode-rec" class="mode-content mode-rec-4">
+                            <!-- js添加li -->
+                            <span class="clearfix"></span>
+                        </ul>
+
+                        <div class="slider-operate">
+                            <img src="../../asset/img/btn_1_1.png" alt="">
+                            <div id="slide" class="slider"></div>
+                            <img src="../../asset/img/btn_4_4.png" alt="">
+                            <img class="js-btn-big" src="../../asset/img/btn_big.png" alt="">
+                        </div>
+                    </div>
+                    <!-- tab-bd>>>li =end= -->
+                    <!--历史记录 start-->
+                    <div class="history-wrapper">
+                        <div class="history-top mode-content">
+                            <div class="video-wrapper">
+                                <div class="video">
+                                    <div id="mainbg">
+                                        <div id="main">
+                                            <div style="width: 100%;height: 0;overflow: auto;" id="RetInfo">
+
+                                            </div>
+                                            <div style="width: 100%;height: 0px;overflow: auto;" id="GlobalInfo">
+
+                                            </div>
+                                            <div class="box_top"></div>
+                                            <div id="mviewl">
+                                                <div id="obj">
+                                                    <object id="DPSDK_OCX"
+                                                        classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D"
+                                                        style="width: 100%; height: 100%"
+                                                        codebase="DpsdkOcx.cab#version=1.0.0.0"></object>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <iframe id="zhanwei" src="about:blank" frameborder="0" marginheight="0"
+                                        marginwidth="0"
+                                        style="position: absolute;display: none;top: 32px;right: 160px;width: 80px;height: 168px;z-index: 0;background: #000;"></iframe>
+                                    <div class="v-toolbar" style="position: absolute;left: 0;right: 0;top: 0;">
+                                        <a href="javascript:;" class="icon-speed"><img
+                                                src="../../asset/img/icon_speed.png"> 倍速</a>
+                                        <a href="javascript:;" class="playAndsuspend"><img
+                                                src="../../asset/img/icon_pause.png"> <span
+                                                id="playAndsuspend">停止播放</span></a>
+                                        <a href="javascript:;" class="icon-history"><img
+                                                src="../../asset/img/icon-close.png"> 关闭</a>
+                                        <div class="speed-wrapper">
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(64)"
+                                                class="speed-item">8.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(32)"
+                                                class="speed-item">4.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(16)"
+                                                class="speed-item">2.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(8)"
+                                                class="speed-item">1.0X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(4)"
+                                                class="speed-item">1/2X</a>
+                                            <a href="javascript:;"
+                                                onclick="return ButtonSetPlaybackSpeedByWndNo_onclick(2)"
+                                                class="speed-item">1/4X</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="date-wrapper">
+                                <div class="calendar" id="calendar"></div>
+                                <div class="search-btn">搜索录像</div>
+                            </div>
+                        </div>
+                        <div class="scale-wrapper">
+                            <div class="scale-title">历史视频时间段控制</div>
+                            <div class="scale">
+                                <div class="scale-num"><img src="../../asset/img/scalenum.png"></div>
+                                <img src="../../asset/img/graduation.png" class="scale-bar" />
+                                <div class="scale-box">
+                                    <span data-count="0" class="scale-unit spec"></span>
+                                    <span data-count="1" class="scale-unit"></span>
+                                    <span data-count="2" class="scale-unit"></span>
+                                    <span data-count="3" class="scale-unit"></span>
+                                    <span data-count="4" class="scale-unit"></span>
+                                    <span data-count="5" class="scale-unit"></span>
+                                    <span data-count="6" class="scale-unit"></span>
+                                    <span data-count="7" class="scale-unit"></span>
+                                    <span data-count="8" class="scale-unit"></span>
+                                    <span data-count="9" class="scale-unit"></span>
+                                    <span data-count="10" class="scale-unit"></span>
+                                    <span data-count="11" class="scale-unit"></span>
+                                    <span data-count="12" class="scale-unit"></span>
+                                    <span data-count="13" class="scale-unit"></span>
+                                    <span data-count="14" class="scale-unit"></span>
+                                    <span data-count="15" class="scale-unit"></span>
+                                    <span data-count="16" class="scale-unit"></span>
+                                    <span data-count="17" class="scale-unit"></span>
+                                    <span data-count="18" class="scale-unit"></span>
+                                    <span data-count="19" class="scale-unit"></span>
+                                    <span data-count="20" class="scale-unit"></span>
+                                    <span data-count="21" class="scale-unit"></span>
+                                    <span data-count="22" class="scale-unit"></span>
+                                    <span data-count="23" class="scale-unit"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--历史记录 end-->
+                </li>
+        </ul>
+    </div>
+</div>
+<script src="../../asset/js/jquery.min.js"></script>
+<script src="../../asset/introduce/layui/layui.js"></script>
+<script src="../../asset/js/config.js"></script>
+<script src="../../asset/js/utils.js"></script>
+<script src="./index.js"></script>
+
+</body>
+</html>
