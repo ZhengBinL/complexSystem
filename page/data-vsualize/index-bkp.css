@@ -253,15 +253,15 @@
     background: url("../../asset/img/dv-unormal.png") no-repeat -2px 0;
 }
 .dv-chart-main {
-    height: 210px;
+    height: 230px;
     margin: 0 10px 10px 20px;
 }
 .alarm-statistics {
     height: 280px;
 }
 .dv-chart-icons {
-    height: 180px;
-    padding: 30px 10px 0;
+    height: 190px;
+    padding: 40px 10px 0;
 }
 .dv-chart-icons > ul {
     width: 25%;
@@ -435,13 +435,13 @@
 .duty-statistics,
 .dv-chart-duty-trend,
 .police-trend{
-    height: 200px;
+    height: 220px;
 }
 .no-record{
     display: block;
     margin:0 auto;
     position: relative;
-    top: 45px;
+    top: 55px;
 }
 .wrapper{
     margin: 0 20px;
@@ -464,4 +464,7 @@
 .hot-bg{
     width: 100%;
     max-width: 100%;
+}
+.dv-chart-index{
+    z-index:3;
 }
