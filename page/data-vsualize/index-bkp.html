@@ -129,7 +129,7 @@
               <ul>
                 <li>
                   周界
-                  <span class="statis-around" id="showAround">103</span>
+                  <span class="statis-around" id="showAround">43</span>
                   <div class="popover popover-around">
                     <div class="pop-title">周界</div>
                     <div class="pop-chart" id="aroundChart"></div>
@@ -139,7 +139,7 @@
               <ul>
                 <li>
                   手按
-                  <span class="statis-press" id="showPress">245</span>
+                  <span class="statis-press" id="showPress">64</span>
                   <div class="popover">
                     <div class="pop-title">手按</div>
                     <div class="pop-chart" id="pressChart"></div>
@@ -149,7 +149,7 @@
               <ul>
                 <li>
                   枪支离岗
-                  <span class="statis-gun" id="qiangzhi">36</span>
+                  <span class="statis-gun" id="qiangzhi">0</span>
                 </li>
               </ul>
               <ul>
@@ -207,361 +207,363 @@
   <script src="../../asset/js/echarts.min.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
   <script>
-      // 执勤汇总柱状图
-      var onDuty = echarts.init(document.getElementById('onDuty'));
-      var dutyOption = {
+      setTimeout(function () {
+        // 执勤汇总柱状图
+        var onDuty = echarts.init(document.getElementById('onDuty'));
+        var dutyOption = {
           tooltip : {
-              trigger: 'axis',
-              axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                  type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-              }
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+              type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
           },
           grid: {
-              left: '3%',
-              right: '4%',
-              bottom: '3%',
-              containLabel: true
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
           },
           xAxis: {
-              type: 'category',
-              axisLabel: {
-                  color: '#797894'
-              },
-              axisLine: {
-                  show: true,
-                  lineStyle: {
-                      color: '#9f9fb3'
-                  }
-              },
-              data: ['1月','2月','3月','4月','5月']
+            type: 'category',
+            axisLabel: {
+              color: '#797894'
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#9f9fb3'
+              }
+            },
+            data: ['1月','2月','3月','4月','5月']
           },
           yAxis:  {
-              type: 'value',
-              name : '单位（人）',
-              splitLine: {
-                  show: true,
-                  lineStyle: {
-                      color: ['#22366d'],
-                      width: 1,
-                      type: 'dotted'
-                  }
-              },
-              axisLine: {
-                  show: true,
-                  lineStyle: {
-                      color: '#9f9fb3'
-                  }
-              },
-              axisLabel: {
-                  color: '#797894'
+            type: 'value',
+            name : '单位（人）',
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: ['#22366d'],
+                width: 1,
+                type: 'dotted'
               }
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#9f9fb3'
+              }
+            },
+            axisLabel: {
+              color: '#797894'
+            }
           },
           series: [
-              {
-                  name: '正常',
-                  type: 'bar',
-                  stack: '总量',
-                  barCategoryGap:'45%',
-                  label: {
-                      normal: {
-                          show: false,
-                          position: 'insideRight'
-                      }
-                  },
-                  data: [200, 202, 201, 234, 290]
+            {
+              name: '正常',
+              type: 'bar',
+              stack: '总量',
+              barCategoryGap:'45%',
+              label: {
+                normal: {
+                  show: false,
+                  position: 'insideRight'
+                }
               },
-              {
-                  name: '异常',
-                  type: 'bar',
-                  stack: '总量',
-                  barCategoryGap:'45%',
-                  label: {
-                      normal: {
-                          show: false,
-                          position: 'insideRight'
-                      }
-                  },
-                  data: [12, 11, 20, 14, 19]
-              }
+              data: [89, 85, 79, 88, 81]
+            },
+            {
+              name: '异常',
+              type: 'bar',
+              stack: '总量',
+              barCategoryGap:'45%',
+              label: {
+                normal: {
+                  show: false,
+                  position: 'insideRight'
+                }
+              },
+              data: [20, 19, 14, 12, 11]
+            }
           ],
           color: ['#325df9','#ff2d55']
-      };
-      onDuty.setOption(dutyOption);
-
-      // 图表：异常执勤趋势
-      var trendChart = echarts.init(document.getElementById('dutyTrend'));
-      var dutyTrendOtion = {
+        };
+        onDuty.setOption(dutyOption);
+        // 图表：异常执勤趋势
+        var trendChart = echarts.init(document.getElementById('dutyTrend'));
+        var dutyTrendOtion = {
           xAxis: {
-              type: 'category',
-              data: ['1月', '2月', '3月', '4月', '5月'],
-              axisLine: {
-                  show: true,
-                  lineStyle: {
-                      color: '#4ec1ee'
-                  }
-              },
-              axisLabel: {
-                  color: '#797894'
-              },
-              axisTick: {
-                  show: false
-              },
-              splitLine: {
-                  show: true,
-                  lineStyle: {
-                      color: ['#22366d'],
-                      width: 1,
-                      type: 'dotted'
-                  }
-              },
-              boundaryGap: false //顶头渲染
+            type: 'category',
+            data: ['1月', '2月', '3月', '4月', '5月'],
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#4ec1ee'
+              }
+            },
+            axisLabel: {
+              color: '#797894'
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: ['#22366d'],
+                width: 1,
+                type: 'dotted'
+              }
+            },
+            boundaryGap: false //顶头渲染
           },
           yAxis: [{
-              name : '单位（次）',
-              nameTextStyle: {
-                  color: '#797894'
-              },
-              type: 'value',
-              axisLine: {
-                  show: true,
-                  lineStyle: {
-                      color: '#4ec1ee'
-                  }
-              },
-              axisLabel: {
-                  color: '#797894'
-              },
-              axisTick: {
-                  show: false
-              },
-              splitLine: {
-                  show: true,
-                  lineStyle: {
-                      color: ['#22366d'],
-                      width: 1,
-                      type: 'dotted'
-                  }
+            name : '单位（次）',
+            nameTextStyle: {
+              color: '#797894'
+            },
+            type: 'value',
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#4ec1ee'
               }
+            },
+            axisLabel: {
+              color: '#797894'
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: ['#22366d'],
+                width: 1,
+                type: 'dotted'
+              }
+            }
           }],
           grid: {
-              top: '13%',
-              bottom: '16%',
-              left: '10%',
-              right: '3%',
+            top: '13%',
+            bottom: '16%',
+            left: '10%',
+            right: '3%',
           },
           series: [{
-              data: [32.5, 33.2, 35.1, 33.5, 32],
-              type: 'line',
-              smooth: true, //折现光滑
-              symbol: 'none', //取消这点圆圈
-              areaStyle: {
-                  opacity: 0.2,
-                  color: { //线性渐变
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 0,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0,
-                          color: '#ff2d55' // 0% 处的颜色
-                      }, {
-                          offset: 1,
-                          color: '#191045' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                  }
-              }, //出现阴影
-              lineStyle: {
-                  width: 6,
-
-                  color: { //线性渐变
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 1,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0,
-                          color: '#ff2d55' // 0% 处的颜色
-                      }, {
-                          offset: 1,
-                          color: '#ff2d55' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                  }
-              },
-              markPoint: {
-                  label: {
-
-                  },
-                  data: [{
-                      name: '最大值',
-                      type: 'max'
-                  }]
+            data: [32.5, 26.2, 24.1, 20.5, 19],
+            type: 'line',
+            smooth: true, //折现光滑
+            symbol: 'none', //取消这点圆圈
+            areaStyle: {
+              opacity: 0.2,
+              color: { //线性渐变
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: '#ff2d55' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#191045' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
               }
+            }, //出现阴影
+            lineStyle: {
+              width: 6,
+
+              color: { //线性渐变
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 1,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: '#ff2d55' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#ff2d55' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
+              }
+            },
+            markPoint: {
+              label: {
+
+              },
+              data: [{
+                name: '最大值',
+                type: 'max'
+              }]
+            }
           }]
 
-      };
-      trendChart.setOption(dutyTrendOtion);
+        };
+        trendChart.setOption(dutyTrendOtion);
 
-      // 查勤统计
-      var dutyStatistics = echarts.init(document.getElementById('dutyStatistics'));
-      var dutyStatisticsOption = {
+        // 查勤统计
+        var dutyStatistics = echarts.init(document.getElementById('dutyStatistics'));
+        var dutyStatisticsOption = {
           tooltip : {
-              trigger: 'axis',
-              axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                  type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-              }
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+              type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
           },
           xAxis : [
-              {
-                  type : 'category',
-                  data : ['1月','2月','3月','4月','5月'],
-                  axisTick: {
-                      show: false
-                  },
-                  splitLine: {
-                      show: false
-                  },
-                  axisLabel: {
-                      color: '#797894'
-                  }
-              }
-          ],
-          yAxis : [
-              {
-                  type : 'value',
-                  name : '单位（次）',
-                  nameTextStyle: {
-                      color: '#797894'
-                  },
-                  splitLine: {
-                      show: false
-                  },
-                  axisTick: {
-                      show: false
-                  },
-                  axisLine: {
-                      show: true,
-                      lineStyle: {
-                          color: '#4a9bef'
-                      }
-                  },
-                  axisLabel: {
-                      color: '#797894'
-                  }
-              }
-          ],
-          series : [
-              {
-                  name:'网络查勤',
-                  type:'bar',
-                  barGap:'10%',/*多个并排柱子设置柱子之间的间距*/
-                  barCategoryGap:'30%',
-                  data:[2.0, 4.9, 7.0, 3.2, 5.6]
-              },
-              {
-                  name:'实地查勤',
-                  type:'bar',
-                  barGap:'10%',/*多个并排柱子设置柱子之间的间距*/
-                  barCategoryGap:'30%',
-                  data:[2.6, 5.9, 9.0, 26.4, 28.7]
-              }
-          ],
-          color: ['#325df9', '#ff9745']
-      };
-      dutyStatistics.setOption(dutyStatisticsOption);
-
-      // 报警趋势图
-      var alarmTrend = echarts.init(document.getElementById('alarmTrend'));
-      var alarmTrendOption = {
-          xAxis: {
-              type: 'category',
-              data: ['1月', '2月', '3月', '4月', '5月'],
-              axisLine: {
-                  show: false
-              },
-              axisLabel: {
-                  color: '#797894'
-              },
+            {
+              type : 'category',
+              data : ['1月','2月','3月','4月','5月'],
               axisTick: {
-                  show: false
-              },
-              boundaryGap: false //顶头渲染
-          },
-          yAxis: [{
-              type: 'value',
-              axisLine: {
-                  show: false
-              },
-              axisLabel: {
-                  color: '#797894'
-              },
-              axisTick: {
-                  show: false
+                show: false
               },
               splitLine: {
-                  show: true,
-                  lineStyle: {
-                      color: ['#22366d'],
-                      width: 1,
-                      type: 'solid'
-                  }
+                show: false
+              },
+              axisLabel: {
+                color: '#797894'
               }
+            }
+          ],
+          yAxis : [
+            {
+              type : 'value',
+              name : '单位（次）',
+              nameTextStyle: {
+                color: '#797894'
+              },
+              splitLine: {
+                show: false
+              },
+              axisTick: {
+                show: false
+              },
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: '#4a9bef'
+                }
+              },
+              axisLabel: {
+                color: '#797894'
+              }
+            }
+          ],
+          series : [
+            {
+              name:'网络查勤',
+              type:'bar',
+              barGap:'10%',/*多个并排柱子设置柱子之间的间距*/
+              barCategoryGap:'30%',
+              data:[52, 54, 47, 46, 45]
+            },
+            {
+              name:'实地查勤',
+              type:'bar',
+              barGap:'10%',/*多个并排柱子设置柱子之间的间距*/
+              barCategoryGap:'30%',
+              data:[42, 45, 39, 36, 38]
+            }
+          ],
+          color: ['#325df9', '#ff9745']
+        };
+        dutyStatistics.setOption(dutyStatisticsOption);
+
+        // 报警趋势图
+        var alarmTrend = echarts.init(document.getElementById('alarmTrend'));
+        var alarmTrendOption = {
+          xAxis: {
+            type: 'category',
+            data: ['1月', '2月', '3月', '4月', '5月'],
+            axisLine: {
+              show: false
+            },
+            axisLabel: {
+              color: '#797894'
+            },
+            axisTick: {
+              show: false
+            },
+            boundaryGap: false //顶头渲染
+          },
+          yAxis: [{
+            type: 'value',
+            axisLine: {
+              show: false
+            },
+            axisLabel: {
+              color: '#797894'
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: ['#22366d'],
+                width: 1,
+                type: 'solid'
+              }
+            }
           }],
           grid: {
-              top: '13%',
-              bottom: '16%',
-              left: '10%',
-              right: '3%',
+            top: '13%',
+            bottom: '16%',
+            left: '10%',
+            right: '3%',
           },
           series: [{
-              data: [54, 43.2, 57.1, 63.5, 52.90],
-              type: 'line',
-              smooth: true, //折现光滑
-              symbol: 'none', //取消这点圆圈
-              areaStyle: {
-                  opacity: 0.2,
-                  color: { //线性渐变
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 1,
-                      y2: 0,
-                      colorStops: [{
-                          offset: 0,
-                          color: '#6e4ed7' // 0% 处的颜色
-                      }, {
-                          offset: 1,
-                          color: '#dd78f3' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                  }
-              }, //出现阴影
-              lineStyle: {
-                  width: 6,
-
-                  color: { //线性渐变
-                      type: 'linear',
-                      x: 0,
-                      y: 0,
-                      x2: 1,
-                      y2: 1,
-                      colorStops: [{
-                          offset: 0,
-                          color: '#6e4ed7' // 0% 处的颜色
-                      }, {
-                          offset: 1,
-                          color: '#dd78f3' // 100% 处的颜色
-                      }],
-                      global: false // 缺省为 false
-                  }
+            data: [74, 63, 57, 53, 52],
+            type: 'line',
+            smooth: true, //折现光滑
+            symbol: 'none', //取消这点圆圈
+            areaStyle: {
+              opacity: 0.2,
+              color: { //线性渐变
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 1,
+                y2: 0,
+                colorStops: [{
+                  offset: 0,
+                  color: '#6e4ed7' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#dd78f3' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
               }
+            }, //出现阴影
+            lineStyle: {
+              width: 6,
+
+              color: { //线性渐变
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 1,
+                y2: 1,
+                colorStops: [{
+                  offset: 0,
+                  color: '#6e4ed7' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#dd78f3' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
+              }
+            }
           }]
 
-      };
-      alarmTrend.setOption(alarmTrendOption);
+        };
+        alarmTrend.setOption(alarmTrendOption);
+
+      }, 200)
 
       //图表-弹出层-周界
       $('#showAround').on('mouseover',function(){
@@ -639,6 +641,13 @@
       }).on('mouseout',function(){
           $(this).next('.popover').hide();
       })
+      var mHeight = $('.data-middle').height();
+      var unitHeight = mHeight / 3 - 40;
+      var childHeight = unitHeight - 10;
+      $('.dv-chart-main').css('height', unitHeight);
+      $('.dv-chart-icons').css('height', unitHeight);
+      $('.div-chart-bar,.duty-statistics, .police-trend,.dv-chart-duty-trend').css('height', childHeight);
+      $('.dv-chart-icons').css('paddingTop', (unitHeight - 144)/2);
 
   </script>
 </body>
