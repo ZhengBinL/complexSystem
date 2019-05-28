@@ -107,17 +107,23 @@
                     $('#vlc2').css({width: '100%', height: '100%'})
                     play(data[2]["rtspUrl"], "vlc3");
                     $('#vlc3').css({width: '100%', height: '100%'})
+                }, 200)
+                setTimeout(function () {
                     play(data[3]["rtspUrl"], "vlc4");
                     $('#vlc4').css({width: '100%', height: '100%'})
-                    play(data[4]["rtspUrl"], "vlc4");
+                    play(data[4]["rtspUrl"], "vlc5");
                     $('#vlc5').css({width: '100%', height: '100%'})
-                    play(data[5]["rtspUrl"], "vlc4");
+                    play(data[5]["rtspUrl"], "vlc6");
                     $('#vlc6').css({width: '100%', height: '100%'})
-                    play(data[6]["rtspUrl"], "vlc4");
+                }, 400)
+                setTimeout(function () {
+                    play(data[6]["rtspUrl"], "vlc7");
                     $('#vlc7').css({width: '100%', height: '100%'})
-                    play(data[7]["rtspUrl"], "vlc4");
+                    play(data[7]["rtspUrl"], "vlc8");
                     $('#vlc8').css({width: '100%', height: '100%'})
-                }, 500)
+                    play(data[8]["rtspUrl"], "vlc9");
+                    $('#vlc9').css({width: '100%', height: '100%'})
+                }, 600)
 //                for (var i = 0; i < data.length; i++){
 //                    play(data[i]["rtspUrl"], "vlc"+(i+1));
 //                    $('#vlc'+(i+1)).css({width: '100%', height: '100%'})
