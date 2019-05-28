@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
   <link rel="stylesheet" href="../../asset/css/reset.css">
   <link rel="stylesheet" href="../../asset/css/common.css">
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./index-bkp.css">
 </head>
 <body>
   <!--头部-->
@@ -31,24 +31,6 @@
       </ul>
     </div>
   </div>
-  <!--侧边栏-->
-  <iframe id="zhanwei-c" src="about:blank" frameborder="0" marginheight="0"
-          marginwidth="0"
-          style="position: fixed;display: block;top: 75px;left: -300px;width: 300px;height: 600px;z-index: 90;background: transparent;"></iframe>
-  <div class="aside">
-    <div class="menu-tree-wrapper">
-      <ul id="menu-tree" class="menu-tree ztree"></ul>
-    </div>
-    <!-- <div class="palace">
-  <div class="palace-unit">111</div>
-  <div class="palace-unit">222</div>
-  <div class="palace-unit">333</div>
-  <div class="palace-unit palace-left">444</div>
-  <div class="palace-unit palace-ct">555</div>
-  <div class="palace-unit palace-last">666</div>
-</div> -->
-    <div class="icon-fold"><img id="showFlag" src="../../asset/img/icon_fold.png" alt="1"></div>
-  </div>
   <!-- 固定勤务 -->
   <dl class="wrapper">
     <dd class="data-vsualize">
@@ -66,8 +48,10 @@
             <i class="dvbg-left-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">近期报警统计</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">执勤汇总</h4>
+            <div class="dv-chart-main">
+              <div class="div-chart-bar" id="onDuty"></div>
+            </div>
           </div>
         </li>
 
@@ -79,8 +63,10 @@
             <i class="dvbg-middle-lb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">报警率统计</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">异常值勤趋势图</h4>
+            <div class="dv-chart-main dv-chart-duty">
+              <div class="dv-chart-duty-trend" id="dutyTrend"></div>
+            </div>
           </div>
         </li>
 
@@ -97,8 +83,10 @@
             <i class="dvbg-left-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">近期报警统计</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">查勤统计</h4>
+            <div class="dv-chart-main">
+              <div class="duty-statistics" id="dutyStatistics"></div>
+            </div>
           </div>
         </li>
       </ul>
@@ -112,51 +100,18 @@
         </li>
 
         <li class="dv-map">
-          <input type="text" name="notautosubmit" style="display:none"/>
-          <div class="layui-form-item">
-
-            <div class="layui-inline">
-              <label class="layui-form-label">开始时间：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="startTime" id="startTime" autocomplete="off"
-                       class="layui-input js-laydate">
-              </div>
-            </div>
-
-            <div class="layui-inline">
-              <label class="layui-form-label">结束时间：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="endTime" id="endTime" autocomplete="off"
-                       class="layui-input js-laydate">
-              </div>
-            </div>
-
-            <div class="layui-inline">
-              <label class="layui-form-label">IP地址：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="ipAddr" autocomplete="off" class="layui-input">
-              </div>
-            </div>
-
-            <div class="layui-inline">
-              <label class="layui-form-label">设备名称：</label>
-              <div class="layui-input-inline">
-                <input type="text" name="eqName" autocomplete="off" class="layui-input">
-              </div>
-            </div>
-
-            <div class="layui-inline">
-              <button type="button" class="layui-btn layui-btn-normal js-btn-search">查询</button>
-              <!--<button class="layui-btn layui-btn-primary">导出</button>-->
-            </div>
-
+          <div class="dv-map-bg">
+            <i class="bg-conner conner-lt"></i>
+            <i class="bg-conner conner-rt"></i>
+            <i class="bg-conner conner-lb"></i>
+            <i class="bg-conner conner-rb"></i>
           </div>
-          <table class="layui-hide" id="alarmList-table"></table>
+          <img class="hot-bg" src="../../asset/img/hot-bg.png" alt="热力图">
         </li>
       </ul>
 
       <ul class="data-right">
-        <li class="dv-chart-box">
+        <li class="dv-chart-box dv-chart-index">
           <div class="dv-bg">
             <i class="dvbg-right-lt"></i>
             <i class="dvbg-right-mt"></i>
@@ -169,8 +124,41 @@
             <i class="dvbg-right-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">虚拟入侵统计</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">分类报警统计</h4>
+            <div class="dv-chart-icons">
+              <ul>
+                <li>
+                  周界
+                  <span class="statis-around" id="showAround">103</span>
+                  <div class="popover popover-around">
+                    <div class="pop-title">周界</div>
+                    <div class="pop-chart" id="aroundChart"></div>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  手按
+                  <span class="statis-press" id="showPress">245</span>
+                  <div class="popover">
+                    <div class="pop-title">手按</div>
+                    <div class="pop-chart" id="pressChart"></div>
+                  </div>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  枪支离岗
+                  <span class="statis-gun" id="qiangzhi">36</span>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  无人机反制
+                  <span class="no-people" id="plane">36</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </li>
 
@@ -182,8 +170,10 @@
             <i class="dvbg-middle-lb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">报警统计</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">报警趋势图</h4>
+            <div class="dv-chart-main">
+              <div class="police-trend" id="alarmTrend"></div>
+            </div>
           </div>
         </li>
 
@@ -200,8 +190,10 @@
             <i class="dvbg-right-rb"></i>
           </div>
           <div class="dv-chart">
-            <h4 class="dv-chart-title">智能分析和震动光纤</h4>
-            <div class="dv-chart-main"></div>
+            <h4 class="dv-chart-title">有效警情记录</h4>
+            <div class="dv-chart-main">
+              <img class="no-record" src="../../asset/img/no-record.png" alt="暂无记录">
+            </div>
           </div>
         </li>
       </ul>
@@ -212,125 +204,442 @@
   <script src="../../asset/js/jquery.min.js"></script>
   <script src="../../asset/js/config.js"></script>
   <script src="../../asset/js/utils.js"></script>
+  <script src="../../asset/js/echarts.min.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
   <script>
-      layui.use(['laydate', 'table'], function () {
-          var laydate = layui.laydate;
-          $('.js-laydate').each(function(){
-              var elm = $(this).attr('id');
-              laydate.render({
-                  elem: '#' + elm,
-                  format: 'yyyy-MM-dd'
-              })
-          })
+      // 执勤汇总柱状图
+      var onDuty = echarts.init(document.getElementById('onDuty'));
+      var dutyOption = {
+          tooltip : {
+              trigger: 'axis',
+              axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                  type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+              }
+          },
+          grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+          },
+          xAxis: {
+              type: 'category',
+              axisLabel: {
+                  color: '#797894'
+              },
+              axisLine: {
+                  show: true,
+                  lineStyle: {
+                      color: '#9f9fb3'
+                  }
+              },
+              data: ['1月','2月','3月','4月','5月']
+          },
+          yAxis:  {
+              type: 'value',
+              name : '单位（人）',
+              splitLine: {
+                  show: true,
+                  lineStyle: {
+                      color: ['#22366d'],
+                      width: 1,
+                      type: 'dotted'
+                  }
+              },
+              axisLine: {
+                  show: true,
+                  lineStyle: {
+                      color: '#9f9fb3'
+                  }
+              },
+              axisLabel: {
+                  color: '#797894'
+              }
+          },
+          series: [
+              {
+                  name: '正常',
+                  type: 'bar',
+                  stack: '总量',
+                  barCategoryGap:'45%',
+                  label: {
+                      normal: {
+                          show: false,
+                          position: 'insideRight'
+                      }
+                  },
+                  data: [200, 202, 201, 234, 290]
+              },
+              {
+                  name: '异常',
+                  type: 'bar',
+                  stack: '总量',
+                  barCategoryGap:'45%',
+                  label: {
+                      normal: {
+                          show: false,
+                          position: 'insideRight'
+                      }
+                  },
+                  data: [12, 11, 20, 14, 19]
+              }
+          ],
+          color: ['#325df9','#ff2d55']
+      };
+      onDuty.setOption(dutyOption);
 
-          var table = layui.table;
-          var TABLE_CONFIG = {
-              alarmList: {
-                  loaded: false,
-                  loading: false,
-                  id: 'alarmList',
-                  url: $ctx + 'alarm/getAlarmList',
-                  cols: [ //标题栏
-                      {type: 'checkbox', width: 80},
-                      {type: 'numbers', title: '序号', width: 80},
-                      {field: 'createTime', title: '时间'},
-                      {field: 'ipAddress', title: 'IP地址'},
-                      {field: 'deviceName', title: '设备名称'},
-                      {field: 'alarmType', title: '报警类型', style: 'color: #f69506;'},
-//                    {
-//                        title: '',
-//                        toolbar: '<div><a class="layui-icon layui-icon-delete" style="font-size: 30px; color: #88898f;"></a></div>',
-//                        width: 80
-//                    }
-                  ]
-              }
-          }
-          var current = TABLE_CONFIG['alarmList']
-          initTable(current)
-          $('body').on('click', '.js-btn-search', function () {
-              var startTime = $('input[name=startTime]').val();
-              var endTime = $('input[name=endTime]').val();
-              var deviceName = $('input[name=eqName]').val();
-              var ipAddress = $('input[name=ipAddr]').val();
-              var cur = TABLE_CONFIG['alarmList']
-              var where = null
-              if (startTime && endTime){
-                  where = {
-                      startTime: startTime,
-                      endTime: endTime,
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
+      // 图表：异常执勤趋势
+      var trendChart = echarts.init(document.getElementById('dutyTrend'));
+      var dutyTrendOtion = {
+          xAxis: {
+              type: 'category',
+              data: ['1月', '2月', '3月', '4月', '5月'],
+              axisLine: {
+                  show: true,
+                  lineStyle: {
+                      color: '#4ec1ee'
                   }
-              }else if (startTime && !endTime){
-                  where = {
-                      startTime: startTime,
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
+              },
+              axisLabel: {
+                  color: '#797894'
+              },
+              axisTick: {
+                  show: false
+              },
+              splitLine: {
+                  show: true,
+                  lineStyle: {
+                      color: ['#22366d'],
+                      width: 1,
+                      type: 'dotted'
                   }
-              }else if (!startTime && endTime){
-                  where = {
-                      endTime: endTime,
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
+              },
+              boundaryGap: false //顶头渲染
+          },
+          yAxis: [{
+              name : '单位（次）',
+              nameTextStyle: {
+                  color: '#797894'
+              },
+              type: 'value',
+              axisLine: {
+                  show: true,
+                  lineStyle: {
+                      color: '#4ec1ee'
                   }
-              }else {
-                  where = {
-                      deviceName: deviceName,
-                      ipAddress: ipAddress
+              },
+              axisLabel: {
+                  color: '#797894'
+              },
+              axisTick: {
+                  show: false
+              },
+              splitLine: {
+                  show: true,
+                  lineStyle: {
+                      color: ['#22366d'],
+                      width: 1,
+                      type: 'dotted'
                   }
               }
-              table.reload('alarmList-table',{
-                  where:where,
-                  page:{
-                      pageNum: 1
+          }],
+          grid: {
+              top: '13%',
+              bottom: '16%',
+              left: '10%',
+              right: '3%',
+          },
+          series: [{
+              data: [32.5, 33.2, 35.1, 33.5, 32],
+              type: 'line',
+              smooth: true, //折现光滑
+              symbol: 'none', //取消这点圆圈
+              areaStyle: {
+                  opacity: 0.2,
+                  color: { //线性渐变
+                      type: 'linear',
+                      x: 0,
+                      y: 0,
+                      x2: 0,
+                      y2: 1,
+                      colorStops: [{
+                          offset: 0,
+                          color: '#ff2d55' // 0% 处的颜色
+                      }, {
+                          offset: 1,
+                          color: '#191045' // 100% 处的颜色
+                      }],
+                      global: false // 缺省为 false
                   }
-              })
-          })
+              }, //出现阴影
+              lineStyle: {
+                  width: 6,
+
+                  color: { //线性渐变
+                      type: 'linear',
+                      x: 0,
+                      y: 0,
+                      x2: 1,
+                      y2: 1,
+                      colorStops: [{
+                          offset: 0,
+                          color: '#ff2d55' // 0% 处的颜色
+                      }, {
+                          offset: 1,
+                          color: '#ff2d55' // 100% 处的颜色
+                      }],
+                      global: false // 缺省为 false
+                  }
+              },
+              markPoint: {
+                  label: {
+
+                  },
+                  data: [{
+                      name: '最大值',
+                      type: 'max'
+                  }]
+              }
+          }]
+
+      };
+      trendChart.setOption(dutyTrendOtion);
+
+      // 查勤统计
+      var dutyStatistics = echarts.init(document.getElementById('dutyStatistics'));
+      var dutyStatisticsOption = {
+          tooltip : {
+              trigger: 'axis',
+              axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                  type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+              }
+          },
+          xAxis : [
+              {
+                  type : 'category',
+                  data : ['1月','2月','3月','4月','5月'],
+                  axisTick: {
+                      show: false
+                  },
+                  splitLine: {
+                      show: false
+                  },
+                  axisLabel: {
+                      color: '#797894'
+                  }
+              }
+          ],
+          yAxis : [
+              {
+                  type : 'value',
+                  name : '单位（次）',
+                  nameTextStyle: {
+                      color: '#797894'
+                  },
+                  splitLine: {
+                      show: false
+                  },
+                  axisTick: {
+                      show: false
+                  },
+                  axisLine: {
+                      show: true,
+                      lineStyle: {
+                          color: '#4a9bef'
+                      }
+                  },
+                  axisLabel: {
+                      color: '#797894'
+                  }
+              }
+          ],
+          series : [
+              {
+                  name:'网络查勤',
+                  type:'bar',
+                  barGap:'10%',/*多个并排柱子设置柱子之间的间距*/
+                  barCategoryGap:'30%',
+                  data:[2.0, 4.9, 7.0, 3.2, 5.6]
+              },
+              {
+                  name:'实地查勤',
+                  type:'bar',
+                  barGap:'10%',/*多个并排柱子设置柱子之间的间距*/
+                  barCategoryGap:'30%',
+                  data:[2.6, 5.9, 9.0, 26.4, 28.7]
+              }
+          ],
+          color: ['#325df9', '#ff9745']
+      };
+      dutyStatistics.setOption(dutyStatisticsOption);
+
+      // 报警趋势图
+      var alarmTrend = echarts.init(document.getElementById('alarmTrend'));
+      var alarmTrendOption = {
+          xAxis: {
+              type: 'category',
+              data: ['1月', '2月', '3月', '4月', '5月'],
+              axisLine: {
+                  show: false
+              },
+              axisLabel: {
+                  color: '#797894'
+              },
+              axisTick: {
+                  show: false
+              },
+              boundaryGap: false //顶头渲染
+          },
+          yAxis: [{
+              type: 'value',
+              axisLine: {
+                  show: false
+              },
+              axisLabel: {
+                  color: '#797894'
+              },
+              axisTick: {
+                  show: false
+              },
+              splitLine: {
+                  show: true,
+                  lineStyle: {
+                      color: ['#22366d'],
+                      width: 1,
+                      type: 'solid'
+                  }
+              }
+          }],
+          grid: {
+              top: '13%',
+              bottom: '16%',
+              left: '10%',
+              right: '3%',
+          },
+          series: [{
+              data: [54, 43.2, 57.1, 63.5, 52.90],
+              type: 'line',
+              smooth: true, //折现光滑
+              symbol: 'none', //取消这点圆圈
+              areaStyle: {
+                  opacity: 0.2,
+                  color: { //线性渐变
+                      type: 'linear',
+                      x: 0,
+                      y: 0,
+                      x2: 1,
+                      y2: 0,
+                      colorStops: [{
+                          offset: 0,
+                          color: '#6e4ed7' // 0% 处的颜色
+                      }, {
+                          offset: 1,
+                          color: '#dd78f3' // 100% 处的颜色
+                      }],
+                      global: false // 缺省为 false
+                  }
+              }, //出现阴影
+              lineStyle: {
+                  width: 6,
+
+                  color: { //线性渐变
+                      type: 'linear',
+                      x: 0,
+                      y: 0,
+                      x2: 1,
+                      y2: 1,
+                      colorStops: [{
+                          offset: 0,
+                          color: '#6e4ed7' // 0% 处的颜色
+                      }, {
+                          offset: 1,
+                          color: '#dd78f3' // 100% 处的颜色
+                      }],
+                      global: false // 缺省为 false
+                  }
+              }
+          }]
+
+      };
+      alarmTrend.setOption(alarmTrendOption);
+
+      //图表-弹出层-周界
+      $('#showAround').on('mouseover',function(){
+          var $tis = $(this);
+          $tis.next('.popover').show(function(){
+              var aroundChart = echarts.init(document.getElementById('aroundChart'))
+              var aroundOption = {
+                  width: 373,
+                  height: 244,
+                  legend: {
+                      orient: 'vertical',
+                      x: 'right',
+                      y: '10%',
+                      data:['灾害','劫持','突发'],
+                      textStyle: {
+                          color: '#ffffff'
+                      }
+                  },
+                  series: [
+                      {
+                          type:'pie',
+                          selectedMode: 'single',
+                          radius: [0, '70%'],
+                          data:[
+                              {value:65, name:'灾害'},
+                              {value:20, name:'劫持'},
+                              {value:15, name:'突发', selected:true}
+                          ]
+                      }
+                  ],
+                  color: ['#7455f7','#ed544f','#d88156']
+              };
+              aroundChart.setOption(aroundOption);
+          });
+      }).on('mouseout',function(){
+          $(this).next('.popover').hide();
       })
-      function initTable(currentTable) {
-          var Table = layui.table
-          var id = currentTable.id
-          var tableId = id + '-table'
 
-          if (currentTable.loading) return
-          if (currentTable.loaded) {
-              Table.reload(tableId)
-              return
-          }
+      //图表-弹出层-手按
+      $('#showPress').on('mouseover',function(){
+          var $tis = $(this);
+          $tis.next('.popover').show(function(){
+              var pressChart = echarts.init(document.getElementById('pressChart'))
+              var pressOption = {
+                  width: 373,
+                  height: 244,
+                  legend: {
+                      orient: 'vertical',
+                      x: 'right',
+                      y: '10%',
+                      data:['越狱','暴狱','袭击','灾害','劫持','突发'],
+                      textStyle: {
+                          color: '#ffffff'
+                      }
+                  },
+                  series: [
+                      {
+                          type:'pie',
+                          selectedMode: 'single',
+                          radius: [0, '70%'],
+                          data:[
+                              {value:26, name:'越狱'},
+                              {value:9, name:'暴狱'},
+                              {value:24, name:'袭击'},
+                              {value:11, name:'灾害'},
+                              {value:20, name:'劫持'},
+                              {value:10, name:'突发', selected:true}
+                          ]
+                      }
+                  ],
+                  color: ['#448dc4','#ed544f','#7455f7','#d88156','#325df9','#dbb44b']
+              };
+              pressChart.setOption(pressOption);
+          });
+      }).on('mouseout',function(){
+          $(this).next('.popover').hide();
+      })
 
-          currentTable.loading = true
-          currentTable.table = Table.render({
-              elem: '#' + tableId,
-              id: tableId, // height: 'full-0',
-              url: currentTable.url,
-              page: true,
-              cols: [currentTable.cols],
-              autoSort: currentTable.autoSort || false,
-              request: {
-                  pageName: 'pageNum', //页码的参数名称，默认：page
-                  limitName: 'pageSize' //每页数据量的参数名，默认：limit
-              },
-              parseData: function (res) { //res 即为原始返回的数据
-                  return {
-                      "code": res.code, //解析接口状态
-                      "msg": res.message, //解析提示文本
-                      "count": res.data.total, //解析数据长度
-                      "data": res.data.list //解析数据列表
-                  };
-              },
-              where: currentTable.where || {},
-              done(arg) {
-                  if (!currentTable.loaded) {
-                      currentTable.loading = false
-                      currentTable.loaded = true
-                  }
-                  if (typeof currentTable.done == 'function') {
-                      currentTable.done(arg)
-                  }
-              }
-          })
-      }
   </script>
 </body>
 </html>

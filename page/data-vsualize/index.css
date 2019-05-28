@@ -253,8 +253,11 @@
   background: url("../../asset/img/dv-unormal.png") no-repeat -2px 0;
 }
 .dv-chart-main {
-  height: 280px;
+  height: 300px;
   margin: 0 10px 10px 20px;
+}
+.alarm-statistics {
+  height: 280px;
 }
 .dv-chart-icons {
   height: 140px;
