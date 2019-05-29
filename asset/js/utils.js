@@ -49,7 +49,7 @@ $('body').on('click', '.js-police-pop-close', function () {
 
 var _top = 80;
 
-setInterval(function () {
+/*setInterval(function () {
   $.ajax({
     type:'GET',
     dataType:'json',
@@ -79,7 +79,7 @@ setInterval(function () {
       console.log(err);
     }
   })
-}, 1000);
+}, 1000);*/
 //格式化时间戳
 function formatDate(t, isTime) {
   var date;
