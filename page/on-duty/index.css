@@ -55,6 +55,9 @@
   white-space: nowrap;
   text-align: center;
 }
+.table > tbody > tr.iscopy {
+  background: #989bc5;
+}
 .table > tbody > tr > td .dropbox {
   margin: 0 5px;
 }
@@ -68,14 +71,16 @@
   display: block;
 }
 .opt-outer{
-  height:0px;
-  position:relative;
-  display:none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  height: 0;
 }
-.table-opt{
+.table-opt {
   position: absolute;
   right: 0;
-  top: -41px;
+  top: -25px;
   white-space: nowrap;
   height: 25px;
   line-height: 24px;
