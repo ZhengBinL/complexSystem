@@ -55,8 +55,20 @@
   white-space: nowrap;
   text-align: center;
 }
-.table > tbody > tr.iscopy {
-  background: #989bc5;
+.table > tbody > tr.iscopy > td > p {
+  height: 39px;
+  border-top: dashed 1px #fff;
+  border-bottom: dashed 1px #fff;
+}
+.table > tbody > tr.iscopy > td:nth-child(2) > p {
+  border-left: dashed 1px #fff;
+}
+.table > tbody > tr.iscopy > td:nth-child(10) > p {
+  border-right: dashed 1px #fff;
+}
+.table > tbody > tr.ispaste > td > p {
+  height: 39px;
+  background: #324484;
 }
 .table > tbody > tr > td .dropbox {
   margin: 0 5px;
@@ -67,9 +79,9 @@
   background: #293dcf;
   zoom:1;
 }
-.table > tbody > tr.isedit:hover .opt-outer {
+/*.table > tbody > tr.isedit:hover .opt-outer {
   display: block;
-}
+}*/
 .opt-outer{
   position: absolute;
   top: 0;
