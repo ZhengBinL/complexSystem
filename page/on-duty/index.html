@@ -1456,36 +1456,54 @@
               innerTxt = innerDt.map(function(item){
                 return item.personnelName;
               }).join('<br>');
+              $('.js-urgent').find('.js-onduty').html(innerTxt);
             }else{
               innerTxt = innerDt.map(function(item){
                 return item.personnelName;
               }).join('，');
+              $td.find('.js-onduty').html(innerTxt);
             }
-            $td.find('.js-onduty').html(innerTxt);
-
-            var _style = (i===3) ? 'text-area' : 'txt-area';
 
             for(var j = 0; j<innerDt.length; j++) {
-              innerHtml += '<span data-id="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<a href="javascript:;" class="btn-del">&times;</a></span>';
+              innerHtml += '<span data-pid="' + innerDt[j].personnelId + '">' + innerDt[j].personnelName + '<a href="javascript:;" class="btn-del">&times;</a></span>';
             }
-            $td.find('.show-select').html(innerHtml);
+            if(i===3){
+              $('.js-urgent').find('.show-select').html(innerHtml);
+            }else{
+              $td.find('.show-select').html(innerHtml);
+            }
           }else{
             $td.find('.js-onduty').html('');
             $td.find('.show-select').html('');
           }
         }
 
-        $('.btn-select').off().on('click',function(){
+        $('.btn-select').off().on('click',function(e){
+          e.stopPropagation();
           var $tis = $(this);
           var ids = [];
           $tis.parent('.js-textarea').find('.show-select span').each(function(){
-            ids.push($(this).attr('data-id'));
+            ids.push($(this).attr('data-pid'));
           })
           if($tis.parent('.js-textarea').find('.select-area li').find('label').length>0){
             $tis.parent('.js-textarea').find('.select-area').show();
           }else{
             renderSelectarea($tis,ids);
           }
+        })
+
+        $('.btn-del').off().on('click',function(){
+          var $tis = $(this);
+          var val = $tis.parent('span').attr('data-pid');
+          if($tis.parents('.js-textarea').find('.select-area label').length>0){
+            $tis.parents('.js-textarea').find('input[name="soldier"]').each(function(){
+              var $that = $(this);
+              if(val === $that.val()){
+                $that.prop('checked',false);
+              }
+            })
+          }
+          $tis.parent('span').remove();
         })
       }).fail(function(err) {
         console.error('请求失败！',err.statusText);
@@ -1517,32 +1535,20 @@
         }
         tis.parent('.js-textarea').find('.select-area').show().find('li').html(chkHtml);
 
-        $("input[name='soldier']").click(function(){
+        $("input[name='soldier']").off().on('click',function(){
           var $tis = $(this);
           var val = $tis.val();
           if($tis.prop('checked')){
-            var str = '<span data-id="' + val + '">' + $tis.attr('data-name') + '<a href="javascript:;" class="btn-del">&times;</a></span>';
+            var str = '<span data-pid="' + val + '">' + $tis.attr('data-name') + '<a href="javascript:;" class="btn-del">&times;</a></span>';
             $tis.parents('.js-textarea').find('.show-select').append(str);
           }else{
             $tis.parents('.js-textarea').find('.show-select span').each(function(){
               var $that = $(this);
-              if(val === $that.attr('data-id')){
+              if(val === $that.attr('data-pid')){
                 $that.remove();
               }
             })
           }
-
-          $('.btn-del').off().on('click',function(){
-            var $tis = $(this);
-            var val = $tis.parent('span').attr('data-id');
-            $tis.parents('.js-textarea').find('input[name="soldier"]').each(function(){
-              var $that = $(this);
-              if(val === $that.val()){
-                $that.prop('checked',false);
-                $tis.parent('span').remove();
-              }
-            })
-          })
         });
 
       }).fail(function(err) {
@@ -1578,7 +1584,7 @@
 
 		  // WpWatchScheduleVoForSave：watchScheduleList
       $('.edited').find('input').each(function(){
-        // var $input = $(this).find('input');
+        var $input = $(this);
         var obj = {
           id: '',
           personnelId: '',
@@ -1588,13 +1594,14 @@
           watchHourId: '',
           watchTowerId: ''
         };
-        var pid = $(this).attr('data-pid'),
-            watchHourId =  $(this).attr('data-watchhourid'),
-            watchTowerId = $(this).attr('data-watchtowerid');
-        if($(this).find('input').attr('name')){
+        var pid = $input.attr('data-pid'),
+            _id =  $input.attr('data-id'),
+            watchHourId = $input.attr('data-watchhourid'),
+            watchTowerId = $input.attr('data-watchtowerid');
+        if($input.attr('name')){
           // 修改
-          obj.id = $(this).attr('data-pid');
-          obj.personnelId = $(this).attr('data-pid');
+          obj.id = _id;
+          obj.personnelId = pid;
         }else{
           // 新增
           obj.type = scheduleType;
@@ -1641,7 +1648,7 @@
         layer.msg('修改成功')
         $('.js-btnEdit').text('修改')
         $('.js-onduty').show();
-        $('.js-edit').hide();
+        $('.js-edit').removeClass('edited').hide();
         $('.js-textarea').addClass('hide-elm');
         $('.js-isEdit').removeClass('isedit');
         querySchedule(watchTime);
@@ -1651,9 +1658,8 @@
     }
 
     function checkInput(tis){
-		  var $input = tis,
-          flag = '';
-		  var inputArr = $tis.val().split();
+		  var $input = tis;
+		  var inputArr = $input.val().split('');
 		  var val = inputArr[0];
       $input.parent('.js-select').find('.drop-inner li').each(function(){
 		    var $tis = $(this);
