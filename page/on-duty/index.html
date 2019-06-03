@@ -1357,7 +1357,7 @@
         $('.js-select').off().on('focus', function () {
           var $tis = $(this);
           $tis.attr('data-name',$tis.val());
-          $tis.val('');
+          $tis.val('').attr('data-pid', '').attr('data-name','');
           $('.drop-inner').hide();
           if($tis.next('.drop-inner').find('li').length===0){
             renderSelectlist($tis);
