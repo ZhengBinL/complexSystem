@@ -447,6 +447,7 @@
     top: 45px;
 }
 .wrapper{
+    position: relative;
     margin: 0 20px;
     min-width: 1300px;
 }
@@ -470,4 +471,20 @@
 }
 .dv-chart-index{
     z-index: 3;
+}
+.icon-table{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    z-index:3;
+}
+.pos-table{
+    display: none;
+    position: absolute;
+    padding: 25px 30px;
+    top: 120px;
+    right: 60px;
+    background: #070131;
+    z-index:4;
+    box-shadow: 0 0 15px #229fe6;
 }

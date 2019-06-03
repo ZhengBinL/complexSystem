@@ -200,13 +200,147 @@
 
       <span class="clearfix"></span>
     </dd>
+    <div class="dv-table pos-table">
+      <i class="bg-conner conner-lt"></i>
+      <i class="bg-conner conner-rt"></i>
+      <i class="bg-conner conner-lb"></i>
+      <i class="bg-conner conner-rb"></i>
+      <input type="text" name="notautosubmit" style="display:none"/>
+      <form class="layui-form">
+        <div class="layui-form-item">
+          <div class="layui-inline">
+            <label class="layui-form-label">开始时间：</label>
+            <div class="layui-input-inline">
+              <input type="text" name="startTime" id="startTime" autocomplete="off" placeholder="开始时间"
+                     class="layui-input js-laydate">
+            </div>
+          </div>
+
+          <div class="layui-inline">
+            <label class="layui-form-label">结束时间：</label>
+            <div class="layui-input-inline">
+              <input type="text" name="endTime" id="endTime" autocomplete="off" placeholder="结束时间"
+                     class="layui-input js-laydate">
+            </div>
+          </div>
+
+          <div class="layui-inline">
+            <label class="layui-form-label">报警类型：</label>
+            <div class="layui-input-inline">
+              <select id="alarmType" name="alarmType">
+                <option value=""></option>
+                <option value="81">激光对射</option>
+                <option value="302">绊线入侵</option>
+                <option value="303">区域入侵</option>
+                <option value="309">快速移动</option>
+                <option value="594">声音异常</option>
+                <option value="596">攀高入侵</option>
+                <option value="2602">震动光纤</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="layui-inline">
+            <label class="layui-form-label">报警级别：</label>
+            <div class="layui-input-inline">
+              <select id="alarmLevel" name="alarmLevel">
+                <option value=""></option>
+                <option value="1">一级报警</option>
+                <option value="2">二级报警</option>
+                <option value="3">三级报警</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="layui-inline">
+            <button type="button" class="layui-btn layui-btn-normal js-btn-search">查询</button>
+            <!--<button class="layui-btn layui-btn-primary">导出</button>-->
+          </div>
+
+        </div>
+      </form>
+      <table class="layui-hide" id="alarmList"></table>
+    </div>
+    <a href="javascript:;" class="icon-table js-table" alt="1">
+      <img src="../../asset/img/icon_fold.png" alt="fold">
+    </a>
   </dl>
   <script src="../../asset/js/jquery.min.js"></script>
   <script src="../../asset/js/config.js"></script>
-  <script src="../../asset/js/utils.js"></script>
+  <!--<script src="../../asset/js/utils.js"></script>-->
   <script src="../../asset/js/echarts.min.js"></script>
   <script src="../../asset/introduce/layui/layui.js"></script>
   <script>
+      layui.use(['laydate', 'table'], function () {
+          var laydate = layui.laydate;
+          $('.js-laydate').each(function(){
+              var elm = $(this).attr('id');
+              laydate.render({
+                  elem: '#' + elm,
+                  format: 'yyyy-MM-dd'
+              })
+          })
+
+          var table = layui.table;
+          $('body')
+              .on('click', '.js-btn-search', function () {
+                  renderTable();
+              })
+              .on('click', '.js-table', function () {
+                  $tis = $(this);
+                  var _alt = $tis.attr('alt')
+                  if (_alt == '1') {
+                      $tis.attr('alt', '2')
+                      $tis.children('img').attr('src', '../../asset/img/icon_expand.png')
+                      $('.pos-table').show();
+                      renderTable();
+                  }else {
+                      $tis.attr('alt', '1')
+                      $tis.children('img').attr('src', '../../asset/img/icon_fold.png')
+                      $('.pos-table').hide();
+                  }
+              })
+
+          function renderTable(){
+              var startTime = $('#startTime').val();
+              var endTime = $('#endTime').val();
+              var alarmType = $('#alarmType').val();
+              var alarmLevel = $('#alarmLevel').val();
+              var where = {
+                  startTime: startTime,
+                  endTime: endTime,
+                  alarmType: alarmType,
+                  alarmLevel: alarmLevel
+              }
+              table.render({
+                  elem: '#alarmList'
+                  ,url: $ctx + '/alarm/findAlarmList'
+                  ,method: 'get'
+                  ,page: true //开启分页
+                  ,layout: ['count', 'prev', 'page', 'next']
+                  ,skin: 'nob' //重要属性：无连线表格
+                  ,cols: [[ //标题栏
+                      {type:'checkbox', width: 50}
+                      ,{type:  'numbers', title: '序号', width: 70}
+                      ,{field: 'cameraID', title: '报警通道', minWidth: 120}
+                      ,{field: 'typeName', title: '报警类型', style: 'color: #f69506;', width: 100}
+                      ,{field: 'alarmTime', title: '报警时间', minWidth: 120}
+                      ,{field: 'levelName', title: '报警级别', style: 'color: #07dcef;', width: 100}
+                      ,{field: 'processResult', title: '处理结果', width: 100}
+                      ,{field: 'processTime', title: '处理时间', minWidth: 120}
+                  ]],
+                  parseData: function(res){ //res 即为原始返回的数据
+                      return {
+                          "code": res.code, //解析接口状态
+                          "msg": res.message, //解析提示文本
+                          "count": res.data.total, //解析数据长度
+                          "data": res.data.list //解析数据列表
+                      };
+                  },
+                  where: where
+              });
+          }
+      })
       setTimeout(function () {
         // 执勤汇总柱状图
         var onDuty = echarts.init(document.getElementById('onDuty'));
