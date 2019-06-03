@@ -292,12 +292,12 @@
                   if (_alt == '1') {
                       $tis.attr('alt', '2')
                       $tis.children('img').attr('src', '../../asset/img/icon_expand.png')
-                      $('.pos-table').show();
+                      $('.pos-table').animate({right:'80px'});
                       renderTable();
                   }else {
                       $tis.attr('alt', '1')
                       $tis.children('img').attr('src', '../../asset/img/icon_fold.png')
-                      $('.pos-table').hide();
+                      $('.pos-table').animate({right:'-1020px'})
                   }
               })
 

@@ -1357,16 +1357,16 @@
         $('.js-select').off().on('focus', function () {
           var $tis = $(this);
           $tis.attr('data-name',$tis.val());
-          $tis.val('');
+          $tis.val('').attr('data-pid', '').attr('data-name','');
           $('.drop-inner').hide();
           if($tis.next('.drop-inner').find('li').length===0){
             renderSelectlist($tis);
           }else{
             $tis.next('.drop-inner').show();
           }
-        }).on('blur', function(){
-          var $tis = $(this);
-          checkInput($tis);
+        // }).on('blur', function(){
+        //   var $tis = $(this);
+        //   checkInput($tis);
         }).on('keyup',function(e){
           var $tis = $(this);
           setTimeout(function(){
@@ -1378,7 +1378,7 @@
         $('.drop-inner').off().on('click', 'li', function(){
           var $tis = $(this);
           var $input = $tis.parent('.drop-inner').prev('input');
-          $input.val($tis.text()).attr('data-pid', $tis.attr('data-pid'));
+          $input.val($tis.text()).attr('data-pid', $tis.attr('data-pid')).attr('data-name', $tis.text());
           if($input.attr('name') !== $input.attr('data-pid')){
             $tis.parents('.dropbox').addClass('edited');
           }else{
@@ -1422,7 +1422,8 @@
             if(innerDt.length > 0){
               for(var k=0; k<innerDt.length; k++){
                 if(innerDt[k].watchTowerId === watchTowerIds[j]){
-                  $td.find('.js-edit input').val(innerDt[k].personnelName + '(' + innerDt[k].militaryRankName + ')')
+                  var _name = innerDt[k].personnelName + '(' + innerDt[k].militaryRankName + ')';
+                  $td.find('.js-edit input').val(_name).attr('data-name', _name)
                     .attr('name', innerDt[k].personnelId).attr('data-pid', innerDt[k].personnelId)
                     .attr('data-id',innerDt[k].id);
                   $td.find('.js-onduty').html(innerDt[k].personnelName + '<br><span class="ranks">(' + innerDt[k].militaryRankName + ')</span>');
@@ -1590,7 +1591,6 @@
           personnelId: '',
           type: scheduleType,
           watchTime: watchTime,
-          personnelId: '',
           watchHourId: '',
           watchTowerId: ''
         };
@@ -1658,16 +1658,17 @@
     }
 
     function checkInput(tis){
+      // 模糊比较输入的名字：如果名字匹配则自动补全其军衔，不匹配则还原到上一个修改状态
 		  var $input = tis;
-		  var inputArr = $input.val().split('');
+		  var inputArr = $input.val().split('(');
 		  var val = inputArr[0];
       $input.parent('.js-select').find('.drop-inner li').each(function(){
 		    var $tis = $(this);
 		    var arr = $tis.text().split('(');
 		    if(arr[0] === val){
-          $input.val($tis.text()).attr('data-pid', $tis.attr('data-pid'));
+          $input.val($tis.text()).attr('data-pid', $tis.attr('data-pid')).attr('data-name',$tis.text());
         }else{
-          $input.val($input.attr('name'));
+          $input.val($input.attr('data-name'));
         }
       })
     }
