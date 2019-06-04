@@ -1419,6 +1419,9 @@
           for(var j = 0; j < 9; j++) {
             var $td = $tr.find('td').eq(j+1);
             $td.find('.js-edit input').attr('data-watchhourid',_dt.id).attr('data-watchtowerid', watchTowerIds[j]);
+            if(j===0){
+              $td.find('.js-edit input').attr('data-rank','3,4,5');
+            }
             if(innerDt.length > 0){
               for(var k=0; k<innerDt.length; k++){
                 if(innerDt[k].watchTowerId === watchTowerIds[j]){
@@ -1558,9 +1561,14 @@
     }
 
     function renderSelectlist(tis, val){
-		  var _url = val ? ('/sys_armed_police/findPersonnelByNameAndRank?name=' + val) : '/sys_armed_police/findPersonnelByNameAndRank';
+      var t = new Date().getTime();
+      var str = val || '';
+      var rank = tis.parent().find('input').attr('data-rank') || '';
+		  var _url = '/sys_armed_police/findPersonnelByNameAndRank?name='+ str + '&ranks=' + rank;
+
+      _url = encodeURI(_url);
 		  $.ajax({
-        url: $ctx + _url,
+        url: $ctx + _url + '&t=' + t,
         type: 'get'
       }).done(function(res) {
         var dt = res.data;
