@@ -108,5 +108,13 @@ function formatDate(t, isTime) {
 }
 // 退出回到登陆页
 $('body').on('click','.exit',function(){
-  window.location.href='../login/login.html'
+  $.ajax({
+    type:'GET',
+    dataType:'json',
+    contentType:'application/json',
+    url: $ctx +'/sso/logout',
+    success:function(res){
+      window.location.href='../login/login.html'
+    }
+  })
 })
