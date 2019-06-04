@@ -22,7 +22,11 @@ function checkForm() {
             contentType: 'application/json',
             data: JSON.stringify(parmams),
             success: function (data) {
-                window.location.href = '../index/index.html'
+                if(data.data.status){
+                    window.location.href = '../index/index.html'
+                }else{
+                    alert(data.data.message)
+                }
             },
             error: function () {
 

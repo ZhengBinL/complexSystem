@@ -106,3 +106,7 @@ function formatDate(t, isTime) {
   var ft = isTime ? (YY + '-' + MM + '-' + DD + ' ' + hh + ':' + mm + ':' + ss) : (YY + '-' + MM + '-' + DD);
   return ft;
 }
+// 退出回到登陆页
+$('body').on('click','.exit',function(){
+  window.location.href='../login/login.html'
+})
