@@ -110,8 +110,6 @@ function formatDate(t, isTime) {
 $('body').on('click','.exit',function(){
   $.ajax({
     type:'GET',
-    dataType:'json',
-    contentType:'application/json',
     url: $ctx +'/sso/logout',
     success:function(res){
       window.location.href='../login/login.html'
