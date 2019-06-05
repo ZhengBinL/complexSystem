@@ -110,9 +110,10 @@ function formatDate(t, isTime) {
 $('body').on('click','.exit',function(){
   $.ajax({
     type:'GET',
-    url: $ctx +'/sso/logout',
+    url: $ctx +'/sso/logout?'+new Date().getTime(),
     success:function(res){
-      window.location.href='../login/login.html'
+      window.location.reload()
+      // window.location.href='../login/login.html'
     }
   })
 })
