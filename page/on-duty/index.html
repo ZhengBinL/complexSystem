@@ -1509,6 +1509,7 @@
               var $that = $(this);
               if(val === $that.val()){
                 $that.prop('checked',false);
+                return false;
               }
             })
           }
