@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=8"> -->
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
     <title>武警智慧磐石执勤安保信息管理平台</title>
     <!-- <title>联防联动</title> -->
     <link rel="stylesheet" href="../../asset/introduce/layui/css/layui.css">
@@ -513,7 +518,13 @@
     }
 // 退出回到登陆页
 $('body').on('click','.exit',function(){
-  window.location.href='../login/login.html'
+  $.ajax({
+    type:'GET',
+    url: $ctx +'/sso/logout',
+    success:function(res){
+      window.location.href='../login/login.html'
+    }
+  })
 })
 </script>
 
