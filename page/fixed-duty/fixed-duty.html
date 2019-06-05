@@ -68,11 +68,12 @@
 <script src="../../asset/js/utils.js"></script>
 <script src="./fixed-duty.js"></script>
 <script>
+  var t = new Date().getTime();
     $.ajax({
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
-        url: $ctx + '/fixed_duty/dutyInfo',
+        url: $ctx + '/fixed_duty/dutyInfo?' + t,
         success: function (res) {
             if (res.code == 0 && res.data) {
                 var data = res.data.dutyInfo
