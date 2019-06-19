@@ -1,3 +1,8 @@
+$(document).keypress(function(e) {
+    if((e.keyCode || e.which)==13) {
+        checkForm();
+    }
+});
 /*这里是提交表单前的非空校验*/
 function checkForm() {
     var first = $("input[name='user']").val();
